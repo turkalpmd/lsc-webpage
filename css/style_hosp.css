@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* transform-style: preserve-3d; */
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4a559;
+}
+
+:root {
+    --i: 1;
+    --width: 800px;
+    --height: 800px;
+    --depth: 20px;
+}
+
+
+
+@keyframes animate {
+    100% {
+    transform: rotateX(-300deg) rotateY(300deg) ;
+
+    }
+}
+
+
+.hospital-wrapper {
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+
+    width: var(--width);
+    height: var(--height);
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(30deg) rotateY(42deg);
+    animation: animate 10s;
+}
+
+.hospital-wrapper .base {
+
+    width: var(--width);
+    height: var(--height);
+    background-color: gray;
+}
+
+.building-top-left {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: green;
+}
+
+.building-center {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    background-color: green;
+    transform: translateX(-50%);
+}
+
+
+
+.hospital-wrapper .building-main {
+    --width: 200px;
+    --height: 400px;
+    --depth: 200px;
+    width: var(--width);
+    height: var(--height);
+
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    transform-style: preserve-3d;
+
+}
+
+.hospital-wrapper .building-main div {
+    position: absolute;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    
+
+}
+.hospital-wrapper .building-main .side:nth-child(1) {
+    width: var(--width);
+    height:  var(--height);
+    background: #82b2e7;
+    transform: translate3d(0, 0, 0);
+}
+.hospital-wrapper .building-main .side:nth-child(2) {
+    position: absolute;
+    width: var(--width);
+    height:  var(--height);
+    background: #82b2e7;
+    transform: translate3d(0, 0, var(--depth));
+    box-shadow: inset 0 10px 0 0 #6596ce,
+                inset 10px 0px 0 0 #6596ce,
+                inset 0px -10px 0 0 #6596ce,
+                inset -10px 10px 0 0 #6596ce;
+}
+
+
+.hospital-wrapper .building-main .side:nth-child(3) {
+    position: absolute;
+    width: var(--depth);
+    height: var(--height);
+    background: #436a9d;
+    transform: rotateY(-90deg) translate3d(0, 0, 0);
+    transform-origin: left;
+}
+.hospital-wrapper .building-main .side:nth-child(3) .front-gate {
+    --height: 130px;
+    --width: 100%;
+    --depth: 30px;
+    width: var(--width);
+    height: var(--height);
+    transform-style: preserve-3d;
+}
+
+.hospital-wrapper .building-main .side:nth-child(3) .front-gate span:nth-child(1) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #436a9d;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, var(--depth));
+}
+
+.hospital-wrapper .building-main .side:nth-child(3) .front-gate span:nth-child(2) {
+    position: absolute;
+    width: 100%;
+    height: var(--depth);
+    background-color: #345c97;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) rotateX(90deg);
+    transform-origin: top;
+    top: 0;
+    left: 0;
+}
+
+.hospital-wrapper .building-main .side:nth-child(3) .front-gate span:nth-child(3) {
+    position: absolute;
+    width: 100%;
+    height: var(--depth);
+    background-color: #345c97;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) rotateX(-90deg);
+    transform-origin: bottom;
+    bottom: 0;
+    left: 0;
+}
+
+.hospital-wrapper .building-main .side:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    right: 20px; 
+    box-shadow: 0 -40px 0 0 white, 0 -80px 0 0 white,
+                -40px 0px 0 0 white, -40px -40px 0 0 white, -40px -80px 0 0 white; 
+}
+.hospital-wrapper .building-main .side:nth-child(3) .front-gate span:nth-child(4) {
+    position: absolute;
+    width: var(--depth);
+    height: 100%;
+    background-color: #82b2e7;
+    transform-style: preserve-3d;
+    transform: translate3d(0, 0, 0) rotateY(90deg);
+    transform-origin: right;
+    top: 0;
+    right: 0;
+}
+
+
+.hospital-wrapper .building-main .side:nth-child(4) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--depth);
+    height: var(--height);
+    background: #436a9d;
+    transform: rotateY(90deg) translate3d(0px, 0px, 0);
+    transform-origin: right;
+}
+.hospital-wrapper .building-main .side:nth-child(5) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: var(--width);
+    height: var(--depth);
+    background: #aad6f4;
+    transform: rotateX(-90deg) translate3d(0px, 0px, 0);
+    transform-origin: bottom;
+}
+.hospital-wrapper .building-main .side:nth-child(5)::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    left: 20px;
+    top: 20px;
+    box-shadow: 40px 0px 0 0 white, 80px 0px 0 0 white, 120px 0px 0 0 white,
+                0px 40px 0 0 white, 40px 40px 0 white, 80px 40px 0 0 white, 120px 40px 0 0 white,
+                0px 120px 0 0 white, 40px 120px 0 white, 80px 120px 0 0 white, 120px 120px 0 0 white;
+}
+.hospital-wrapper .building-main .side:nth-child(6) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--width);
+    height: var(--depth);
+    background: #aad6f4;
+    transform: rotateX(90deg) translate3d(0px, 0px, 0);
+    transform-origin: top;
+}
+.playground {
+    --width: 200px;
+    --height: 200px;
+    --depth: 35px;
+    width: var(--width);
+    height: var(--height);
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #658f32;
+    transform-style: preserve-3d;
+}
+
+.playground .side:nth-child(1) {
+    width: var(--depth);
+    height: var(--height);
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform: rotateY(-90deg);
+    transform-origin: left;
+}
+.playground .side:nth-child(2) {
+    width: var(--depth);
+    height: var(--height);
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform-style: preserve-3d;
+    transform: rotateY(90deg);
+    transform-origin: right;
+}
+.playground .side:nth-child(3) {
+    width: var(--width);
+    height: var(--depth);
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(90deg);
+    transform-origin: top;
+}
+.playground .side:nth-child(4) {
+    width: var(--width);
+    height: var(--depth);
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+}
+
+.playground .side:nth-child(3)::after,
+.playground .side:nth-child(4)::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 5px;
+    top: 5px;
+    background: #658f32;
+    box-shadow: 10px 0 0 #658f32,
+    20px 0 0 #658f32,
+    30px 0 0 #658f32,
+    40px 0 0 #658f32,
+    50px 0 0 #658f32,
+    60px 0 0 #658f32,
+    70px 0 0 #658f32,
+    80px 0 0 #658f32,
+    90px 0 0 #658f32,
+    100px 0 0 #658f32,
+    110px 0 0 #658f32,
+    120px 0 0 #658f32,
+    130px 0 0 #658f32,
+    140px 0 0 #658f32,
+    150px 0 0 #658f32,
+    160px 0 0 #658f32,
+    170px 0px 0 #658f32,
+    180px 0px 0 #658f32,
+
+    0px 10px 0 #658f32,
+    10px 10px 0 #658f32,
+    20px 10px 0 #658f32,
+    30px 10px 0 #658f32,
+    40px 10px 0 #658f32,
+    50px 10px 0 #658f32,
+    60px 10px 0 #658f32,
+    70px 10px 0 #658f32,
+    80px 10px 0 #658f32,
+    90px 10px 0 #658f32,
+    100px 10px 0 #658f32,
+    110px 10px 0 #658f32,
+    120px 10px 0 #658f32,
+    130px 10px 0 #658f32,
+    140px 10px 0 #658f32,
+    150px 10px 0 #658f32,
+    160px 10px 0 #658f32,
+    170px 10px 0 #658f32,
+    180px 10px 0 #658f32,
+
+    0px 20px 0 #658f32,
+    10px 20px 0 #658f32,
+    20px 20px 0 #658f32,
+    30px 20px 0 #658f32,
+    40px 20px 0 #658f32,
+    50px 20px 0 #658f32,
+    60px 20px 0 #658f32,
+    70px 20px 0 #658f32,
+    80px 20px 0 #658f32,
+    90px 20px 0 #658f32,
+    100px 20px 0 #658f32,
+    110px 20px 0 #658f32,
+    120px 20px 0 #658f32,
+    130px 20px 0 #658f32,
+    140px 20px 0 #658f32,
+    150px 20px 0 #658f32,
+    160px 20px 0 #658f32,
+    170px 20px 0 #658f32,
+    180px 20px 0 #658f32;
+}
+
+.playground .side:nth-child(1)::after,
+.playground .side:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    left: 5px;
+    top: 5px;
+    background: #658f32;
+    box-shadow: 0 10px 0 0 #658f32,
+    0 20px 0 0 #658f32,
+    0 30px 0 0 #658f32,
+    0 40px 0 0 #658f32,
+    0 50px 0 0 #658f32,
+    0 60px 0 0 #658f32,
+    0 70px 0 0 #658f32,
+    0 80px 0 0 #658f32,
+    0 90px 0 0 #658f32,
+    0 100px 0 0 #658f32,
+    0 110px 0 0 #658f32,
+    0 120px 0 0 #658f32,
+    0 130px 0 0 #658f32,
+    0 30px 0 0 #658f32,
+    0 140px 0 0 #658f32,
+    0 150px 0 0 #658f32,
+    0 160px 0 0 #658f32,
+    0 170px 0 0 #658f32,
+    0 180px 0 0 #658f32,
+    0 190px 0 0 #658f32,
+    0 200px 0 0 #658f32,
+    
+    10px 0px 0 0 #658f32,
+    10px 10px 0 0 #658f32,
+    10px 20px 0 0 #658f32,
+    10px 30px 0 0 #658f32,
+    10px 40px 0 0 #658f32,
+    10px 50px 0 0 #658f32,
+    10px 60px 0 0 #658f32,
+    10px 70px 0 0 #658f32,
+    10px 80px 0 0 #658f32,
+    10px 90px 0 0 #658f32,
+    10px 100px 0 0 #658f32,
+    10px 110px 0 0 #658f32,
+    10px 120px 0 0 #658f32,
+    10px 130px 0 0 #658f32,
+    10px 30px 0 0 #658f32,
+    10px 140px 0 0 #658f32,
+    10px 150px 0 0 #658f32,
+    10px 160px 0 0 #658f32,
+    10px 170px 0 0 #658f32,
+    10px 180px 0 0 #658f32,
+    10px 190px 0 0 #658f32,
+    10px 200px 0 0 #658f32,
+
+    20px 0px 0 0 #658f32,
+    20px 10px 0 0 #658f32,
+    20px 20px 0 0 #658f32,
+    20px 30px 0 0 #658f32,
+    20px 40px 0 0 #658f32,
+    20px 50px 0 0 #658f32,
+    20px 60px 0 0 #658f32,
+    20px 70px 0 0 #658f32,
+    20px 80px 0 0 #658f32,
+    20px 90px 0 0 #658f32,
+    20px 100px 0 0 #658f32,
+    20px 110px 0 0 #658f32,
+    20px 120px 0 0 #658f32,
+    20px 130px 0 0 #658f32,
+    20px 30px 0 0 #658f32,
+    20px 140px 0 0 #658f32,
+    20px 150px 0 0 #658f32,
+    20px 160px 0 0 #658f32,
+    20px 170px 0 0 #658f32,
+    20px 180px 0 0 #658f32,
+    20px 190px 0 0 #658f32,
+    20px 200px 0 0 #658f32;
+}
