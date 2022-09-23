@@ -32,7 +32,7 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-	
+	<link rel="stylesheet" href="css/style_counter.css">
   	<link href="fontawesome/css/all.min.css" rel="stylesheet">
 	<script src="fontawesome/js/all.min.js"></script>
 		
@@ -42,6 +42,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+	<script src="js/counter.js"></script>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
@@ -113,7 +114,7 @@
 	
 <!-- Kayan mottolar-->	
 		
-<marquee behavior="scroll" direction="left">All fungi are edible. Some fungi are only edible just once. <i>Terry Pratchett</i></marquee>	
+<marquee behavior="scroll" direction="left">All fungi are edible. Some fungi are only edible just once. <i>Terry Pratchett</i>.</marquee>	
 
 <!-- Kayan mottolar-->	
 		
@@ -124,37 +125,37 @@
 				<div class="col-md-4 col-6 mb-4"> <a href="about_us.html"><img class="ana_kutu" src="images/plaka.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="picu_.html"><img class="ana_kutu" src="images/picu.jpg" /></a>
+					<a href="picu.html"><img class="ana_kutu" src="images/picu.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="paylasim_.html"><img class="ana_kutu" src="images/paylasim.jpg" /></a>
+					<a href="paylasim.html"><img class="ana_kutu" src="images/paylasim.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="PALS_.html"><img class="ana_kutu" src="images/pals.jpg" /></a>
+					<a href="PALS.html"><img class="ana_kutu" src="images/pals.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="labs_.html"><img class="ana_kutu" src="images/labs.jpg" /></a>
+					<a href="labs.html"><img class="ana_kutu" src="images/labs.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="pay_school_.html"><img class="ana_kutu" src="images/pay-okulu.jpg" /></a>
+					<a href="pay_school.html"><img class="ana_kutu" src="images/pay-okulu.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="h_ecmo_.html"><img class="ana_kutu" src="images/h-ecmo.jpg" /></a>
+					<a href="h_ecmo.html"><img class="ana_kutu" src="images/h-ecmo.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="h_bps_.html"><img class="ana_kutu" src="images/h-bps.jpg" /></a>
+					<a href="h_bps.html"><img class="ana_kutu" src="images/h-bps.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
 					<a href="#"><img class="ana_kutu" src="images/journal.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="archive_.html"><img class="ana_kutu" src="images/archive.jpg" /></a>
+					<a href="archive.html"><img class="ana_kutu" src="images/archive.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="awards_.html"><img class="ana_kutu" src="images/awards.jpg" /></a>
+					<a href="awards.html"><img class="ana_kutu" src="images/awards.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="innovations_.html"><img class="ana_kutu" src="images/innovations.jpg" /></a>
+					<a href="innovations.html"><img class="ana_kutu" src="images/innovations.jpg" /></a>
 				</div>
 				
 			
@@ -171,7 +172,7 @@
                         HACETTEPE ÜNİVERSİTESİ SIHHİYE YERLEŞKESİ<br> Hacettepe Mh. 06230 Ankara Türkiye
                         <br>Phone: <a href="tel:+90 (312) 305 13 50" style="color:white">+90 (312) 305 13 50</a>
                         <br>e-mail: <a href="mailto:izzetakbasli@gmail.com?subject=feedback" style="color:white">yasamdestegihacettepe@gmail.com</a>
-                        <a class="footer-link small" href="index_test.html">
+                        <a class="footer-link small" href="../contacts.hmtl">
 							Contacs <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </a></p>
                 </div>
@@ -201,8 +202,14 @@
 
                 </div>
             </div>
-            <p class="ml-5 mt-2 text-left text-white small"><a href="index_test.html"></a>© 2015-2022 Life Support Center </p>
+            <p class="ml-5 mt-2 text-left text-white small">© 2015-2022 Life Support Center </p>
         </div>
+		<div>
+			<h1>People entered:</h1>
+			<h2 id="count-el">0</h2>
+			<button id="increment-btn" onclick="increment()">INCREMENT</button>
+		</div>
+        
         <!-- /.container -->
     </footer>
 		
@@ -211,7 +218,7 @@
 	</div>
 	
 	
-
+<script src="index.js"></script>
 <script src="js/mobile-nav.js"></script>
 <script src="js/easing.min.js"></script>
 </body>

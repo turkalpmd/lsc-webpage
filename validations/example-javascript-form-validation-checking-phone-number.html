@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>Phone Number Validation</title>
+<script language="JavaScript">
+<!-- 
+function validatePhone(areaCode,prefix,extension)
+{
+  var PhoneNo = new String(countryCode + "-" + areaCode + "-" + number);
+   
+  var regExpObj = /(\d\d\d)-\d\d\d-\d\d\d\d/;
+   
+  if(regExpObj.exec(PhoneNo) == null)
+  {
+    alert(PhoneNo + " does not contain a valid code!");
+  }
+  else
+  {
+    alert("Thank you for your order!");
+  }
+}
+// end script-->
+</script>
+</head>
+   
+<body>
+<center>
+<h1>Phone Number Validation</h1>
+<form name="form1">
+Phone Number: 
+<input type="text" size=2 maxlength=2 name="countryCode">-
+<input type="text" size=4 maxlength=4 name="areaCode">-
+<input type="text" size=4 maxlength=7 name="number">
+<br><br>
+<input type="button" value="Submit" onClick="validatePhone(countryCode.value, areaCode.value, number.value)">
+</form>
+</center>
+</body>
+</html>

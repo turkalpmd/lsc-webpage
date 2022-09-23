@@ -1,11 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Support Center</title>
-    
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
@@ -23,60 +17,76 @@
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
-
 	
   	<link href="fontawesome/css/all.min.css" rel="stylesheet">
 	<script src="fontawesome/js/all.min.js"></script>
-		
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/all.min.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>    
-
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="icon" href="/hu_logo_icon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Support Center</title>
     <link href="/sablon2021/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/sablon2021/css/style.css" rel="stylesheet" />
     <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
-
+	<link href="css/login_style.css" rel="stylesheet"/>
     <link href="/sablon2021/css/animate.css" rel="stylesheet" />
+	<!-- Validation section -->
+	<link rel="stylesheet" href="validations/form-style.css" type="text/css" />      
 
     <script src="/sablon2021/js/jquery.min.js"></script>
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
-	
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style>
-	.btn {
-	  background-color: DodgerBlue;
-	  border: none;
+	* {
+	  box-sizing: border-box;
+	}
+
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+
+	/* Float four columns side by side */
+	.column_ {
+	  float: left;
+	  width: 25%;
+	  padding: 0 5px;
+	}
+
+	.row {margin: 0 -5px;}
+
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+
+	/* Responsive columns */
+	@media screen and (max-width: 600px) {
+	  .column {
+		width: 100%;
+		display: block;
+		margin-bottom: 10px;
+	  }
+	}
+
+	/* Style the counter cards */
+	.card {
+	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	  padding: 16px;
+	  text-align: center;
+	  background-color: #444;
 	  color: white;
-	  padding: 8px 20px;
-	  cursor: pointer;
-	  font-size: 14px;
-	  display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-content: center;
 	}
 
-	/* Darker background on mouse-over */
-	.btn:hover {
-	  background-color: RoyalBlue;
-	}
-    .btn-toolbar {
-      text-align: center;
-      justify-content: center;
-      align-content: center;
-      margin: 0;
-    }	
-	</style>	
-
-
-
+	.fa {font-size:50px;}
+	</style>
 
 </head>
 
@@ -104,27 +114,16 @@
                     <a href="/iletisim.html">Contacts</a>
 					<a href="/">About</a>
                 </div>
-
-
             </div>
-
             <div class="menu_genel d-none d-sm-block d-md-none">
                 <!--yatay menu-->
             </div>
-
-
-
         </div>
     </div>
 </div>
 <!--ust-->
 
 <div class="site_baslangic"></div>
- <!--let me die in peace not be pieces-->
-
-
-
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
@@ -135,13 +134,11 @@
                 <nav class="main-nav d-none d-lg-block">
                     <div class="mobil_menu_logo mb-3"></div>
                     <ul>
-						<li><a href="kurulus_gerekcesi.html">Mission</a></li>				
-						<li><a href="yonetmelik.html">Legislation Textus</a></li>
-						<li><a href="faaliyetler.html">Activity Report</a></li>
-						<li><a href="yonetim.html">Steering Committee</a></li>
-						<li><a href="danisma.html">Advisory Board</a></li>						
-						<li><a href="yonetim_karar.html">Resolutions of the board of directors</a></li>												
-                  </ul>
+						<li><a href="index.html">Home Page</a></li>
+						<li><a href="about_us.html">About</a></li>
+						<li><a href="research.html">Research</a></li>					
+						<li><a href="contacs.html">Contacts</a></li>					
+                   </ul>
 					
                     <div class="mobil_menu_alt mt-3">
                         <div class="d-flex justify-content-center mb-4">
@@ -153,54 +150,79 @@
                             <span class="but_lang_secili">TR</span>
                             <span class="but_lang"><a href="/english/">EN</a></span>
                         </div>
-
                         <div class=" mr-4 ">
                             <a href="/">ANA SAYFA</a>
                             <a href="/iletisim.hhtml">İLETİŞİM</a>
                         </div>
-                    </div>				
+                    </div>
                 </nav>
             </div>
+
             <script src="/sablon2021/js/menu.js"></script>
             <!--menusol-->
-
-
+			<!--
+					<div class="mail">
+						<h2>Input Password and Submit </h2>
+						<form name="form1" action="#"> 
+							<ul>
+								<li><input type="text" name="text1"/></li>
+								<li>&nbsp;</li>
+								<li class="submit"><input type="submit" name="submit" value="Submit" onclick="CheckPassword(document.form1.text1)"/></li>
+								<li>&nbsp;</li>
+							</ul>
+						</form>
+					</div>
+			-->
         </div>
         <div class="col-lg-9 col-12 mb-3">
+			<h2>Responsive Section Counter</h2>
+			<p>Resize the browser window to see the effect.</p>
+			<br>
 
+			<div class="row">
+			  <div class="column">
+				<div class="card">
+				  <p><i class="fa fa-user"></i></p>
+				  <h3>11+</h3>
+				  <p>Partners</p>
+				</div>
+			  </div>
 
+			  <div class="column">
+				<div class="card">
+				  <p><i class="fa fa-check"></i></p>
+				  <h3>55+</h3>
+				  <p>Projects</p>
+				</div>
+			  </div>
 
-<div class="icerik_baslik">About us</div>
+			  <div class="column">
+				<div class="card">
+				  <p><i class="fa fa-ambulance"></i></p>
+				  <h3>100+</h3>
+				  <p>Happy Clients</p>
+				</div>
+			  </div>
 
-<!-- Image Header -->
-        <!-- Image size: 1200x351px -->
-        <img class="img-fluid rounded mb-4" src="images/about_us_img.jpg" alt="about_us">
-
-        <!-- Intro Content -->
-        <div class="mb-5 text-justify">
-          <p class="text-justify">
-			  
-			  <b>The Center for Life Support Practice and Research (LSC) </b> 
-			<ul>
-			  <li>Established in 14/10/2015 with the Senatus Consultum of Hacettepe University.</li>
-			  <li>Council of High Education approved the foundation in 13/04/2016.</li>
-			  <li>Legislation Textus was published in The Government Gazette in 23/10/2016 with the registry number 29866</li>
-			  <li>Prof. Benan Bayrakci was appointed as the Administrative Principal in 02.08.2021.</li>
-			  <li>Steering committee was assigned in 01.09.2021</li>
-			</ul>	
-		  </p>
-        </div>
-    </div>
+			  <div class="column">
+				<div class="card">
+				  <p><i class="fa fa-coffee"></i></p>
+				  <h3>100+</h3>
+				  <p>Meetings</p>
+				</div>
+			  </div>
+			</div>
+		</div>
+	</div>
 </div>
-
 <footer>
     <div class="container">
          Life Support Center
-
     </div>
-</footer>	
+
+</footer>
+<script src="/validations/check-password-1.js"></script>
 <script src="/sablon2021/js/mobile-nav.js"></script>
 <script src="/sablon2021/js/easing.min.js"></script>
-</div>
 </body>
 </html>

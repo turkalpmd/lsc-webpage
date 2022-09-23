@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>JavaScript form validation - checkimg non-empty</title>
+<style type="text/css">
+li {list-style-type: none;
+font-size: 12pt;
+}
+.mail {
+margin: auto;
+padding-top: 10px;
+padding-bottom: 10px;
+width: 700px;
+background : #D8F1F8;
+border: 1px soild silver;
+}
+.mail p {
+margin-left: 18px;
+padding-bottom: 13px;
+}
+
+h2 {
+margin-left: 38px;
+font-size: 20px;
+}
+
+.mail label {
+width: 300px;
+}
+
+input {
+margin-left: 40px;
+}
+
+input:focus, textarea:focus{
+background-color: lightyellow;
+}
+.submit {
+font-size: 12pt;
+margin-left: 110px;
+}
+.rq {
+color: #FF0000;
+font-size: 10pt;
+}
+</style>
+
+
+
+<script type='text/javascript'> 
+function lengthRange(inputtxt, minlength, maxlength)
+{ 
+var field = inputtxt.value; 
+var mnlen = minlength;
+var mxlen = maxlength;
+if(field.length >= mnlen && field.length <= mxlen)
+{ 
+alert('Your userid have accepted.');
+document.form1.text2.focus();
+return true;
+}
+else
+{ 
+alert("Please input the userid between " +mnlen+ " and " +mxlen+ " characters");
+document.form1.text1.focus();
+return false;
+alert('sadfsd');
+}
+}
+
+ //onload='document.form1.text1.focus()'>
+</script>
+
+
+</head>
+<body>
+<div class="mail">
+<h2>Sample HTML Form with validation in various fields.</h2>
+<form name="form1" action="#">
+<ul>
+<li><label>User ID:</label><input type='text' name='text1' size='10' onblur="lengthRange(document.form1.text1,6,8)"/></li>
+<li>&nbsp;</li>
+<li><label>Name :</label><input type='text' name='text2' size='70' /></li>
+<li>&nbsp;</li>
+<li><label>Address :</label><input type='text' name='text3' size='70' /></li>
+<li>&nbsp;</li>
+<li><label>State :</label><input type='text' name='text4' size='70' /></li>
+<li>&nbsp;</li>
+<li><label>Email :</label><input type='text' name='text5' size='70' /></li>
+<li>&nbsp;</li>
+<li class="submit"><input type="submit" name="submit" value="Submit" onclick="ValidateEmail(document.form1.text1)"/></li>
+<li>&nbsp;</li>
+</form>
+</ul>
+</div>
+</body>
+</html>

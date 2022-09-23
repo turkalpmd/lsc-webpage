@@ -1,6 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
@@ -31,12 +30,14 @@
     <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
 	<link href="css/login_style.css" rel="stylesheet"/>
     <link href="/sablon2021/css/animate.css" rel="stylesheet" />
+	<!-- Validation section -->
+	<link rel="stylesheet" href="validations/form-style.css" type="text/css" />      
 
     <script src="/sablon2021/js/jquery.min.js"></script>
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
 
@@ -114,23 +115,36 @@
 
             <script src="/sablon2021/js/menu.js"></script>
             <!--menusol-->
-
+			<!--
+					<div class="mail">
+						<h2>Input Password and Submit </h2>
+						<form name="form1" action="#"> 
+							<ul>
+								<li><input type="text" name="text1"/></li>
+								<li>&nbsp;</li>
+								<li class="submit"><input type="submit" name="submit" value="Submit" onclick="CheckPassword(document.form1.text1)"/></li>
+								<li>&nbsp;</li>
+							</ul>
+						</form>
+					</div>
+			-->
         </div>
         <div class="col-lg-9 col-12 mb-3">
-			<div class="icerik_baslik"><center>PAY-SCHOOL</center></div>
+			<div class="icerik_baslik"><center>PAYLAÞIM</center></div>
 				<div>
 					<center> <h2> The page you're trying to access has limited access. </h2> </center> 
 						<form-login>
-							<div class="contlog"> 
-								<label><b>Username :</b></label> 
-								<input type="text" placeholder="Enter Username" name="username" required>
-								<label><b>Password :</b></label> 
-								<input type="password" placeholder="Enter Password" name="password" required>
-								<button type="submit">Login</button> 
-								<input type="checkbox" checked="checked"> Remember me 
-								<button type="button" class="cancelbtn"> Cancel</button> 
-								Forgot <a href="#"> password? </a> 
-							</div> 
+					<div class="mail">
+						<h2>Input Password and Submit </h2>
+						<form name="form1" action="#"> 
+							<ul>
+								<li><input type="text" name="text1"/></li>
+								<li>&nbsp;</li>
+								<li class="submit"><input type="submit" name="submit" value="Login" onclick="CheckPassword(document.form1.text1)"/></li>
+								<li>&nbsp;</li>
+							</ul>
+						</form>
+					</div>
 						</form-login> 
 				</div>
         </div>
@@ -147,6 +161,7 @@
     </div>
 
 </footer>
+<script src="/validations/check-password-1.js"></script>
 <script src="/sablon2021/js/mobile-nav.js"></script>
 <script src="/sablon2021/js/easing.min.js"></script>
 </body>
