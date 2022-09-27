@@ -8,12 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Life Support Center</title>
-    <!--<link rel="icon" href="/hu_logo_icon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hacettepe Üniversitesi</title>
-    <meta name="description" content="<?php echo $mdesc; ?>">
-    <meta name="keywords" content="<?php echo $mkey; ?>">-->
-	
+ 
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
@@ -55,11 +50,6 @@
 
 	  gtag('config', 'G-L1JN37N26N');
 	</script>
-	
-
-
-
-
 </head>
 
 <body>
@@ -115,15 +105,62 @@
         });
 
     </script>
+	<style>
+	.btn {
+	  background-color: DodgerBlue;
+	  border: none;
+	  color: white;
+	  padding: 8px 20px;
+	  cursor: pointer;
+	  font-size: 14px;
+	  display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-content: center;
+	}
+
+	/* Darker background on mouse-over */
+	.btn:hover {
+	  background-color: RoyalBlue;
+	}
+    .btn-toolbar {
+      text-align: center;
+      justify-content: center;
+      align-content: center;
+      margin: 0;
+    }	
+	</style>    
 
 
 </div>
 		
 
 	
-<!-- Kayan mottolar-->	
+<!-- Kayan mottolar-->
+    <script>
+        $(function() {
+            $('marquee').mouseover(function() {
+                $(this).attr('scrollamount',0);
+            }).mouseout(function() {
+                $(this).attr('scrollamount',5);
+            });
+        });
+    </script>
+    <marquee behavior="scroll"
+             direction="left" 
+             onmouseover="this.stop();" 
+             onmouseout="this.start();">
+        <p>
+            <h6>
+                <span style="margin-left:1in;"> Bilgi ve Tecrübenin PAYlaşımına Davet !</span>
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+                <span style="margin-left:1in;"><b>All fungi are edible. Some fungi are only edible just once. <i>"Terry Pratchett"</i></b></span>
+            </h6>
+        </p>
+
+    </marquee>        
 		
-<marquee behavior="scroll" direction="left">All fungi are edible. Some fungi are only edible just once. <i>Terry Pratchett</i></marquee>	
+
 
 <!-- Kayan mottolar-->	
 		
@@ -131,40 +168,40 @@
 		
 		<div class="icerik mt-4">
 			<div class="row">
-				<div class="col-md-4 col-6 mb-4"> <a href="about_us_.html"><img class="ana_kutu" src="images/plaka.jpg" /></a>
+				<div class="col-md-4 col-6 mb-4"> <a href="about_us.html"><img class="ana_kutu" src="images/plaka.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="picu_.html"><img class="ana_kutu" src="images/picu.jpg" /></a>
+					<a href="picu.html"><img class="ana_kutu" src="images/picu.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="paylasim_.html"><img class="ana_kutu" src="images/paylasim.jpg" /></a>
+					<a href="paylasim.html"><img class="ana_kutu" src="images/paylasim.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="PALS_.html"><img class="ana_kutu" src="images/pals.jpg" /></a>
+					<a href="PALS.html"><img class="ana_kutu" src="images/pals.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="labs_.html"><img class="ana_kutu" src="images/labs.jpg" /></a>
+					<a href="labs.html"><img class="ana_kutu" src="images/labs.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="pay_school_.html"><img class="ana_kutu" src="images/pay-okulu.jpg" /></a>
+					<a href="pay_school.html"><img class="ana_kutu" src="images/pay-okulu.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="h_ecmo_.html"><img class="ana_kutu" src="images/h-ecmo.jpg" /></a>
+					<a href="h_ecmo.html"><img class="ana_kutu" src="images/h-ecmo.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="h_bps_.html"><img class="ana_kutu" src="images/h-bps.jpg" /></a>
+					<a href="h_bps.html"><img class="ana_kutu" src="images/h-bps.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
 					<a href="#"><img class="ana_kutu" src="images/journal.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="archive_.html"><img class="ana_kutu" src="images/archive.jpg" /></a>
+					<a href="archive.html"><img class="ana_kutu" src="images/archive.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="awards_.html"><img class="ana_kutu" src="images/awards.jpg" /></a>
+					<a href="awards.html"><img class="ana_kutu" src="images/awards.jpg" /></a>
 				</div>
 				<div class="col-md-4 col-6 mb-4">
-					<a href="innovations_.html"><img class="ana_kutu" src="images/innovations.jpg" /></a>
+					<a href="innovations.html"><img class="ana_kutu" src="images/innovations.jpg" /></a>
 				</div>
 				
 			
@@ -181,20 +218,28 @@
                         HACETTEPE ÜNİVERSİTESİ SIHHİYE YERLEŞKESİ<br> Hacettepe Mh. 06230 Ankara Türkiye
                         <br>Phone: <a href="tel:+90 (312) 305 13 50" style="color:white">+90 (312) 305 13 50</a>
                         <br>e-mail: <a href="mailto:izzetakbasli@gmail.com?subject=feedback" style="color:white">yasamdestegihacettepe@gmail.com</a>
-                        <a class="footer-link small" href="index_test.html">
-							Contacs <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </a></p>
+                        
+                        <div>
+                            <form method="get" action="/contacs.html">
+							   <button class="btn"><i class="fa fa-home"></i>&nbsp;Contacts</button>
+							</form>
+                        </div>
+                        <!--<a class="footer-link small" href="index_test.html">
+							Contacs 
+                            <i class="fa fa-angle-right" aria-hidden="true">
+                            </i>
+                        </a>-->
+                    </p>
                 </div>
                 
                 <div class="grid col-6 mt-5 mb-5 text-left text-white col-sm-5">
-                    <h6>Follow us</h6>
-                    <div class="row">
+                    <center><h4>Follow us</h4></center>
+                  <div class="offset-lg-0 col-lg-12"  align="center" style="text-align:center">
                         <a class="col-1 footer-link" href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a class="col-1 footer-link" href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
                         <a class="col-1 footer-link" href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i>
 						</a>
-                    </div>
-                </div>
+                  </div>
             </div>
         </div>
 
@@ -211,7 +256,9 @@
 
                 </div>
             </div>
-            <p class="ml-5 mt-2 text-left text-white small"><a href="index_test.html"></a>© 2015-2022 Life Support Center </p>
+            <p class="ml-5 mt-2 text-left text-white small">
+                <a href="contacs.html">
+                </a>© 2015-2022 Life Support Center </p>
         </div>
         <!-- /.container -->
     </footer>
