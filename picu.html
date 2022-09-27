@@ -19,13 +19,27 @@
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 	<script src="/js/time.js"></script>
-	<script src='https://www.google.com/recaptcha/api.js'></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
-
-
-
-
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="jQueryAssets/jquery-1.11.1.min.js" type="text/javascript"></script>
+	<script src="jQueryAssets/jquery.ui-1.10.4.button.min.js" type="text/javascript"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css" />
+    <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css" />
+	<style>
+		.tiptext {
+			color:#069; 
+			cursor:pointer;
+		}
+		.description {
+			display:none;
+			position:absolute;
+			border:0px solid #000;
+			width:auto;
+			height:400px;
+			z-index: 2;
+		}	
+	</style>
 </head>
 
 <body>
@@ -78,35 +92,35 @@
         <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
 
             <!--menusol-->
-            <div class="menu_sol">
+          <div class="menu_sol">
 
-                <nav class="main-nav d-none d-lg-block">
-                    <div class="mobil_menu_logo mb-3"></div>
+            <nav class="main-nav d-none d-lg-block">
+              <div class="mobil_menu_logo mb-3"></div>
                     <ul>
-						<li><a href="picu_yonetim.html">Yönetim Tablosu</a></li>
-						<li><a href="picu_uzmanlar.html">Uzmanlarýmýz</a></li>
-						<li><a href="picu_tez_asistanlarý.html">Tez asistanlarýmýz</a></li>	
-						<li><a href="##">Albüm</a></li>
+						<li><a href="picu_adminstration.html">Adminstration</a></li>
+						<li><a href="picu_fellows.html">Fellows</a></li>
+						<li><a href="picu_thesis.html">Thesis</a></li>	
+                        <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
+						<li><a href="gallery/picu/">Album</a></li>
                     </ul>
                     <div class="mobil_menu_alt mt-3">
                         <div class="d-flex justify-content-center mb-4">
                             <a href="https://www.instagram.com/hacettepe_university/" target="_blank"><i class="fab fa-instagram"></i></a>
                             <a href="https://www.facebook.com/HacettepeUniversitesiKurumsal" target="_blank"><i class="fab fa-facebook"></i></a>
                             <a href="https://twitter.com/hacettepe1967" target="_blank"><i class="fab fa-twitter"></i></a>
-                        </div>
+                      </div>
                         <div class="d-flex justify-content-center mb-4">
                             <span class="but_lang_secili">TR</span>
                             <span class="but_lang"><a href="/english/">EN</a></span>
                         </div>
 
                         <div class=" mr-4 ">
-                            <a href="/">ANA SAYFA</a>
-                            <a href="/iletisim.html">ÝLETÝÞÝM</a>
+                            <a href="/">Home Page</a>
+                          <a href="/contacs.html">Contacs</a>
                         </div>
 
-
-                    </div>
-                </nav>
+                  </div>
+              </nav>
 
 
             </div>
@@ -121,11 +135,11 @@
 				<div class="container">
           			<div class="section-title">
 						
-						<!-- Buraya Resim Alalým -->
+						<!-- Buraya Resim AlalÃ„Â±m -->
   
-						<div class="row">
-							<div class="col-lg-12" data-aos="fade-up">
-              				<!-- ======= Sað Yaným ======= -->
+					  <div class="row">
+						<div class="col-lg-12" data-aos="fade-up">
+              				<!-- ======= SaÃ„ÂŸ YanÃ„Â±m ======= -->
               					<h3 class="resume-title">Brief History of PICU</h3>
 								<!-- ======= Tekli Section ======= -->              					
 								<div class="resume-item">
@@ -137,7 +151,20 @@
 										</li>
 										<ul>
 											<li>
-												<p><em><a href = "images/namýk_cevik.jpeg">Prof. Namýk Çevik</a> cut the ribbon being the Director of the Children's Hospital</em></p>
+												
+												<p><span style="color: #069">
+                                                    <em>
+                                                        <a class="tiptext">
+                                                            <b>Prof. Namýk Çevik</b>
+                                                            <img class="description" src="images/namýk_cevik.jpeg" style="display: none;">
+                                                        </a>
+                                                    </em>
+                                                   </span>
+                                                    <em>
+                                                        <a class="tiptext"> </a> cut the ribbon being the Director of the Children's Hospital
+                                                    </em>
+                                                </p>
+										
 											</li>
 											<li>
 												<p><em>Open System formatted ICU was leaded by the chief assistants</em></p>
@@ -155,25 +182,66 @@
 										</li>
 										<ul>
 											<li>
-												<p><em><a href="https://www.doktorsitesi.com/media/cache/profil_500/uploads/profile_self_image/cb521bea8a076288474eb539ce0f2e88.png">Prof. Murat Tuncer</a> executed the renovation as the Director of the Children's Hospital</em></p>
+                                                <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Prof. Murat Tuncer</b>
+                                                                <img class="description" src="https://www.doktorsitesi.com/media/cache/profil_500/uploads/profile_self_image/cb521bea8a076288474eb539ce0f2e88.png" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> executed the renovation as the Director of the Children's Hospital
+                                                    </em>
+                                                </p>
+                                                <!-- Resimli hover -->
 											</li>
 										</ul>
 									</ul>					
               					</div>
-								
 								<div class="resume-item">
-                					<h4>ECOLE TRANSFERENCE</h4>
+                					<h4>MISSION</h4>
                 					<h5>2001</h5>
 									<ul>
 										<li>
-											<p><em> <b>Mission:</b> Pediatric intensive care ecole transference to Hacettepe University</em></p>
+											<p><em> <b>Mission</b> pediatric intensive care ecole transference to Hacettepe University</em></p>
 										</li>
 										<ul>
 											<li>
-												<p><em><a href="images/bbayrakci_.jpg">Benan Bayrakci</a> was appointed at Johns Hopkins University for this purpose</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> was appointed at Johns Hopkins University for this purpose.
+                                                    </em>
+                                                </p>
+                                                <!-- Resimli hover -->                                                
 											</li>
 											<li>
-												<p><em><a href="https://w3.bilkent.edu.tr/www/wp-content/uploads/sites/5/2021/01/g_kale.jpg">Prof. Gülsev Kale</a> pursued the mission as the Chair of Pediatrics</em></p>
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Prof.Gülsev Kale </b><img class="description" src="https://www.healthworldnews.net/wp-content/uploads/2022/05/Prof-Dr-Gulsum-Kale-75WHA-Dogramaci-Odul-konusmasi-27.5.2022-e1653686178614-400x266.jpg" style="display: none;">
+                                                            </a> 
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext">
+                                                        </a> pursued the mission as the Chair of Pediatrics.
+                                                    </em>
+                                                </p>                                                
 											</li>											
 										</ul>
 									</ul>					
@@ -188,7 +256,23 @@
 										</li>
 										<ul>
 											<li>
-												<p><em><a href="images/bbayrakci_.jpg">Benan Bayrakci</a> restructured the management of the unit being the Head of PICU</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> restructured the management of the unit being the Head of PICU.
+                                                    </em>
+                                                </p>
+                                                <!-- Resimli hover -->   
+
 											</li>
 											<li>
 												<p><em>Habilitated unit with invasive monitorization, mechanic ventilation and blood purification applications</em></p>
@@ -206,7 +290,22 @@
 										</li>
 										<ul>
 											<li>
-												<p><em><a href="images/bbayrakci_.jpg">Benan Bayrakci</a> start up the program as the Head of PICU</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> start up the program as the Head of PICU
+                                                    </em>
+                                                </p>
+                                                <!-- Resimli hover -->                                                                                                  
 											</li>										
 										</ul>
 									</ul>					
@@ -221,7 +320,22 @@
 										</li>
 										<ul>
 											<li>
-												<p><em>Assistant Prof. <a href="images/bbayrakci_.jpg">Benan Bayrakci</a> established the program as the Head of PICU</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Assoc. Prof. Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> established the program as the Head of PICU.
+                                                    </em>
+                                                </p>
+                                                <!-- Resimli hover -->  
 											</li>										
 										</ul>
 									</ul>					
@@ -236,11 +350,41 @@
 										</li>
 										<ul>
 											<li>
-												<p><em>Associate Prof. <a href="images/bbayrakci_.jpg">Benan Bayrakci</a> founded the center being the Head of PICU</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Assoc. Prof. Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> founded the center being the Head of PICU.
+                                                    </em>
+                                                </p>
+                                               <!-- Resimli hover -->                                                
 											</li>
 											<li>
-												<p><em><a href="https://tezerkutluk.com/wp-content/uploads/2021/10/tezer_kutluk_profil_1-220x220.webp">Prof. Tezer Kutluk</a> ensured the facility as the Director of the Children's Hospital</em></p>
-											</li>											
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em>
+                                                            <a class="tiptext">
+                                                                <b>Prof. Tezer Kutluk</b>
+                                                                <img class="description" src="/images/tk.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> ensured the facility as the Director of the Children's Hospital.
+                                                    </em>
+                                                </p>
+                                               <!-- Resimli hover -->                                                
+											</li>										
 										</ul>
 									</ul>					
               					</div>		
@@ -250,17 +394,50 @@
                 					<h5>2009</h5>
 									<ul>
 										<li>
-											<p><em> <b>Pediatric Intensive Care Medicine:</b> was accepted to be a Subspecialty Department in Türkiye</em></p>
+											<p><em> <b>Pediatric Intensive Care Medicine</b> is accepted to be a Subspecialty Department in Türkiye</em></p>
 										</li>
-										<li>
-											<p><em>Department of Pediatric Intensive Care Medicine was structured by Associate Prof. <a href="images/bbayrakci_.jpg">Benan Bayrakci</a> and nominated as Chair of Pediatric Intensive Care Medicine
-											</em></p>
-										</li>
-										<h5>2014</h5>
-										<li>
-											<p><em>The very first pediatric intensivist graduated in Türkiye, <a href="images/selmankesici.jpg">Selman Kesici</a> appeared from this department</em></p>
-										</li>											
-									</ul>					
+										<ul>
+											<li>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <p>Department of Pediatric Intensive Care Medicine was structured by</p>
+                                                    <span style="color: #069">
+                                                        <em> 
+                                                            <a class="tiptext">
+                                                                <b>Assoc. Prof. Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> and nominated as Chair of Pediatric Intensive Care Medicine.
+                                                    </em>
+                                                </p>
+                                               <!-- Resimli hover -->                                                   
+											</li>
+											
+											<li> 
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <p>The very first pediatric intensivist graduated in Türkiye</p>
+                                                    <span style="color: #069">
+                                                        <em> 
+                                                            <a class="tiptext">
+                                                                <b>Selman Kesici</b>
+                                                                <img class="description" src="/images/selmankesici.jpg" style="display: none;">
+                                                            </a> 
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a>appeared from this department.
+                                                    </em>
+                                                </p>
+                                               <!-- Resimli hover -->  
+											</li>
+										</ul>
+									</ul>				
               					</div>			
 								
 								<div class="resume-item">
@@ -271,7 +448,22 @@
 											<p><em>PICU was transferred to its brand new unit in 5. floor-3. block in modern standards</em></p>
 										</li>
 										<li>
-											<p><em>Associate Prof. <a href="images/bbayrakci_.jpg">Benan Bayrakci</a> structured the unit being the Director of Children's Hospital</em></p>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em> 
+                                                            <a class="tiptext">
+                                                                <b>Assoc. Prof. Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> structured the unit being the Director of Children's Hospital
+                                                    </em>
+                                                </p>
+                                               <!-- Resimli hover -->  
 										</li>										
 									</ul>					
               					</div>	
@@ -281,11 +473,27 @@
                 					<h5>2015</h5>
 									<ul>
 										<li>
-											<p><em> The Center for Life Support Practice &amp; Research was established for critical care scientific studies</em></p>
+											<p><em> The Center for Life Support Practice &amp; Research is established for critical care scientific studies founded by</em></p>
 										</li>
-										<li>
-											<p><em>Founded by Prof. <a href="images/bbayrakci_.jpg">Benan Bayrakci</a></em></p>
-										</li>										
+										<ul>
+											<li>
+                                               <!-- Resimli hover -->
+												<p>
+                                                    <span style="color: #069">
+                                                        <em> 
+                                                            <a class="tiptext">
+                                                                <b>Prof. Benan Bayrakci</b>
+                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
+                                                            </a>
+                                                        </em>
+                                                    </span>
+                                                    <em>
+                                                        <a class="tiptext"> 
+                                                        </a> structured the unit being the Director of Children's Hospital
+                                                    </em>
+                                                </p>
+											</li>
+										</ul>
 									</ul>					
               					</div>								
 
@@ -297,29 +505,7 @@
 										</li>
 									</ul>					
               					</div>									
-
-							<!-- <div class="col-lg-6" data-aos="fade-up"> SOL YAN
- 
-              					<h3 class="resume-title">Medical</h3>
-              					<h3 class="resume-title">Education</h3>
-           					TEKLÝ
-								<div class="resume-item">
-                					<h4>Pediatrics Resident</h4>
-                					<h5>May 2018 -- February 2023</h5>
-                					<p><em>Hacettepe University</em></p>
-              					</div>
-							ÇÝFTLÝ
-							    <div class="resume-item">
-									<h4> Medicine Doctor (M. D.) </h4>
-									<h5>September 2010 -- June 2018</h5>
-									<p><em>Ýnönü University</em></p>
-									<div class="resume-item">
-										<h4> Medicine Doctor (M. D.) </h4>
-										<h5>September 2010 -- June 2018</h5>
-										<p><em>Ýnönü University</em></p>
-							    	</div>
-							    </div>
-							 </div>	-->
+						  </div>
 						</div>
 					</div>
 				</div>
@@ -337,18 +523,31 @@
          Life Support Center
 
     </div>
-<script src="/sablon2021/js/mobile-nav.js"></script>
-<script src="/sablon2021/js/easing.min.js"></script>
-<!-- Vendor JS Files -->
-<script src="/resumes/portfolyo/assets/vendor/purecounter/purecounter.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/aos/aos.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/typed.js/typed.min.js"></script>
-<script src="/resumes/portfolyo/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>	
+	<script src="/sablon2021/js/mobile-nav.js"></script>
+	<script src="/sablon2021/js/easing.min.js"></script>
+	<!-- Vendor JS Files -->
+	<script src="/resumes/portfolyo/assets/vendor/purecounter/purecounter.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/aos/aos.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/typed.js/typed.min.js"></script>
+	<script src="/resumes/portfolyo/assets/vendor/waypoints/noframework.waypoints.js"></script>
+	<!-- Template Main JS File -->
+	<script src="assets/js/main.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		$( "#Button1" ).button(); 
+	});
+	</script>
+	<script>
+		$(".tiptext").mouseover(function() {
+			$(this).children(".description").show();
+		}).mouseout(function() {
+			$(this).children(".description").hide();
+		});
+	</script>
+</footer>	
 </body>
 </html>

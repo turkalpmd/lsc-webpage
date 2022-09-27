@@ -1,369 +1,596 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="icon" href="/hu_logo_icon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Support Center</title>
-    
-    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bootstrap Lightbox</title>
 
-    <link href="/sablon2021/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/sablon2021/css/style.css" rel="stylesheet" />
-	<link href="/css/picu_album_style.css" rel="stylesheet" />
-    <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
-    <link href="/sablon2021/css/animate.css" rel="stylesheet" />
-    <script src="/sablon2021/js/jquery.min.js"></script>
-    <script src="/sablon2021/js/bootstrap.min.js"></script>
-    <script src="/sablon2021/js/main.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="../dist/ekko-lightbox.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
-	
-	<style>
-		body {
-		  font-family: Verdana, sans-serif;
-		  margin: 0;
-		}
+        <!-- for documentation only -->
+        <style type="text/css">
+            div.row > div > div.row {
+                margin-bottom: 15px;
+            }
 
-		* {
-		  box-sizing: border-box;
-		}
+            html {
+                background-color: #02709e;
+            }
+            body {
+                background: #fefefe;
+                padding-bottom: 50px;
+            }
 
-		.row > .column {
-		  padding: 0 8px;
-		}
+            div.top-container {
+                padding-top:100px;
+                background-color: #02709e;
+                color:#ccc;
+            }
+            div.top-container h1 {
+                color:white;
+            }
+            div.top-container a {
+                color:#ccc;
+                border-bottom:1px dotted white;
+            }
+            div.top-container a:hover {
+                color: white;
+                cursor:pointer;
+                border-bottom:1px solid white;
+                text-decoration: none;
+            }
+            div.top-header {
+                margin-bottom:100px;
+            }
 
-		.row:after {
-		  content: "";
-		  display: table;
-		  clear: both;
-		}
+            h2 {
+                background-color:#02709e;
+                color:white;
+                display:inline-block;
+                padding:6px;
+                margin-top:100px;
+            }
 
-		.column {
-		  float: left;
-		  width: 25%;
-		}
+            h3 {
+                padding-bottom:5px;
+                margin-bottom:10px;
+                border-bottom:1px solid #f2f2f2;
+                margin-top: 50px;
+            }
 
-		/* The Modal (background) */
-		.modal {
-		  display: none;
-		  position: fixed;
-		  z-index: 1;
-		  padding-top: 100px;
-		  left: 0;
-		  top: 0;
-		  width: 100%;
-		  height: 100%;
-		  overflow: auto;
-		  background-color: black;
-		}
+            h4 {
+                margin-top:25px;
+            }
 
-		/* Modal Content */
-		.modal-content {
-		  position: relative;
-		  background-color: #fefefe;
-		  margin: auto;
-		  padding: 0;
-		  width: 90%;
-		  max-width: 1200px;
-		}
+            figure {
+                position: relative;
+            }
 
-		/* The Close Button */
-		.close {
-		  color: white;
-		  position: absolute;
-		  top: 10px;
-		  right: 25px;
-		  font-size: 35px;
-		  font-weight: bold;
-		}
+            figure figcaption {
+                font-size: 22px;
+                color: #fff;
+                text-decoration: none;
+                bottom: 10px;
+                right: 20px;
+                position: absolute;
+                background-color: #000;
+            }
+			code[data-code], code.block-code {
+                display:block;
+                overflow:scroll;
+                font-size:12px;
+				white-space: pre;
+			}
 
-		.close:hover,
-		.close:focus {
-		  color: #999;
-		  text-decoration: none;
-		  cursor: pointer;
-		}
+            table {
+                font-size:12px;
+            }
+            .footer {
+                text-align: center;
+            }
+            .footer span {
+                margin-top:100px;
+                font-size:12px;
+                background-color:#02709e;
+                color:white;
+                display:inline-block;
+                padding:6px;
+            }
+            .footer span a {
+                color:#ccc;
+                border-bottom:1px dotted white;
+            }
+            .footer span a:hover {
+                cursor:pointer;
+                color: white;
+                border-bottom:1px solid white;
+                text-decoration: none;
+            }
+            a.anchorjs-link {
+                color:black;
+            }
+            a.anchorjs-link:hover {
+                color:#02709e;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
 
-		.mySlides {
-		  display: none;
-		}
-
-		.cursor {
-		  cursor: pointer;
-		}
-
-		/* Next & previous buttons */
-		.prev,
-		.next {
-		  cursor: pointer;
-		  position: absolute;
-		  top: 50%;
-		  width: auto;
-		  padding: 16px;
-		  margin-top: -50px;
-		  color: white;
-		  font-weight: bold;
-		  font-size: 20px;
-		  transition: 0.6s ease;
-		  border-radius: 0 3px 3px 0;
-		  user-select: none;
-		  -webkit-user-select: none;
-		}
-
-		/* Position the "next button" to the right */
-		.next {
-		  right: 0;
-		  border-radius: 3px 0 0 3px;
-		}
-
-		/* On hover, add a black background color with a little bit see-through */
-		.prev:hover,
-		.next:hover {
-		  background-color: rgba(0, 0, 0, 0.8);
-		}
-
-		/* Number text (1/3 etc) */
-		.numbertext {
-		  color: #f2f2f2;
-		  font-size: 12px;
-		  padding: 8px 12px;
-		  position: absolute;
-		  top: 0;
-		}
-
-		img {
-		  margin-bottom: -4px;
-		}
-
-		.caption-container {
-		  text-align: center;
-		  background-color: black;
-		  padding: 2px 16px;
-		  color: white;
-		}
-
-		.demo {
-		  opacity: 0.6;
-		}
-
-		.active,
-		.demo:hover {
-		  opacity: 1;
-		}
-
-		img.hover-shadow {
-		  transition: 0.3s;
-		}
-
-		.hover-shadow:hover {
-		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		}
-	</style>
-</head>
-
-<body>
-<!--ust-->
-<div class="container-fluid ust">
-    <div class="container">
-        <div class="menu logo">
-            <div class="logo_yazi">
-                <div class="banner_uni">Hacettepe University</div>
-                <div class="banner_uni_bolum">Life Support Center</div>
-            </div>
-            <div class="menu_ust">
-                <div class="d-none d-md-block float-right ml-3">
-					<a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                </div>
-                <div class="float-right d-none d-md-block ">
-                    <span class="but_lang_secili">TR</span>
-                    <span class="but_lang"><a href="/english">EN</a></span>
-                </div>
-                <div class="float-right d-none d-md-block mr-4 ">
-                    <a href="/">Home Page</a>
-                    <a href="/iletisim.html">Contacts</a>
-					<a href="/">About</a>
-                </div>
-
-
-            </div>
-
-            <div class="menu_genel d-none d-sm-block d-md-none">
-                <!--yatay menu-->
-            </div>
-
-
-
+        <div class="bs3-notice">
+            <p><strong>NB!:</strong> This page is intended to demonstrate that the lightbox works with Bootstrap 3 - the CSS classes for the layout use BS4 so this page won't display correctly.</p>
+            <p>Use this page only to check the lightbox works with BS3.</p>
         </div>
-    </div>
-</div>
-<!--ust-->
 
-<div class="site_baslangic"></div>
+        <div class="top-container">
 
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
 
-
-
-
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
-
-            <!--menusol-->
-            <div class="menu_sol">
-
-                <nav class="main-nav d-none d-lg-block">
-                    <div class="mobil_menu_logo mb-3"></div>
-                    <ul>
-						<li><a href="picu_tarihce.html">Tarihçe</a></li>
-						<li><a href="picu_yonetim.html">Yönetim Tablosu</a></li>
-						<li><a href="picu_uzmanlar.html">Uzmanlarımız</a></li>
-						<li><a href="picu_tez_asistanları.html">Tez asistanlarımız</a></li>				
-                    </ul>
-					
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/hacettepe_university/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.facebook.com/HacettepeUniversitesiKurumsal" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="https://twitter.com/hacettepe1967" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <div class="top-header">
+                            <h1>Lightbox for Bootstrap</h1>
+                            <p class="lead">Utilizes Bootstraps modal plugin to implement a lightbox gallery - <a href="//github.com/ashleydw/lightbox">GitHub</a></p>
+                            <div class="text-center">
+                                <iframe src="http://ghbtns.com/github-btn.html?user=ashleydw&repo=lightbox&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100	" height="20"></iframe>
+                                <iframe src="http://ghbtns.com/github-btn.html?user=ashleydw&repo=lightbox&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+                                <iframe src="http://ghbtns.com/github-btn.html?user=ashleydw&repo=lightbox&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="160" height="20"></iframe>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
-
-                        <div class=" mr-4 ">
-                            <a href="/">ANA SAYFA</a>
-                            <a href="/iletisim.hhtml">İLETİŞİM</a>
-                        </div>
-
 
                     </div>
-                </nav>
-
-
+                </div>
             </div>
-
-            <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
-
-
         </div>
-        <div class="col-lg-9 col-12 mb-3">
-			<body>
-			<h2 style="text-align:center">Albüm</h2>
-			<div class="row">
-			  <div class="column">
-				<img src="https://www.w3schools.com/howto/img_nature.jpg" style="width:100%" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-			  </div>
-			  <div class="column">
-				<img src="https://www.w3schools.com/howto/img_snow.jpg" style="width:100%" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-			  </div>
-			  <div class="column">
-				<img src="https://www.w3schools.com/howto/img_mountains.jpg" style="width:100%" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-			  </div>
-			  <div class="column">
-				<img src="https://www.w3schools.com/howto/img_lights.jpg" style="width:100%" onclick="openModal();currentSlide(4)" class="hover-shadow cursor">
-			  </div>
-			</div>
-			<div id="myModal" class="modal">
-			  <span class="close cursor" onclick="closeModal()">&times;</span>
-			  <div class="modal-content">
-				<div class="mySlides">
-				  <div class="numbertext">1 / 4</div>
-				  <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%">
-				</div>
-				<div class="mySlides">
-				  <div class="numbertext">2 / 4</div>
-				  <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%">
-				</div>
-				<div class="mySlides">
-				  <div class="numbertext">3 / 4</div>
-				  <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%">
-				</div>
-				<div class="mySlides">
-				  <div class="numbertext">4 / 4</div>
-				  <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width:100%">
-				</div>
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
-				<div class="caption-container">
-				  <p id="caption"></p>
-				</div>
-				<div class="column">
-				  <img class="demo cursor" src="https://www.w3schools.com/howto/img_nature_wide.jpg" style="width:100%" onclick="currentSlide(1)" alt="Nature and sunrise">
-				</div>
-				<div class="column">
-				  <img class="demo cursor" src="https://www.w3schools.com/howto/img_snow_wide.jpg" style="width:100%" onclick="currentSlide(2)" alt="Snow">
-				</div>
-				<div class="column">
-				  <img class="demo cursor" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
-				</div>
-				<div class="column">
-				  <img class="demo cursor" src="https://www.w3schools.com/howto/img_lights_wide.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
-				</div>
-			  </div>
-			</div>
 
-			<script>
-			function openModal() {
-			  document.getElementById("myModal").style.display = "block";
-			}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
 
-			function closeModal() {
-			  document.getElementById("myModal").style.display = "none";
-			}
+                    <h2>Install</h2>
+                    <p>Grab the latest CSS / JS files from the CDN: <a href="https://cdnjs.com/libraries/ekko-lightbox">https://cdnjs.com/libraries/ekko-lightbox</a>.</p>
+                    <p>Or, with bower: <code>bower install ekko-lightbox --save</code></p>
+                    <p>Or, download the files directly: <a href="https://github.com/ashleydw/lightbox/tree/master/dist">https://github.com/ashleydw/lightbox/tree/master/dist</a></p>
+                    <br /><br />
+                    <p>Place this near on your page, probably near the end of the body section:</p>
+<code class="block-code">$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});</code>
+                    <br /><br />
+                    <p>Then simply add <code>data-toggle</code> to your anchor tags.</p>
+<code class="block-code">&lt;a href=&quot;https://unsplash.it/1200/768.jpg?image=251&quot; data-toggle=&quot;lightbox&quot;&gt;
+    &lt;img src=&quot;https://unsplash.it/600.jpg?image=251&quot; class=&quot;img-fluid&quot;&gt;
+&lt;/a&gt;
+</code>
+                    <br /><br />
+                    <p>Obviously, you need Bootstrap. Made for Bootstrap v4 but *should* work with v3.</p>
 
-			var slideIndex = 1;
-			showSlides(slideIndex);
+                    <h2>Options</h2>
+                    <p>Options are passed down to the modal object so you can also use any of the <a href="http://getbootstrap.com/javascript/#modals-usage">original modal options</a>.</p>
+                    <p>Pass the options to the calling function as an object, or set defaults using <code>$.fn.ekkoLightbox.defaults</code> (excluding modal default options, notable: title, footer, remote)</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>type</th>
+                                <th>default</th>
+                                <th>description</th>
+                                <th>data-*</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>leftArrow / rightArrow</td>
+                                    <td>html</td>
+                                    <td><code>&#10094;</code> / <code>&#10095;</code></td>
+                                    <td>HTML for the arrows</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>width / height</td>
+                                    <td>integer</td>
+                                    <td></td>
+                                    <td>Force the width / height</td>
+                                    <td><code>data-(width|height)="[0-9]+"</code></td>
+                                </tr>
+                                <tr>
+                                    <td>alwaysShowClose</td>
+                                    <td>boolean</td>
+                                    <td><code>false</code></td>
+                                    <td>Always show the close button, even if no title is present</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>loadingMessage</td>
+                                    <td>html</td>
+                                    <td>A fancy loader</td>
+                                    <td>HTML injected for loading</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>showArrows</td>
+                                    <td>bool</td>
+                                    <td>true</td>
+                                    <td>Disable the navigation overlay</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <code class="block-code">$(this).ekkoLightbox({
+    alwaysShowClose: true,
+    onShown: function() {
+        console.log('Checking our the events huh?');
+    },
+    onNavigate: function(direction, itemIndex)
+        console.log('Navigating '+direction+'. Current item: '+itemIndex);
+    }
+    ...
+});</code>
+                    <br /><br />
+                    <p>The following options are specified per element.</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Example</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>remote</td>
+                                <td>If you can't/don't want to set the href property of an element</td>
+                                <td><code>data-remote="http://www...."</code></td>
+                            </tr>
+                            <tr>
+                                <td>gallery</td>
+                                <td>For grouping elements</td>
+                                <td><code>data-gallery="gallery-name"</code></td>
+                            </tr>
+                            <tr>
+                                <td>type</td>
+                                <td>Force the lightbox into image/YouTube mode.</td>
+                                <td><code>data-type="(image|youtube|vimeo)"</code></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <code class="block-code">&lt;a href=&quot;https://unsplash.it/1200/768.jpg?image=251&quot; data-toggle=&quot;lightbox&quot; data-gallery=&quot;example-gallery&quot; data-type=&quot;image&quot;&gt;
+    &lt;img src=&quot;https://unsplash.it/600.jpg?image=251&quot; class=&quot;img-fluid&quot;&gt;
+&lt;/a&gt;</code>
 
-			function plusSlides(n) {
-			  showSlides(slideIndex += n);
-			}
+                    <h2>Events</h2>
+                    <p>Events can be hooked into, set the the same as options above.</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>onContentLoaded</td>
+                                <td>Fired when content (image/video/remote page etc) has been fully loaded.</td>
+                            </tr>
+                            <tr>
+                                <td>onNavigate</td>
+                                <td>Fired before navigating a gallery.</td>
+                            </tr>
+                            <tr>
+                                <td>onShow/onShown/onHide/onHidden</td>
+                                <td>Inherited from the bootstrap modal.</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-			function currentSlide(n) {
-			  showSlides(slideIndex = n);
-			}
+                    <h2>Examples</h2>
+                    <p>Thanks to <a href="https://unsplash.it/">https://unsplash.it/</a> for the images.</p>
+                    <ul>
+                        <li><a href="#single-image">Single Image</a></li>
+                        <li><a href="#image-gallery">Image Gallery</a></li>
+                        <li><a href="#videos">Videos</a></li>
+                        <li><a href="#videos-gallery">Gallery of Videos</a></li>
+                        <li><a href="#mixed-gallery">Mixed gallery</a></li>
+                        <li><a href="#programatically-call">Programmatically call</a></li>
+                        <li><a href="#data-remote">Via <code>data-remote</code></a></li>
+                        <li><a href="#force-type">Force type</a></li>
+                        <li><a href="#hidden-elements">Hidden elements</a></li>
+                        <li><a href="#remote-content">Remote content</a></li>
+                    </ul>
 
-			function showSlides(n) {
-			  var i;
-			  var slides = document.getElementsByClassName("mySlides");
-			  var dots = document.getElementsByClassName("demo");
-			  var captionText = document.getElementById("caption");
-			  if (n > slides.length) {slideIndex = 1}
-			  if (n < 1) {slideIndex = slides.length}
-			  for (i = 0; i < slides.length; i++) {
-				  slides[i].style.display = "none";
-			  }
-			  for (i = 0; i < dots.length; i++) {
-				  dots[i].className = dots[i].className.replace(" active", "");
-			  }
-			  slides[slideIndex-1].style.display = "block";
-			  dots[slideIndex-1].className += " active";
-			  captionText.innerHTML = dots[slideIndex-1].alt;
-			}
-			</script>
+                    <h3 id="single-image">Single Image</h3>
+                    <p>Note: uses modal plugin title option via <code>data-title</code>, and the custom footer tag using <code>data-footer</code></p>
+                    <div class="row">
+                        <div class="offset-sm-4 col-sm-3" data-code="example-1">
+                            <a href="https://unsplash.it/1200/768.jpg?image=250" data-toggle="lightbox" data-title="A random title" data-footer="A custom footer text">
+                                <img src="https://unsplash.it/600.jpg?image=250" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                    <code class="html" data-code="example-1"></code>
 
-			</body>
+                    <h3 id="image-gallery">Image Gallery</h3>
+                    <p>Galleries are created by adding the <code>data-gallery</code> attribute.</p>
+                    <div data-code="example-2">
+                        <div class="row">
+                            <div class="offset-md-2 col-md-8">
+                                <div class="row">
+                                    <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="row">
+                                    <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+                                    </a>
+                                    <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                                        <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <code class="html" data-code="example-2"></code>
+
+                    <h3 id="videos">Videos</h3>
+                    <h4>YouTube</h4>
+                    <p>You can use various YouTube URL formats, the regex used is: <code>/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/</code></p>
+                    <div data-code="example-3">
+                        <p><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" data-toggle="lightbox">Justin Bieber - Love Yourself</a></p>
+                        <p><a href="http://youtu.be/b0jqPvpn3sY" data-toggle="lightbox">Tame Impala - Elephant (using youtu.be link)</a></p>
+                        <p><a href="https://www.youtube.com/watch?v=oyEuk8j8imI&rel=0" data-toggle="lightbox">Justin Bieber - Love Yourself</a> (suppress related videos with <code>&rel=0</code>)</p>
+                    </div>
+                    <code data-code="example-3" data-trim="all"></code>
+                    <h4>Vimeo</h4>
+                    <p>You cannot embed Vimeo videos using the standard url (ie http://vimeo.com/80629469); you must link to the embed source (ie player.vimeo.com/video/80629469). This will mean your link url - if the JavaScript fails, will open the full screen player (try opening the first link below in a new tab); the solution to this is to set the lightbox source directly - the second link below does this.</p>
+                    <div data-code="example-3-b">
+                        <p><a href="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich (using embed link)</a></p>
+                        <p><a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich</a> (with reccommended <code>data-remote</code> setting)</p>
+                    </div>
+                    <code data-code="example-3-b" data-trim="all"></code>
+                    <h4>Instagram</h4>
+                    <p></p>
+                    <div data-code="example-3-c">
+                        <p><a href="http://instagram.com/p/pZfG1fPfuX/" data-toggle="lightbox" data-title="Plug for our new service">GOtags.co.uk</a></p>
+                        <p>This also works with photos: <a href="//instagram.com/p/0wbypvPfmQ/" data-toggle="lightbox">GOtags.co.uk</a></p>
+                    </div>
+                    <code data-code="example-3-c" data-trim="all"></code>
+                    <h4>Forcing width</h4>
+                    <p>Set the width of the video</p>
+                    <div data-code="example-3-d">
+                        <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox">Taylor Swift - Blank Space (standard)</a></p>
+                        <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox" data-width="640">Taylor Swift - Blank Space (640 x 360)</a></p>
+                        <p><a href="https://www.youtube.com/watch?v=e-ORhEE9VVg" data-toggle="lightbox" data-width="1280">Taylor Swift - Blank Space (1280 x 780)</a></p>
+                    </div>
+                    <code data-code="example-3-d" data-trim="all"></code>
+
+                    <!-- i hope your coworkers think you're listening to some justin and taylor -->
+
+                    <h3 id="videos-gallery">Gallery of Videos</h3>
+                    <div class="row">
+                        <div class="offset-md-1 col-md-10">
+                            <div class="row" data-code="example-4">
+                                <a href="http://www.youtube.com/watch?v=k6mFF3VmVAs" data-toggle="lightbox" data-gallery="youtubevideos" class="col-sm-4">
+                                    <img src="//i1.ytimg.com/vi/yP11r5n5RNg/mqdefault.jpg" class="img-fluid">
+                                </a>
+                                <a href="http://youtu.be/iQ4D273C7Ac" data-toggle="lightbox" data-gallery="youtubevideos" class="col-sm-4">
+                                    <img src="//i1.ytimg.com/vi/iQ4D273C7Ac/mqdefault.jpg" class="img-fluid">
+                                </a>
+                                <a href="//www.youtube.com/embed/b0jqPvpn3sY" data-toggle="lightbox" data-gallery="youtubevideos" class="col-sm-4">
+                                    <img src="//i1.ytimg.com/vi/b0jqPvpn3sY/mqdefault.jpg" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-4"></code>
+
+                    <h3 id="mixed-gallery">Mixed gallery</h3>
+                    <div class="row">
+                        <div class="offset-md-1 col-md-10">
+                            <div class="row flex-items-xs-center" data-code="example-5">
+                                <a href="http://www.youtube.com/watch?v=k6mFF3VmVAs" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
+                                    <img src="//i1.ytimg.com/vi/yP11r5n5RNg/mqdefault.jpg" class="img-fluid">
+                                </a>
+                                <a href="https://unsplash.it/1200/768.jpg?image=257" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
+                                    <img src="https://unsplash.it/600.jpg?image=257" class="img-fluid">
+                                </a>
+                                <a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
+                                    <img src="//b.vimeocdn.com/ts/458/070/458070637_200.jpg" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-5"></code>
+
+                    <h3 id="programatically-call">Programmatically call</h3>
+                    <p>These two examples are opened via the JavaScript at the bottom of the source.</p>
+                    <div class="row">
+                        <div class="offset-md-1 col-md-10">
+                            <div class="row" data-code="example-6">
+                                <a href="https://unsplash.it/1200/768.jpg?image=258" id="open-image" class="col-sm-4">
+                                    <img src="https://unsplash.it/600.jpg?image=258" class="img-fluid">
+                                </a>
+                                <a href="http://youtu.be/iQ4D273C7Ac" id="open-youtube" class="col-sm-4">
+                                    <img src="//i1.ytimg.com/vi/iQ4D273C7Ac/mqdefault.jpg" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-6"></code>
+                    <code class="block-code">$(&#39;#open-image&#39;).click(function (e) {
+    e.preventDefault();
+    $(this).ekkoLightbox();
+});
+$(&#39;#open-youtube&#39;).click(function (e) {
+    e.preventDefault();
+    $(this).ekkoLightbox();
+});</code>
+
+                    <h3 id="data-remote">Via <code>data-remote</code></h3>
+                    <p>Neither of these are <code>&lt;a /&gt;</code> tags, so both rely on the <code>data-remote</code> attribute.</p>
+                    <div class="row">
+                        <div class="offset-md-1 col-md-10">
+                            <div class="row" data-code="example-7">
+                                <img src="https://unsplash.it/600.jpg?image=259" data-toggle="lightbox" data-remote="https://unsplash.it/1200/768.jpg?image=259" class="img-fluid col-sm-4">
+                                <img src="//i1.ytimg.com/vi/b0jqPvpn3sY/mqdefault.jpg" data-toggle="lightbox" data-remote="//www.youtube.com/embed/b0jqPvpn3sY" class="img-fluid col-sm-4">
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-7"></code>
+
+                    <h3 id="force-type">Force type</h3>
+                    <p>If the images you are linking to have no extension, the lightbox cannot detect that is an image; therefore you need to tell the lightbox what <code>data-type</code> it is.</p>
+                    <p>Current allowed types are: <code>['image', 'youtube', 'vimeo', 'instagram', 'video', 'url']</code></p>
+                    <div data-code="example-8">
+                        <p><a href="https://unsplash.it/1200/768?image=260" data-title="Force image display" data-footer="The remote of this modal has no extension (https://unsplash.it/1200/768?image=260) but works because the type is forced." data-toggle="lightbox" data-type="image">Click here for an image, but with no extension.</a></p>
+                        <p><a href="https://unsplash.it/1200/768?image=261" data-footer="Without the type forced, the lightbox will remote load the content" data-toggle="lightbox">This link is missing the type attribute, and will iframe the image.</a></p>
+                        <p><a href="http://www.youtube.com/watch?v=b0jqPvpn3sY" data-toggle="lightbox" data-type="image">This link is linking to a YouTube video, but forcing an image.</a></p>
+                    </div>
+                    <code data-code="example-8"></code>
+
+                    <h3 id="hidden-elements">Hidden elements</h3>
+                    <p>Facebook style, only show a few images but have a large gallery</p>
+					<div class="row">
+                        <div class="offset-md-2 col-md-8">
+                            <div class="row" data-code="example-9">
+                                <a href="https://unsplash.it/1200/768.jpg?image=263" data-toggle="lightbox" data-gallery="hidden-images" class="col-sm-4">
+                                    <img src="https://unsplash.it/600.jpg?image=263" class="img-fluid">
+                                </a>
+                                <a href="https://unsplash.it/1200/768.jpg?image=264" data-toggle="lightbox" data-gallery="hidden-images" class="col-sm-4">
+                                    <img src="https://unsplash.it/600.jpg?image=264" class="img-fluid">
+                                </a>
+                                <a href="https://unsplash.it/1200/768.jpg?image=265" data-toggle="lightbox" data-gallery="hidden-images" class="col-sm-4">
+                                    <img src="https://unsplash.it/600.jpg?image=265" class="img-fluid">
+                                </a>
+                                <!-- elements not showing, use data-remote -->
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=264" data-title="Hidden item 1"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="//www.youtube.com/embed/b0jqPvpn3sY" data-title="Hidden item 2"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=265" data-title="Hidden item 3"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=266" data-title="Hidden item 4"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=267" data-title="Hidden item 5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-9"></code>
+
+                    <h3 id="remote-content">Remote content</h3>
+					<p>Given a URL, that is not an image or video (including unforced types), load the content using an iFrame.</p>
+					<div class="row">
+                        <div class="offset-md-1 col-md-10" data-code="example-10">
+                            <div class="row">
+                                <p class="col-sm-3"><a href="http://getbootstrap.com" data-title="Bootstrap" data-width="1200" data-toggle="lightbox" data-gallery="remoteload">Bootstrap Docs</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <code data-code="example-10"></code>
+
+                    <p class="footer"><span>Built by me, <a href="https://ashleyd.ws">ashleydw</a></span></p>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="../dist/ekko-lightbox.js"></script>
+
+        <!-- for documentation only -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.1/anchor.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                // delegate calls to data-toggle="lightbox"
+                $(document).on('click', '[data-toggle="lightbox"]:not([data-gallery="navigateTo"])', function(event) {
+                    event.preventDefault();
+                    return $(this).ekkoLightbox({
+                        onShown: function() {
+                            if (window.console) {
+                                return console.log('Checking our the events huh?');
+                            }
+                        },
+						onNavigate: function(direction, itemIndex) {
+                            if (window.console) {
+                                return console.log('Navigating '+direction+'. Current item: '+itemIndex);
+                            }
+						}
+                    });
+                });
+
+                //Programmatically call
+                $('#open-image').click(function (e) {
+                    e.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+                $('#open-youtube').click(function (e) {
+                    e.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+
+				// navigateTo
+                $(document).on('click', '[data-toggle="lightbox"][data-gallery="navigateTo"]', function(event) {
+                    event.preventDefault();
+
+                    return $(this).ekkoLightbox({
+                        onShown: function() {
+
+							this.modal().on('click', '.modal-footer a', function(e) {
+
+								e.preventDefault();
+								this.navigateTo(2);
+
+                            }.bind(this));
+
+                        }
+                    });
+                });
 
 
+                /**
+                 * Documentation specific - ignore this
+                 */
+                anchors.options.placement = 'left';
+                anchors.add('h3');
+                $('code[data-code]').each(function() {
 
-<footer>
-    <div class="container">
-         Life Support Center
+                    var $code = $(this),
+                        $pair = $('div[data-code="'+$code.data('code')+'"]');
 
-    </div>
-<script src="/sablon2021/js/mobile-nav.js"></script>
-<script src="/sablon2021/js/easing.min.js"></script>
-</body>
+                    $code.hide();
+                    var text = $code.text($pair.html()).html().trim().split("\n");
+                    var indentLength = text[text.length - 1].match(/^\s+/)
+                    indentLength = indentLength ? indentLength[0].length : 24;
+                    var indent = '';
+                    for(var i = 0; i < indentLength; i++)
+                        indent += ' ';
+                    if($code.data('trim') == 'all') {
+                        for (var i = 0; i < text.length; i++)
+                            text[i] = text[i].trim();
+                    } else  {
+                        for (var i = 0; i < text.length; i++)
+                            text[i] = text[i].replace(indent, '    ').replace('    ', '');
+                    }
+                    text = text.join("\n");
+                    $code.html(text).show();
+
+                });
+            });
+        </script>
+    </body>
 </html>

@@ -1,0 +1,21 @@
+{
+  "name": "jgallery",
+  "version": "2.2.1",
+  "description": "JGallery",
+  "main": "dist/js/jgallery.js",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack && webpack --output-filename jgallery.min.js -p"
+  },
+  "author": "Jakub Kowalczyk",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-loader": "^5.3.2",
+    "typescript": "^3.1.6",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14",
+    "wrapper-webpack-plugin": "^2.1.0"
+  }
+}
