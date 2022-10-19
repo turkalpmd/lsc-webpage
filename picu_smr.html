@@ -47,6 +47,32 @@
     <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css" />
     <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css" />
     <link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css" />
+    
+	<style>
+	.btn {
+	  background-color: DodgerBlue;
+	  border: none;
+	  color: white;
+	  padding: 8px 20px;
+	  cursor: pointer;
+	  font-size: 14px;
+	  display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-content: center;
+	}
+
+	/* Darker background on mouse-over */
+	.btn:hover {
+	  background-color: RoyalBlue;
+	}
+    .btn-toolbar {
+      text-align: center;
+      justify-content: center;
+      align-content: center;
+      margin: 0;
+    }	
+	</style>    
 </head>
 
 <body>
@@ -106,8 +132,8 @@
 						<li><a href="picu_fellows.html">Fellows</a></li>
 						<li><a href="picu_thesis.html">Thesis</a></li>	
                         <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
-                        <li><a href="prism-iii.html">PRISM-III Calculator</a></li>
-                        <li><a href="prism-iv.html">PRISM-IV Calculator</a></li>
+                        <!--<li><a href="prism-iii.html">PRISM-III Calculator</a></li>
+                        <li><a href="prism-iv.html">PRISM-IV Calculator</a></li>-->
 						<li><a href="picu_album.html">Album</a></li>
                     </ul>
                     <div class="mobil_menu_alt mt-3">
@@ -180,7 +206,26 @@
                     </p>
                 </div>
             </p>   
-            </ul>			
+            </ul>
+                <p><center><b>PRISM Score Calculators</b></center></p>
+                <br>
+                <br>
+				<div class="btn-toolbar" role="toolbar"  aria-label="Toolbar with button groups">
+					<div class="btn-group mr-2" role="group" aria-label ="First group">
+						<div class="btn-group mr-3">
+							<form method="get" action="prism-iii.html">
+							   <button class="btn"><i class="fa fa-download" ></i>PRISM-III</button>
+							</form>
+						</div>
+						<div class="btn-group mr-3">
+							<form method="get" action="prism-iv.html">
+							   <button class="btn"><i class="fa fa-download" ></i>PRISM-IV</button>
+							</form>
+						</div>
+					</div>
+				</div>    
+    
+    
 		</div>
     </div>
 </div>
