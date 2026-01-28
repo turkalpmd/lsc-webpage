@@ -1,0 +1,147 @@
+﻿Başlangıç: 14.06.2022 01:18
+
+/CSS/bootstrap-4.3.1.css - aynı - aktarılmadı
+/günlükler/060622.txt - aynı - aktarılmadı
+/günlükler/130622.txt - aynı - aktarılmadı
+/Images/banner-772x250.png - aynı - aktarılmadı
+/js/bootstrap-4.3.1.js - aynı - aktarılmadı
+/js/jquery-3.3.1.min.js - aynı - aktarılmadı
+/js/popper.min.js - aynı - aktarılmadı
+/LSC_logos/111.png - aynı - aktarılmadı
+/LSC_logos/asdasd.png - aynı - aktarılmadı
+/LSC_logos/LSC.png - aynı - aktarılmadı
+/LSC_logos/PAY.png - aynı - aktarılmadı
+/LSC_logos/PAYlasim 1.png - aynı - aktarılmadı
+/LSC_logos/PICU.png - aynı - aktarılmadı
+/LSC_logos/plaka.png - aynı - aktarılmadı
+/LSC_logos/PTİYD 3-07.png - aynı - aktarılmadı
+/LSC_logos/YDM.png - aynı - aktarılmadı
+/LSC_logos/YDV 2.png - aynı - aktarılmadı
+/LSC_logos/YDV.png - aynı - aktarılmadı
+/sablon2021/css/fonts/fontawesome-webfont.eot - aynı - aktarılmadı
+/sablon2021/css/fonts/fontawesome-webfont.svg - aynı - aktarılmadı
+/sablon2021/css/fonts/fontawesome-webfont.ttf - aynı - aktarılmadı
+/sablon2021/css/fonts/fontawesome-webfont.woff - aynı - aktarılmadı
+/sablon2021/css/fonts/fontawesome-webfont.woff2 - aynı - aktarılmadı
+/sablon2021/css/fonts/FontAwesome.otf - aynı - aktarılmadı
+/sablon2021/css/all.min.css - aynı - aktarılmadı
+/sablon2021/css/animate.css - aynı - aktarılmadı
+/sablon2021/css/bootstrap.min.css - aynı - aktarılmadı
+/sablon2021/css/dataTables.bootstrap.min.css - aynı - aktarılmadı
+/sablon2021/css/style.css - aynı - aktarılmadı
+/sablon2021/css/swiper.min.css - aynı - aktarılmadı
+/sablon2021/fancybox/blank.gif - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_close.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_loading.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_nav_left.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_nav_right.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_e.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_n.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_ne.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_nw.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_s.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_se.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_sw.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_shadow_w.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_title_left.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_title_main.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_title_over.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancy_title_right.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancybox-x.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancybox-y.png - aynı - aktarılmadı
+/sablon2021/fancybox/fancybox.png - aynı - aktarılmadı
+/sablon2021/fancybox/jquery.easing-1.3.pack.js - aynı - aktarılmadı
+/sablon2021/fancybox/jquery.fancybox-1.3.4.css - aynı - aktarılmadı
+/sablon2021/fancybox/jquery.fancybox-1.3.4.js - aynı - aktarılmadı
+/sablon2021/fancybox/jquery.fancybox-1.3.4.pack.js - aynı - aktarılmadı
+/sablon2021/fancybox/jquery.mousewheel-3.0.4.pack.js - aynı - aktarılmadı
+/sablon2021/images/alt_menu_arti.png - aynı - aktarılmadı
+/sablon2021/images/alt_menu_eksi.png - aynı - aktarılmadı
+/sablon2021/images/anasayfa-slider-1.jpg - aynı - aktarılmadı
+/sablon2021/images/anasayfa-slider-2.jpg - aynı - aktarılmadı
+/sablon2021/images/arrow-down.gif - aynı - aktarılmadı
+/sablon2021/images/arrow-right.gif - aynı - aktarılmadı
+/sablon2021/images/arrow.gif - aynı - aktarılmadı
+/sablon2021/images/arrow.png - aynı - aktarılmadı
+/sablon2021/images/arrows.png - aynı - aktarılmadı
+/sablon2021/images/arti.png - aynı - aktarılmadı
+/sablon2021/images/arti.psd - aynı - aktarılmadı
+/sablon2021/images/bos4x3.jpg - aynı - aktarılmadı
+/sablon2021/images/eksi.png - aynı - aktarılmadı
+/sablon2021/images/hu_logo.svg - aynı - aktarılmadı
+/sablon2021/images/loading.gif - aynı - aktarılmadı
+/sablon2021/images/logo_hu.png - aynı - aktarılmadı
+/sablon2021/images/menu_sag.png - aynı - aktarılmadı
+/sablon2021/images/minus.gif - aynı - aktarılmadı
+/sablon2021/images/minus.png - aynı - aktarılmadı
+/sablon2021/images/plus.gif - aynı - aktarılmadı
+/sablon2021/images/plus.png - aynı - aktarılmadı
+/sablon2021/images/resim.jpg - aynı - aktarılmadı
+/sablon2021/images/resim2.jpg - aynı - aktarılmadı
+/sablon2021/images/resim3.jpg - aynı - aktarılmadı
+/sablon2021/images/spacer.gif - aynı - aktarılmadı
+/sablon2021/images/yeni.gif - aynı - aktarılmadı
+/sablon2021/js/acmeticker.min.js - aynı - aktarılmadı
+/sablon2021/js/bootstrap.bundle.js - aynı - aktarılmadı
+/sablon2021/js/bootstrap.bundle.min.js - aynı - aktarılmadı
+/sablon2021/js/bootstrap.min.js - aynı - aktarılmadı
+/sablon2021/js/counter.js - aynı - aktarılmadı
+/sablon2021/js/dataTables.bootstrap4.min.js - aynı - aktarılmadı
+/sablon2021/js/easing.min.js - aynı - aktarılmadı
+/sablon2021/js/jquery.dataTables.min.js - aynı - aktarılmadı
+/sablon2021/js/jquery.min.js - aynı - aktarılmadı
+/sablon2021/js/main.js - aynı - aktarılmadı
+/sablon2021/js/menu.js - aynı - aktarılmadı
+/sablon2021/js/mobile-nav---.js - aynı - aktarılmadı
+/sablon2021/js/mobile-nav.js - aynı - aktarılmadı
+/sablon2021/js/swiper.jquery.min.js - aynı - aktarılmadı
+/sablon2021/js/swiper.min.js - aynı - aktarılmadı
+/sablon2021/js/Turkish.json - aynı - aktarılmadı
+/sablon2021/webfonts/fa-brands-400.eot - aynı - aktarılmadı
+/sablon2021/webfonts/fa-brands-400.svg - aynı - aktarılmadı
+/sablon2021/webfonts/fa-brands-400.ttf - aynı - aktarılmadı
+/sablon2021/webfonts/fa-brands-400.woff - aynı - aktarılmadı
+/sablon2021/webfonts/fa-brands-400.woff2 - aynı - aktarılmadı
+/sablon2021/webfonts/fa-regular-400.eot - aynı - aktarılmadı
+/sablon2021/webfonts/fa-regular-400.svg - aynı - aktarılmadı
+/sablon2021/webfonts/fa-regular-400.ttf - aynı - aktarılmadı
+/sablon2021/webfonts/fa-regular-400.woff - aynı - aktarılmadı
+/sablon2021/webfonts/fa-regular-400.woff2 - aynı - aktarılmadı
+/sablon2021/webfonts/fa-solid-900.eot - aynı - aktarılmadı
+/sablon2021/webfonts/fa-solid-900.svg - aynı - aktarılmadı
+/sablon2021/webfonts/fa-solid-900.ttf - aynı - aktarılmadı
+/sablon2021/webfonts/fa-solid-900.woff - aynı - aktarılmadı
+/sablon2021/webfonts/fa-solid-900.woff2 - aynı - aktarılmadı
+/sablon2021/hu_logo_icon.ico - aynı - aktarılmadı
+/sablon2021/index.html - aynı - aktarılmadı
+/38693280_10156636565759310_3046706493903601664_n.jpg - aynı - aktarılmadı
+/about_us.html - aynı - aktarılmadı
+/contacs.html - aynı - aktarılmadı
+/eski_index.html - aynı - aktarılmadı
+/hakkımda.html - aynı - aktarılmadı
+/hu_logo_icon.ico - aynı - aktarılmadı
+/iletisim.html - aynı - aktarılmadı
+/index_.html - aynı - aktarılmadı
+/job_news.html - aynı - aktarılmadı
+/PALS.html - aynı - aktarılmadı
+/research.html - aynı - aktarılmadı
+/research_support.html - aynı - aktarılmadı
+/training.html - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\PALS.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\paylasim.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\PAYokulu.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\PICUa.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\research.jpg - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\Images\webinar.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\LSC_logos\pals.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\LSC_logos\paylasim.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\LSC_logos\PAYokulu.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\LSC_logos\PICUa.png - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\index.html - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\index_past.html - aynı - aktarılmadı
+C:\Users\PC\Desktop\LSC HTML\research.jpg - aynı - aktarılmadı
+
+Dosya etkinliği tamamlandı.
+Atlanan dosyalar: 140
+
+Bitme Zamanı: 14.06.2022 01:18

@@ -1,0 +1,69 @@
+li {list-style-type: none;
+font-size: 16pt;
+}
+.mail {
+margin: auto;
+padding: 25px;
+background : #fff;
+border: 1px soild silver;
+}
+.mail h2 {
+margin-left: 38px;
+}
+input {
+font-size: 20pt;
+}
+input:focus, textarea:focus{
+background-color: lightyellow;
+}
+input submit {background-color: #ec1b23; 
+		   width: 100%;
+			color: #fff; 
+			padding: 15px; 
+			margin: 10px 0px; 
+			border: none; 
+			cursor: pointer; ;
+}
+.rq {
+color: #ec1b23;
+font-size: 10pt;
+}
+
+
+
+Body {
+	  font-family: Calibri, Helvetica, sans-serif;
+	}
+	button { 
+		   background-color: #ec1b23; 
+		   width: 100%;
+			color: #fff; 
+			padding: 15px; 
+			margin: 10px 0px; 
+			border: none; 
+			cursor: pointer; 
+			 } 
+	 form-login { 
+			border: 3px solid #f1f1f1; 
+		} 
+	 input[type=text], input[type=password] { 
+			width: 100%; 
+			margin: 8px 0;
+			padding: 12px 20px; 
+			display: inline-block; 
+			border: 2px solid #ec1b23; 
+			box-sizing: bgorder-box; 
+		}
+	 button:hover { 
+			opacity: 0.7; 
+		} 
+	  .cancelbtn { 
+			width: auto; 
+			padding: 10px 18px;
+			margin: 10px 5px;
+		} 
+
+
+	 .contlog { 
+			padding: 25px; 
+		} 

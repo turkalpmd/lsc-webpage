@@ -1,0 +1,25 @@
+        <!-- Intro Content -->
+        <div class="mb-5 text-justify">
+          <p class="text-justify">
+			  14/10/2015 tarihli Senato kararı ile kurulan Yaşam Desteği Uygulama ve Araştırma Merkezinin yönetmeliği 13/04/2016 tarihli YÖK onayıyla, 29866 sayılı (23/10/2016) resmi gazetede yayınlanarak yürürlüğe girmiştir.</p>
+		  <p class="text-justify">			  
+			  
+			  Merkezimiz açıldıktan sonra bir yıl içerisinde, yurt içi ve yurtdışından, alanlarında başarı göstermiş bilim insanlarının katılımıyla akademik faaliyetlerine devam etmiştir. 2016 yılı yıllık faaliyet raporunda açıkça görüldüğü gibi 401 kümülatif gün boyunca ekstrakorporyal yaşam desteği uygulamaları yapılmış, yerli-yabancı konuk konuşmacıların seminerleri düzenlenmiş, endüstri işbirliği toplantıları yapılmış, 323 katılımcının faydalandığı 10 kurs ve 37 teorik eğitim tamamlanmış, ürün olarak da 4 SCI-E kapsamında yayın, 11 kitap bölümü, 16 bildiri ortaya çıkmıştır.</p>
+		  <p class="text-justify">			   
+			  
+			  Takip eden dönemde Üniversitemizde rektör değişikliği ile birlikte üst yönetim değişikliği olmuş ve Merkezimize müdür ataması yapılmayarak gerekli yönetim organlarının oluşturulması engellenmiştir. Merkezimize tahsis edilmiş olan simülasyon, araştırma ve eğitim laboratuvarları kapatılmış, uygulama ve araştırma alanlarındaki tanıtıcı tabelalar kaldırılmıştır.</p>
+		  <p class="text-justify">			   
+			  
+			  Üniversitemizde Rektör ve üst yönetim değişikliği ile birlikte 02.08.2021 tarihinde Merkez müdürü olarak atamam yapılmış ve sonrasında da ivedilikle merkez yönetim organları oluşturularak faaliyete geçilmiş, ilk yönetim kurulu toplantısı 2021 yılı Aralık ayında yapılmıştır. 2021 yılı öncesi faaliyetlerin engellenmiş olması nedeniyle ilişikte 2021 yılı ve 2022 yılı Eylül ayına kadar olan faaliyetler listelenmiştir.</p>
+		  <p class="text-justify">			   
+			  
+			  Uygulama araştırma merkezimizin tekrar faaliyete geçtiği Ağustos 2021 tarihinden itibaren yapılan 12 kursta toplam 565 kursiyere eğitim verilmiş, 21 ECMO, 63 CVVHFD (CKST) ve 82 hastaya TPE uygulamaları yapılmış, ekstrakorporyal ve ileri yaşam desteği uygulamaları sırasında 6 uzmanlık öğrencisi nitelikli eğitim almıştır.</p>
+		  <p class="text-justify">			   
+			  
+			  İçerisinde JAMA network ve benzeri yüksek görünürlüklü dergilerde 31 yayın yapılmış, 7 kitap bölümü yazılmış, 16 bildiri sunulmuştur. Çok merkezli Paylaşım toplantılarına devam edilmiş, çok disiplinli ve çok merkezli araştırma projeleri sürdürülmüş, özellikle hibrit biyomembran, ksenotransplantasyon ve yapay glikokaliks üretimi konularında çalışma grupları oluşturularak araştırmalarda ilerleme sağlanmıştır. Bu dönemde Merkezimizin web sitesi yapılandırılmış ve <a href="http://lsc.hacettepe.edu.tr/" target="_blank">lsc.hacettepe.edu.tr</a>
+			  adresinde faaliyete geçmiştir.</p>
+		  <p class="text-justify">			  
+			  
+			  Merkezimizin güçlü yanları arasında; uluslararası konsensüs raporlarına katkı vermesi (pADQI); geliştirilen inovatif tedavi yöntemleri ki bunlardan zipper immünomodülasyon metodu artık genel kabul görmüş, Alman araştırmacılar tarafından modifiye zipper ismiyle modifikasyonu da yapılmıştır, COVİD-19 ilişkili MIS-C tedavisi için PISA protokolü, hipoplastik akciğer tedavisinde kök hücre uygulaması, SeLBA tekniği; Türkiyedeki ilk, dünyadaki yüksek başarılı ECMO merkezlerinden birisi olması; Kaliteli akademik yayın çıkarmadaki üretkenliği ve uygulama merkezinin kalite standardı olarak kullanılan SMR indeksinin 0,26 olması <i>(1 ve altındaki değerler başarılı kabul edilir!)</i>; Çok disiplinli ve çok merkezli çalışmalar yürütebilme kapasitesi ve Temel-İleri Yaşam Desteği eğitim programları sayılabilir.
+		  </p>
+<!-- Butonları metin altında k container'a bıraktım, kopyalarsan yukarda style css var unutma -->	

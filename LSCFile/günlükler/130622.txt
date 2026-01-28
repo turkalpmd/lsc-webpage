@@ -1,0 +1,38 @@
+﻿Başlangıç: 13.06.2022 01:45
+
+/günlükler/060622.txt - aynı - aktarılmadı
+/Images/banner-772x250.png - aynı - aktarılmadı
+/LSC_logos/111.png - aynı - aktarılmadı
+/LSC_logos/asdasd.png - aynı - aktarılmadı
+/LSC_logos/LSC.png - aynı - aktarılmadı
+/LSC_logos/PAY.png - aynı - aktarılmadı
+/LSC_logos/PAYlasim 1.png - aynı - aktarılmadı
+/LSC_logos/PICU.png - aynı - aktarılmadı
+/LSC_logos/plaka.png - aynı - aktarılmadı
+/LSC_logos/PTİYD 3-07.png - aynı - aktarılmadı
+/LSC_logos/YDM.png - aynı - aktarılmadı
+/LSC_logos/YDV 2.png - aynı - aktarılmadı
+/LSC_logos/YDV.png - aynı - aktarılmadı
+/sablon2021/hu_logo_icon.ico - aynı - aktarılmadı
+/38693280_10156636565759310_3046706493903601664_n.jpg - aynı - aktarılmadı
+/hakkımda.html - aynı - aktarılmadı
+/hu_logo_icon.ico - aynı - aktarılmadı
+CSS\bootstrap-4.3.1.css - Koy işlemi başarılı
+js\bootstrap-4.3.1.js - Koy işlemi başarılı
+js\jquery-3.3.1.min.js - Koy işlemi başarılı
+js\popper.min.js - Koy işlemi başarılı
+about_us.html - Koy işlemi başarılı
+eski_index.html - Koy işlemi başarılı
+index.html - Koy işlemi başarılı
+/sablon2021/38693280_10156636565759310_3046706493903601664_n.jpg - hata oluştu - FTP hatası oluştu - 38693280_10156636565759310_3046706493903601664_n.jpg alınamadı.  Erişim Reddedildi.  Dosya var olmayabilir veya izin sorunu olabilir.
+/sablon2021/hakkımda.html - hata oluştu - FTP hatası oluştu - hakkımda.html alınamadı.  Erişim Reddedildi.  Dosya var olmayabilir veya izin sorunu olabilir.
+/sablon2021/index.html - Al işlemi başarılı
+
+Dosya etkinliği tamamlanmadı. 2 dosya veya klasör tamamlanmadı.
+Güncelleştirilen dosyalar: 8
+Atlanan dosyalar: 17
+Hatalı dosyalar: 2
+/sablon2021/38693280_10156636565759310_3046706493903601664_n.jpg
+/sablon2021/hakkımda.html
+
+Bitme Zamanı: 13.06.2022 01:45
