@@ -1,0 +1,551 @@
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CRRT Dilüsyon Aracı (Prime-Infused)</title>
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#121a28;
+      --text:#eaf0ff;
+      --muted:#b9c4dd;
+      --border:rgba(255,255,255,.12);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      --accent:#7aa2ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background: radial-gradient(1200px 600px at 18% 0%, #16213a, var(--bg));
+      color:var(--text);
+    }
+    .wrap{max-width:1120px;margin:28px auto 44px;padding:0 16px;}
+    .header{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px;}
+    .title{font-size:22px;font-weight:780;letter-spacing:.2px;margin:0 0 6px;}
+    .subtitle{margin:0;color:var(--muted);line-height:1.35;font-size:14px;max-width:760px;}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border:1px solid var(--border);border-radius:999px;
+      color:var(--muted);font-family:var(--mono);font-size:12px;background:rgba(255,255,255,.04);
+      box-shadow:var(--shadow);white-space:nowrap;
+    }
+    .grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px;}
+    @media (max-width: 940px){.grid{grid-template-columns:1fr;}}
+    .card{
+      background: rgba(18,26,40,.88);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .pad{padding:16px 16px 14px;}
+    h3{margin:0 0 10px;font-size:15px;color:var(--text);letter-spacing:.2px;}
+    .controls{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;}
+    @media (max-width: 520px){.controls{grid-template-columns:1fr;}}
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;}
+    select,input{
+      width:100%;
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      outline:none;
+      font-size:13px;
+    }
+    input{font-family:var(--mono);}
+    select{font-family:var(--sans);}
+    .hint{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.4;}
+    .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-top:6px;}
+    .kv .item{border:1px solid var(--border);background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;}
+    .k{color:var(--muted);font-size:12px;margin-bottom:4px;}
+    .v{font-family:var(--mono);font-size:13px;color:var(--text);}
+    .plotWrap{background:#0c1220;}
+    canvas{width:100%;height:auto;display:block;background:#ffffff;}
+    .tableWrap{padding:14px 16px 16px;background:rgba(255,255,255,.02);}
+    .tableTitle{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+    .legend{color:var(--muted);font-size:12px;}
+    table{width:100%;border-collapse:collapse;font-size:13px;overflow:hidden;border-radius:16px;}
+    thead th{
+      text-align:left;padding:12px 12px;background:rgba(255,255,255,.06);
+      border-bottom:1px solid var(--border);color:var(--text);
+      font-size:12px;letter-spacing:.3px;text-transform:uppercase;
+    }
+    tbody td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.08);color:#0b1220;font-weight:560;}
+    .num{text-align:right;font-family:var(--mono);white-space:nowrap;}
+    .firm{font-weight:820;letter-spacing:.2px;}
+    .rowSelected{outline:2px solid #111; outline-offset:-2px;}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;
+      padding:4px 9px;border-radius:999px;border:1px solid rgba(0,0,0,.10);
+      background:rgba(255,255,255,.65);
+      font-family:var(--mono);font-size:11px;color:#0b1220;
+    }
+    .small{font-size:12px;color:var(--muted);margin:0;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div>
+        <h1 class="title">CRRT Dilüsyon Aracı (Prime-Infused)</h1>
+        <p class="subtitle">
+          Dilüsyon katsayısı: <span style="font-family:var(--mono)">Vkan / (Vkan + ECBV)</span>.
+          Burada <span style="font-family:var(--mono)">Vkan = (75–85 mL/kg) × kg</span> belirsizliği ribbon olarak gösterilir.
+          X ekseni hastaya göre <span style="font-family:var(--mono)">(kg−5)</span> ile <span style="font-family:var(--mono)">(kg+10)</span> aralığına otomatik ayarlanır.
+        </p>
+      </div>
+      <div class="pill" id="pillStatus">Hazır</div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="plotWrap">
+          <canvas id="plot" width="1100" height="560" aria-label="Dilüsyon grafiği"></canvas>
+        </div>
+        <div class="pad">
+          <p class="small" id="plotNote"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="pad">
+          <h3>Girdi</h3>
+          <div class="controls">
+            <div>
+              <label for="filterSelect">Filtre / Set (Firm + Hemofilter)</label>
+              <select id="filterSelect"></select>
+            </div>
+            <div>
+              <label for="weightInput">Hasta ağırlığı (kg)</label>
+              <input id="weightInput" type="number" min="0.5" max="200" step="0.1" value="8" />
+            </div>
+          </div>
+          <div class="hint">
+            Varsayımlar: Prime infused. Vkan belirsizliği: 75–85 mL/kg.
+            Dilüsyon etkisi için ECBV = “Filter and set total volume (mL)” kullanılır (Tablo 4).
+          </div>
+        </div>
+
+        <div class="pad" style="padding-top:0;">
+          <h3>Özet (bu hasta)</h3>
+          <div class="kv" id="summaryKv"></div>
+          <div class="hint">
+            Not: Ek uzatma hatları/konnektörler varsa efektif ECBV artar ve dilüsyon daha fazla olur.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="tableWrap">
+        <div class="tableTitle">
+          <h3>Tüm filtreler (aynı kilo için)</h3>
+          <div class="legend">Firm bazlı renk • Seçilen satır siyah çerçeveli</div>
+        </div>
+        <div style="overflow:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Firm</th>
+                <th>Hemofilter</th>
+                <th style="text-align:right">ECBV (mL)</th>
+                <th style="text-align:right">Dilüsyon (75–85)</th>
+                <th style="text-align:right">Dilüsyon (orta)</th>
+                <th style="text-align:right">Seyrelme (orta, %)</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+/**
+ * Data model (Table 4):
+ * We use: Firm, Hemofilter name, Filter and set total volume (mL) = ECBV
+ */
+const FILTERS = [
+  // Fresenius
+  { firm: "Fresenius", name: "AV Paed", ecbv: 72 },
+  { firm: "Fresenius", name: "AV 400S", ecbv: 135 },
+  { firm: "Fresenius", name: "AV 600S", ecbv: 246 },
+  { firm: "Fresenius", name: "AV 1000S", ecbv: 276 },
+  // Baxter
+  { firm: "Baxter", name: "Prismaflex HF20", ecbv: 58 },
+  { firm: "Baxter", name: "Prismaflex HF1000", ecbv: 165 },
+  { firm: "Baxter", name: "Prismaflex HF1400", ecbv: 186 },
+  { firm: "Baxter", name: "Prismaflex M60", ecbv: 93 },
+  { firm: "Baxter", name: "Prismaflex M100", ecbv: 153 },
+  { firm: "Baxter", name: "Prismaflex M150", ecbv: 189 },
+  // Carpediem
+  { firm: "Carpediem", name: "HCD 0075", ecbv: 27 },
+  { firm: "Carpediem", name: "HCD 015", ecbv: 33 },
+  { firm: "Carpediem", name: "HCD 025", ecbv: 41 },
+];
+
+const FIRM_BG = {
+  "Fresenius": { bg: "#E8F0FF", border: "#B6CCFF" },
+  "Baxter":   { bg: "#E9FBF1", border: "#AEECC9" },
+  "Carpediem":{ bg: "#FFF2E5", border: "#FFD2A8" },
+};
+const DEFAULT_FIRM_STYLE = { bg: "#F5F5F5", border: "#DDDDDD" };
+
+const VKAN_LOW = 75;  // mL/kg
+const VKAN_HIGH = 85; // mL/kg
+
+function keyOf(f) { return `${f.firm} ${f.name}`; }
+
+function clamp(x, lo, hi){ return Math.max(lo, Math.min(hi, x)); }
+
+function dilutionCoeff(weightKg, ecbvMl, vkanMlPerKg){
+  const vkan = vkanMlPerKg * weightKg;
+  return vkan / (vkan + ecbvMl);
+}
+
+function fmtRange(a, b){
+  const lo = Math.min(a,b), hi = Math.max(a,b);
+  return `${lo.toFixed(3)}–${hi.toFixed(3)}`;
+}
+
+function buildSelect(){
+  const sel = document.getElementById("filterSelect");
+  // stable sort by firm then ecbv
+  const sorted = [...FILTERS].sort((a,b) => {
+    if (a.firm !== b.firm) return a.firm.localeCompare(b.firm);
+    return a.ecbv - b.ecbv;
+  });
+
+  sel.innerHTML = "";
+  for (const f of sorted){
+    const opt = document.createElement("option");
+    opt.value = keyOf(f);
+    opt.textContent = `${f.firm} ${f.name} (ECBV ${f.ecbv} mL)`;
+    sel.appendChild(opt);
+  }
+  // Default: Baxter Prismaflex HF20 if exists
+  const defaultKey = "Baxter Prismaflex HF20";
+  sel.value = sorted.some(f => keyOf(f) === defaultKey) ? defaultKey : sorted[0] ? keyOf(sorted[0]) : "";
+}
+
+function getSelectedFilter(){
+  const selKey = document.getElementById("filterSelect").value;
+  const f = FILTERS.find(x => keyOf(x) === selKey);
+  return f || FILTERS[0];
+}
+
+function drawPlot(selected, weightKg){
+  const canvas = document.getElementById("plot");
+  const ctx = canvas.getContext("2d");
+
+  // logical (device) pixels
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+
+  // chart area
+  const pad = { l: 90, r: 24, t: 40, b: 70 };
+  const cw = W - pad.l - pad.r;
+  const ch = H - pad.t - pad.b;
+
+  const xMin = Math.max(0.1, weightKg - 5);
+  const xMax = weightKg + 10;
+  const yMin = 0.5;
+  const yMax = 1.0;
+
+  const xToPx = (x) => pad.l + ( (x - xMin) / (xMax - xMin) ) * cw;
+  const yToPx = (y) => pad.t + (1 - ( (y - yMin) / (yMax - yMin) )) * ch;
+
+  // background
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0,0,W,H);
+
+  // grid
+  ctx.strokeStyle = "rgba(0,0,0,0.10)";
+  ctx.lineWidth = 1;
+
+  // x ticks
+  const xTicks = 8;
+  for (let i=0;i<=xTicks;i++){
+    const x = xMin + (i/xTicks)*(xMax-xMin);
+    const px = xToPx(x);
+    ctx.beginPath();
+    ctx.moveTo(px, pad.t);
+    ctx.lineTo(px, pad.t+ch);
+    ctx.stroke();
+  }
+  // y ticks
+  const yTicks = 5;
+  for (let i=0;i<=yTicks;i++){
+    const y = yMin + (i/yTicks)*(yMax-yMin);
+    const py = yToPx(y);
+    ctx.beginPath();
+    ctx.moveTo(pad.l, py);
+    ctx.lineTo(pad.l+cw, py);
+    ctx.stroke();
+  }
+
+  // axes
+  ctx.strokeStyle = "rgba(0,0,0,0.65)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(pad.l, pad.t);
+  ctx.lineTo(pad.l, pad.t+ch);
+  ctx.lineTo(pad.l+cw, pad.t+ch);
+  ctx.stroke();
+
+  // axis labels
+  ctx.fillStyle = "rgba(0,0,0,0.85)";
+  ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+  ctx.fillText("Dilüsyon katsayısı", 18, 24);
+
+  // y label ticks
+  ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
+  ctx.textAlign = "right";
+  ctx.textBaseline = "middle";
+  for (let i=0;i<=yTicks;i++){
+    const y = yMin + (i/yTicks)*(yMax-yMin);
+    const py = yToPx(y);
+    ctx.fillText(y.toFixed(2), pad.l-10, py);
+  }
+
+  // x label ticks
+  ctx.textAlign = "center";
+  ctx.textBaseline = "top";
+  for (let i=0;i<=xTicks;i++){
+    const x = xMin + (i/xTicks)*(xMax-xMin);
+    const px = xToPx(x);
+    ctx.fillText(x.toFixed(1), px, pad.t+ch+10);
+  }
+  ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+  ctx.fillText("Hasta ağırlığı (kg)", pad.l + cw/2, pad.t+ch+42);
+
+  // title
+  ctx.font = "18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "top";
+  const title = `3–${xMax.toFixed(0)} kg (dinamik): Prime-infused — ${keyOf(selected)} (ECBV=${selected.ecbv} mL)`;
+  ctx.fillText(title, pad.l, 10);
+
+  // compute curves
+  const N = 400;
+  const xs = [];
+  for (let i=0;i<N;i++){
+    xs.push(xMin + (i/(N-1))*(xMax-xMin));
+  }
+  const yLow = xs.map(x => dilutionCoeff(x, selected.ecbv, VKAN_LOW));
+  const yHigh = xs.map(x => dilutionCoeff(x, selected.ecbv, VKAN_HIGH));
+  const yMid = xs.map(x => dilutionCoeff(x, selected.ecbv, (VKAN_LOW+VKAN_HIGH)/2));
+
+  // ribbon fill
+  ctx.save();
+  ctx.beginPath();
+  for (let i=0;i<N;i++){
+    ctx.lineTo(xToPx(xs[i]), yToPx(yLow[i]));
+  }
+  for (let i=N-1;i>=0;i--){
+    ctx.lineTo(xToPx(xs[i]), yToPx(yHigh[i]));
+  }
+  ctx.closePath();
+  ctx.fillStyle = "rgba(122,162,255,0.18)";
+  ctx.fill();
+  ctx.restore();
+
+  // mid line
+  ctx.strokeStyle = "rgba(122,162,255,0.95)";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  for (let i=0;i<N;i++){
+    const px = xToPx(xs[i]);
+    const py = yToPx(yMid[i]);
+    if (i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+  }
+  ctx.stroke();
+
+  // vertical patient weight
+  ctx.strokeStyle = "rgba(0,0,0,0.60)";
+  ctx.lineWidth = 2;
+  ctx.setLineDash([10,8]);
+  ctx.beginPath();
+  ctx.moveTo(xToPx(weightKg), pad.t);
+  ctx.lineTo(xToPx(weightKg), pad.t+ch);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // legend (simple)
+  const lx = pad.l + 10;
+  const ly = pad.t + 10;
+  ctx.fillStyle = "rgba(255,255,255,0.90)";
+  ctx.strokeStyle = "rgba(0,0,0,0.10)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.roundRect(lx, ly, 340, 92, 14);
+  ctx.fill();
+  ctx.stroke();
+
+  // items
+  ctx.font = "13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+  ctx.fillStyle = "rgba(0,0,0,0.80)";
+  // ribbon key
+  ctx.fillStyle = "rgba(122,162,255,0.18)";
+  ctx.fillRect(lx+12, ly+16, 18, 12);
+  ctx.strokeStyle = "rgba(122,162,255,0.65)";
+  ctx.strokeRect(lx+12, ly+16, 18, 12);
+  ctx.fillStyle = "rgba(0,0,0,0.80)";
+  ctx.fillText(`Vkan belirsizliği: ${VKAN_LOW}–${VKAN_HIGH} mL/kg (ribbon)`, lx+40, ly+14);
+
+  // line key
+  ctx.strokeStyle = "rgba(122,162,255,0.95)";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(lx+12, ly+44);
+  ctx.lineTo(lx+30, ly+44);
+  ctx.stroke();
+  ctx.fillStyle = "rgba(0,0,0,0.80)";
+  ctx.fillText("Orta çizgi: 80 mL/kg", lx+40, ly+38);
+
+  // patient line key
+  ctx.strokeStyle = "rgba(0,0,0,0.60)";
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8,6]);
+  ctx.beginPath();
+  ctx.moveTo(lx+12, ly+70);
+  ctx.lineTo(lx+30, ly+70);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = "rgba(0,0,0,0.80)";
+  ctx.fillText(`Hasta: ${weightKg.toFixed(1)} kg`, lx+40, ly+64);
+
+  // note under plot
+  const note = document.getElementById("plotNote");
+  note.textContent = `X aralığı: ${xMin.toFixed(1)}–${xMax.toFixed(1)} kg • Y aralığı: ${yMin.toFixed(1)}–${yMax.toFixed(1)} • Prime infused varsayımı.`;
+}
+
+function buildSummary(selected, weightKg){
+  const ecbv = selected.ecbv;
+  const vkanLow = VKAN_LOW * weightKg;
+  const vkanHigh = VKAN_HIGH * weightKg;
+  const dLow = dilutionCoeff(weightKg, ecbv, VKAN_LOW);
+  const dHigh = dilutionCoeff(weightKg, ecbv, VKAN_HIGH);
+  const dMid = dilutionCoeff(weightKg, ecbv, (VKAN_LOW+VKAN_HIGH)/2);
+  const dropPct = (1 - dMid) * 100;
+
+  const kv = document.getElementById("summaryKv");
+  kv.innerHTML = "";
+
+  const add = (k, v) => {
+    const item = document.createElement("div");
+    item.className = "item";
+    item.innerHTML = `<div class="k">${k}</div><div class="v">${v}</div>`;
+    kv.appendChild(item);
+  };
+
+  add("Seçilen set", keyOf(selected));
+  add("ECBV (mL)", `${ecbv.toFixed(0)}`);
+  add("Vkan aralığı (mL)", `${vkanLow.toFixed(0)}–${vkanHigh.toFixed(0)}`);
+  add("Dilüsyon katsayısı", `${dLow.toFixed(3)}–${dHigh.toFixed(3)}`);
+  add("Orta (80 mL/kg)", `${dMid.toFixed(3)}`);
+  add("Orta seyrelme (%)", `${dropPct.toFixed(1)}%`);
+
+  const pill = document.getElementById("pillStatus");
+  pill.textContent = `${keyOf(selected)} • ${weightKg.toFixed(1)} kg`;
+}
+
+function buildTable(selectedKey, weightKg){
+  const tb = document.getElementById("tableBody");
+  tb.innerHTML = "";
+
+  // sort by firm then ECBV
+  const sorted = [...FILTERS].sort((a,b)=>{
+    if(a.firm !== b.firm) return a.firm.localeCompare(b.firm);
+    return a.ecbv - b.ecbv;
+  });
+
+  for (const f of sorted){
+    const dl = dilutionCoeff(weightKg, f.ecbv, VKAN_LOW);
+    const dh = dilutionCoeff(weightKg, f.ecbv, VKAN_HIGH);
+    const dm = dilutionCoeff(weightKg, f.ecbv, (VKAN_LOW+VKAN_HIGH)/2);
+    const drop = (1 - dm) * 100;
+
+    const style = FIRM_BG[f.firm] || DEFAULT_FIRM_STYLE;
+
+    const tr = document.createElement("tr");
+    tr.style.background = style.bg;
+    tr.style.borderLeft = `6px solid ${style.border}`;
+
+    const isSelected = (keyOf(f) === selectedKey);
+    if (isSelected) tr.classList.add("rowSelected");
+
+    const firmTd = document.createElement("td");
+    firmTd.className = "firm";
+    firmTd.textContent = f.firm;
+
+    const nameTd = document.createElement("td");
+    nameTd.textContent = f.name;
+
+    const ecbvTd = document.createElement("td");
+    ecbvTd.className = "num";
+    ecbvTd.textContent = f.ecbv.toFixed(0);
+
+    const rangeTd = document.createElement("td");
+    rangeTd.className = "num";
+    rangeTd.textContent = fmtRange(dl, dh);
+
+    const midTd = document.createElement("td");
+    midTd.className = "num";
+    midTd.textContent = dm.toFixed(3);
+
+    const dropTd = document.createElement("td");
+    dropTd.className = "num";
+    dropTd.textContent = drop.toFixed(1);
+
+    [firmTd, nameTd, ecbvTd, rangeTd, midTd, dropTd].forEach(td => tr.appendChild(td));
+    tb.appendChild(tr);
+  }
+}
+
+function refresh(){
+  const selected = getSelectedFilter();
+  const selectedKey = keyOf(selected);
+
+  const wRaw = document.getElementById("weightInput").value;
+  let w = parseFloat(wRaw);
+  if (!Number.isFinite(w)) w = 8;
+  w = clamp(w, 0.5, 200);
+
+  buildSummary(selected, w);
+  drawPlot(selected, w);
+  buildTable(selectedKey, w);
+}
+
+function wireUp(){
+  buildSelect();
+  document.getElementById("filterSelect").addEventListener("change", refresh);
+  document.getElementById("weightInput").addEventListener("input", refresh);
+  refresh();
+}
+
+// Canvas helper: rounded rect (modern browsers)
+CanvasRenderingContext2D.prototype.roundRect = CanvasRenderingContext2D.prototype.roundRect || function(x, y, w, h, r){
+  const min = Math.min(w, h) / 2;
+  r = Math.min(r, min);
+  this.beginPath();
+  this.moveTo(x+r, y);
+  this.arcTo(x+w, y, x+w, y+h, r);
+  this.arcTo(x+w, y+h, x, y+h, r);
+  this.arcTo(x, y+h, x, y, r);
+  this.arcTo(x, y, x+w, y, r);
+  this.closePath();
+  return this;
+};
+
+wireUp();
+</script>
+</body>
+</html>

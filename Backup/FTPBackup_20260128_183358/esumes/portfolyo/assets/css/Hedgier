@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Hedgier';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Hedgier'), url('https://fonts.cdnfonts.com/s/70632/Hedgier-jE3aM.woff') format('woff');
+}
+
+
+

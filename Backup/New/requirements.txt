@@ -1,0 +1,2 @@
+# FTP İstemcisi için gerekli paketler
+# Python'un standart kütüphanesinde ftplib var, ek paket gerekmez

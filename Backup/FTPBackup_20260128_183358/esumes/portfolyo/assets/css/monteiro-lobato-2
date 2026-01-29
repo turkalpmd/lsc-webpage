@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Monteiro Lobato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Monteiro Lobato'), url('https://fonts.cdnfonts.com/s/56344/lobato.woff') format('woff');
+}
+
+
