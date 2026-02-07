@@ -1,29 +1,50 @@
 <html lang="tr">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
   <title>CRRT Dilüsyon Aracı</title>
+  <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0f17;
-      --card:#121a28;
-      --text:#eaf0ff;
-      --muted:#b9c4dd;
-      --border:rgba(255,255,255,.12);
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f6f8;
+      --card:#ffffff;
+      --text:#1a1d24;
+      --muted:#5c6370;
+      --border:rgba(0,0,0,.12);
+      --shadow:0 4px 20px rgba(0,0,0,.08);
       --radius:18px;
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      --accent:#7aa2ff;
+      --accent:#2563eb;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:var(--sans);
-      background: radial-gradient(1200px 600px at 18% 0%, #16213a, var(--bg));
+      background:var(--bg);
       color:var(--text);
       min-height:100vh;
     }
+    .bannerWrap{max-width:1120px;margin:0 auto;padding:0 16px;}
+    .bannerWrap img{width:100%;max-width:100%;height:auto;display:block;vertical-align:top;}
     .wrap{max-width:1120px;margin:20px auto 44px;padding:0 16px;}
     @media (max-width: 640px){.wrap{margin:12px auto 24px;padding:0 12px;}}
     .header{margin-bottom:14px;}
@@ -34,7 +55,7 @@
     .subtitle{margin:0;color:var(--muted);line-height:1.35;font-size:14px;max-width:760px;}
     @media (max-width: 640px){.subtitle{font-size:13px;}}
     .langToggle{
-      display:flex;gap:4px;background:rgba(255,255,255,.04);
+      display:flex;gap:4px;background:rgba(0,0,0,.04);
       border:1px solid var(--border);border-radius:12px;padding:4px;
       box-shadow:var(--shadow);align-self:flex-start;
     }
@@ -44,12 +65,12 @@
       border-radius:8px;cursor:pointer;transition:all .2s;
       letter-spacing:.3px;text-transform:uppercase;
     }
-    .langBtn:hover{background:rgba(255,255,255,.06);}
+    .langBtn:hover{background:rgba(0,0,0,.06);}
     .langBtn.active{background:var(--accent);color:#fff;}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
       padding:8px 12px;border:1px solid var(--border);border-radius:999px;
-      color:var(--muted);font-family:var(--mono);font-size:12px;background:rgba(255,255,255,.04);
+      color:var(--muted);font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.04);
       box-shadow:var(--shadow);white-space:nowrap;
     }
     @media (max-width: 640px){.pill{font-size:11px;padding:6px 10px;}}
@@ -57,12 +78,13 @@
     @media (max-width: 940px){.grid{grid-template-columns:1fr;}}
     @media (max-width: 640px){.grid{gap:12px;}}
     .card{
-      background: rgba(18,26,40,.88);
+      background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
       overflow:hidden;
     }
+    .cardInput{background:var(--card);border:2px solid var(--accent);box-shadow:0 6px 24px rgba(37,99,235,.12);}
     .pad{padding:16px 16px 14px;}
     @media (max-width: 640px){.pad{padding:12px 12px 10px;}}
     h3{margin:0 0 10px;font-size:15px;color:var(--text);letter-spacing:.2px;}
@@ -72,7 +94,7 @@
     label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px;}
     select,input{
       width:100%;
-      background:rgba(255,255,255,.04);
+      background:#fff;
       color:var(--text);
       border:1px solid var(--border);
       border-radius:12px;
@@ -86,20 +108,20 @@
       select,input{font-size:16px;padding:12px;}
     }
     input{font-family:var(--mono);}
-    select{font-family:var(--sans);background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23b9c4dd' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;}
+    select{font-family:var(--sans);background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235c6370' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;}
     .hint{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.4;}
     @media (max-width: 640px){.hint{font-size:11px;}}
     .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-top:6px;}
     @media (max-width: 640px){.kv{gap:8px 10px;}}
-    .kv .item{border:1px solid var(--border);background:rgba(255,255,255,.03);border-radius:14px;padding:10px 12px;}
+    .kv .item{border:1px solid var(--border);background:rgba(0,0,0,.02);border-radius:14px;padding:10px 12px;}
     @media (max-width: 640px){.kv .item{padding:8px 10px;}}
     .k{color:var(--muted);font-size:12px;margin-bottom:4px;}
     @media (max-width: 640px){.k{font-size:11px;}}
     .v{font-family:var(--mono);font-size:13px;color:var(--text);}
     @media (max-width: 640px){.v{font-size:12px;}}
-    .plotWrap{background:#0c1220;position:relative;overflow:hidden;}
+    .plotWrap{background:#fafafa;position:relative;overflow:hidden;}
     canvas{width:100%;height:auto;display:block;background:#ffffff;touch-action:pan-x pan-y;}
-    .tableWrap{padding:14px 16px 16px;background:rgba(255,255,255,.02);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .tableWrap{padding:14px 16px 16px;background:rgba(0,0,0,.02);overflow-x:auto;-webkit-overflow-scrolling:touch;}
     @media (max-width: 640px){.tableWrap{padding:10px 12px 12px;}}
     .tableTitle{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
     .legend{color:var(--muted);font-size:12px;}
@@ -107,7 +129,7 @@
     table{width:100%;border-collapse:collapse;font-size:13px;overflow:hidden;border-radius:16px;min-width:600px;}
     @media (max-width: 640px){table{font-size:12px;min-width:550px;}}
     thead th{
-      text-align:left;padding:12px 12px;background:rgba(255,255,255,.06);
+      text-align:left;padding:12px 12px;background:rgba(0,0,0,.06);
       border-bottom:1px solid var(--border);color:var(--text);
       font-size:12px;letter-spacing:.3px;text-transform:uppercase;
     }
@@ -125,9 +147,25 @@
     }
     .small{font-size:12px;color:var(--muted);margin:0;}
     @media (max-width: 640px){.small{font-size:11px;}}
+    .resultsSection{display:none;}
+    .resultsSection.visible{display:block;}
+    .btnCalculate{display:inline-flex;align-items:center;justify-content:center;width:100%;max-width:320px;margin:16px auto;padding:14px 24px;font-size:16px;font-weight:600;font-family:var(--sans);color:#fff;background:var(--accent);border:none;border-radius:14px;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,.35);transition:transform .15s,box-shadow .15s;}
+    .btnCalculate:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,.4);}
+    .modalOverlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;}
+    .modalOverlay.open{display:flex;}
+    .modalBox{background:var(--card);border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,.2);max-width:420px;width:100%;padding:24px;position:relative;}
+    .modalClose{position:absolute;top:12px;right:12px;width:32px;height:32px;border:none;background:rgba(0,0,0,.06);border-radius:8px;cursor:pointer;font-size:18px;line-height:1;color:var(--muted);display:flex;align-items:center;justify-content:center;}
+    .modalClose:hover{background:rgba(0,0,0,.1);color:var(--text);}
+    .modalTitle{margin:0 0 12px;font-size:17px;color:var(--text);}
+    .modalBody{margin:0 0 20px;color:var(--muted);font-size:14px;line-height:1.5;}
+    .modalBody strong{color:var(--text);}
+    .modalBtn{display:block;width:100%;padding:12px;font-size:14px;font-weight:600;font-family:var(--sans);color:#fff;background:var(--accent);border:none;border-radius:10px;cursor:pointer;}
   </style>
 </head>
 <body>
+  <header class="bannerWrap">
+    <img src="images/dfbanner.jpg" alt="CRRT Dilüsyon Aracı" />
+  </header>
   <div class="wrap">
     <div class="header">
       <div class="headerTop">
@@ -147,69 +185,86 @@
       <div class="pill" id="pillStatus" data-i18n="ready">Hazır</div>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <div class="plotWrap">
-          <canvas id="plot" width="1100" height="560" aria-label="Dilüsyon grafiği"></canvas>
+    <div class="card cardInput">
+      <div class="pad">
+        <h3 data-i18n="input">Girdi</h3>
+        <div class="controls">
+          <div>
+            <label for="filterSelect" data-i18n="filterLabel">Filtre / Set (Firm + Hemofilter)</label>
+            <select id="filterSelect"></select>
+          </div>
+          <div>
+            <label for="weightInput" data-i18n="weightLabel">Hasta ağırlığı (kg veya g)</label>
+            <input id="weightInput" type="text" inputmode="decimal" placeholder="örn. 8 veya 3500" data-i18n-placeholder="weightPlaceholder" />
+          </div>
         </div>
-        <div class="pad">
-          <p class="small" id="plotNote"></p>
+        <div class="hint" data-i18n="inputHint">
+          Varsayımlar: Prime infused. Vkan belirsizliği: 75–85 mL/kg.
+          Dilüsyon etkisi için ECBV = "Filter and set total volume (mL)" kullanılır (Tablo 4).
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button type="button" class="btnCalculate" id="btnCalculate" data-i18n="calculate">Hesapla</button>
+    </div>
+
+    <div id="resultsSection" class="resultsSection">
+      <div class="grid">
+        <div class="card">
+          <div class="plotWrap">
+            <canvas id="plot" width="1100" height="560" aria-label="Dilüsyon grafiği"></canvas>
+          </div>
+          <div class="pad">
+            <p class="small" id="plotNote"></p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="pad">
+            <h3 data-i18n="summary">Özet (bu hasta)</h3>
+            <div class="kv" id="summaryKv"></div>
+            <div class="hint" data-i18n="summaryNote">
+              Not: Ek uzatma hatları/konnektörler varsa efektif ECBV artar ve dilüsyon daha fazla olur.
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <div class="pad">
-          <h3 data-i18n="input">Girdi</h3>
-          <div class="controls">
-            <div>
-              <label for="filterSelect" data-i18n="filterLabel">Filtre / Set (Firm + Hemofilter)</label>
-              <select id="filterSelect"></select>
-            </div>
-            <div>
-              <label for="weightInput" data-i18n="weightLabel">Hasta ağırlığı (kg)</label>
-              <input id="weightInput" type="number" min="0.5" max="200" step="0.1" value="8" />
-            </div>
+      <div class="card" style="margin-top:16px;">
+        <div class="tableWrap">
+          <div class="tableTitle">
+            <h3 data-i18n="allFilters">Tüm filtreler (aynı kilo için)</h3>
+            <div class="legend" data-i18n="tableLegend">Firm bazlı renk • Seçilen satır siyah çerçeveli</div>
           </div>
-          <div class="hint" data-i18n="inputHint">
-            Varsayımlar: Prime infused. Vkan belirsizliği: 75–85 mL/kg.
-            Dilüsyon etkisi için ECBV = "Filter and set total volume (mL)" kullanılır (Tablo 4).
-          </div>
-        </div>
-
-        <div class="pad" style="padding-top:0;">
-          <h3 data-i18n="summary">Özet (bu hasta)</h3>
-          <div class="kv" id="summaryKv"></div>
-          <div class="hint" data-i18n="summaryNote">
-            Not: Ek uzatma hatları/konnektörler varsa efektif ECBV artar ve dilüsyon daha fazla olur.
+          <div style="overflow:auto;">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="thFirm">Firm</th>
+                  <th data-i18n="thHemofilter">Hemofilter</th>
+                  <th style="text-align:right" data-i18n="thECBV">ECBV (mL)</th>
+                  <th style="text-align:right" data-i18n="thDilutionRange">Dilüsyon (75–85)</th>
+                  <th style="text-align:right" data-i18n="thDilutionMid">Dilüsyon (orta)</th>
+                  <th style="text-align:right" data-i18n="thDilution">Seyrelme (orta, %)</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="card" style="margin-top:16px;">
-      <div class="tableWrap">
-        <div class="tableTitle">
-          <h3 data-i18n="allFilters">Tüm filtreler (aynı kilo için)</h3>
-          <div class="legend" data-i18n="tableLegend">Firm bazlı renk • Seçilen satır siyah çerçeveli</div>
-        </div>
-        <div style="overflow:auto;">
-          <table>
-            <thead>
-              <tr>
-                <th data-i18n="thFirm">Firm</th>
-                <th data-i18n="thHemofilter">Hemofilter</th>
-                <th style="text-align:right" data-i18n="thECBV">ECBV (mL)</th>
-                <th style="text-align:right" data-i18n="thDilutionRange">Dilüsyon (75–85)</th>
-                <th style="text-align:right" data-i18n="thDilutionMid">Dilüsyon (orta)</th>
-                <th style="text-align:right" data-i18n="thDilution">Seyrelme (orta, %)</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  </div>
 
+  <div id="modalOverlay" class="modalOverlay" aria-hidden="true">
+    <div class="modalBox" role="dialog" aria-labelledby="modalTitle">
+      <button type="button" class="modalClose" id="modalClose" aria-label="Kapat">&times;</button>
+      <h3 class="modalTitle" id="modalTitle" data-i18n="popupTitle">Dilüsyon sonucu</h3>
+      <div class="modalBody" id="modalBody"></div>
+      <button type="button" class="modalBtn" id="modalOk" data-i18n="popupOk">Anladım</button>
+    </div>
   </div>
 
 <script>
@@ -221,7 +276,12 @@ const translations = {
     ready: 'Hazır',
     input: 'Girdi',
     filterLabel: 'Filtre / Set (Firm + Hemofilter)',
-    weightLabel: 'Hasta ağırlığı (kg)',
+    weightLabel: 'Hasta ağırlığı (kg veya g)',
+    weightPlaceholder: 'örn. 8 veya 3500',
+    calculate: 'Hesapla',
+    popupTitle: 'Dilüsyon sonucu',
+    popupOk: 'Anladım',
+    popupMessage: 'Seçilen set <strong>{set}</strong> ve <strong>{kg} kg</strong> hasta ağırlığı için ilaç konsantrasyonu orta değerde (80 mL/kg) yaklaşık <strong>%{pct}</strong> oranında seyrelir (dilüe olur). Dilüsyon katsayısı: <strong>{coeff}</strong>.',
     inputHint: 'Prime infused varsayımı: Hastaya eklenen prime volümü, hastanın efektif volümünü ve dolayısıyla intravasküler sıvı miktarını artırarak steady state konsantrasyonu düşürebilir. Vkan belirsizliği: 75–85 mL/kg. ECBV = "Filter and set total volume (mL)" (Tablo 4).',
     summary: 'Özet (bu hasta)',
     summaryNote: 'Not: Ek uzatma hatları/konnektörler varsa efektif ECBV artar ve dilüsyon daha fazla olur.',
@@ -251,7 +311,12 @@ const translations = {
     ready: 'Ready',
     input: 'Input',
     filterLabel: 'Filter / Set (Firm + Hemofilter)',
-    weightLabel: 'Patient weight (kg)',
+    weightLabel: 'Patient weight (kg or g)',
+    weightPlaceholder: 'e.g. 8 or 3500',
+    calculate: 'Calculate',
+    popupTitle: 'Dilution result',
+    popupOk: 'OK',
+    popupMessage: 'For selected set <strong>{set}</strong> and patient weight <strong>{kg} kg</strong>, drug concentration is diluted by approximately <strong>%{pct}</strong> at mid value (80 mL/kg). Dilution coefficient: <strong>{coeff}</strong>.',
     inputHint: 'Prime infused assumption: The prime volume added to the patient increases the patient\'s effective volume and thus intravascular fluid amount, potentially lowering steady-state concentration. Vblood uncertainty: 75–85 mL/kg. ECBV = "Filter and set total volume (mL)" (Table 4).',
     summary: 'Summary (this patient)',
     summaryNote: 'Note: Additional extension lines/connectors increase effective ECBV and result in more dilution.',
@@ -278,17 +343,25 @@ const translations = {
 };
 
 let currentLang = 'tr';
+let hasCalculated = false;
+
+/** Parse weight: if value > 100 treat as grams (convert to kg), else kg. Returns clamped kg. */
+function parseWeight(raw) {
+  const s = String(raw).trim().replace(',', '.');
+  let val = parseFloat(s);
+  if (!Number.isFinite(val)) return 8;
+  if (val > 100) val = val / 1000;
+  return clamp(val, 0.5, 200);
+}
 
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem('crrt-lang', lang);
   
-  // Update button states
   document.querySelectorAll('.langBtn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   
-  // Update all i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (translations[lang][key]) {
@@ -296,12 +369,16 @@ function setLanguage(lang) {
     }
   });
   
-  // Update canvas aria-label
-  const canvas = document.getElementById('plot');
-  canvas.setAttribute('aria-label', lang === 'tr' ? 'Dilüsyon grafiği' : 'Dilution chart');
+  const placeholderKey = el => el.getAttribute('data-i18n-placeholder');
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = placeholderKey(el);
+    if (key && translations[lang][key]) el.placeholder = translations[lang][key];
+  });
   
-  // Refresh to update dynamic content
-  refresh();
+  const canvas = document.getElementById('plot');
+  if (canvas) canvas.setAttribute('aria-label', lang === 'tr' ? 'Dilüsyon grafiği' : 'Dilution chart');
+  
+  if (hasCalculated) refresh();
 }
 
 // Load saved language
@@ -445,10 +522,10 @@ function drawPlot(selected, weightKg){
   ctx.lineTo(pad.l+cw, pad.t+ch);
   ctx.stroke();
 
-  // axis labels
+  // axis labels (chart title higher to avoid overlap with y=1.00)
   ctx.fillStyle = "rgba(0,0,0,0.85)";
   ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
-  ctx.fillText(t.chartTitle, 18, 24);
+  ctx.fillText(t.chartTitle, 18, 8);
 
   // y label ticks
   ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
@@ -570,10 +647,9 @@ function drawPlot(selected, weightKg){
   ctx.fillStyle = "rgba(0,0,0,0.80)";
   ctx.fillText(`${t.patient}: ${weightKg.toFixed(1)} kg`, lx+40, ly+64);
 
-  // note under plot
+  // note under plot (no X/Y range text per plan)
   const note = document.getElementById("plotNote");
-  const rangeText = currentLang === 'tr' ? 'aralığı' : 'range';
-  note.textContent = `X ${rangeText}: ${xMin.toFixed(1)}–${xMax.toFixed(1)} kg • Y ${rangeText}: ${yMin.toFixed(1)}–${yMax.toFixed(1)}`;
+  if (note) note.textContent = "";
 }
 
 function buildSummary(selected, weightKg){
@@ -663,22 +739,62 @@ function buildTable(selectedKey, weightKg){
 function refresh(){
   const selected = getSelectedFilter();
   const selectedKey = keyOf(selected);
-
-  const wRaw = document.getElementById("weightInput").value;
-  let w = parseFloat(wRaw);
-  if (!Number.isFinite(w)) w = 8;
-  w = clamp(w, 0.5, 200);
+  const w = parseWeight(document.getElementById("weightInput").value);
 
   buildSummary(selected, w);
   drawPlot(selected, w);
   buildTable(selectedKey, w);
 }
 
+function openModal(message) {
+  document.getElementById("modalBody").innerHTML = message;
+  document.getElementById("modalOverlay").classList.add("open");
+  document.getElementById("modalOverlay").setAttribute("aria-hidden", "false");
+}
+
+function closeModal() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  document.getElementById("modalOverlay").setAttribute("aria-hidden", "true");
+  if (!hasCalculated) {
+    hasCalculated = true;
+    document.getElementById("resultsSection").classList.add("visible");
+    refresh();
+  }
+}
+
+function onCalculate() {
+  const w = parseWeight(document.getElementById("weightInput").value);
+  const selected = getSelectedFilter();
+  const dMid = dilutionCoeff(w, selected.ecbv, (VKAN_LOW + VKAN_HIGH) / 2);
+  const dropPct = (1 - dMid) * 100;
+  const t = translations[currentLang];
+  const msg = (t.popupMessage || "")
+    .replace("{set}", keyOf(selected))
+    .replace("{kg}", w.toFixed(1))
+    .replace("{pct}", dropPct.toFixed(1))
+    .replace("{coeff}", dMid.toFixed(3));
+  openModal(msg);
+}
+
 function wireUp(){
   buildSelect();
-  document.getElementById("filterSelect").addEventListener("change", refresh);
-  document.getElementById("weightInput").addEventListener("input", refresh);
-  refresh();
+  const weightInput = document.getElementById("weightInput");
+  const filterSelect = document.getElementById("filterSelect");
+  weightInput.placeholder = translations[currentLang].weightPlaceholder || "örn. 8 veya 3500";
+
+  filterSelect.addEventListener("change", function() {
+    if (hasCalculated) refresh();
+  });
+  weightInput.addEventListener("input", function() {
+    if (hasCalculated) refresh();
+  });
+
+  document.getElementById("btnCalculate").addEventListener("click", onCalculate);
+  document.getElementById("modalClose").addEventListener("click", closeModal);
+  document.getElementById("modalOk").addEventListener("click", closeModal);
+  document.getElementById("modalOverlay").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+  });
 }
 
 // Canvas helper: rounded rect (modern browsers)
@@ -699,3 +815,9 @@ wireUp();
 </script>
 </body>
 </html>
+
+
+<!--
+cd FTPServer 
+python upload_all_from_lscfile.py --only-changed
+-->

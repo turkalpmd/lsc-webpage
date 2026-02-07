@@ -132,3 +132,10 @@ Detaylı dokümantasyon için `FTPServer/README.md` dosyasına bakın.
 - Şifre ve kullanıcı adı bilgileri kod içinde saklanmaktadır. Üretim ortamında bu bilgileri environment variable veya config dosyasından okumanız önerilir.
 - `.ftpgit` klasörü Git'teki `.git` klasörü gibi çalışır ve otomatik oluşturulur.
 - Sadece değişen dosyalar push edilir, bu sayede zaman ve bant genişliği tasarrufu sağlanır.
+
+
+
+For all pushing:
+
+cd FTPServer 
+python upload_all_from_lscfile.py --only-changed
