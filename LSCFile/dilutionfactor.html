@@ -471,12 +471,12 @@ function drawPlot(selected, weightKg){
   const W = canvas.width, H = canvas.height;
   ctx.clearRect(0,0,W,H);
 
-  // chart area
-  const pad = { l: 90, r: 24, t: 40, b: 70 };
+  // chart area (extra top padding so "Dilution coefficient" label stays inside)
+  const pad = { l: 90, r: 24, t: 56, b: 70 };
   const cw = W - pad.l - pad.r;
   const ch = H - pad.t - pad.b;
 
-  const xMin = Math.max(3, weightKg - 5);
+  const xMin = Math.max(1, weightKg - 5);
   const xMax = weightKg + 10;
   const yMin = 0.5;
   const yMax = 1.0;
@@ -522,10 +522,11 @@ function drawPlot(selected, weightKg){
   ctx.lineTo(pad.l+cw, pad.t+ch);
   ctx.stroke();
 
-  // axis labels (chart title higher to avoid overlap with y=1.00)
+  // axis labels: "Dilution coefficient" in top band, clear of y=1.00
   ctx.fillStyle = "rgba(0,0,0,0.85)";
   ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
-  ctx.fillText(t.chartTitle, 18, 8);
+  ctx.textBaseline = "top";
+  ctx.fillText(t.chartTitle, 18, 12);
 
   // y label ticks
   ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
@@ -548,12 +549,11 @@ function drawPlot(selected, weightKg){
   ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
   ctx.fillText(t.patientWeight, pad.l + cw/2, pad.t+ch+42);
 
-  // title
+  // title (dynamic range + set name)
   ctx.font = "18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
   ctx.textAlign = "left";
-  ctx.textBaseline = "top";
   const title = `${xMin.toFixed(0)}–${xMax.toFixed(0)} kg (${currentLang === 'tr' ? 'dinamik' : 'dynamic'}): ${keyOf(selected)} (ECBV=${selected.ecbv} mL)`;
-  ctx.fillText(title, pad.l, 10);
+  ctx.fillText(title, pad.l, 32);
 
   // compute curves
   const N = 400;
@@ -599,6 +599,19 @@ function drawPlot(selected, weightKg){
   ctx.lineTo(xToPx(weightKg), pad.t+ch);
   ctx.stroke();
   ctx.setLineDash([]);
+
+  // red dot at (patient weight, mean dilution coefficient)
+  const dMidPatient = dilutionCoeff(weightKg, selected.ecbv, (VKAN_LOW + VKAN_HIGH) / 2);
+  const dotX = xToPx(weightKg);
+  const dotY = yToPx(dMidPatient);
+  const dotR = 6;
+  ctx.fillStyle = "#dc2626";
+  ctx.strokeStyle = "rgba(0,0,0,0.4)";
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.arc(dotX, dotY, dotR, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
 
   // legend (simple)
   const legendW = 340;
