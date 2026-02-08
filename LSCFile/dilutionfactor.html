@@ -244,9 +244,9 @@
                   <th data-i18n="thFirm">Firm</th>
                   <th data-i18n="thHemofilter">Hemofilter</th>
                   <th style="text-align:right" data-i18n="thECBV">ECBV (mL)</th>
-                  <th style="text-align:right" data-i18n="thDilutionRange">Dilüsyon (75–85)</th>
-                  <th style="text-align:right" data-i18n="thDilutionMid">Dilüsyon (orta)</th>
-                  <th style="text-align:right" data-i18n="thDilution">Seyrelme (orta, %)</th>
+                  <th style="text-align:right" data-i18n="thDilutionRange">Dilution Coef (75–85)</th>
+                  <th style="text-align:right" data-i18n="thDilutionMid">Dilution Coef (orta)</th>
+                  <th style="text-align:right" data-i18n="thDilution">Dilution (%)</th>
                 </tr>
               </thead>
               <tbody id="tableBody"></tbody>
@@ -290,18 +290,21 @@ const translations = {
     thFirm: 'Firm',
     thHemofilter: 'Hemofilter',
     thECBV: 'ECBV (mL)',
-    thDilutionRange: 'Dilüsyon (75–85)',
-    thDilutionMid: 'Dilüsyon (orta)',
-    thDilution: 'Seyrelme (orta, %)',
+    thDilutionRange: 'Dilution Coef (75–85)',
+    thDilutionMid: 'Dilution Coef (orta)',
+    thDilution: 'Dilution (%)',
     selectedSet: 'Seçilen set',
     vkanRange: 'Vkan aralığı (mL)',
     dilutionCoeff: 'Dilüsyon katsayısı',
     midValue: 'Orta (80 mL/kg)',
     midDilution: 'Orta seyrelme (%)',
     chartTitle: 'Dilüsyon katsayısı',
+    chartTitlePct: 'Seyrelme (%)',
     patientWeight: 'Hasta ağırlığı (kg)',
     vkanUncertainty: 'Vkan belirsizliği',
     midLine: 'Orta çizgi: 80 mL/kg',
+    legendRibbon: 'Vkan 75–85 mL/kg',
+    legendDilutionCoef: 'Dilution Coef (80 mL/kg)',
     patient: 'Hasta',
     primeInfused: 'Prime infused',
   },
@@ -325,18 +328,21 @@ const translations = {
     thFirm: 'Firm',
     thHemofilter: 'Hemofilter',
     thECBV: 'ECBV (mL)',
-    thDilutionRange: 'Dilution (75–85)',
-    thDilutionMid: 'Dilution (mid)',
-    thDilution: 'Dilution (mid, %)',
+    thDilutionRange: 'Dilution Coef (75–85)',
+    thDilutionMid: 'Dilution Coef (mid)',
+    thDilution: 'Dilution (%)',
     selectedSet: 'Selected set',
     vkanRange: 'Vblood range (mL)',
     dilutionCoeff: 'Dilution coefficient',
     midValue: 'Mid (80 mL/kg)',
     midDilution: 'Mid dilution (%)',
     chartTitle: 'Dilution coefficient',
+    chartTitlePct: 'Dilution (%)',
     patientWeight: 'Patient weight (kg)',
     vkanUncertainty: 'Vblood uncertainty',
     midLine: 'Mid line: 80 mL/kg',
+    legendRibbon: 'Vblood 75–85 mL/kg',
+    legendDilutionCoef: 'Dilution Coef (80 mL/kg)',
     patient: 'Patient',
     primeInfused: 'Prime infused',
   }
@@ -476,10 +482,10 @@ function drawPlot(selected, weightKg){
   const cw = W - pad.l - pad.r;
   const ch = H - pad.t - pad.b;
 
-  const xMin = Math.max(1, weightKg - 5);
+  const xMin = 0;
   const xMax = weightKg + 10;
-  const yMin = 0.5;
-  const yMax = 1.0;
+  const yMin = 0;
+  const yMax = 100;  // Y = seyrelme (dilution) %, max 100%
 
   const xToPx = (x) => pad.l + ( (x - xMin) / (xMax - xMin) ) * cw;
   const yToPx = (y) => pad.t + (1 - ( (y - yMin) / (yMax - yMin) )) * ch;
@@ -522,20 +528,20 @@ function drawPlot(selected, weightKg){
   ctx.lineTo(pad.l+cw, pad.t+ch);
   ctx.stroke();
 
-  // axis labels: "Dilution coefficient" in top band, clear of y=1.00
+  // axis labels: Seyrelme (%) / Dilution (%)
   ctx.fillStyle = "rgba(0,0,0,0.85)";
   ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
   ctx.textBaseline = "top";
-  ctx.fillText(t.chartTitle, 18, 12);
+  ctx.fillText(t.chartTitlePct || 'Seyrelme (%)', 18, 12);
 
-  // y label ticks
+  // y label ticks (0% to 100%)
   ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
   ctx.textAlign = "right";
   ctx.textBaseline = "middle";
   for (let i=0;i<=yTicks;i++){
     const y = yMin + (i/yTicks)*(yMax-yMin);
     const py = yToPx(y);
-    ctx.fillText(y.toFixed(2), pad.l-10, py);
+    ctx.fillText(y.toFixed(0) + "%", pad.l-10, py);
   }
 
   // x label ticks
@@ -549,13 +555,7 @@ function drawPlot(selected, weightKg){
   ctx.font = "16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
   ctx.fillText(t.patientWeight, pad.l + cw/2, pad.t+ch+42);
 
-  // title (dynamic range + set name)
-  ctx.font = "18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
-  ctx.textAlign = "left";
-  const title = `${xMin.toFixed(0)}–${xMax.toFixed(0)} kg (${currentLang === 'tr' ? 'dinamik' : 'dynamic'}): ${keyOf(selected)} (ECBV=${selected.ecbv} mL)`;
-  ctx.fillText(title, pad.l, 32);
-
-  // compute curves
+  // compute curves: Y = seyrelme % = (1 - coefficient) * 100
   const N = 400;
   const xs = [];
   for (let i=0;i<N;i++){
@@ -564,28 +564,31 @@ function drawPlot(selected, weightKg){
   const yLow = xs.map(x => dilutionCoeff(x, selected.ecbv, VKAN_LOW));
   const yHigh = xs.map(x => dilutionCoeff(x, selected.ecbv, VKAN_HIGH));
   const yMid = xs.map(x => dilutionCoeff(x, selected.ecbv, (VKAN_LOW+VKAN_HIGH)/2));
+  const pctLow = xs.map((_, i) => (1 - yHigh[i]) * 100);
+  const pctHigh = xs.map((_, i) => (1 - yLow[i]) * 100);
+  const pctMid = xs.map((_, i) => (1 - yMid[i]) * 100);
 
-  // ribbon fill
+  // ribbon fill (seyrelme % band)
   ctx.save();
   ctx.beginPath();
   for (let i=0;i<N;i++){
-    ctx.lineTo(xToPx(xs[i]), yToPx(yLow[i]));
+    ctx.lineTo(xToPx(xs[i]), yToPx(pctLow[i]));
   }
   for (let i=N-1;i>=0;i--){
-    ctx.lineTo(xToPx(xs[i]), yToPx(yHigh[i]));
+    ctx.lineTo(xToPx(xs[i]), yToPx(pctHigh[i]));
   }
   ctx.closePath();
   ctx.fillStyle = "rgba(122,162,255,0.18)";
   ctx.fill();
   ctx.restore();
 
-  // mid line
-  ctx.strokeStyle = "rgba(122,162,255,0.95)";
+  // mid line: seyrelme % (mavi çizgi, x=0'dan başlar)
+  ctx.strokeStyle = "#2563eb";
   ctx.lineWidth = 3;
   ctx.beginPath();
   for (let i=0;i<N;i++){
     const px = xToPx(xs[i]);
-    const py = yToPx(yMid[i]);
+    const py = yToPx(pctMid[i]);
     if (i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
   }
   ctx.stroke();
@@ -600,10 +603,11 @@ function drawPlot(selected, weightKg){
   ctx.stroke();
   ctx.setLineDash([]);
 
-  // red dot at (patient weight, mean dilution coefficient)
+  // dot at (patient weight, seyrelme %) + üzerinde oran yazısı (siyah, 18px)
   const dMidPatient = dilutionCoeff(weightKg, selected.ecbv, (VKAN_LOW + VKAN_HIGH) / 2);
+  const pctPatient = (1 - dMidPatient) * 100;
   const dotX = xToPx(weightKg);
-  const dotY = yToPx(dMidPatient);
+  const dotY = yToPx(pctPatient);
   const dotR = 6;
   ctx.fillStyle = "#dc2626";
   ctx.strokeStyle = "rgba(0,0,0,0.4)";
@@ -612,53 +616,13 @@ function drawPlot(selected, weightKg){
   ctx.arc(dotX, dotY, dotR, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
-
-  // legend (simple)
-  const legendW = 340;
-  const legendH = 92;
-  const legendMargin = 12;
-  const lx = pad.l + cw - legendW - legendMargin;
-  const ly = pad.t + ch - legendH - legendMargin;
-  ctx.fillStyle = "rgba(255,255,255,0.90)";
-  ctx.strokeStyle = "rgba(0,0,0,0.10)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.roundRect(lx, ly, legendW, legendH, 14);
-  ctx.fill();
-  ctx.stroke();
-
-  // items
-  ctx.font = "13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
-  ctx.fillStyle = "rgba(0,0,0,0.80)";
-  // ribbon key
-  ctx.fillStyle = "rgba(122,162,255,0.18)";
-  ctx.fillRect(lx+12, ly+16, 18, 12);
-  ctx.strokeStyle = "rgba(122,162,255,0.65)";
-  ctx.strokeRect(lx+12, ly+16, 18, 12);
-  ctx.fillStyle = "rgba(0,0,0,0.80)";
-  ctx.fillText(`${t.vkanUncertainty}: ${VKAN_LOW}–${VKAN_HIGH} mL/kg (ribbon)`, lx+40, ly+14);
-
-  // line key
-  ctx.strokeStyle = "rgba(122,162,255,0.95)";
-  ctx.lineWidth = 3;
-  ctx.beginPath();
-  ctx.moveTo(lx+12, ly+44);
-  ctx.lineTo(lx+30, ly+44);
-  ctx.stroke();
-  ctx.fillStyle = "rgba(0,0,0,0.80)";
-  ctx.fillText(t.midLine, lx+40, ly+38);
-
-  // patient line key
-  ctx.strokeStyle = "rgba(0,0,0,0.60)";
-  ctx.lineWidth = 2;
-  ctx.setLineDash([8,6]);
-  ctx.beginPath();
-  ctx.moveTo(lx+12, ly+70);
-  ctx.lineTo(lx+30, ly+70);
-  ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle = "rgba(0,0,0,0.80)";
-  ctx.fillText(`${t.patient}: ${weightKg.toFixed(1)} kg`, lx+40, ly+64);
+  ctx.fillStyle = "#000000";
+  ctx.font = "18px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+  ctx.textAlign = "left";
+  ctx.textBaseline = "middle";
+  const labelX = dotX + dotR + 22;
+  const labelY = dotY - 14;
+  ctx.fillText(pctPatient.toFixed(1) + "%", labelX, labelY);
 
   // note under plot (no X/Y range text per plan)
   const note = document.getElementById("plotNote");
