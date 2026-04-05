@@ -1,10 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Support Center</title>
+    <title>Digital Health &amp; AI on Critical Care — Life Support Center</title>
     
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
@@ -47,7 +48,7 @@
 
 	<script src="https://www.google.com/recaptcha/api.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
 	
 	<style>
 	.btn {
@@ -63,7 +64,6 @@
       align-content: center;
 	}
 
-	/* Darker background on mouse-over */
 	.btn:hover {
 	  background-color: RoyalBlue;
 	}
@@ -72,7 +72,534 @@
       justify-content: center;
       align-content: center;
       margin: 0;
-    }	
+    }
+
+	.page-ai-med { scroll-behavior: smooth; }
+	@media (prefers-reduced-motion: reduce) {
+		.page-ai-med { scroll-behavior: auto; }
+	}
+
+	/* AI Lab — elevated dark skin */
+	.ai-skin {
+		font-family: "Outfit", "DM Sans", system-ui, sans-serif;
+		color: #cbd5e1;
+		background:
+			radial-gradient(ellipse 90% 60% at 100% 0%, rgba(99, 102, 241, 0.18), transparent 50%),
+			radial-gradient(ellipse 70% 50% at 0% 100%, rgba(6, 182, 212, 0.12), transparent 50%),
+			linear-gradient(168deg, #03060c 0%, #0a0f1c 38%, #0c1428 100%);
+		border-radius: 28px;
+		padding: 2.25rem 1.85rem 2.5rem;
+		margin-bottom: 2rem;
+		box-shadow:
+			0 0 0 1px rgba(56, 189, 248, 0.14),
+			0 32px 80px rgba(0, 0, 0, 0.55),
+			inset 0 1px 0 rgba(255, 255, 255, 0.04);
+		position: relative;
+		overflow: hidden;
+	}
+	.ai-skin::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+			linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+		background-size: 32px 32px;
+		mask-image: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 75%);
+		pointer-events: none;
+	}
+	.ai-skin::after {
+		content: "";
+		position: absolute;
+		width: 140%;
+		height: 60%;
+		left: -20%;
+		bottom: -35%;
+		background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.08) 0%, transparent 65%);
+		pointer-events: none;
+		animation: ai-aurora 14s ease-in-out infinite;
+	}
+	@keyframes ai-aurora {
+		0%, 100% { opacity: 0.6; transform: translateX(0) scale(1); }
+		50% { opacity: 1; transform: translateX(4%) scale(1.03); }
+	}
+	.ai-skin > * { position: relative; z-index: 1; }
+	.page-ai-med .ai-page h1,
+	.page-ai-med .ai-page h2,
+	.page-ai-med .ai-page h3,
+	.page-ai-med .ai-page .font-syne {
+		font-family: "Syne", system-ui, sans-serif;
+	}
+	.ai-skin .icerik_baslik.ai-title {
+		font-family: "Syne", sans-serif;
+		font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+		font-weight: 700;
+		margin-bottom: 1.75rem;
+		text-align: center;
+		letter-spacing: -0.03em;
+		line-height: 1.25;
+	}
+	.ai-skin .icerik_baslik.ai-title b {
+		background: linear-gradient(105deg, #f0f9ff 0%, #38bdf8 40%, #818cf8 85%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+	.ai-skin .ai-title-sub {
+		display: block;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.68rem;
+		font-weight: 500;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #64748b;
+		margin-top: 0.65rem;
+	}
+	.ai-jump {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.45rem;
+		margin-bottom: 1.75rem;
+	}
+	.ai-jump a {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.65rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: #94a3b8;
+		text-decoration: none;
+		padding: 0.4rem 0.75rem;
+		border-radius: 999px;
+		border: 1px solid rgba(148, 163, 184, 0.2);
+		background: rgba(15, 23, 42, 0.45);
+		transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+	}
+	.ai-jump a:hover,
+	.ai-jump a:focus {
+		color: #e0f2fe;
+		border-color: rgba(56, 189, 248, 0.45);
+		background: rgba(56, 189, 248, 0.1);
+		outline: none;
+	}
+	.ai-hero {
+		position: relative;
+		border-radius: 20px;
+		overflow: hidden;
+		background: linear-gradient(145deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.45) 100%);
+		border: 1px solid rgba(56, 189, 248, 0.22);
+		color: #f8fafc;
+		padding: 1.85rem 1.65rem;
+		margin-bottom: 1.5rem;
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	}
+	.ai-hero::before {
+		content: "";
+		position: absolute;
+		top: 0; right: 0;
+		width: 55%;
+		height: 100%;
+		background: radial-gradient(ellipse at 100% 0%, rgba(56, 189, 248, 0.12), transparent 55%);
+		pointer-events: none;
+	}
+	.ai-hero-inner { position: relative; z-index: 1; }
+	.ai-hero-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-family: "JetBrains Mono", ui-monospace, monospace;
+		font-size: 0.62rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #22d3ee;
+		border: 1px solid rgba(34, 211, 238, 0.35);
+		padding: 0.4rem 0.7rem;
+		border-radius: 8px;
+		margin-bottom: 1rem;
+		background: rgba(6, 182, 212, 0.1);
+	}
+	.ai-hero-badge .dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #22d3ee;
+		box-shadow: 0 0 10px #22d3ee;
+		animation: ai-pulse 2s ease-in-out infinite;
+	}
+	@keyframes ai-pulse {
+		0%, 100% { opacity: 1; transform: scale(1); }
+		50% { opacity: 0.5; transform: scale(0.85); }
+	}
+	.ai-hero h2 {
+		font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+		font-weight: 800;
+		line-height: 1.2;
+		margin-bottom: 0.75rem;
+		letter-spacing: -0.035em;
+		color: #f8fafc;
+	}
+	.ai-hero-meta {
+		font-size: 0.98rem;
+		line-height: 1.7;
+		color: #94a3b8;
+		margin: 0 0 1.1rem;
+		max-width: 36rem;
+	}
+	.ai-hero-meta strong { color: #e2e8f0; font-weight: 600; }
+	.ai-hero-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.45rem;
+	}
+	.ai-chip {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.62rem;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		color: #a5b4fc;
+		padding: 0.35rem 0.65rem;
+		border-radius: 6px;
+		background: rgba(99, 102, 241, 0.12);
+		border: 1px solid rgba(99, 102, 241, 0.25);
+	}
+	.ai-hero-visual {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		gap: 5px;
+		height: 140px;
+		padding: 0 0.5rem;
+	}
+	.ai-hero-visual .bar {
+		width: 8px;
+		border-radius: 4px;
+		background: linear-gradient(180deg, #38bdf8, #6366f1);
+		transform-origin: bottom center;
+		opacity: 0.85;
+		animation: ai-bar 1.4s ease-in-out infinite;
+		box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+	}
+	.ai-hero-visual .bar:nth-child(1) { height: 32%; animation-delay: 0s; }
+	.ai-hero-visual .bar:nth-child(2) { height: 55%; animation-delay: 0.1s; }
+	.ai-hero-visual .bar:nth-child(3) { height: 78%; animation-delay: 0.2s; }
+	.ai-hero-visual .bar:nth-child(4) { height: 100%; animation-delay: 0.3s; }
+	.ai-hero-visual .bar:nth-child(5) { height: 68%; animation-delay: 0.15s; }
+	.ai-hero-visual .bar:nth-child(6) { height: 42%; animation-delay: 0.25s; }
+	.ai-hero-visual .bar:nth-child(7) { height: 88%; animation-delay: 0.05s; }
+	@keyframes ai-bar {
+		0%, 100% { transform: scaleY(0.45); }
+		50% { transform: scaleY(1); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.ai-skin::after,
+		.ai-hero-badge .dot,
+		.ai-hero-visual .bar { animation: none !important; }
+	}
+	.ai-intro {
+		font-size: 1.02rem;
+		line-height: 1.8;
+		color: #94a3b8;
+		margin-bottom: 1.5rem;
+		max-width: 46rem;
+		font-weight: 400;
+	}
+	.ai-section-wrap {
+		margin-bottom: 2.25rem;
+		scroll-margin-top: 1.25rem;
+	}
+	.ai-section-head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+		margin-bottom: 1.1rem;
+	}
+	.ai-section-num {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.7rem;
+		font-weight: 600;
+		color: #475569;
+		letter-spacing: 0.08em;
+	}
+	.ai-section-title {
+		font-size: 1.08rem;
+		font-weight: 700;
+		color: #f1f5f9;
+		margin: 0;
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		flex: 1;
+		min-width: 0;
+	}
+	.ai-section-title::before {
+		content: "";
+		flex-shrink: 0;
+		width: 3px;
+		height: 1.2em;
+		background: linear-gradient(180deg, #22d3ee, #6366f1);
+		border-radius: 2px;
+		box-shadow: 0 0 14px rgba(34, 211, 238, 0.45);
+	}
+	.ai-scholar-row {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: 1rem;
+	}
+	.ai-scholar-card {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-rows: auto auto auto auto;
+		column-gap: 1rem;
+		row-gap: 0.35rem;
+		align-items: start;
+		padding: 1.25rem 1.3rem;
+		border-radius: 16px;
+		background: rgba(15, 23, 42, 0.55);
+		border: 1px solid rgba(99, 102, 241, 0.22);
+		text-decoration: none;
+		color: #e2e8f0;
+		transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+		position: relative;
+		overflow: hidden;
+	}
+	.ai-scholar-card::before {
+		content: "";
+		position: absolute;
+		top: 0; left: 0; right: 0;
+		height: 3px;
+		background: linear-gradient(90deg, #22d3ee, #6366f1);
+		opacity: 0;
+		transition: opacity 0.25s ease;
+	}
+	.ai-scholar-card:hover::before,
+	.ai-scholar-card:focus-visible::before { opacity: 1; }
+	.ai-scholar-card:hover,
+	.ai-scholar-card:focus-visible {
+		border-color: rgba(56, 189, 248, 0.5);
+		box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+		transform: translateY(-3px);
+		color: #f8fafc;
+		text-decoration: none;
+		outline: none;
+	}
+	.ai-scholar-card .scholar-icon {
+		grid-column: 1;
+		grid-row: 1 / span 4;
+		align-self: start;
+		width: 48px;
+		height: 48px;
+		border-radius: 12px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(145deg, rgba(56, 189, 248, 0.2), rgba(99, 102, 241, 0.25));
+		border: 1px solid rgba(56, 189, 248, 0.25);
+		color: #7dd3fc;
+		font-size: 1.15rem;
+	}
+	.ai-scholar-card .label {
+		grid-column: 2;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.6rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #64748b;
+	}
+	.ai-scholar-card .name {
+		grid-column: 2;
+		font-weight: 700;
+		font-size: 1.02rem;
+		font-family: "Syne", sans-serif;
+		letter-spacing: -0.02em;
+	}
+	.ai-scholar-card .hint {
+		grid-column: 2;
+		font-size: 0.82rem;
+		color: #94a3b8;
+		line-height: 1.5;
+	}
+	.ai-scholar-card .go {
+		grid-column: 2;
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: #38bdf8;
+		margin-top: 0.15rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+	}
+	.ai-scholar-card:hover .go { color: #bae6fd; }
+	.ai-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+		gap: 1rem;
+	}
+	.ai-theme-card {
+		position: relative;
+		background: rgba(15, 23, 42, 0.42);
+		border: 1px solid rgba(148, 163, 184, 0.12);
+		border-radius: 16px;
+		padding: 1.35rem 1.3rem 1.3rem 1.3rem;
+		transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+		height: 100%;
+	}
+	.ai-theme-card:nth-child(1) { animation-delay: 0.05s; }
+	.ai-theme-card:nth-child(2) { animation-delay: 0.1s; }
+	.ai-theme-card:nth-child(3) { animation-delay: 0.15s; }
+	.ai-theme-card:hover {
+		border-color: rgba(56, 189, 248, 0.28);
+		box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+		transform: translateY(-3px);
+	}
+	.ai-theme-icon {
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 0.85rem;
+		font-size: 1rem;
+		color: #38bdf8;
+		background: rgba(56, 189, 248, 0.1);
+		border: 1px solid rgba(56, 189, 248, 0.2);
+	}
+	.ai-theme-label {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.6rem;
+		font-weight: 600;
+		letter-spacing: 0.11em;
+		text-transform: uppercase;
+		color: #94a3b8;
+		margin-bottom: 0.4rem;
+	}
+	.ai-theme-card h3 {
+		font-family: "Syne", sans-serif;
+		font-size: 1rem;
+		font-weight: 700;
+		color: #f1f5f9;
+		margin: 0 0 0.55rem;
+		line-height: 1.3;
+		letter-spacing: -0.02em;
+	}
+	.ai-theme-card p {
+		font-size: 0.87rem;
+		color: #94a3b8;
+		line-height: 1.65;
+		margin: 0;
+	}
+	.ai-advisory {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		background: rgba(30, 41, 59, 0.45);
+		border: 1px solid rgba(99, 102, 241, 0.22);
+		border-radius: 16px;
+		padding: 1.25rem 1.4rem;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		color: #94a3b8;
+	}
+	.ai-advisory .ai-advisory-icon {
+		flex-shrink: 0;
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		background: rgba(129, 140, 248, 0.15);
+		border: 1px solid rgba(129, 140, 248, 0.25);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #a5b4fc;
+	}
+	.ai-advisory strong { color: #e2e8f0; }
+	.ai-team .ai-person {
+		margin-bottom: 1.25rem;
+	}
+	.ai-team .card {
+		border: 1px solid rgba(56, 189, 248, 0.14);
+		border-radius: 16px;
+		overflow: hidden;
+		background: rgba(15, 23, 42, 0.35);
+		transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+	}
+	.ai-team .card:hover {
+		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+		border-color: rgba(56, 189, 248, 0.38);
+		transform: translateY(-2px);
+	}
+	.ai-team .card-img-wrap {
+		position: relative;
+		overflow: hidden;
+		aspect-ratio: 1;
+		background: #0f172a;
+	}
+	.ai-team .card-img-wrap::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(180deg, transparent 55%, rgba(3, 6, 12, 0.75) 100%);
+		opacity: 0.85;
+		pointer-events: none;
+	}
+	.ai-team .card-img-top {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.5s ease;
+	}
+	.ai-team .card:hover .card-img-top { transform: scale(1.05); }
+	.ai-team .card-footer {
+		background: rgba(12, 18, 32, 0.92) !important;
+		border-top: 1px solid rgba(148, 163, 184, 0.1) !important;
+		padding: 1rem 0.85rem !important;
+	}
+	.ai-team .card-subtitle { color: #cbd5e1 !important; margin: 0 !important; }
+	.ai-team .ai-role {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 0.58rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #64748b;
+		margin-bottom: 0.35rem;
+	}
+	.ai-scholar {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		margin-top: 0.5rem;
+		font-size: 0.74rem;
+		font-weight: 600;
+		color: #38bdf8;
+		text-decoration: none;
+	}
+	.ai-scholar i { font-size: 0.7rem; opacity: 0.85; }
+	.ai-scholar:hover { color: #bae6fd; text-decoration: none; }
+	@media (max-width: 991px) {
+		.ai-hero-visual { height: 100px; margin-top: 1rem; }
+	}
+	@media (max-width: 576px) {
+		.ai-skin { padding: 1.5rem 1.15rem; border-radius: 22px; }
+		.ai-hero { padding: 1.4rem 1.15rem; }
+		.ai-jump { justify-content: flex-start; }
+		.ai-scholar-card {
+			grid-template-columns: 1fr;
+			padding: 1.15rem 1.15rem;
+		}
+		.ai-scholar-card .scholar-icon {
+			grid-column: 1;
+			grid-row: auto;
+			margin-bottom: 0.35rem;
+		}
+		.ai-scholar-card .label,
+		.ai-scholar-card .name,
+		.ai-scholar-card .hint,
+		.ai-scholar-card .go { grid-column: 1; }
+	}
 	</style>	
 
 
@@ -80,7 +607,7 @@
 
 </head>
 
-<body>
+<body class="page-ai-med">
 <!--ust-->
 <div class="container-fluid ust">
     <div class="container">
@@ -169,157 +696,180 @@
 
 
 
-    <div class="icerik_baslik"><center><b>Digital Health and Artificial Intelligence on Critical Care</b></center></div>
+        <div class="mb-5 ai-page ai-skin">
 
-        <div class="mb-5 text-justify">
+            <header class="text-center">
+                <div class="icerik_baslik ai-title"><b>Digital Health and Artificial Intelligence on Critical Care</b><span class="ai-title-sub">Yaşam Desteği · Araştırma laboratuvarı</span></div>
+            </header>
 
-            
-        <div class="row justify-content-center">
-            
-            <!--<div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="bbenan.html"><img class="card-img-top"
-                         src="images/bbbigsqr.jpg"
-                         alt="B_Benan"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Ptof. Benan Bayrakci
-                                    <br>
-                                    Hacettepe University
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
-                </div>
-            </div> -->            
-                                    
-        <div class="row justify-content-center">
-                    <!-- ayr��ma-->
+            <nav class="ai-jump" aria-label="Sayfa bölümleri">
+                <a href="#scholar">01 · Scholar</a>
+                <a href="#themes">02 · Alanlar</a>
+                <a href="#advisory">03 · Danışma</a>
+                <a href="#team">04 · Ekip</a>
+            </nav>
 
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="https://turkalpmd.com/"><img class="card-img-top"
-                         src="images/turkalpmd.jpg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Dr. Izzet Turkalp Akbasli
-                                    <br>
-                                    Hacettepe University
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
+            <div class="ai-hero">
+                <div class="row align-items-center">
+                    <div class="col-lg-7">
+                        <div class="ai-hero-inner">
+                            <span class="ai-hero-badge"><span class="dot" aria-hidden="true"></span> DHAI · Critical Care</span>
+                            <h2>Sağlıkta yapay zekâ: neyi hedefliyoruz?</h2>
+                            <p class="ai-hero-meta">Bu sayfa, <strong>Digital Health and Artificial Intelligence on Critical Care</strong> laboratuvarının odağını özetler. Güncel yayınlar ve atıflar için <strong>Google Scholar</strong> profillerine gidin; burada ise çalışma hatlarını tek bakışta görebilirsiniz.</p>
+                            <div class="ai-hero-tags" aria-hidden="true">
+                                <span class="ai-chip">Tele-PICU</span>
+                                <span class="ai-chip">Zaman serisi</span>
+                                <span class="ai-chip">MLOps</span>
+                                <span class="ai-chip">Klinik NLP</span>
+                                <span class="ai-chip">Karar destek</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 d-none d-lg-flex justify-content-lg-end">
+                        <div class="ai-hero-visual" role="presentation" aria-hidden="true">
+                            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            
 
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="ai_med.html"><img class="card-img-top"
-                         src="images/oguzhanserin.jpeg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Dr. Oguzhan Serin
-                                    <br>
-                                    Ankara TRH
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
+            <p class="ai-intro text-left">Çocuk yoğun bakımda veri ve yapay zekâ ile klinik karar destek; uzaktan izleme; klinik metin ve sinyal verisinde modelleme; güvenilir model operasyonları ve klinikte test edilebilir prototipler üzerinde çalışıyoruz.</p>
+
+            <section id="scholar" class="ai-section-wrap" aria-labelledby="scholar-heading">
+                <div class="ai-section-head">
+                    <h3 id="scholar-heading" class="ai-section-title">Yayınlar ve akademik profiller</h3>
+                    <span class="ai-section-num">Google Scholar</span>
                 </div>
-            </div>              
-        </div>
-        <div class="row justify-content-center">
-            
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="https://my.clevelandclinic.org/staff/19832-orkun-baloglu"><img class="card-img-top"
-                         src="images/orkunbaloglu.jpg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Dr. Orkun Baloglu
-                                    <br>
-                                    Cleveland Clinic
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
+                <div class="ai-scholar-row">
+                    <a class="ai-scholar-card" href="https://scholar.google.com.tr/citations?user=oLZEaB8AAAAJ" target="_blank" rel="noopener">
+                        <span class="scholar-icon" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="label">Akademik profil</span>
+                        <span class="name">Dr. İzzet Türkalp Akbaşlı</span>
+                        <span class="hint">Tele-PICU, yoğun bakım monitorizasyonu, zaman serisi, MLOps, klinik dil modelleri ve klinik yapay zekâ uygulamaları.</span>
+                        <span class="go">Profili aç <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                    <a class="ai-scholar-card" href="https://scholar.google.com.tr/citations?user=HOZuR4YAAAAJ&amp;hl=tr" target="_blank" rel="noopener">
+                        <span class="scholar-icon" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="label">Akademik profil</span>
+                        <span class="name">Dr. Oğuzhan Serin</span>
+                        <span class="hint">Dijital sağlık, klinik metinlerde NLP, sağlık teknolojileri değerlendirmesi ve yapay zekâ yönetişimi.</span>
+                        <span class="go">Profili aç <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="themes" class="ai-section-wrap" aria-labelledby="themes-heading">
+                <div class="ai-section-head">
+                    <h3 id="themes-heading" class="ai-section-title">Çalışma alanları ve projeler</h3>
+                    <span class="ai-section-num">Özet</span>
+                </div>
+                <div class="ai-grid">
+                    <article class="ai-theme-card">
+                        <div class="ai-theme-icon" aria-hidden="true"><i class="fas fa-heart-pulse"></i></div>
+                        <div class="ai-theme-label">Klinik AI · PICU</div>
+                        <h3>Uzaktan ve yerinde kritik bakım</h3>
+                        <p>Tele-PICU ve çocuk yoğun bakımda izleme; veri akışları ve zaman serisi analizi ile erken uyarı ve karar destek.</p>
+                    </article>
+                    <article class="ai-theme-card">
+                        <div class="ai-theme-icon" aria-hidden="true"><i class="fas fa-wave-square"></i></div>
+                        <div class="ai-theme-label">Sinyal · görüntü · ses</div>
+                        <h3>Klinik sinyallerde yapay zekâ</h3>
+                        <p>Yenidoğan KKH taraması gibi görüntü tabanlı prototipler; akciğer sesi sınıflandırma gibi ses sinyali uygulamaları.</p>
+                    </article>
+                    <article class="ai-theme-card">
+                        <div class="ai-theme-icon" aria-hidden="true"><i class="fas fa-microchip"></i></div>
+                        <div class="ai-theme-label">MLOps · LLM</div>
+                        <h3>Güvenilir model yaşam döngüsü</h3>
+                        <p>MLOps; klinik bağlamda dil modelleri ve klinik metinlerle çalışan yapay zekâ bileşenleri.</p>
+                    </article>
+                    <article class="ai-theme-card">
+                        <div class="ai-theme-icon" aria-hidden="true"><i class="fas fa-clone"></i></div>
+                        <div class="ai-theme-label">Dijital ikiz</div>
+                        <h3>Simülasyon ve karar destek</h3>
+                        <p>Dijital ikiz ve simülasyonun klinik karar destek ve eğitim senaryolarıyla birlikte düşünülmesi.</p>
+                    </article>
+                    <article class="ai-theme-card">
+                        <div class="ai-theme-icon" aria-hidden="true"><i class="fas fa-network-wired"></i></div>
+                        <div class="ai-theme-label">Dijital sağlık</div>
+                        <h3>Entegrasyon ve yönetişim</h3>
+                        <p>Sağlık teknolojilerinin değerlendirilmesi; yapay zekânın klinik süreçlere entegrasyonu ve yönetişimi.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="advisory" class="ai-section-wrap" aria-labelledby="advisory-heading">
+                <div class="ai-section-head">
+                    <h3 id="advisory-heading" class="ai-section-title">Danışma kurulu</h3>
+                    <span class="ai-section-num">Johns Hopkins</span>
+                </div>
+                <div class="ai-advisory">
+                    <div class="ai-advisory-icon" aria-hidden="true"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <strong>Prof. Jim Fackler</strong> — Professor of Anesthesiology and Critical Care Medicine, Johns Hopkins University. Danışma kurulumuzda yer alır; çocuk yoğun bakımda klinik bilgi sistemleri ve veri odaklı karar destek alanında projelere danışmanlık sağlar.
+                    </div>
+                </div>
+            </section>
+
+            <section id="team" class="ai-section-wrap" aria-labelledby="team-heading">
+                <div class="ai-section-head">
+                    <h3 id="team-heading" class="ai-section-title">Ekip</h3>
+                    <span class="ai-section-num">LSC · DHAI</span>
+                </div>
+                <div class="row justify-content-center ai-team">
+
+            <div class="col-lg-4 col-md-6 ai-person">
+                <div class="card h-100 text-center">
+                    <div class="card-img-wrap">
+                    <a href="https://turkalpmd.com/"><img class="card-img-top" src="images/turkalpmd.jpg" alt="Dr. İzzet Türkalp Akbaşlı" /></a>
+                    </div>
+                    <div class="card-footer text-center" style="font-size: 0.85em;">
+                        <div class="ai-role">Araştırmacı</div>
+                        <b><p class="card-subtitle text-muted">Dr. İzzet Türkalp Akbaşlı<br />Hacettepe Üniversitesi</p></b>
+                        <a class="ai-scholar" href="https://scholar.google.com.tr/citations?user=oLZEaB8AAAAJ" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Google Scholar</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="ai_med.html"><img class="card-img-top"
-                         src="images/ozansqr.jpg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Dr. Ozan Hakverdi
-                                    <br>
-                                    Hacettepe University
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
-                </div>
-            </div>  
-            
-        </div>
-        <div class="row justify-content-center">
-            
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="https://linkedin.com/in/doganvolkan/"><img class="card-img-top"
-                         src="images/volkandogan.jpg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Volkan Do�an MsC
-                                    <br>
-                                    Computer Vision Engineer at Rapsodo, Inc.
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
+
+            <div class="col-lg-4 col-md-6 ai-person">
+                <div class="card h-100 text-center">
+                    <div class="card-img-wrap">
+                    <a href="ai_med.html"><img class="card-img-top" src="images/oguzhanserin.jpeg" alt="Dr. Oğuzhan Serin" /></a>
+                    </div>
+                    <div class="card-footer text-center" style="font-size: 0.85em;">
+                        <div class="ai-role">Araştırmacı</div>
+                        <b><p class="card-subtitle text-muted">Dr. Oğuzhan Serin<br />Hacettepe Üniversitesi</p></b>
+                        <a class="ai-scholar" href="https://scholar.google.com.tr/citations?user=HOZuR4YAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Google Scholar</a>
+                    </div>
                 </div>
             </div>
-            
-            <div class="mb-3 col-lg-4">
-                <div class="card h-100 text-center"> <a href="ai_med.html"><img class="card-img-top"
-                         src="images/ai.jpg"
-                         alt="ai_med"></a>
-                    <div class="card-footer"
-                          style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                        <center>
-                            <b>
-                                <p class="card-subtitle text-muted">
-                                    Dr. �mer Faruk Gurbeto�lu
-                                    <br>
-                                    Hacettepe University
-                                </p>
-                            </b>
-                        </center>                                
-                    </div>                                   
+
+            <div class="col-lg-4 col-md-6 ai-person">
+                <div class="card h-100 text-center">
+                    <div class="card-img-wrap">
+                    <a href="https://my.clevelandclinic.org/staff/19832-orkun-baloglu"><img class="card-img-top" src="images/orkunbaloglu.jpg" alt="Dr. Orkun Baloglu" /></a>
+                    </div>
+                    <div class="card-footer text-center" style="font-size: 0.85em;">
+                        <div class="ai-role">İş birliği</div>
+                        <b><p class="card-subtitle text-muted">Dr. Orkun Baloglu<br />Cleveland Clinic</p></b>
+                    </div>
                 </div>
-            </div>  
-            
-        </div>            
+            </div>
+
+            <div class="col-lg-4 col-md-6 ai-person">
+                <div class="card h-100 text-center">
+                    <div class="card-img-wrap">
+                    <a href="https://linkedin.com/in/doganvolkan/"><img class="card-img-top" src="images/volkandogan.jpg" alt="Volkan Doğan" /></a>
+                    </div>
+                    <div class="card-footer text-center" style="font-size: 0.85em;">
+                        <div class="ai-role">Mühendislik</div>
+                        <b><p class="card-subtitle text-muted">Volkan Doğan, MSc<br />Computer Vision Engineer, Rapsodo</p></b>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+            </section>
+
     </div>
 </div>
 </div>
@@ -332,6 +882,5 @@
 </footer>	
 <script src="/sablon2021/js/mobile-nav.js"></script>
 <script src="/sablon2021/js/easing.min.js"></script>
-</div>
 </body>
 </html>
