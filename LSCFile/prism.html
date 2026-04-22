@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRISM Hesaplayıcı — LSC PICU</title>
+<style>
+  /* ---------- Reset & base ---------- */
+  :root {
+    --c-primary:    #ac162c;
+    --c-primary-dk: #8a1023;
+    --c-accent:     #c96a2b;
+    --c-accent-dk:  #a85517;
+    --c-teal:       #0b7a75;
+    --c-bg:         #f3ebdd;    /* warm Claude-style sepia */
+    --c-bg-tint:    #ede2cf;    /* slightly deeper for ambient */
+    --c-card:       #fdfaf3;    /* warm off-white */
+    --c-card-hover: #fffcf6;
+    --c-text:       #2b221a;    /* warm near-black */
+    --c-muted:      #7a6a58;
+    --c-muted-2:    #a69684;
+    --c-border:     #e4d7be;
+    --c-border-2:   #efe5d2;
+    --c-success:    #2f7a39;
+    --c-warning:    #9c6500;
+    --c-danger:     #b31d28;
+    --shadow-sm:    0 1px 3px rgba(80,55,20,.05), 0 1px 2px rgba(80,55,20,.07);
+    --shadow-md:    0 4px 14px rgba(80,55,20,.07), 0 2px 4px rgba(80,55,20,.06);
+    --radius:       12px;
+    --radius-sm:    8px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    background: var(--c-bg);
+    color: var(--c-text);
+    line-height: 1.5;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    background:
+      radial-gradient(ellipse at top, rgba(172,22,44,0.05) 0%, transparent 50%),
+      var(--c-bg);
+    background-attachment: fixed;
+  }
+  .app { max-width: 960px; margin: 0 auto; padding: 0 16px 80px; }
+
+  /* ---------- Header with banner ---------- */
+  .app-header {
+    margin: 0 -16px 18px;
+    overflow: hidden;
+    background: var(--c-card);
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--c-border);
+    border-top: none;
+  }
+  .banner-img {
+    display: block;
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    object-position: center;
+    border-bottom: 3px solid var(--c-primary);
+  }
+  .header-body { padding: 16px 22px 18px; }
+  .app-header h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+    color: var(--c-primary);
+    letter-spacing: -0.4px;
+  }
+  .tagline { margin: 0 0 14px; color: var(--c-muted); font-size: 13.5px; }
+
+  /* Stepper */
+  .stepper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 13px;
+  }
+  .step {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: var(--c-border-2);
+    color: var(--c-muted);
+    transition: background 0.2s, color 0.2s;
+  }
+  .step .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--c-border);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .step.active { background: rgba(172,22,44,0.08); color: var(--c-primary); }
+  .step.active .num { background: var(--c-primary); }
+  .step.done { background: rgba(34,134,58,0.08); color: var(--c-success); }
+  .step.done .num { background: var(--c-success); }
+  .step .sep { color: var(--c-muted-2); }
+
+  /* Info strip */
+  .info-strip {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #fff8ec;
+    border: 1px solid #f5e0be;
+    border-left: 4px solid var(--c-accent);
+    border-radius: var(--radius-sm);
+    margin-bottom: 18px;
+    font-size: 13px;
+    color: #664213;
+  }
+  .info-strip .ico { font-size: 16px; line-height: 1.3; }
+  .info-strip p { margin: 0; }
+
+  /* ---------- Cards ---------- */
+  .card {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -4px -4px 14px;
+    padding: 2px 4px 10px;
+    border-bottom: 1px solid var(--c-border-2);
+  }
+  .card-head h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--c-text);
+  }
+  .card-head .ico {
+    width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(172,22,44,0.08);
+    color: var(--c-primary);
+    border-radius: 8px;
+    font-size: 15px;
+  }
+  .card-head .count {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--c-muted-2);
+    font-weight: 500;
+  }
+  .card .hint {
+    font-size: 12.5px;
+    color: var(--c-muted);
+    margin: -6px 0 12px;
+  }
+
+  /* Form grid & fields */
+  .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .field { display: flex; flex-direction: column; }
+  .field > label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: 12.5px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--c-text);
+    gap: 6px;
+  }
+  .field > label .u { font-weight: 500; color: var(--c-muted-2); font-size: 11.5px; }
+  .field input[type="number"],
+  .field input[type="text"],
+  .field select {
+    width: 100%;
+    padding: 9px 11px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 8px;
+    font-size: 14.5px;
+    background: #fff;
+    color: var(--c-text);
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .field input:hover:not(:focus):not(:disabled),
+  .field select:hover:not(:focus):not(:disabled) { border-color: #c9ced6; }
+  .field input:focus, .field select:focus {
+    outline: none;
+    border-color: var(--c-accent);
+    box-shadow: 0 0 0 3.5px rgba(237,125,49,0.18);
+  }
+  .field input[readonly] { background: #f8f9fb; color: var(--c-muted); cursor: default; }
+  .field.with-unit { display: flex; flex-direction: column; }
+  .field.with-unit .row {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    gap: 8px;
+    align-items: center;
+  }
+  .field.with-unit select { padding: 9px 8px; font-size: 13.5px; }
+
+  /* Pills (radio groups) */
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pills label {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 7px 13px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 13px;
+    background: #fafbfc;
+    font-weight: 500;
+    user-select: none;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+  }
+  .pills label:hover { background: #f0f2f5; }
+  .pills input { appearance: none; -webkit-appearance: none; margin: 0; width: 0; height: 0; position: absolute; }
+  .pills label:has(input:checked) {
+    background: var(--c-primary);
+    border-color: var(--c-primary);
+    color: #fff;
+  }
+  .pills label:has(input:checked) span { color: #fff; }
+
+  /* Age category badge */
+  .cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, rgba(11,122,117,0.08) 0%, rgba(11,122,117,0.12) 100%);
+    color: var(--c-teal);
+    border: 1px solid rgba(11,122,117,0.25);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 40px;
+  }
+  .cat-badge.empty { color: var(--c-muted-2); background: var(--c-border-2); border-color: var(--c-border); font-weight: 500; }
+  .cat-badge .small { font-size: 11.5px; font-weight: 500; opacity: 0.85; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 22px;
+    font-size: 14.5px;
+    font-weight: 600;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s, box-shadow 0.15s;
+    font-family: inherit;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-xl { padding: 13px 28px; font-size: 15.5px; }
+  .btn-primary { background: var(--c-primary); color: #fff; box-shadow: 0 2px 6px rgba(172,22,44,0.25); }
+  .btn-primary:hover { background: var(--c-primary-dk); box-shadow: 0 3px 10px rgba(172,22,44,0.35); }
+  .btn-accent { background: var(--c-accent); color: #fff; box-shadow: 0 2px 6px rgba(237,125,49,0.25); }
+  .btn-accent:hover { background: var(--c-accent-dk); box-shadow: 0 3px 10px rgba(237,125,49,0.35); }
+  .btn-ghost { background: transparent; color: var(--c-muted); border: 1.5px solid var(--c-border); }
+  .btn-ghost:hover { background: var(--c-border-2); color: var(--c-text); border-color: #c9ced6; }
+  .btn-link { background: transparent; color: var(--c-primary); padding: 6px 10px; font-size: 13.5px; }
+  .btn-link:hover { background: var(--c-border-2); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 18px 0 10px;
+    justify-content: flex-end;
+  }
+  .actions .btn-xl { flex: 1; min-width: 200px; max-width: 320px; }
+
+  /* ---------- Result ---------- */
+  .result-card { border-color: #f0d9c8; background: linear-gradient(180deg, #ffffff 0%, #fff9f4 100%); }
+  .result-hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .scorebox {
+    background: #ffffff;
+    border: 1.5px solid #f0d9c8;
+    border-radius: 11px;
+    padding: 14px 14px;
+    text-align: center;
+    position: relative;
+  }
+  .scorebox .lbl { font-size: 11.5px; color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .scorebox .val { font-size: 30px; font-weight: 700; color: var(--c-primary); margin-top: 4px; letter-spacing: -0.5px; line-height: 1.1; }
+  .scorebox.major {
+    border-color: var(--c-primary);
+    background: linear-gradient(180deg, #fff 0%, #ffe6ea 100%);
+    box-shadow: 0 2px 12px rgba(172,22,44,0.08);
+  }
+  .scorebox.major .val { font-size: 38px; }
+  .scorebox.ok { border-color: #c8e6c9; background: linear-gradient(180deg, #fff 0%, #f0f9f1 100%); }
+  .scorebox.ok .val { color: var(--c-success); }
+
+  details.breakdown { margin-top: 14px; border-top: 1px dashed var(--c-border); padding-top: 10px; }
+  details.breakdown summary {
+    cursor: pointer;
+    color: var(--c-accent-dk);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 2px;
+    user-select: none;
+    list-style: none;
+  }
+  details.breakdown summary::before { content: '▸ '; transition: transform 0.15s; display: inline-block; }
+  details[open].breakdown summary::before { content: '▾ '; }
+  details.breakdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  details.breakdown td { padding: 6px 10px; border-bottom: 1px dashed var(--c-border); }
+  details.breakdown td:last-child {
+    text-align: right;
+    font-weight: 600;
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  }
+  details.breakdown tr:last-child td { border-bottom: none; }
+  details.breakdown td.pts { color: var(--c-primary); }
+  details.breakdown td.zero { color: var(--c-muted-2); }
+
+  /* Send section inside result */
+  .send-section {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--c-border);
+  }
+  .send-section h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: var(--c-text);
+    font-weight: 700;
+  }
+  .send-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: end;
+  }
+
+  /* CTA card for PRISM-IV */
+  .cta-card {
+    border: 1.5px dashed var(--c-accent);
+    background: linear-gradient(135deg, #fff 0%, #fff4e8 100%);
+  }
+  .cta-body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .cta-text { flex: 1; min-width: 220px; }
+  .cta-text h3 { margin: 0 0 4px; font-size: 16px; color: var(--c-primary); }
+  .cta-text p { margin: 0; color: var(--c-muted); font-size: 13.5px; }
+
+  /* Banner */
+  .banner {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .banner.show { display: flex; }
+  .banner.ok  { background: #e8f5e9; color: var(--c-success); border: 1px solid #c8e6c9; }
+  .banner.err { background: #ffebee; color: var(--c-danger);  border: 1px solid #ffcdd2; }
+  .banner.info{ background: #e3f2fd; color: #1565c0;          border: 1px solid #bbdefb; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .app { padding: 16px 12px 64px; }
+    .app-header { padding: 16px 18px; }
+    .app-header h1 { font-size: 20px; }
+    .stepper { flex-wrap: wrap; gap: 4px; }
+    .step { padding: 5px 10px; font-size: 12px; }
+    .step .num { width: 18px; height: 18px; font-size: 11px; }
+    .card { padding: 15px 14px; }
+    .field.with-unit { grid-template-columns: 1fr 95px; }
+    .send-grid { grid-template-columns: 1fr; }
+    .scorebox .val { font-size: 26px; }
+    .scorebox.major .val { font-size: 32px; }
+    .actions { flex-direction: column; }
+    .actions .btn-xl { max-width: none; }
+  }
+
+  footer {
+    text-align: center;
+    color: var(--c-muted-2);
+    font-size: 12px;
+    margin-top: 26px;
+    padding: 0 12px;
+    line-height: 1.6;
+  }
+  footer em { color: var(--c-muted); }
+
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <div class="header-body">
+      <h1>PRISM Hesaplayıcı</h1>
+      <p class="tagline">Pediatric Risk of Mortality · LSC PICU</p>
+      <nav class="stepper" id="stepper" aria-label="İlerleme">
+        <div class="step active" data-step="form"><span class="num">1</span><span>Klinik veri</span></div>
+        <div class="step" data-step="iii"><span class="num">2</span><span>PRISM-III</span></div>
+        <div class="step" data-step="iv"><span class="num">3</span><span>PRISM-IV <em>(ops.)</em></span></div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="info-strip">
+    <span class="ico">ⓘ</span>
+    <p>Fizyolojik değişkenler PICU'nun <strong>ilk 4 saatinden</strong>; laboratuvar değişkenleri kabulden <strong>2 saat öncesi + ilk 4 saat</strong> arasından alınır. Boş bırakılan her alan <strong>0 puan</strong> sayılır.</p>
+  </div>
+
+  <main id="formPanel">
+
+    <!-- Demografi -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">👶</span>
+        <h2>Demografi</h2>
+      </header>
+      <div class="grid">
+        <div class="field with-unit">
+          <label for="age">Yaş</label>
+          <div class="row">
+            <input type="number" id="age" step="0.1" min="0" inputmode="decimal" placeholder="örn. 14">
+            <select id="ageUnit">
+              <option value="day">gün</option>
+              <option value="month" selected>ay</option>
+              <option value="year">yıl</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Türetilen kategori <span class="u">otomatik</span></label>
+          <div id="ageCategoryDisplay" class="cat-badge empty">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kardiyovasküler -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">❤</span>
+        <h2>Kardiyovasküler</h2>
+      </header>
+      <div class="grid">
+        <div class="field"><label>Sistolik KB (düşük) <span class="u">mmHg</span></label>
+          <input type="number" id="sbp_low" step="1" min="0" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>Kalp hızı (yüksek) <span class="u">/dk</span></label>
+          <input type="number" id="hr_high" step="1" min="0" inputmode="decimal" placeholder="—"></div>
+      </div>
+    </section>
+
+    <!-- Vücut Isısı -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">🌡</span>
+        <h2>Vücut Isısı</h2>
+      </header>
+      <div class="grid">
+        <div class="field"><label>Isı (düşük) <span class="u">°C</span></label>
+          <input type="number" id="temp_low" step="0.1" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>Isı (yüksek) <span class="u">°C</span></label>
+          <input type="number" id="temp_high" step="0.1" inputmode="decimal" placeholder="—"></div>
+      </div>
+    </section>
+
+    <!-- Nörolojik -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">🧠</span>
+        <h2>Nörolojik</h2>
+      </header>
+      <div class="grid">
+        <div class="field">
+          <label for="gcs">GCS <span class="u">3–15</span></label>
+          <input type="number" id="gcs" min="3" max="15" step="1" inputmode="decimal" placeholder="—">
+        </div>
+        <div class="field">
+          <label>Pupiller <span class="u">fiks sayısı</span></label>
+          <div class="pills" id="pupillary">
+            <label><input type="radio" name="pupils" value="0" checked><span>İkisi reaktif</span></label>
+            <label><input type="radio" name="pupils" value="1"><span>1 fiks</span></label>
+            <label><input type="radio" name="pupils" value="2"><span>İkisi fiks</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Asit-Baz / Kan Gazı -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">🫁</span>
+        <h2>Asit-Baz / Kan Gazı</h2>
+        <span class="count">6 alan</span>
+      </header>
+      <div class="grid">
+        <div class="field"><label>pH (düşük)</label>
+          <input type="number" id="ph_low" step="0.01" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>pH (yüksek)</label>
+          <input type="number" id="ph_high" step="0.01" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>Total CO₂ (düşük) <span class="u">mEq/L</span></label>
+          <input type="number" id="tco2_low" step="0.1" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>Total CO₂ (yüksek) <span class="u">mEq/L</span></label>
+          <input type="number" id="tco2_high" step="0.1" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>PCO₂ (yüksek) <span class="u">mmHg</span></label>
+          <input type="number" id="pco2_high" step="1" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>PaO₂ (düşük, arteriyel) <span class="u">mmHg</span></label>
+          <input type="number" id="pao2_low" step="1" inputmode="decimal" placeholder="—"></div>
+      </div>
+    </section>
+
+    <!-- Biyokimya -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">🧪</span>
+        <h2>Biyokimya</h2>
+        <span class="count">4 alan</span>
+      </header>
+      <div class="hint">Birimi istediğin şekilde seç; hesap iç normalize edilir.</div>
+      <div class="grid">
+        <div class="field with-unit">
+          <label>Glukoz</label>
+          <div class="row">
+            <input type="number" id="glucose_val" step="0.1" inputmode="decimal" placeholder="—">
+            <select id="glucose_unit">
+              <option value="mgdl" selected>mg/dL</option>
+              <option value="mmol">mmol/L</option>
+            </select>
+          </div>
+        </div>
+        <div class="field with-unit">
+          <label>Potasyum</label>
+          <div class="row">
+            <input type="number" id="potassium_val" step="0.1" inputmode="decimal" placeholder="—">
+            <select id="potassium_unit">
+              <option value="meql" selected>mEq/L</option>
+              <option value="mmol">mmol/L</option>
+            </select>
+          </div>
+        </div>
+        <div class="field with-unit">
+          <label>Kreatinin</label>
+          <div class="row">
+            <input type="number" id="creat_val" step="0.01" inputmode="decimal" placeholder="—">
+            <select id="creat_unit">
+              <option value="mgdl" selected>mg/dL</option>
+              <option value="umol">µmol/L</option>
+            </select>
+          </div>
+        </div>
+        <div class="field with-unit">
+          <label>BUN / Üre</label>
+          <div class="row">
+            <input type="number" id="bun_val" step="0.1" inputmode="decimal" placeholder="—">
+            <select id="bun_unit">
+              <option value="bun_mgdl" selected>BUN mg/dL</option>
+              <option value="urea_mgdl">Üre mg/dL</option>
+              <option value="urea_mmol">Üre mmol/L</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hematoloji -->
+    <section class="card">
+      <header class="card-head">
+        <span class="ico">🩸</span>
+        <h2>Hematoloji</h2>
+        <span class="count">4 alan</span>
+      </header>
+      <div class="grid">
+        <div class="field"><label>WBC <span class="u">×10³/mm³ (bin)</span></label>
+          <input type="number" id="wbc" step="0.1" min="0" inputmode="decimal" placeholder="örn. 8"></div>
+        <div class="field"><label>Trombosit <span class="u">×10³/µL (bin)</span></label>
+          <input type="number" id="platelets" step="1" min="0" inputmode="decimal" placeholder="örn. 250"></div>
+        <div class="field"><label>PT <span class="u">sn</span></label>
+          <input type="number" id="pt" step="0.1" inputmode="decimal" placeholder="—"></div>
+        <div class="field"><label>aPTT <span class="u">sn</span></label>
+          <input type="number" id="ptt" step="0.1" inputmode="decimal" placeholder="—"></div>
+      </div>
+    </section>
+
+    <!-- Ana action -->
+    <div class="actions">
+      <button type="button" id="btnReset" class="btn btn-ghost">Temizle</button>
+      <button type="button" id="btnCalc" class="btn btn-primary btn-xl">
+        PRISM-III Hesapla
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Result area -->
+  <section class="card result-card" id="resultCard" hidden>
+    <header class="card-head">
+      <span class="ico" id="resultIcon">📊</span>
+      <h2 id="resultTitle">PRISM-III Sonucu</h2>
+    </header>
+
+    <div class="result-hero" id="resultHero"></div>
+
+    <details class="breakdown" id="breakdownWrap">
+      <summary>Detaylı skor dağılımı</summary>
+      <table id="breakdownTable"><tbody></tbody></table>
+    </details>
+
+    <!-- Send to Sheets -->
+    <div class="send-section">
+      <h3>Google Sheets'e Kaydet</h3>
+      <div class="send-grid">
+        <div class="field">
+          <label for="dosyano">Dosya No <span class="u">zorunlu</span></label>
+          <input type="text" id="dosyano" placeholder="örn. 2025-01234" autocomplete="off">
+        </div>
+        <button type="button" id="btnSend" class="btn btn-accent">
+          Gönder
+        </button>
+      </div>
+      <div id="sendBanner" class="banner"></div>
+      <p class="hint" style="margin-top: 10px;">
+        Not: Tarayıcı CORS kısıtlaması nedeniyle sunucudan kesin doğrulama alınamaz.
+        Kaydı Google Sheet'ten kontrol et.
+      </p>
+    </div>
+  </section>
+
+  <!-- PRISM-IV intake -->
+  <section class="card" id="ivIntakeCard" hidden>
+    <header class="card-head">
+      <span class="ico">📋</span>
+      <h2>PRISM-IV — opsiyonel ek sorular</h2>
+      <span class="count">4 soru</span>
+    </header>
+    <div class="hint">
+      Mortalite olasılığını da hesaplamak istiyorsan bu 4 soruyu doldur ve aşağıdaki
+      <strong>PRISM-IV Hesapla</strong>'ya bas. İlgilenmiyorsan <strong>Gönder</strong>'e basıp
+      sadece PRISM-III kaydını oluşturabilirsin.
+    </div>
+    <div class="grid">
+      <div class="field" style="grid-column: 1 / -1;">
+        <label>Yatış kaynağı</label>
+        <div class="pills">
+          <label><input type="radio" name="iv_admission" value="4" checked><span>Ameliyathane / PACU</span></label>
+          <label><input type="radio" name="iv_admission" value="1"><span>Başka hastane</span></label>
+          <label><input type="radio" name="iv_admission" value="2"><span>Servis / yatan</span></label>
+          <label><input type="radio" name="iv_admission" value="3"><span>Acil servis</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>24 saat içinde KPR</label>
+        <div class="pills">
+          <label><input type="radio" name="iv_cpr" value="2" checked><span>Hayır</span></label>
+          <label><input type="radio" name="iv_cpr" value="1"><span>Evet</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Kanser (akut/kronik)</label>
+        <div class="pills">
+          <label><input type="radio" name="iv_cancer" value="2" checked><span>Hayır</span></label>
+          <label><input type="radio" name="iv_cancer" value="1"><span>Evet</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Düşük riskli primer disfonksiyon <span class="u">endokrin / hematolojik / iskelet-kas / renal</span></label>
+        <div class="pills">
+          <label><input type="radio" name="iv_lowrisk" value="2" checked><span>Hayır</span></label>
+          <label><input type="radio" name="iv_lowrisk" value="1"><span>Evet</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button type="button" id="btnCalcIV" class="btn btn-primary btn-xl">
+        PRISM-IV Hesapla
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    Skor tabloları: <em>Pollack MM et al., Crit Care Med 1996;24:743 (PRISM-III); Pediatr Crit Care Med 2016;17:2 (PRISM-IV)</em>. LSC PICU · 2026
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // ==================== Config ====================
+  const WEB_APP_URL =
+    'https://script.google.com/macros/s/AKfycbxR2iXmfkCchnCpfrw4R4JiRfX3RDwHe-1L6VPHnIjpNRPB96AqY5O22hyvnUqYBKr7pQ/exec';
+
+  // ==================== Helpers ====================
+  const $ = (id) => document.getElementById(id);
+  const numOrNull = (v) => {
+    if (v === '' || v == null) return null;
+    const n = Number(v);
+    return isNaN(n) ? null : n;
+  };
+
+  // ==================== Age conversions ====================
+  function ageToMonths(val, unit) {
+    if (val == null) return null;
+    if (unit === 'day')  return val / 30.4375;
+    if (unit === 'year') return val * 12;
+    return val;
+  }
+  function ageToDays(val, unit) {
+    if (val == null) return null;
+    if (unit === 'month') return val * 30.4375;
+    if (unit === 'year')  return val * 365.25;
+    return val;
+  }
+  function prism3AgeCategory(months) {
+    if (months == null) return null;
+    if (months < 1)   return 'neonate';
+    if (months < 12)  return 'infant';
+    if (months < 144) return 'child';
+    return 'adolescent';
+  }
+  function prism4AgeCode(days) {
+    if (days == null) return null;
+    if (days < 14)      return '1';
+    if (days < 30.4375) return '2';
+    if (days < 365.25)  return '3';
+    return '4';
+  }
+  const prism4Labels = {
+    '1': '0-<14g', '2': '14g-<1ay', '3': '1ay-<12ay', '4': '12ay-<=18y'
+  };
+  const cat3Labels = {
+    neonate: 'Neonate', infant: 'Süt çocuğu', child: 'Çocuk', adolescent: 'Adolesan'
+  };
+
+  // ==================== Unit normalization ====================
+  function glucoseMgdl(val, unit) {
+    if (val == null) return null;
+    return unit === 'mmol' ? val * 18.0182 : val;
+  }
+  function potassiumMeql(val) { return val; }
+  function creatinineMgdl(val, unit) {
+    if (val == null) return null;
+    return unit === 'umol' ? val / 88.4 : val;
+  }
+  function bunMgdl(val, unit) {
+    if (val == null) return null;
+    if (unit === 'urea_mmol') return val * 2.8;
+    if (unit === 'urea_mgdl') return val / 2.1428;
+    return val;
+  }
+
+  // ==================== Read form ====================
+  function readInputs() {
+    const ageVal  = numOrNull($('age').value);
+    const ageUnit = $('ageUnit').value;
+    const ageMon  = ageToMonths(ageVal, ageUnit);
+    const ageDays = ageToDays(ageVal, ageUnit);
+
+    return {
+      age_months: ageMon,
+      age_days:   ageDays,
+      age_cat_iii: prism3AgeCategory(ageMon),
+      age_code_iv: prism4AgeCode(ageDays),
+
+      sbp_low:   numOrNull($('sbp_low').value),
+      hr_high:   numOrNull($('hr_high').value),
+      temp_low:  numOrNull($('temp_low').value),
+      temp_high: numOrNull($('temp_high').value),
+
+      gcs: numOrNull($('gcs').value),
+      pupils_fixed: Number((document.querySelector('input[name="pupils"]:checked') || {value:0}).value),
+
+      ph_low:    numOrNull($('ph_low').value),
+      ph_high:   numOrNull($('ph_high').value),
+      tco2_low:  numOrNull($('tco2_low').value),
+      tco2_high: numOrNull($('tco2_high').value),
+      pco2_high: numOrNull($('pco2_high').value),
+      pao2_low:  numOrNull($('pao2_low').value),
+
+      glucose_mgdl:    glucoseMgdl   (numOrNull($('glucose_val').value),   $('glucose_unit').value),
+      potassium_meql:  potassiumMeql (numOrNull($('potassium_val').value)),
+      creatinine_mgdl: creatinineMgdl(numOrNull($('creat_val').value),     $('creat_unit').value),
+      bun_mgdl:        bunMgdl       (numOrNull($('bun_val').value),       $('bun_unit').value),
+
+      // WBC ve Trombosit kullanıcı "bin" biriminde girer (örn. 8 → 8000, 250 → 250000)
+      wbc:       (function(v){ return v == null ? null : v * 1000; })(numOrNull($('wbc').value)),
+      platelets: (function(v){ return v == null ? null : v * 1000; })(numOrNull($('platelets').value)),
+      pt:        numOrNull($('pt').value),
+      ptt:       numOrNull($('ptt').value),
+
+      iv_admission: (document.querySelector('input[name="iv_admission"]:checked') || {value:'4'}).value,
+      iv_cpr:       (document.querySelector('input[name="iv_cpr"]:checked')        || {value:'2'}).value,
+      iv_cancer:    (document.querySelector('input[name="iv_cancer"]:checked')     || {value:'2'}).value,
+      iv_lowrisk:   (document.querySelector('input[name="iv_lowrisk"]:checked')    || {value:'2'}).value,
+    };
+  }
+
+  // ====================================================================
+  //                  PRISM-III SCORING (Pollack 1996)
+  //   Kaynak: Kullanıcının Python implementasyonu + Pollack paper tabloları.
+  //   Python'daki iki bug düzeltildi (TEMP >40°C, pH 7.48-7.55 için 2 puan).
+  // ====================================================================
+  function calculatePRISM3(inp) {
+    const cat = inp.age_cat_iii;
+    const b = {};
+
+    // Sistolik KB (düşük, age-dep)
+    if (inp.sbp_low != null && cat) {
+      const lim = { neonate:[55,40], infant:[65,45], child:[75,55], adolescent:[85,65] }[cat];
+      const above = (inp.sbp_low > lim[0] ? 1 : 0) + (inp.sbp_low > lim[1] ? 1 : 0);
+      b.sbp = [7, 3, 0][above];
+    } else b.sbp = 0;
+
+    // Kalp hızı (yüksek, age-dep)
+    if (inp.hr_high != null && cat) {
+      const lim = ({ neonate:215, infant:215, child:185, adolescent:145 })[cat];
+      b.hr = (inp.hr_high < lim) ? 0 : (inp.hr_high > lim + 10) ? 4 : 3;
+    } else b.hr = 0;
+
+    // Isı
+    const lowBad  = inp.temp_low  != null && inp.temp_low  < 33;
+    const highBad = inp.temp_high != null && inp.temp_high > 40;
+    b.temp = (lowBad || highBad) ? 3 : 0;
+
+    // GCS
+    b.gcs = (inp.gcs != null && inp.gcs < 8) ? 5 : 0;
+
+    // Pupiller
+    b.pupils = [0, 7, 11][inp.pupils_fixed] || 0;
+
+    // Asidoz (düşük pH veya düşük TCO2)
+    const severe = (inp.ph_low != null && inp.ph_low < 7.0) || (inp.tco2_low != null && inp.tco2_low < 5);
+    const mild   = (inp.ph_low != null && inp.ph_low >= 7.0 && inp.ph_low <= 7.28)
+                || (inp.tco2_low != null && inp.tco2_low >= 5 && inp.tco2_low <= 16.9);
+    b.acidosis = severe ? 6 : mild ? 2 : 0;
+
+    // Alkaloz (yüksek pH)
+    if (inp.ph_high == null) b.ph_high = 0;
+    else if (inp.ph_high > 7.55)  b.ph_high = 3;
+    else if (inp.ph_high >= 7.48) b.ph_high = 2;
+    else b.ph_high = 0;
+
+    // PCO2 yüksek
+    if (inp.pco2_high == null) b.pco2 = 0;
+    else b.pco2 = (inp.pco2_high > 75) ? 3 : (inp.pco2_high >= 50) ? 1 : 0;
+
+    // TCO2 yüksek
+    b.tco2_high = (inp.tco2_high != null && inp.tco2_high > 34) ? 4 : 0;
+
+    // PaO2 düşük
+    if (inp.pao2_low == null) b.pao2 = 0;
+    else b.pao2 = (inp.pao2_low < 42) ? 6 : (inp.pao2_low < 50) ? 3 : 0;
+
+    // Glukoz
+    b.glucose = (inp.glucose_mgdl != null && inp.glucose_mgdl > 200) ? 2 : 0;
+
+    // Potasyum
+    b.potassium = (inp.potassium_meql != null && inp.potassium_meql > 6.9) ? 3 : 0;
+
+    // Kreatinin (age-dep)
+    if (inp.creatinine_mgdl != null && cat) {
+      const lim = ({ neonate:0.85, infant:0.9, child:0.9, adolescent:1.3 })[cat];
+      b.creat = (inp.creatinine_mgdl > lim) ? 2 : 0;
+    } else b.creat = 0;
+
+    // BUN (age-dep)
+    if (inp.bun_mgdl != null && cat) {
+      const lim = (cat === 'neonate') ? 11.9 : 14.9;
+      b.bun = (inp.bun_mgdl > lim) ? 3 : 0;
+    } else b.bun = 0;
+
+    // WBC
+    b.wbc = (inp.wbc != null && inp.wbc < 3000) ? 4 : 0;
+
+    // Trombosit
+    if (inp.platelets == null) b.platelets = 0;
+    else if (inp.platelets < 50000)    b.platelets = 5;
+    else if (inp.platelets < 100000)   b.platelets = 4;
+    else if (inp.platelets <= 200000)  b.platelets = 2;
+    else b.platelets = 0;
+
+    // PT/PTT
+    const ptBad  = inp.pt  != null && inp.pt  > 22;
+    const limPtt = (cat === 'neonate') ? 85 : 57;
+    const pttBad = inp.ptt != null && inp.ptt > limPtt;
+    b.coag = (ptBad || pttBad) ? 3 : 0;
+
+    const neuro = b.gcs + b.pupils;
+    const nonNeuro = b.sbp + b.hr + b.temp + b.acidosis + b.ph_high + b.pco2 +
+                     b.tco2_high + b.pao2 + b.glucose + b.potassium +
+                     b.creat + b.bun + b.wbc + b.platelets + b.coag;
+    return { total: neuro + nonNeuro, neuro, nonNeuro, breakdown: b };
+  }
+
+  // ====================================================================
+  //                  PRISM-IV MORTALITY (cpccrn.org)
+  // ====================================================================
+  function calculatePRISM4(neuro, nonNeuro, iv) {
+    const INTERCEPT = -5.776;
+    const ageBeta = { '1':1.311, '2':0.968, '3':0.357, '4':0 }[iv.age_code_iv] ?? 0;
+    const admBeta = { '1':1.012, '2':1.626, '3':0.693, '4':0 }[iv.iv_admission] ?? 0;
+    const cprBeta = (iv.iv_cpr    === '1') ? 1.082 : 0;
+    const canBeta = (iv.iv_cancer === '1') ? 0.766 : 0;
+    const lowBeta = (iv.iv_cancer === '2' && iv.iv_lowrisk === '1') ? -1.697 : 0;
+    const logit = INTERCEPT + neuro*0.197 + nonNeuro*0.163
+                + ageBeta + admBeta + cprBeta + canBeta + lowBeta;
+    const p = Math.exp(logit) / (1 + Math.exp(logit));
+    return { mortality_probability: p, logit };
+  }
+
+  // ==================== Rendering ====================
+  function platesCategoryOf(pl) {
+    if (pl == null) return '';
+    if (pl < 50000)   return '< 50k';
+    if (pl < 100000)  return '50-99k';
+    if (pl <= 200000) return '100-200k';
+    return '> 200k';
+  }
+
+  function renderResultPRISM3(r) {
+    $('resultIcon').textContent = '📊';
+    $('resultTitle').textContent = 'PRISM-III Sonucu';
+    $('resultHero').innerHTML = `
+      <div class="scorebox major">
+        <div class="lbl">Toplam Skor</div>
+        <div class="val">${r.total}</div>
+      </div>
+      <div class="scorebox">
+        <div class="lbl">Nörolojik</div>
+        <div class="val">${r.neuro}</div>
+      </div>
+      <div class="scorebox">
+        <div class="lbl">Non-Nörolojik</div>
+        <div class="val">${r.nonNeuro}</div>
+      </div>
+    `;
+    fillBreakdown(r.breakdown);
+  }
+
+  function renderResultPRISM4(r3, r4) {
+    $('resultIcon').textContent = '🎯';
+    $('resultTitle').textContent = 'PRISM-IV Sonucu';
+    const pct = (r4.mortality_probability * 100).toFixed(2);
+    $('resultHero').innerHTML = `
+      <div class="scorebox major">
+        <div class="lbl">Mortalite Olasılığı</div>
+        <div class="val">${pct}%</div>
+      </div>
+      <div class="scorebox">
+        <div class="lbl">PRISM-III Toplam</div>
+        <div class="val">${r3.total}</div>
+      </div>
+      <div class="scorebox">
+        <div class="lbl">Nörolojik / Non-N</div>
+        <div class="val" style="font-size:22px">${r3.neuro} / ${r3.nonNeuro}</div>
+      </div>
+    `;
+    fillBreakdown(r3.breakdown);
+  }
+
+  function fillBreakdown(b) {
+    const labels = [
+      ['sbp',      'Sistolik KB'],
+      ['hr',       'Kalp hızı'],
+      ['temp',     'Isı'],
+      ['gcs',      'GCS'],
+      ['pupils',   'Pupiller'],
+      ['acidosis', 'Asidoz (pH/TCO₂ düşük)'],
+      ['ph_high',  'pH yüksek'],
+      ['pco2',     'PCO₂ yüksek'],
+      ['tco2_high','TCO₂ yüksek'],
+      ['pao2',     'PaO₂ düşük'],
+      ['glucose',  'Glukoz'],
+      ['potassium','Potasyum'],
+      ['creat',    'Kreatinin'],
+      ['bun',      'BUN'],
+      ['wbc',      'WBC'],
+      ['platelets','Trombosit'],
+      ['coag',     'PT / aPTT']
+    ];
+    const tbody = $('breakdownTable').querySelector('tbody');
+    tbody.innerHTML = '';
+    labels.forEach(([k, lbl]) => {
+      const v = b[k] ?? 0;
+      const cls = v > 0 ? 'pts' : 'zero';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${lbl}</td><td class="${cls}">${v}</td>`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // ==================== State ====================
+  let lastResult = null;  // { type: 'III'|'IV', inputs, scoreIII, scoreIV? }
+
+  // ==================== Stepper ====================
+  function setStep(active) {
+    // active: 'form' | 'iii' | 'iv'
+    const order = ['form', 'iii', 'iv'];
+    const idx = order.indexOf(active);
+    document.querySelectorAll('.step').forEach(el => {
+      el.classList.remove('active', 'done');
+      const i = order.indexOf(el.dataset.step);
+      if (i < idx) el.classList.add('done');
+      else if (i === idx) el.classList.add('active');
+    });
+  }
+
+  // ==================== Actions ====================
+  function updateAgeDisplay() {
+    const v = numOrNull($('age').value);
+    const u = $('ageUnit').value;
+    const m = ageToMonths(v, u);
+    const d = ageToDays(v, u);
+    const cat = prism3AgeCategory(m);
+    const iv  = prism4AgeCode(d);
+    const badge = $('ageCategoryDisplay');
+    if (!cat) {
+      badge.textContent = '—';
+      badge.className = 'cat-badge empty';
+      return;
+    }
+    badge.className = 'cat-badge';
+    badge.innerHTML = `${cat3Labels[cat]} <span class="small">· IV: ${prism4Labels[iv] || '—'}</span>`;
+  }
+
+  function showBanner(text, kind) {
+    const b = $('sendBanner');
+    b.className = 'banner show ' + kind;
+    b.textContent = text;
+  }
+  function hideBanner() { $('sendBanner').className = 'banner'; }
+
+  function doCalculateIII() {
+    const inp = readInputs();
+    const r3  = calculatePRISM3(inp);
+    renderResultPRISM3(r3);
+    lastResult = { type: 'III', inputs: inp, scoreIII: r3, scoreIV: null };
+
+    $('resultCard').hidden = false;
+    $('ivIntakeCard').hidden = false;     // intake direkt açık — istersen dolduru, istersen pas geç
+    setStep('iii');
+    hideBanner();
+    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function doCalculateIV() {
+    const inp = readInputs();
+    const r3  = calculatePRISM3(inp);     // III subscores (intake değişince değişmez ama güncel değerler al)
+    const r4  = calculatePRISM4(r3.neuro, r3.nonNeuro, inp);
+    renderResultPRISM4(r3, r4);
+    lastResult = { type: 'IV', inputs: inp, scoreIII: r3, scoreIV: r4 };
+
+    setStep('iv');
+    hideBanner();
+    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function doReset() {
+    document.querySelectorAll('input[type="number"], input[type="text"]').forEach(i => i.value = '');
+    $('ageUnit').value = 'month';
+    $('glucose_unit').value = 'mgdl';
+    $('potassium_unit').value = 'meql';
+    $('creat_unit').value = 'mgdl';
+    $('bun_unit').value = 'bun_mgdl';
+    document.querySelectorAll('input[name="pupils"]').forEach(r => r.checked = r.value === '0');
+    document.querySelectorAll('input[name="iv_admission"]').forEach(r => r.checked = r.value === '4');
+    ['iv_cpr','iv_cancer','iv_lowrisk'].forEach(n => {
+      document.querySelectorAll(`input[name="${n}"]`).forEach(r => r.checked = r.value === '2');
+    });
+    updateAgeDisplay();
+    $('resultCard').hidden = true;
+    $('ivIntakeCard').hidden = true;
+    lastResult = null;
+    setStep('form');
+    hideBanner();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function buildPayload() {
+    if (!lastResult) return null;
+    const { type, inputs: i, scoreIII, scoreIV } = lastResult;
+
+    const inputs_iii = {
+      age_category: i.age_cat_iii ? cat3Labels[i.age_cat_iii] : '',
+      sbp_low: i.sbp_low, hr_high: i.hr_high,
+      temp_low: i.temp_low, temp_high: i.temp_high,
+      gcs: i.gcs, pupils_fixed: i.pupils_fixed,
+      ph_low: i.ph_low, ph_high: i.ph_high,
+      tco2_low: i.tco2_low, tco2_high: i.tco2_high,
+      pco2_high: i.pco2_high, pao2_low: i.pao2_low,
+      glucose_mgdl:    i.glucose_mgdl    != null ? Number(i.glucose_mgdl.toFixed(1))  : null,
+      potassium_meql:  i.potassium_meql  != null ? Number(i.potassium_meql.toFixed(2)): null,
+      creatinine_mgdl: i.creatinine_mgdl != null ? Number(i.creatinine_mgdl.toFixed(2)): null,
+      bun_mgdl:        i.bun_mgdl        != null ? Number(i.bun_mgdl.toFixed(1))      : null,
+      wbc: i.wbc, pt: i.pt, ptt: i.ptt,
+      platelets_category: platesCategoryOf(i.platelets)
+    };
+
+    const payload = {
+      dosyano: $('dosyano').value.trim(),
+      timestamp_client: new Date().toISOString(),
+      score_type: (type === 'IV') ? 'PRISM-IV' : 'PRISM-III',
+      inputs_iii,
+      score_iii: { total: scoreIII.total, neuro: scoreIII.neuro, nonNeuro: scoreIII.nonNeuro, breakdown: scoreIII.breakdown }
+    };
+
+    if (type === 'IV' && scoreIV) {
+      const admLabels = { '1':'Başka hastane', '2':'Servis', '3':'Acil', '4':'OR/PACU' };
+      payload.inputs_iv = {
+        age_category:         prism4Labels[i.age_code_iv] || '',
+        admission_source:     admLabels[i.iv_admission] || '',
+        cpr_24h:              i.iv_cpr     === '1',
+        cancer:               i.iv_cancer  === '1',
+        low_risk_dysfunction: i.iv_lowrisk === '1'
+      };
+      payload.score_iv = { mortality_probability: scoreIV.mortality_probability };
+    }
+    return payload;
+  }
+
+  async function doSend() {
+    if (!lastResult) {
+      showBanner('Önce Hesapla butonuna bas.', 'err');
+      return;
+    }
+    const dosyano = $('dosyano').value.trim();
+    if (!dosyano) {
+      showBanner('Dosya No alanı boş olamaz.', 'err');
+      $('dosyano').focus();
+      return;
+    }
+    const payload = buildPayload();
+    showBanner('Gönderiliyor…', 'info');
+    $('btnSend').disabled = true;
+    try {
+      await fetch(WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+      showBanner('Gönderildi ✓  — Google Sheet\'ten doğrulamayı unutma.', 'ok');
+    } catch (err) {
+      showBanner('Ağ hatası: ' + err.message, 'err');
+    } finally {
+      $('btnSend').disabled = false;
+    }
+  }
+
+  // ==================== Wiring ====================
+  $('age').addEventListener('input', updateAgeDisplay);
+  $('ageUnit').addEventListener('change', updateAgeDisplay);
+  $('btnCalc').addEventListener('click', doCalculateIII);
+  $('btnCalcIV').addEventListener('click', doCalculateIV);
+  $('btnReset').addEventListener('click', doReset);
+  $('btnSend').addEventListener('click', doSend);
+
+  // Enter on any input → PRISM-III hesapla (eğer ana formdaysa)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'button') {
+      const inIntake = $('ivIntakeCard').contains(e.target);
+      const inDosya  = e.target.id === 'dosyano';
+      if (inDosya)      { e.preventDefault(); doSend(); }
+      else if (inIntake){ e.preventDefault(); doCalculateIV(); }
+      else              { e.preventDefault(); doCalculateIII(); }
+    }
+  });
+
+  updateAgeDisplay();
+  setStep('form');
+})();
+</script>
+
+</body>
+</html>
