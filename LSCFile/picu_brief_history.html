@@ -59,8 +59,25 @@
 	.lsc-modern .tl-meta ul{margin:6px 0 0;padding-left:18px}
 	.lsc-modern .tl-meta li{margin:3px 0}
 	.lsc-modern .tl-meta strong{color:var(--ink)}
+	.lsc-modern .innov-intro{color:var(--ink-soft);margin:0 0 16px}
+	.lsc-modern .innov{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+	.lsc-modern .innov-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow);border-top:3px solid var(--red)}
+	.lsc-modern .innov-card h3{margin:0 0 6px;font-weight:700;font-size:15px;color:var(--ink)}
+	.lsc-modern .innov-card p{margin:0;color:var(--ink-soft);font-size:13.5px}
+	.lsc-modern .more-link{margin-top:28px;font-size:14.5px}
 	.lsc-modern #toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:20px;cursor:pointer;display:none;box-shadow:var(--shadow);z-index:40}
 	.lsc-modern #toTop:hover{background:var(--red-deep)}
+	.picu-hero{--maxw:1120px;font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);
+	  background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);padding:30px 16px 22px;text-align:center}
+	.picu-hero .wrap{max-width:var(--maxw);margin:0 auto}
+	.picu-hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--red)}
+	.picu-hero h1{margin:6px 0 0;font-weight:800;font-size:clamp(24px,3.4vw,34px);color:var(--ink)}
+	.picu-hero p.lead{max-width:720px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+	.picu-hero .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+	.picu-hero .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+	  color:var(--ink-soft);text-decoration:none;transition:all .18s ease}
+	.picu-hero .subnav a:hover{border-color:var(--red);color:var(--red-deep);transform:translateY(-1px);text-decoration:none}
+	.picu-hero .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 	</style>
 </head>
 
@@ -100,59 +117,26 @@
 </div>
 <!--ust-->
 
-<div class="site_baslangic"></div>
+<header class="picu-hero">
+	<div class="wrap">
+		<span class="eyebrow">Pediatric Intensive Care</span>
+		<h1>Brief History</h1>
+		<p class="lead">Key milestones in the development of pediatric intensive care at Hacettepe University, from establishment to the present.</p>
+		<nav class="subnav">
+			<a href="picu.html">About Us</a>
+			<a href="picu_adminstration.html">Administration</a>
+			<a href="picu_fellows.html">Fellows</a>
+			<a href="picu_thesis.html">Thesis</a>
+			<a href="picu_smr.html">SMR</a>
+			<a href="picu_album.html">Album</a>
+			<a class="active" href="picu_brief_history.html">Brief History</a>
+			<a href="picu_testimonials.html">Testimonials</a>
+		</nav>
+	</div>
+</header>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
-
-            <!--menusol-->
-          <div class="menu_sol">
-
-                <nav class="main-nav d-none d-lg-block">
-                    <ul>
-						<li><a href="picu_adminstration.html">Adminstration</a></li>
-						<li><a href="picu_fellows.html">Fellows</a></li>
-						<li><a href="picu_thesis.html">Thesis</a></li>	
-                        <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
-						<li><a href="picu_album.html">Album</a></li>
-						<li><a href="picu_brief_history.html">Brief History</a></li>
-						<li><a href="picu_testimonials.html">Testimonials</a></li>
-                    </ul>
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                      </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
-
-                        <div class=" mr-4 ">
-                            <a href="/">Home Page</a>
-                            <a href="/contacts.html">Contacts</a>
-                        </div>
-
-                  </div>
-                </nav>
-
-            </div>
-
-            <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
-        </div>
-		
-        <div class="col-lg-9 col-12 mb-3">
-
-			<div class="lsc-modern">
-
-				<header class="page-head">
-					<span class="eyebrow">Hacettepe University &middot; Life Support Center</span>
-					<h1 class="page-title">Brief History of PICU</h1>
-					<p class="page-sub">Key milestones in the development of pediatric intensive care at Hacettepe University, from establishment to the present.</p>
-				</header>
+<div class="container mt-4 mb-5">
+	<div class="lsc-modern">
 
 				<section class="block">
 					<ul class="timeline">
@@ -277,12 +261,23 @@
 							<div class="tl-dot"></div>
 							<div class="tl-body">
 								<div class="tl-years">2009</div>
-								<div class="tl-role">Departmentalization</div>
+								<div class="tl-role">Subspecialty Recognition</div>
 								<div class="tl-meta">
-									Pediatric Intensive Care Medicine is accepted to be a Subspecialty Department in T&uuml;rkiye.
+									Pediatric intensive care was accepted as a pediatric subspecialty field in T&uuml;rkiye through the TUKMOS studies led by Dr. Bayrakc&#x131;.
+								</div>
+							</div>
+						</li>
+
+						<li class="tl-item">
+							<div class="tl-dot"></div>
+							<div class="tl-body">
+								<div class="tl-years">2010</div>
+								<div class="tl-role">Division &amp; Training Program</div>
+								<div class="tl-meta">
+									The Hacettepe University Division of Pediatric Intensive Care was formally established.
 									<ul>
-										<li>The Department of Pediatric Intensive Care Medicine was structured by Associate Prof. Benan Bayrakci, nominated as Chair of Pediatric Intensive Care Medicine.</li>
-										<li>The very first pediatric intensivist graduated in T&uuml;rkiye, <strong>Selman Kesici</strong>, appeared from this department.</li>
+										<li>Associate Prof. Benan Bayrakc&#x131; was appointed founding division chief.</li>
+										<li>T&uuml;rkiye&rsquo;s first Pediatric Intensive Care Subspecialty Training Program was initiated.</li>
 									</ul>
 								</div>
 							</div>
@@ -291,13 +286,36 @@
 						<li class="tl-item">
 							<div class="tl-dot"></div>
 							<div class="tl-body">
-								<div class="tl-years">2013</div>
-								<div class="tl-role">Renovation</div>
+								<div class="tl-years">2011</div>
+								<div class="tl-role">PAYla&#x15F;&#x131;m Meetings</div>
 								<div class="tl-meta">
-									PICU was transferred to its brand new unit in 5th floor-3rd block in modern standards.
+									Annual &ldquo;PAYla&#x15F;&#x131;m&rdquo; meetings were launched to disseminate knowledge and experience across the national PICU community.
+								</div>
+							</div>
+						</li>
+
+						<li class="tl-item">
+							<div class="tl-dot"></div>
+							<div class="tl-body">
+								<div class="tl-years">2013</div>
+								<div class="tl-role">Modern Facility</div>
+								<div class="tl-meta">
+									The unit relocated to a technologically advanced 16-bed facility on the 5th floor, 3rd block.
 									<ul>
-										<li><strong>Assoc. Prof. Benan Bayrakci</strong> structured the unit being the Director of Children's Hospital.</li>
+										<li>Clinical outcomes improved measurably; SMR declined to as low as <strong>0.28</strong> and has remained at this level.</li>
+										<li>The first Joint Pediatric Intensive Care Training Program in T&uuml;rkiye began (2013&ndash;2019) with Ankara Children&rsquo;s Hematology Oncology Hospital.</li>
 									</ul>
+								</div>
+							</div>
+						</li>
+
+						<li class="tl-item">
+							<div class="tl-dot"></div>
+							<div class="tl-body">
+								<div class="tl-years">2014</div>
+								<div class="tl-role">First Fellow Graduate</div>
+								<div class="tl-meta">
+									Dr. <strong>Selman Kesici</strong> became the first graduate of a pediatric intensive care fellowship program in T&uuml;rkiye.
 								</div>
 							</div>
 						</li>
@@ -308,9 +326,9 @@
 								<div class="tl-years">2015</div>
 								<div class="tl-role">Life Support Center (LSC)</div>
 								<div class="tl-meta">
-									The Center for Life Support Practice &amp; Research is established for critical care scientific studies.
+									The Life Support Application and Research Center was established as a platform for research, simulation-based education, and novel therapeutic development.
 									<ul>
-										<li>Founded by Prof. Benan Bayrakci.</li>
+										<li>Founded by Prof. Benan Bayrakc&#x131;.</li>
 									</ul>
 								</div>
 							</div>
@@ -319,10 +337,40 @@
 						<li class="tl-item">
 							<div class="tl-dot"></div>
 							<div class="tl-body">
-								<div class="tl-years">Currently</div>
-								<div class="tl-role">Today</div>
+								<div class="tl-years">2018</div>
+								<div class="tl-role">pCICU &amp; Nursing Program</div>
 								<div class="tl-meta">
-									The Pediatric Intensive Care Medicine Department runs 16 beds in the PICU and 8 beds in the pCICU, involving research and educational activities besides patient care.
+									Academic staff assumed responsibility for the 8-bed pediatric cardiac intensive care unit (pCICU).
+									<ul>
+										<li>Certified Pediatric Intensive Care Nursing Training Program launched with the Turkish Ministry of Health.</li>
+										<li>Dr. Selman Kesici returned as faculty to train future specialists.</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+
+						<li class="tl-item">
+							<div class="tl-dot"></div>
+							<div class="tl-body">
+								<div class="tl-years">2024</div>
+								<div class="tl-role">Life Support Trust Foundation</div>
+								<div class="tl-meta">
+									The Life Support Trust Foundation was established to sustain scientific research and provide structured social support for patients and families.
+								</div>
+							</div>
+						</li>
+
+						<li class="tl-item">
+							<div class="tl-dot"></div>
+							<div class="tl-body">
+								<div class="tl-years">Currently</div>
+								<div class="tl-role">Quaternary Referral Center</div>
+								<div class="tl-meta">
+									The division functions as a national quaternary referral center with <strong>23 intensive care beds</strong> (16 PICU + 8 pCICU), integrating ECMO, transplantation, intoxications, blood purification, and trauma care with education and research.
+									<ul>
+										<li>Coordinated by Prof. Benan Bayrakc&#x131;, Assoc. Prof. Selman Kesici, and Assoc. Prof. Mehmet &Ccedil;ele&#x11F;en.</li>
+										<li>ECMO cohort approaches 400 patients with more than 600 ECMO days annually.</li>
+									</ul>
 								</div>
 							</div>
 						</li>
@@ -330,12 +378,26 @@
 					</ul>
 				</section>
 
+				<section id="innovations" class="block">
+					<span class="eyebrow">Translational Work</span>
+					<h2>Innovations &amp; Protocols</h2>
+					<p class="innov-intro">Innovative therapeutic and translational approaches developed within the unit and introduced into the scientific literature:</p>
+					<ul class="innov">
+						<li class="innov-card"><h3>Zipper Method of Hacettepe</h3><p>A novel immunomodulation technique for severe neurological inflammatory disorders.</p></li>
+						<li class="innov-card"><h3>PISA Protocol</h3><p>A treatment protocol for severe COVID-19-associated MIS-C.</p></li>
+						<li class="innov-card"><h3>SeLBA Method</h3><p>Selective left bronchial aspiration for the recruitment of left lung atelectasis.</p></li>
+						<li class="innov-card"><h3>Rapid Sequence Apheresis</h3><p>An apheresis technique for poisoning treatment.</p></li>
+						<li class="innov-card"><h3>ECMO-supported MSC Therapy</h3><p>Mesenchymal stem cell therapy for hypoplastic lung disease.</p></li>
+						<li class="innov-card"><h3>Hyperbaric Organ Preservation</h3><p>Hyperbaric oxygen preservation of donor organs prior to transplantation.</p></li>
+						<li class="innov-card"><h3>Carbon Monoxide Apnea Test</h3><p>The Hacettepe CO-based apnea test procedure in ECMO patients.</p></li>
+						<li class="innov-card"><h3>Dialoxygenation</h3><p>The use of dialysis membranes as oxygenators.</p></li>
+					</ul>
+					<p class="more-link">Read the full editorial history, archive figures, and references on the <a href="picu.html">About Us</a> page.</p>
+				</section>
+
 				<button id="toTop" aria-label="Back to top">&uarr;</button>
 
-			</div>
-
-		</div>
-    </div>
+	</div>
 </div>
 
 <footer>

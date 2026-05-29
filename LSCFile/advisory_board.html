@@ -45,6 +45,11 @@
     .ppl .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
     .ppl .hero h1{margin:8px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
     .ppl .hero p.sub{max-width:660px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+    .ppl .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+    .ppl .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+      color:var(--ink-soft);transition:all .18s ease}
+    .ppl .subnav a:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+    .ppl .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 
     .ppl .body-wrap{max-width:var(--maxw);margin:0 auto;padding:30px 18px 10px}
     .ppl .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
@@ -107,9 +112,17 @@
 
     <header class="hero">
         <div class="wrap">
-            <span class="eyebrow">Governance</span>
+            <span class="eyebrow">The Center</span>
             <h1>Life Support Center Advisory Board</h1>
             <p class="sub">International and national experts guiding the scientific and strategic direction of the Center.</p>
+            <nav class="subnav">
+                <a href="about_us.html">About Us</a>
+                <a href="legislation_textus.html">Legislation Textus</a>
+                <a href="steering_committee.html">Steering Committee</a>
+                <a class="active" href="advisory_board.html">Advisory Board</a>
+                <a href="resolutions_of_the_board_of_directors.html">Resolutions</a>
+                <a href="activity_reports.html">Activity Report</a>
+            </nav>
         </div>
     </header>
 
@@ -126,9 +139,9 @@
             </div>
 
             <div class="pcard">
-                <div class="photo"><img src="images/gulsevkale_advisory.jpg" alt="Prof. G¸lsev Kale"></div>
+                <div class="photo"><img src="images/gulsevkale_advisory.jpg" alt="Prof. Gùlsev Kale"></div>
                 <div class="pbody">
-                    <h3>Prof. G¸lsev Kale</h3>
+                    <h3>Prof. Gùlsev Kale</h3>
                     <a class="dept" href="http://hduran.etu.edu.tr/" target="_blank" rel="noopener">Chair of Board of Trustees, <b>?hsan Do?ramac? Bilkent University</b></a>
                 </div>
             </div>
@@ -163,14 +176,14 @@
                 <a class="photo" href="https://www.kuh.ku.edu.tr/doctors/ender-odemis" target="_blank" rel="noopener"><img src="images/enderodemis.jpg" alt="Prof. Ender Odemis"></a>
                 <div class="pbody">
                     <h3>Prof. Ender Odemis</h3>
-                    <span class="dept">Pediatric Cardiology, <b>KoÁ University</b></span>
+                    <span class="dept">Pediatric Cardiology, <b>Koù University</b></span>
                 </div>
             </div>
 
             <div class="pcard">
-                <div class="photo"><img src="images/yusufalper.jpg" alt="Prof. Yusuf Alper K?l?Á"></div>
+                <div class="photo"><img src="images/yusufalper.jpg" alt="Prof. Yusuf Alper K?l?ù"></div>
                 <div class="pbody">
-                    <h3>Prof. Yusuf Alper K?l?Á</h3>
+                    <h3>Prof. Yusuf Alper K?l?ù</h3>
                     <a class="dept" href="https://avesis.hacettepe.edu.tr/yusufa" target="_blank" rel="noopener">Department of General Surgery, <b>Hacettepe University</b></a>
                 </div>
             </div>

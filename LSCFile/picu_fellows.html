@@ -55,14 +55,17 @@
     .ppl .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 
     .ppl .wrapper{max-width:var(--maxw);margin:0 auto;padding:32px 16px 16px}
-    .ppl .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+    .ppl .grid{display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
+    @media(max-width:900px){.ppl .grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:640px){.ppl .grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:420px){.ppl .grid{grid-template-columns:1fr}}
 
     .ppl .pcard{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#fff;
       box-shadow:var(--shadow);border-top:3px solid var(--red);transition:transform .2s ease,box-shadow .2s ease;
       animation:fadeUp .6s ease both}
     .ppl .pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
-    .ppl .pcard .photo{aspect-ratio:1/1;overflow:hidden;background:var(--soft)}
-    .ppl .pcard .photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .4s ease}
+    .ppl .pcard .photo{aspect-ratio:5/6;overflow:hidden;background:var(--soft)}
+    .ppl .pcard .photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;display:block;transition:transform .4s ease}
     .ppl .pcard:hover .photo img{transform:scale(1.05)}
     .ppl .pcard .body{padding:14px 12px 16px;text-align:center;display:flex;flex-direction:column;gap:5px;flex:1}
     .ppl .pcard h3{margin:0;font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
@@ -121,6 +124,7 @@
             <p class="lead">Physicians trained in the Pediatric Intensive Care Medicine fellowship program at
                 the Hacettepe Life Support Center.</p>
             <nav class="subnav">
+                <a href="picu.html">About Us</a>
                 <a href="picu_adminstration.html">Administration</a>
                 <a class="active" href="picu_fellows.html">Fellows</a>
                 <a href="picu_thesis.html">Thesis</a>
@@ -166,7 +170,7 @@
             </div>
 
             <div class="pcard">
-                <div class="photo"><img src="images/fellows/noppm.jpg" alt="Mehmet Çeleğen"></div>
+                <div class="photo"><img src="images/fellows/mehmetcelegen.jpeg" alt="Mehmet &Ccedil;ele&#x11F;en"></div>
                 <div class="body"><h3>Mehmet Çeleğen</h3><span class="years">2016&ndash;2019</span></div>
             </div>
 

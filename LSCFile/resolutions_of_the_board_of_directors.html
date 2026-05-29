@@ -43,6 +43,11 @@
     .pg .hero .wrap{max-width:var(--maxw);margin:0 auto;animation:fadeUp .7s ease both}
     .pg .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
     .pg .hero h1{margin:8px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
+    .pg .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+    .pg .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+      color:var(--ink-soft);transition:all .18s ease}
+    .pg .subnav a:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+    .pg .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 
     .pg .article{max-width:440px;margin:0 auto;padding:36px 18px 20px;animation:fadeUp .8s ease both .05s;text-align:center}
     .pg .lockicon{width:64px;height:64px;border-radius:50%;background:#fde7e8;color:var(--red);display:flex;align-items:center;
@@ -107,8 +112,16 @@
 
     <header class="hero">
         <div class="wrap">
-            <span class="eyebrow">Restricted</span>
+            <span class="eyebrow">The Center</span>
             <h1>Resolutions of the Board Directory</h1>
+            <nav class="subnav">
+                <a href="about_us.html">About Us</a>
+                <a href="legislation_textus.html">Legislation Textus</a>
+                <a href="steering_committee.html">Steering Committee</a>
+                <a href="advisory_board.html">Advisory Board</a>
+                <a class="active" href="resolutions_of_the_board_of_directors.html">Resolutions</a>
+                <a href="activity_reports.html">Activity Report</a>
+            </nav>
         </div>
     </header>
 

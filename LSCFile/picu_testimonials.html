@@ -70,6 +70,17 @@
 	.lsc-modern .ttext h4:first-child{margin-top:0;border-top:0;padding-top:0}
 	.lsc-modern #toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:20px;cursor:pointer;display:none;box-shadow:var(--shadow);z-index:40}
 	.lsc-modern #toTop:hover{background:var(--red-deep)}
+	.picu-hero{--maxw:1120px;font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);
+	  background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);padding:30px 16px 22px;text-align:center}
+	.picu-hero .wrap{max-width:var(--maxw);margin:0 auto}
+	.picu-hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--red)}
+	.picu-hero h1{margin:6px 0 0;font-weight:800;font-size:clamp(24px,3.4vw,34px);color:var(--ink)}
+	.picu-hero p.lead{max-width:720px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+	.picu-hero .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+	.picu-hero .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+	  color:var(--ink-soft);text-decoration:none;transition:all .18s ease}
+	.picu-hero .subnav a:hover{border-color:var(--red);color:var(--red-deep);transform:translateY(-1px);text-decoration:none}
+	.picu-hero .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 	</style>
 </head>
 
@@ -109,59 +120,26 @@
 </div>
 <!--ust-->
 
-<div class="site_baslangic"></div>
+<header class="picu-hero">
+	<div class="wrap">
+		<span class="eyebrow">Pediatric Intensive Care</span>
+		<h1>Testimonials</h1>
+		<p class="lead">Firsthand accounts on the establishment of the Pediatric Intensive Care Unit at Hacettepe University.</p>
+		<nav class="subnav">
+			<a href="picu.html">About Us</a>
+			<a href="picu_adminstration.html">Administration</a>
+			<a href="picu_fellows.html">Fellows</a>
+			<a href="picu_thesis.html">Thesis</a>
+			<a href="picu_smr.html">SMR</a>
+			<a href="picu_album.html">Album</a>
+			<a href="picu_brief_history.html">Brief History</a>
+			<a class="active" href="picu_testimonials.html">Testimonials</a>
+		</nav>
+	</div>
+</header>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
-
-            <!--menusol-->
-          <div class="menu_sol">
-
-                <nav class="main-nav d-none d-lg-block">
-                    <ul>
-						<li><a href="picu_adminstration.html">Adminstration</a></li>
-						<li><a href="picu_fellows.html">Fellows</a></li>
-						<li><a href="picu_thesis.html">Thesis</a></li>	
-                        <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
-						<li><a href="picu_album.html">Album</a></li>
-						<li><a href="picu_brief_history.html">Brief History</a></li>
-						<li><a href="picu_testimonials.html">Testimonials</a></li>
-                    </ul>
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                      </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
-
-                        <div class=" mr-4 ">
-                            <a href="/">Home Page</a>
-                            <a href="/contacts.html">Contacts</a>
-                        </div>
-
-                  </div>
-                </nav>
-
-            </div>
-
-            <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
-        </div>
-		
-        <div class="col-lg-9 col-12 mb-3">
-
-			<div class="lsc-modern">
-
-				<header class="page-head">
-					<span class="eyebrow">Historical Witness Documents</span>
-					<h1 class="page-title">Testimonials</h1>
-					<p class="page-sub">Firsthand accounts on the establishment of the Pediatric Intensive Care Unit at Hacettepe University.</p>
-				</header>
+<div class="container mt-4 mb-5">
+	<div class="lsc-modern">
 
 				<p class="lead">These translated and edited firsthand accounts were collected from clinicians involved in the early establishment of the unit, in response to a call circulated through the Hacettepe Pediatrics alumni network in preparation for the 40th anniversary congress. Collectively, they provide a unique qualitative perspective on the origins of pediatric intensive care in T&uuml;rkiye. <em>Click any name to read the full account.</em></p>
 
@@ -378,10 +356,7 @@
 
 				<button id="toTop" aria-label="Back to top">&uarr;</button>
 
-			</div>
-
-		</div>
-    </div>
+	</div>
 </div>
 
 <footer>

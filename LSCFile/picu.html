@@ -87,6 +87,12 @@
 	.lsc-modern .figure .fig-media img{display:block;width:100%;height:200px;object-fit:cover;border-radius:8px;transform-origin:center center;transition:transform .35s ease,box-shadow .35s ease}
 	.lsc-modern .figure:hover .fig-media img{transform:scale(1.75);box-shadow:0 12px 40px rgba(31,53,81,.28)}
 	.lsc-modern .figure figcaption{color:var(--ink-soft);font-size:13.5px;position:relative;z-index:1}
+	.fig-lightbox{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px}
+	.fig-lightbox[hidden]{display:none!important}
+	.fig-lightbox-backdrop{position:absolute;inset:0;background:rgba(20,32,52,.88);cursor:pointer}
+	.fig-lightbox-panel{position:relative;z-index:1;max-width:min(96vw,1280px);max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:12px;pointer-events:none}
+	.fig-lightbox-panel img{max-width:100%;max-height:calc(92vh - 48px);width:auto;height:auto;display:block;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.45);pointer-events:auto}
+	.fig-lightbox-cap{margin:0;max-width:720px;text-align:center;color:#fff;font-size:14px;line-height:1.5;pointer-events:none}
 	@media(prefers-reduced-motion:reduce){
 		.lsc-modern .figure .fig-media img{transition:none}
 		.lsc-modern .figure:hover .fig-media img{transform:none}
@@ -107,6 +113,17 @@
 	@media(prefers-reduced-motion:reduce){.lsc-modern .ttrack{animation:none}.lsc-modern .tslider{overflow-x:auto}}
 	.lsc-modern #toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:20px;cursor:pointer;display:none;box-shadow:var(--shadow);z-index:40}
 	.lsc-modern #toTop:hover{background:var(--red-deep)}
+	.picu-hero{--maxw:1120px;font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);
+	  background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);padding:30px 16px 22px;text-align:center}
+	.picu-hero .wrap{max-width:var(--maxw);margin:0 auto}
+	.picu-hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--red)}
+	.picu-hero h1{margin:6px 0 0;font-weight:800;font-size:clamp(24px,3.4vw,34px);color:var(--ink)}
+	.picu-hero p.lead{max-width:720px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+	.picu-hero .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+	.picu-hero .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+	  color:var(--ink-soft);text-decoration:none;transition:all .18s ease}
+	.picu-hero .subnav a:hover{border-color:var(--red);color:var(--red-deep);transform:translateY(-1px);text-decoration:none}
+	.picu-hero .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
 	</style>
 </head>
 
@@ -146,59 +163,26 @@
 </div>
 <!--ust-->
 
-<div class="site_baslangic"></div>
+<header class="picu-hero">
+	<div class="wrap">
+		<span class="eyebrow">Pediatric Intensive Care</span>
+		<h1>Forty Years of Pediatric Intensive Care</h1>
+		<p class="lead">Hacettepe University Children&rsquo;s Hospital &mdash; the first pediatric intensive care unit established in T&uuml;rkiye, since 1985.</p>
+		<nav class="subnav">
+			<a class="active" href="picu.html">About Us</a>
+			<a href="picu_adminstration.html">Administration</a>
+			<a href="picu_fellows.html">Fellows</a>
+			<a href="picu_thesis.html">Thesis</a>
+			<a href="picu_smr.html">SMR</a>
+			<a href="picu_album.html">Album</a>
+			<a href="picu_brief_history.html">Brief History</a>
+			<a href="picu_testimonials.html">Testimonials</a>
+		</nav>
+	</div>
+</header>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
-
-            <!--menusol-->
-          <div class="menu_sol">
-
-                <nav class="main-nav d-none d-lg-block">
-                    <ul>
-						<li><a href="picu_adminstration.html">Adminstration</a></li>
-						<li><a href="picu_fellows.html">Fellows</a></li>
-						<li><a href="picu_thesis.html">Thesis</a></li>	
-                        <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
-						<li><a href="picu_album.html">Album</a></li>
-						<li><a href="picu_brief_history.html">Brief History</a></li>
-						<li><a href="picu_testimonials.html">Testimonials</a></li>
-                    </ul>
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                      </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
-
-                        <div class=" mr-4 ">
-                            <a href="/">Home Page</a>
-                            <a href="/contacts.html">Contacts</a>
-                        </div>
-
-                  </div>
-                </nav>
-
-            </div>
-
-            <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
-        </div>
-		
-        <div class="col-lg-9 col-12 mb-3">
-
-			<div class="lsc-modern">
-
-				<header class="page-head">
-					<span class="eyebrow">Hacettepe University &middot; Life Support Center</span>
-					<h1 class="page-title">Forty Years of Pediatric Intensive Care</h1>
-					<p class="page-sub">Hacettepe University Children's Hospital &mdash; the first pediatric intensive care unit established in T&uuml;rkiye, since 1985.</p>
-				</header>
+<div class="container mt-4 mb-5">
+	<div class="lsc-modern">
 
 				<!-- ABOUT US -->
 				<section id="about" class="block">
@@ -356,10 +340,15 @@
 
 				<button id="toTop" aria-label="Back to top">&uarr;</button>
 
-			</div>
+	</div>
+</div>
 
-		</div>
-    </div>
+<div id="fig-lightbox" class="fig-lightbox" hidden aria-hidden="true">
+	<div class="fig-lightbox-backdrop" data-close="1"></div>
+	<div class="fig-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="fig-lightbox-cap">
+		<img id="fig-lightbox-img" src="" alt="">
+		<p id="fig-lightbox-cap" class="fig-lightbox-cap"></p>
+	</div>
 </div>
 
 <footer>
@@ -386,6 +375,43 @@
 				toTop.style.display = (window.scrollY > 500) ? 'block' : 'none';
 			});
 			toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+		}
+		var lb = document.getElementById('fig-lightbox');
+		var lbImg = document.getElementById('fig-lightbox-img');
+		var lbCap = document.getElementById('fig-lightbox-cap');
+		function closeLb(){
+			if(!lb) return;
+			lb.hidden = true;
+			lb.setAttribute('aria-hidden', 'true');
+			document.body.style.overflow = '';
+			if(lbImg) lbImg.src = '';
+		}
+		function openLb(src, alt, cap){
+			if(!lb || !lbImg) return;
+			lbImg.src = src;
+			lbImg.alt = alt || '';
+			if(lbCap) lbCap.textContent = cap || '';
+			lb.hidden = false;
+			lb.setAttribute('aria-hidden', 'false');
+			document.body.style.overflow = 'hidden';
+		}
+		document.querySelectorAll('.lsc-modern .figure').forEach(function(fig){
+			var media = fig.querySelector('.fig-media');
+			var img = fig.querySelector('.fig-media img');
+			var capEl = fig.querySelector('figcaption');
+			if(!media || !img) return;
+			media.addEventListener('click', function(e){
+				e.preventDefault();
+				openLb(img.src, img.alt, capEl ? capEl.textContent.trim() : '');
+			});
+		});
+		if(lb){
+			lb.querySelectorAll('[data-close]').forEach(function(el){
+				el.addEventListener('click', closeLb);
+			});
+			document.addEventListener('keydown', function(e){
+				if(e.key === 'Escape' && !lb.hidden) closeLb();
+			});
 		}
 	})();
 	</script>
