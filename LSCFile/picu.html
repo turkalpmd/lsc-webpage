@@ -4,8 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Life Support Center</title>
- 
+	<title>About Us &amp; History | Life Support Center</title>
+	<meta name="description" content="Hacettepe University Pediatric Intensive Care - About Us and the history of the first PICU established in Türkiye in 1985.">
+
 	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
@@ -24,40 +25,80 @@
 	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 	<meta name="theme-color" content="#ffffff">
 
-	
   	<link href="fontawesome/css/all.min.css" rel="stylesheet">
 	<script src="fontawesome/js/all.min.js"></script>
-    
+
     <link href="/sablon2021/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/sablon2021/css/style.css" rel="stylesheet" />
     <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
-	<link href="/css/style_timeline.css" rel="stylesheet"/>
     <link href="/sablon2021/css/animate.css" rel="stylesheet" />
 
     <script src="/sablon2021/js/jquery.min.js"></script>
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 	<script src="/js/time.js"></script>
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-	<script src="jQueryAssets/jquery-1.11.1.min.js" type="text/javascript"></script>
-	<script src="jQueryAssets/jquery.ui-1.10.4.button.min.js" type="text/javascript"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
-    <link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css" />
-    <link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css" />
-    <link href="jQueryAssets/jquery.ui.button.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+
 	<style>
-		.tiptext {
-			color:#069; 
-			cursor:pointer;
-		}
-		.description {
-			display:none;
-			position:absolute;
-			border:0px solid #000;
-			width:auto;
-			height:400px;
-			z-index: 2;
-		}	
+	.lsc-modern{--ink:#1f3551;--ink-soft:#3f4a5a;--muted:#7c8898;--red:#ec1b23;--red-deep:#c41019;--link:#0b6bd3;--soft:#f5f6f9;--card:#fff;--line:#e4e7ec;--ring:rgba(11,107,211,.16);--shadow:0 1px 2px rgba(31,53,81,.05),0 14px 34px -20px rgba(31,53,81,.35);font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);line-height:1.62}
+	.lsc-modern *{box-sizing:border-box}
+	.lsc-modern a{color:var(--link);text-decoration:none}
+	.lsc-modern a:hover{text-decoration:underline;color:var(--red-deep)}
+	.lsc-modern .page-head{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:4px}
+	.lsc-modern .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+	.lsc-modern h1.page-title{font-weight:800;font-size:clamp(24px,3.6vw,34px);color:var(--ink);margin:0 0 6px;line-height:1.15}
+	.lsc-modern .page-sub{color:var(--muted);font-size:15px;margin:0}
+	.lsc-modern .block{margin-top:36px}
+	.lsc-modern .block h2{font-weight:800;font-size:clamp(20px,2.8vw,26px);color:var(--ink);margin:0 0 14px}
+	.lsc-modern .prose p{margin:0 0 14px;color:var(--ink-soft);text-align:justify}
+	.lsc-modern .prose h3{font-weight:700;font-size:18px;color:var(--ink);margin:24px 0 8px}
+	.lsc-modern .innov-intro{color:var(--ink-soft);margin:0 0 16px}
+	.lsc-modern .innov{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+	.lsc-modern .innov-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow);border-top:3px solid var(--red)}
+	.lsc-modern .innov-card h3{margin:0 0 6px;font-weight:700;font-size:15px;color:var(--ink)}
+	.lsc-modern .innov-card p{margin:0;color:var(--ink-soft);font-size:13.5px}
+	.lsc-modern .timeline{list-style:none;margin:6px 0 4px;padding:0;position:relative}
+	.lsc-modern .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+	.lsc-modern .tl-item{position:relative;padding:0 0 22px 34px}
+	.lsc-modern .tl-dot{position:absolute;left:0;top:5px;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--red)}
+	.lsc-modern .tl-years{font-size:13px;font-weight:700;color:var(--red)}
+	.lsc-modern .tl-role{font-weight:700;color:var(--ink);font-size:16px}
+	.lsc-modern .tl-meta{color:var(--ink-soft);font-size:14px}
+	.lsc-modern .tl-meta ul{margin:6px 0 0;padding-left:18px}
+	.lsc-modern .tl-meta li{margin:2px 0}
+	.lsc-modern .biblio{margin-top:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+	.lsc-modern .acc-head{width:100%;display:flex;align-items:center;gap:14px;padding:16px 18px;background:none;border:0;cursor:pointer;text-align:left;font-family:inherit}
+	.lsc-modern .acc-head:hover{background:var(--soft)}
+	.lsc-modern .acc-title{flex:1;font-weight:700;font-size:16px;color:var(--ink)}
+	.lsc-modern .cv-count{background:#fde7e8;color:var(--red);font-weight:700;font-size:13px;padding:3px 11px;border-radius:999px}
+	.lsc-modern .chev{width:11px;height:11px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .25s}
+	.lsc-modern .acc-head[aria-expanded="true"]{background:var(--soft);border-bottom:1px solid var(--line)}
+	.lsc-modern .acc-head[aria-expanded="true"] .chev{transform:rotate(-135deg)}
+	.lsc-modern .acc-panel{padding:8px 18px 16px}
+	.lsc-modern .entries{list-style:none;margin:0;padding:0}
+	.lsc-modern .entry{display:flex;gap:12px;padding:10px 2px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
+	.lsc-modern .entry:first-child{border-top:0}
+	.lsc-modern .entry .num{flex:0 0 auto;min-width:28px;text-align:right;color:var(--red);font-weight:700;font-size:13px}
+	.lsc-modern .figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
+	.lsc-modern .figgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+	.lsc-modern .figure img{display:block;width:100%;height:200px;object-fit:cover;border-radius:8px;background:var(--soft);margin-bottom:10px}
+	.lsc-modern .figure figcaption{color:var(--ink-soft);font-size:13.5px}
+	.lsc-modern .tz-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+	.lsc-modern .btn-testi{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff !important;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);white-space:nowrap}
+	.lsc-modern .btn-testi:hover{background:var(--red-deep);color:#fff !important;text-decoration:none}
+	.lsc-modern .tslider{margin-top:18px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+	.lsc-modern .ttrack{display:flex;gap:16px;width:max-content;animation:tscroll 48s linear infinite}
+	.lsc-modern .tslider:hover .ttrack{animation-play-state:paused}
+	.lsc-modern .thi{flex:0 0 320px;display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:12px;box-shadow:var(--shadow);padding:14px 16px}
+	.lsc-modern .thi .av{position:relative;flex:0 0 56px;width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid var(--line);background:var(--soft);color:var(--red);font-weight:800;font-size:18px}
+	.lsc-modern .thi .av::before{content:attr(data-initials);position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+	.lsc-modern .thi .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+	.lsc-modern .thi .nm{font-weight:800;color:var(--ink);font-size:14px;margin:0 0 3px}
+	.lsc-modern .thi .qt{color:var(--ink-soft);font-size:13px;margin:0;font-style:italic}
+	@keyframes tscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+	@media(prefers-reduced-motion:reduce){.lsc-modern .ttrack{animation:none}.lsc-modern .tslider{overflow-x:auto}}
+	.lsc-modern #toTop{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--red);color:#fff;font-size:20px;cursor:pointer;display:none;box-shadow:var(--shadow);z-index:40}
+	.lsc-modern #toTop:hover{background:var(--red-deep)}
 	</style>
 </head>
 
@@ -87,8 +128,6 @@
                     <a href="/contacts.html">Contacts</a>
 					<a href="/">About</a>
                 </div>
-
-
             </div>
 
             <div class="menu_genel d-none d-sm-block d-md-none">
@@ -100,10 +139,6 @@
 <!--ust-->
 
 <div class="site_baslangic"></div>
-
-
-
-
 
 <div class="container mt-5">
     <div class="row">
@@ -118,9 +153,9 @@
 						<li><a href="picu_fellows.html">Fellows</a></li>
 						<li><a href="picu_thesis.html">Thesis</a></li>	
                         <li><a href="picu_smr.html">Standardised Mortality Ratio (SMR)</a></li>
-                        <!--<li><a href="prism-iii.html">PRISM-III Calculator</a></li>
-                        <li><a href="prism-iv.html">PRISM-IV Calculator</a></li>-->
 						<li><a href="picu_album.html">Album</a></li>
+						<li><a href="picu_brief_history.html">Brief History</a></li>
+						<li><a href="picu_testimonials.html">Testimonials</a></li>
                     </ul>
                     <div class="mobil_menu_alt mt-3">
                         <div class="d-flex justify-content-center mb-4">
@@ -141,7 +176,6 @@
                   </div>
                 </nav>
 
-
             </div>
 
             <script src="/sablon2021/js/menu.js"></script>
@@ -149,429 +183,203 @@
         </div>
 		
         <div class="col-lg-9 col-12 mb-3">
-			
-			<section id="resume" class="resume">
-				<div class="container">
-          			<div class="section-title">
-						
-						<!-- Buraya Resim AlalÃÂ±m -->
-  
-					  <div class="row">
-						<div class="col-lg-12" data-aos="fade-up">
-              				<!-- ======= SaÃÂ YanÃÂ±m ======= -->
-              					<h3 class="resume-title">Brief History of PICU</h3>
-								<!-- ======= Tekli Section ======= -->              					
-								<div class="resume-item">
-                					<h4>Establishment</h4>
-                					<h5>1985</h5>
-									<ul>
-										<li>
-											<p><em>PICU was established as the first ever PICU of Türkiye</em></p>
-										</li>
-										<ul>
-											<li>
-												
-												<p><span style="color: #069">
-                                                    <em>
-                                                        <a class="tiptext">
-                                                            <b>Prof. Namık Çevik</b>
-                                                            <img class="description" src="images/namık_cevik.jpeg" style="display: none;">
-                                                        </a>
-                                                    </em>
-                                                   </span>
-                                                    <em>
-                                                        <a class="tiptext"> </a> cut the ribbon being the Director of the Children's Hospital
-                                                    </em>
-                                                </p>
-										
-											</li>
-											<li>
-												<p><em>Open System formatted ICU was leaded by the chief assistants</em></p>
-											</li>
-										</ul>
-									</ul>
-              					</div>
-								
-								<div class="resume-item">
-                					<h4>Renovation</h4>
-                					<h5>1997</h5>
-									<ul>
-										<li>
-											<p><em>Renovated as a 10 bed single room ICU</em></p>
-										</li>
-										<ul>
-											<li>
-                                                <!-- Resimli hover -->
-												<p>
-                                                    <span style="color: #069">
-                                                        <em>
-                                                            <a class="tiptext">
-                                                                <b>Prof. Murat Tuncer</b>
-                                                                <img class="description" src="https://www.doktorsitesi.com/media/cache/profil_500/uploads/profile_self_image/cb521bea8a076288474eb539ce0f2e88.png" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a> executed the renovation as the Director of the Children's Hospital
-                                                    </em>
-                                                </p>
-                                                <!-- Resimli hover -->
-											</li>
-										</ul>
-									</ul>					
-              					</div>
-								<div class="resume-item">
-                					<h4>MISSION</h4>
-                					<h5>2001</h5>
-									<ul>
-										<li>
-											<p><em> <b>Mission</b> pediatric intensive care ecole transference to Hacettepe University</em></p>
-										</li>
-										<ul>
-											<li>
-                                               <!-- Resimli hover -->
-												<p> <em>Benan Bayrakci was appointed at</em>
-                                                    <span style="color: #069">
-                                                        <em> 
-                                                            <a class="tiptext">
-                                                                <b>Johns Hopkins University</b>
-                                                                <img class="description" src="/images/bbjohnhopkins.JPG" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a>for this purpose
-                                                    </em>
-                                                </p>
-                                                <!-- Resimli hover -->                                                
-											</li>
-											<li>
-												<p>
-                                                    <span style="color: #069">
-                                                        <em>
-                                                            <a class="tiptext">
-                                                                <b>Prof. Gülsev Kale </b><img class="description" src="https://www.healthworldnews.net/wp-content/uploads/2022/05/Prof-Dr-Gulsum-Kale-75WHA-Dogramaci-Odul-konusmasi-27.5.2022-e1653686178614-400x266.jpg" style="display: none;">
-                                                            </a> 
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext">
-                                                        </a> pursued the mission as the Chair of Pediatrics
-                                                    </em>
-                                                </p>                                                
-											</li>											
-										</ul>
-									</ul>					
-              					</div>	
-								
-								<div class="resume-item">
-                					<h4>Closed System ICU</h4>
-                					<h5>2002</h5>
-									<ul>
-										<li>
-											<p><em>Transformation to Closed System ICU format</em></p>
-										</li>
-										<ul>
-											<li>
-                                               <!-- Resimli hover -->
-												<p>
-                                                    <span style="color: #069">
-                                                        <em>
-                                                            <a class="tiptext">
-                                                                <b>Benan Bayrakci</b>
-                                                                <img class="description" src="/images/oldpicu.jpg" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a> restructured the management of the unit being the Head of PICU
-                                                    </em>
-                                                </p>
-                                                <!-- Resimli hover -->   
 
-											</li>
-											<li>
-												<p><em>Habilitated unit with invasive monitorization, mechanic ventilation and blood purification applications</em></p>
-											</li>											
-										</ul>
-									</ul>					
-              					</div>
-                            
-								<div class="resume-item">
-                					<h4>Home ventilation</h4>
-                					<h5>2003</h5>
-									<ul>
-										<li>
-											<p><em>Home ventilation service inited</em></p>
-										</li>
-										<ul>
-											<li>
-                                               <!-- Resimli hover -->
-												<p>
-                                                    <span style="color: #069">
-                                                        <em>
-                                                            <a class="tiptext">
-                                                                <b>Benan Bayrakci</b>
-                                                                <img class="description" src="/images/bbpicu.jpg" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a> start up the program being the pioneering service in Türkiye
-                                                    </em>
-                                                </p>
-                                                <!-- Resimli hover -->   
-											</li>										
-										</ul>
-									</ul>					
-              					</div>	                            
-								
-								<div class="resume-item">
-                					<h4>CVVHDF</h4>
-                					<h5>2004</h5>
-									<ul>
-										<li>
-											<p><em> <b>CVVHDF Program</b> initiated</em></p>
-										</li>
-										<ul>
-											<li>
-                                               <!-- Resimli hover -->
-												<p>
-                                                    <em>Benan Bayrakci start up the program as the Head of PICU</em>
-                                                </p>
-                                                <!-- Resimli hover -->                                                                                                  
-											</li>										
-										</ul>
-									</ul>					
-              					</div>		
+			<div class="lsc-modern">
 
-								<div class="resume-item">
-                					<h4>PALS</h4>
-                					<h5>2006</h5>
-									<ul>
-								        <li>
-                                               <!-- Resimli hover -->
-										    <p>
-                                                <span style="color: #069">
-                                                    <em>
-                                                        <a class="tiptext">
-                                                            <b>PALS program</b>
-                                                            <img class="description" src="/images/palsimg.png" style="display: none;">
-                                                        </a>
-                                                    </em>
-                                                </span>
-                                                <em>
-                                                    <a class="tiptext"> 
-                                                    </a> started
-                                                </em>
-                                            </p>
-                                                <!-- Resimli hover -->  
-                                        </li>                                        
-										<ul>
-											<li>
-												<em>Assoc. Prof. Benan Bayrakci established the program as the Head of PICU</em>
-											</li>										
-										</ul>
-									</ul>					
-              					</div>			
+				<header class="page-head">
+					<span class="eyebrow">Hacettepe University &middot; Life Support Center</span>
+					<h1 class="page-title">Forty Years of Pediatric Intensive Care</h1>
+					<p class="page-sub">Hacettepe University Children's Hospital &mdash; the first pediatric intensive care unit established in T&uuml;rkiye, since 1985.</p>
+				</header>
 
-								<div class="resume-item">
-                					<h4>ECMO Center</h4>
-                					<h5>2007</h5>
-									<ul>
-										<li>
-											<p><em>
-                                                <p> Established as the first ever
-                                                    <span style="color: #069">
-                                                        <em> 
-                                                            <a class="tiptext">
-                                                                <b>ECMO</b>
-                                                                <img class="description" src="images/firstecmo.jpg" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a> program of Türkiye
-                                                    </em>
-                                                </p></em></p>
-										</li>
-										<ul>
-											<li>
-                                               <!-- Resimli hover -->
-												<p>
-                                                    Assoc. Prof. Benan Bayrakci founded the center being the Head of PICU
-                                                </p>
-                                               <!-- Resimli hover -->                                                
-											</li>
-											<li>
-                                               <!-- Resimli hover -->
-												<p>
-                                                    <span style="color: #069">
-                                                        <em>
-                                                            <a class="tiptext">
-                                                                <b>Prof. Tezer Kutluk</b>
-                                                                <img class="description" src="/images/tk.jpg" style="display: none;">
-                                                            </a>
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a> ensured the facility as the Director of the Children's Hospital
-                                                    </em>
-                                                </p>
-                                               <!-- Resimli hover -->                                                
-											</li>										
-										</ul>
-									</ul>					
-              					</div>		
-								
-								<div class="resume-item">
-                					<h4>Departmentalization</h4>
-                					<h5>2009</h5>
-									<ul>
-										<li>
-											<p><em>
-                                                <p> Pediatric Intensive Care Medicine is accepted to be a Subspecialty Department in Türkiye</p>
-                                                </em>
-										</li>                                        
-										<ul>
-                                            <li>
-                                                <p><em>
-                                                    <p> 
-                                                        <span style="color: #069">
-                                                            <em> 
-                                                                <a class="tiptext">
-                                                                    <b>Department</b>
-                                                                    <img class="description" src="images/department.jpg" style="display: none;">
-                                                                </a>
-                                                            </em>
-                                                        </span>
-                                                        <em>
-                                                            <a class="tiptext"> 
-                                                            </a> of Pediatric Intensive Care Medicine was structured by Associate Prof. Benan Bayrakci and nominated as Chair of Pediatric Intensive Care Medicine
-                                                        </em>
-                                                    </p></em></p>
-                                            </li> 											
-											<li> <em>The very first pediatric intensivist graduated in Türkiye</em>
-                                                    <span style="color: #069">
-                                                        <em> 
-                                                            <a class="tiptext">
-                                                                <b>Selman Kesici</b>
-                                                                <img class="description" src="/images/selmankesici.jpg" style="display: none;">
-                                                            </a> 
-                                                        </em>
-                                                    </span>
-                                                    <em>
-                                                        <a class="tiptext"> 
-                                                        </a>appeared from this department
-                                                    </em>
+				<!-- ABOUT US -->
+				<section id="about" class="block">
+					<span class="eyebrow">Profile</span>
+					<h2>About Us</h2>
+					<div class="prose">
+						<p>Founded in 1985 as the first pediatric intensive care unit (PICU) in T&uuml;rkiye, the Hacettepe University Pediatric Intensive Care has evolved into a comprehensive academic and clinical hub that has played a pioneering role in the institutionalization of pediatric critical care nationwide. From its inception, the unit adopted a closed-model organizational structure, standardized admission criteria, and dedicated multidisciplinary staffing principles now widely recognized as essential for high-quality intensive care delivery.</p>
+						<p>Over time, the unit expanded its infrastructure and integrated advanced life-support technologies, including mechanical ventilation, continuous renal replacement therapies, and extracorporeal membrane oxygenation (ECMO) &mdash; introducing T&uuml;rkiye's first ECMO program in 2007. In parallel, the development of formal subspecialty training programs, the establishment of the Life Support Center (2015), and sustained translational research strengthened its academic mission. Today the department functions as a national quaternary referral center with a total capacity of 23 intensive care beds across the general PICU and the pediatric cardiac intensive care unit (pCICU), integrating clinical excellence with education and research.</p>
+					</div>
+				</section>
 
-                                               <!-- Resimli hover -->  
-											</li>
-										</ul>
-									</ul>				
-              					</div>			
-								
-								<div class="resume-item">
-                					<h4>Renovation</h4>
-                					<h5>2013</h5>
-									<ul>
-										<li>
-											<p><em>PICU was transferred to its brand new unit in 5. floor-3. block in modern standards</em></p>
-										</li>
-                                        <ul>
-                                            <li>
-                                                   <!-- Resimli hover -->
-                                                    <p>
-                                                        <span style="color: #069">
-                                                            <em> 
-                                                                <a class="tiptext">
-                                                                    <b>Assoc. Prof. Benan Bayrakci</b>
-                                                                    <img class="description" src="/images/newpicu.jpg" style="display: none;">
-                                                                </a>
-                                                            </em>
-                                                        </span>
-                                                        <em>
-                                                            <a class="tiptext"> 
-                                                            </a>structured the unit being the Director of Children's Hospital
-                                                        </em>
-                                                    </p>
-                                                   <!-- Resimli hover -->  
-                                            </li>	
-                                        </ul>
-									</ul>					
-              					</div>	
-								
-								<div class="resume-item">
-                					<h4>Life Support Center (LSC)</h4>
-                					<h5>2015</h5>
-									<ul>
-										<li>
-											<p><em> The Center for Life Support Practice &amp; Research is established for critical care scientific studies</em></p>
-                                            <ul>
-                                                <li>
-                                                    <p><em>Founded by Prof. Benan Bayrakci</em></p>
-                                                </li>
-                                            </ul>
-										</li>
-									</ul>					
-              					</div>								
+				<!-- HISTORY (full editorial) -->
+				<section id="history" class="block">
+					<span class="eyebrow">The Full Story</span>
+					<h2>History</h2>
+					<div class="prose">
+						<p>The establishment and progressive development of the Pediatric Intensive Care Unit (PICU) at Hacettepe University represents far more than the history of a single clinical entity. Rather, it embodies the emergence, maturation, and institutionalization of pediatric critical care medicine in T&uuml;rkiye, reflecting a trajectory aligned with international standards of care, education, and research.</p>
 
-								<div class="resume-item">
-                					<h4>Currently</h4>
-									<ul>
-										<li>
-											<p><em>The Pediatric Intensive Care Medicine Department runs 16 beds in the PICU and 8 beds in the pCICU involving research and educational activities besides patient care</em></p>
-										</li>
-									</ul>					
-              					</div>									
-						  </div>
+						<h3>1. The Foundational Period: 1985</h3>
+						<p>The origins of pediatric intensive care at Hacettepe date back to 1985, when the first PICU in the country was established within Hacettepe Children's Hospital. The unit was inaugurated by the then Chief Physician of the Children's Hospital, Prof. Dr. Nam&#x131;k &Ccedil;evik (Fig. 1). Initially designed with a capacity of six beds, the unit began operation equipped with a centralized oxygen system, pendants, monitors, and mechanical ventilators (Fig. 2). From its inception, the unit adopted a closed-model organizational structure, with dedicated personnel and clearly delineated clinical protocols &mdash; an approach that would later become a hallmark of modern intensive care systems.</p>
+						<p>The early clinical practices implemented in this period &mdash; including selective admission policies, avoidance of terminal-stage admissions, and structured patient flow back to general wards &mdash; demonstrate a remarkably forward-thinking alignment with present-day critical care ethics and resource stewardship. Care was provided with a nurse-to-patient ratio of 1:2 under the supervision of a head nurse. The nurses who devotedly fulfilled this role from the establishment onward were, respectively: Hacer Ergin, RN (1985&ndash;1997), Gonca Alkan, RN (1997&ndash;2004), &#x15E;ermin &Ouml;zeski, RN (2004&ndash;2010), Arzu B&uuml;t&uuml;n, RN (2010&ndash;2013), G&uuml;lten K&#x131;z&#x131;lkaya, RN (2013&ndash;2015), Semra &Ccedil;avu&#x15F;, RN (2015&ndash;2017), Ne&#x15F;e Kaplan, RN (2017&ndash;present), and for the pediatric Cardiac Intensive Care Unit (pCICU), Emine Kahya, RN (2013&ndash;present).</p>
+						<p>Under the operational directive prepared by Dr. Faik Sar&#x131;alio&#x11F;lu, a closed-model management system was structured through the assignment of dedicated consultants and personnel exclusively for the unit. Dr. Erkan Karaaslan, Dr. Dilek Soysal, Dr. Funda &Ouml;ztun&ccedil;, and Dr. G&uuml;zide Turanl&#x131; served as the first consultant chief residents, while Dr. O&#x11F;uz S&ouml;ylemezo&#x11F;lu assumed the role of the first senior resident (Fig. 2). The first patients admitted to the unit were diagnosed with severe bronchiolitis, myocarditis, acute renal failure, and diabetic ketoacidosis. Academic productivity was embedded from the outset, as reflected by the autopsy and subsequent publication in the scientific literature of one of the earliest patients, who presented on the opening day with mumps myocarditis (Jpn Heart J 1989;30:109&ndash;114) (Fig. 3).</p>
+
+						<h3>2. Infrastructure and Institutional Development: 1997</h3>
+						<p>In 1997, the infrastructure of the unit underwent comprehensive development and structural enhancement, including the addition of an isolation room, transforming it into a 10-bed intensive care unit (Fig. 4). This transformation was carried out under the leadership of the Chief Physician of the Children's Hospital, Prof. Dr. Murat Tuncer, and represented a major milestone in the institutional development of the unit, laying the groundwork for subsequent academic and technological advancements.</p>
+
+						<h3>3. Academic Vision and International Collaborations: 2001&ndash;2007</h3>
+						<p>With the advent of the new millennium, Hacettepe Pediatric Intensive Care adopted the vision of becoming a national academic center beyond its role as a clinical service unit. In 2001, Dr. Benan Bayrakci was assigned to Johns Hopkins University &mdash; one of the world's leading centers &mdash; with the mission of bringing contemporary knowledge and expertise in pediatric intensive care to Hacettepe University. This strategic initiative was strongly supported by the Chair of the Department of Pediatrics, Prof. Dr. G&uuml;lsev Kale, and became a defining milestone in the academic development of pediatric intensive care medicine in T&uuml;rkiye.</p>
+						<p>Upon Dr. Bayrakci's return in 2002 and assumption of PICU leadership, the unit gained invasive and centralized monitoring capabilities, while mechanical ventilation practices became an integral and reliable component of critical care management. Major subsequent developments included:</p>
+						<ul>
+							<li><strong>2003:</strong> Initiation of the home mechanical ventilation program.</li>
+							<li><strong>2004:</strong> Introduction of continuous venovenous hemodiafiltration (CVVHDF) applications.</li>
+							<li><strong>2006:</strong> Structuring of the Pediatric Advanced Life Support (PALS) training program, with regular monthly courses educating thousands of physicians and nurses since then.</li>
+							<li><strong>2007:</strong> Establishment of T&uuml;rkiye's first Extracorporeal Membrane Oxygenation (ECMO) program. The center was structured by Dr. Benan Bayrakci following his training at Johns Hopkins University, while the necessary institutional infrastructure was supported by the then Director of the Children's Hospital, Prof. Dr. Tezer Kutluk.</li>
+						</ul>
+						<p>Today, the ECMO patient cohort approaches 400 patients, with more than 600 ECMO days provided annually &mdash; a landmark achievement signifying the unit's transition into a high-complexity tertiary referral center.</p>
+
+						<h3>4. Academic Institutionalization and Subspecialty Training: 2009&ndash;2015</h3>
+						<p>Recognition of pediatric intensive care as an academic discipline in T&uuml;rkiye was achieved in 2009 through the TUKMOS studies conducted with the contributions of Dr. Bayrakc&#x131;, leading to its acceptance as a pediatric subspecialty field. Subsequently, in 2010, the Hacettepe University Division of Pediatric Intensive Care was formally established, and Associate Professor Dr. Benan Bayrakc&#x131; was appointed as the founding division chief, initiating T&uuml;rkiye's first Pediatric Intensive Care Subspecialty Training Program.</p>
+						<p>Dr. Selman Kesici became the first graduate of pediatric intensive care training programs in T&uuml;rkiye, completing his fellowship in 2014. He returned to the same program as a faculty member in 2018 and has since played an active role in training future specialists. The first Joint Pediatric Intensive Care Training Program in T&uuml;rkiye was conducted between 2013 and 2019 in collaboration with Ankara Children's Hematology Oncology Training and Research Hospital. In 2018, the Certified Pediatric Intensive Care Nursing Training Program was established in collaboration with the Turkish Ministry of Health.</p>
+
+						<h3>5. Modernization and Academic Expansion: 2011&ndash;2024</h3>
+						<p>In 2011, the &ldquo;PAYla&#x15F;&#x131;m&rdquo; meetings were initiated to facilitate broader dissemination of knowledge and experience, continuing annually with increasing participation. Continuous modernization efforts culminated in the relocation of the unit in 2013 to a technologically advanced, 16-bed facility, accompanied by measurable improvements in clinical outcomes; the Standardized Mortality Ratio (SMR) declined to as low as 0.28 and has remained consistently at this level. Beginning in 2018, the academic staff also assumed responsibility for an 8-bed pediatric cardiac intensive care unit (pCICU).</p>
+						<p>In 2015, the Life Support Application and Research Center (LSC) was established to further advance scientific production and educational activities, becoming a major academic platform for research, simulation-based education, and the development of novel therapeutic approaches. Thanks to its infrastructure and highly qualified academic personnel, several innovative methods were introduced into the scientific literature. In 2024, the Life Support Trust Foundation was established to promote and sustain scientific research activities, while also providing structured social support for patients and their families.</p>
+
+						<h3>6. Current Status</h3>
+						<p>Today, the Hacettepe University Pediatric Intensive Care Division functions as a national quaternary referral center, integrating advanced clinical care, education, and research across a broad spectrum of critical illnesses, including extracorporeal life support, transplantation, intoxications, perioperative care, blood purification therapies, and trauma. With a total capacity of 23 intensive care beds across general and cardiac units, the department continues to play a defining role in shaping the future of pediatric critical care medicine in T&uuml;rkiye and beyond. These activities are currently coordinated by Prof. Dr. Benan Bayrakc&#x131;, Associate Professor Dr. Selman Kesici, and Associate Professor Dr. Mehmet &Ccedil;ele&#x11F;en.</p>
+					</div>
+				</section>
+
+				<!-- INNOVATIONS -->
+				<section id="innovations" class="block">
+					<span class="eyebrow">Translational Work</span>
+					<h2>Innovations &amp; Protocols</h2>
+					<p class="innov-intro">Several innovative therapeutic and translational approaches were developed within the unit and introduced into the scientific literature:</p>
+					<ul class="innov">
+						<li class="innov-card"><h3>Zipper Method of Hacettepe</h3><p>A novel immunomodulation technique for severe neurological inflammatory disorders.</p></li>
+						<li class="innov-card"><h3>PISA Protocol</h3><p>A treatment protocol for severe COVID-19-associated MIS-C.</p></li>
+						<li class="innov-card"><h3>SeLBA Method</h3><p>Selective left bronchial aspiration for the recruitment of left lung atelectasis.</p></li>
+						<li class="innov-card"><h3>Rapid Sequence Apheresis</h3><p>An apheresis technique for poisoning treatment.</p></li>
+						<li class="innov-card"><h3>ECMO-supported MSC Therapy</h3><p>Mesenchymal stem cell therapy for hypoplastic lung disease.</p></li>
+						<li class="innov-card"><h3>Hyperbaric Organ Preservation</h3><p>Hyperbaric oxygen preservation of donor organs prior to transplantation.</p></li>
+						<li class="innov-card"><h3>Carbon Monoxide Apnea Test</h3><p>The Hacettepe CO-based apnea test procedure in ECMO patients.</p></li>
+						<li class="innov-card"><h3>Dialoxygenation</h3><p>The use of dialysis membranes as oxygenators.</p></li>
+					</ul>
+				</section>
+
+				<!-- FIGURES -->
+				<section id="figures" class="block">
+					<span class="eyebrow">Archive</span>
+					<h2>Historical Figures</h2>
+					<div class="figgrid">
+						<figure class="figure">
+							<img src="images/lsc_hist_figure_1.png" alt="Opening ceremony in 1985 with Prof. Nam&#x131;k &Ccedil;evik" loading="lazy">
+							<figcaption><strong>Fig. 1:</strong> Opening ceremony in 1985, with Professor Nam&#x131;k &Ccedil;evik cutting the ceremonial ribbon.</figcaption>
+						</figure>
+						<figure class="figure">
+							<img src="images/lsc_hist_figure_2.png" alt="Early view of the unit" loading="lazy">
+							<figcaption><strong>Fig. 2:</strong> An early view of the unit, highlighting bedside pendants, locally manufactured monitors, Bird-type mechanical ventilators, and a dedicated intensive care team.</figcaption>
+						</figure>
+						<figure class="figure">
+							<img src="images/lsc_hist_figure_3.jpg" alt="First academic manuscript" loading="lazy">
+							<figcaption><strong>Fig. 3:</strong> The first academic manuscript produced from one of the earliest patients admitted to the PICU &mdash; illustrating that scholarly output began from the very first day of clinical activity.</figcaption>
+						</figure>
+						<figure class="figure">
+							<img src="images/lsc_hist_figure_4.jpg" alt="Floor plan of the 1997 renovation" loading="lazy">
+							<figcaption><strong>Fig. 4:</strong> The floor plan of the 1997 renovation, reflecting the layout during the improvement phase.</figcaption>
+						</figure>
+						<figure class="figure">
+							<img src="images/lsc_hist_figure_5.jpg" alt="Poster of the 40th Anniversary Congress, 2025" loading="lazy">
+							<figcaption><strong>Fig. 5:</strong> Poster of the 40th Anniversary Congress held in 2025.</figcaption>
+						</figure>
+					</div>
+				</section>
+
+				<!-- TESTIMONIALS TEASER -->
+				<section id="testimonials" class="block">
+					<div class="tz-head">
+						<div>
+							<span class="eyebrow">Voices from 1985</span>
+							<h2>Testimonials</h2>
+						</div>
+						<a class="btn-testi" href="picu_testimonials.html"><i class="fa fa-quote-right"></i> Read Testimonials</a>
+					</div>
+					<p class="innov-intro">Firsthand recollections from the clinicians who established and ran the first PICU in T&uuml;rkiye.</p>
+					<div class="tslider">
+						<div class="ttrack">
+							<!-- set 1 -->
+							<div class="thi"><div class="av" data-initials="FS"><img src="images/testimonial/faik-sarialioglu.jpg" alt="Dr. Faik Sar&#x131;alio&#x11F;lu" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Faik Sar&#x131;alio&#x11F;lu</p><p class="qt">&ldquo;Even a small dedicated intensive care unit was urgently needed.&rdquo;</p></div></div>
+							<div class="thi"><div class="av" data-initials="A&Ccedil;"><img src="images/testimonial/ali-suha-calikoglu.avif" alt="Dr. Ali S&uuml;ha &Ccedil;al&#x131;ko&#x11F;lu" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Ali S&uuml;ha &Ccedil;al&#x131;ko&#x11F;lu</p><p class="qt">&ldquo;An extraordinarily valuable, exciting, intense, and educational experience.&rdquo;</p></div></div>
+							<div class="thi"><div class="av" data-initials="DD"><img src="images/fellows/nopp.jpg" alt="Dr. Dilek Demirsoy" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Dilek Demirsoy</p><p class="qt">&ldquo;We were trying both to establish the system and to provide genuine intensive care.&rdquo;</p></div></div>
+							<div class="thi"><div class="av" data-initials="LS"><img src="images/testimonial/levent-saltik.webp" alt="Dr. Levent Salt&#x131;k" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Levent Salt&#x131;k</p><p class="qt">&ldquo;Monitors had arrived at Hacettepe for the first time &mdash; a major event for us.&rdquo;</p></div></div>
+							<div class="thi"><div class="av" data-initials="BK"><img src="images/testimonial/bilge-kayiran.avif" alt="Dr. Bilge Kay&#x131;ran" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Bilge Kay&#x131;ran</p><p class="qt">&ldquo;Intensive care memories are unforgettable.&rdquo;</p></div></div>
+							<div class="thi"><div class="av" data-initials="ZE"><img src="images/fellows/nopp.jpg" alt="Dr. Zehra Elib&uuml;y&uuml;k" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Zehra Elib&uuml;y&uuml;k</p><p class="qt">&ldquo;Throughout our residency training, you remained a guiding figure for us.&rdquo;</p></div></div>
+							<!-- set 2 (duplicate for seamless loop) -->
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="FS"><img src="images/testimonial/faik-sarialioglu.jpg" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Faik Sar&#x131;alio&#x11F;lu</p><p class="qt">&ldquo;Even a small dedicated intensive care unit was urgently needed.&rdquo;</p></div></div>
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="A&Ccedil;"><img src="images/testimonial/ali-suha-calikoglu.avif" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Ali S&uuml;ha &Ccedil;al&#x131;ko&#x11F;lu</p><p class="qt">&ldquo;An extraordinarily valuable, exciting, intense, and educational experience.&rdquo;</p></div></div>
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="DD"><img src="images/fellows/nopp.jpg" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Dilek Demirsoy</p><p class="qt">&ldquo;We were trying both to establish the system and to provide genuine intensive care.&rdquo;</p></div></div>
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="LS"><img src="images/testimonial/levent-saltik.webp" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Levent Salt&#x131;k</p><p class="qt">&ldquo;Monitors had arrived at Hacettepe for the first time &mdash; a major event for us.&rdquo;</p></div></div>
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="BK"><img src="images/testimonial/bilge-kayiran.avif" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Bilge Kay&#x131;ran</p><p class="qt">&ldquo;Intensive care memories are unforgettable.&rdquo;</p></div></div>
+							<div class="thi" aria-hidden="true"><div class="av" data-initials="ZE"><img src="images/fellows/nopp.jpg" alt="" onerror="this.style.display='none'"></div><div><p class="nm">Dr. Zehra Elib&uuml;y&uuml;k</p><p class="qt">&ldquo;Throughout our residency training, you remained a guiding figure for us.&rdquo;</p></div></div>
 						</div>
 					</div>
-				</div>
-			</section>
+				</section>
+
+				<!-- REFERENCES -->
+				<section id="references" class="block">
+					<span class="eyebrow">Bibliography</span>
+					<h2>References</h2>
+					<div class="biblio">
+						<button class="acc-head" aria-expanded="false" aria-controls="ref-panel">
+							<span class="acc-title">Cited references</span>
+							<span class="cv-count">13</span>
+							<span class="chev" aria-hidden="true"></span>
+						</button>
+						<div class="acc-panel" id="ref-panel" hidden>
+							<ol class="entries">
+								<li class="entry"><span class="num">1</span><span class="txt">Pollack MM, et al. Pediatric intensive care outcomes. Crit Care Med.</span></li>
+								<li class="entry"><span class="num">2</span><span class="txt">Marshall JC, et al. Intensive care organization and outcomes. Intensive Care Med.</span></li>
+								<li class="entry"><span class="num">3</span><span class="txt">Bartlett RH. ECMO: historical perspective. ASAIO J.</span></li>
+								<li class="entry"><span class="num">4</span><span class="txt">Kesici S, Tany&#x131;ld&#x131;z M, Yetimakman F, Bayrakci B. A novel treatment strategy for severe Guillain-Barr&eacute; syndrome: zipper method. J Child Neurol. 2019;34(5):277&ndash;283. doi:10.1177/0883073819826225.</span></li>
+								<li class="entry"><span class="num">5</span><span class="txt">Bayrakci B, Kesici S. The zipper method of Hacettepe: a promising method of immunomodulation. J Child Neurol. 2020. doi:10.1177/0883073819900718.</span></li>
+								<li class="entry"><span class="num">6</span><span class="txt">Saritas Nakip O, Kesici S, Bayrakci B. The zipper method as an emerging treatment option for severe Guillain-Barr&eacute; syndrome related to COVID-19. Autoimmun Rev. 2021;20(7):102841. doi:10.1016/j.autrev.2021.102841.</span></li>
+								<li class="entry"><span class="num">7</span><span class="txt">Ozturk Z, Bayrakci B. A novel technique with double catheter suctioning for clearing left lung atelectasis: selective left bronchial aspiration (SeLBA). Clin Respir J. 2019;13(11):728&ndash;732. doi:10.1111/crj.13082.</span></li>
+								<li class="entry"><span class="num">8</span><span class="txt">Kesici S, Saritas Nakip O, Korgal N, Bayrakci B. A large pediatric cohort of colchicine intoxication: prognostic factors and experience with rapid sequence apheresis. Clin Toxicol (Phila). 2026. doi:10.1080/15563650.2026.2657988.</span></li>
+								<li class="entry"><span class="num">9</span><span class="txt">Karacano&#x11F;lu D, &Ccedil;ele&#x11F;en M, Yavuz S, Katlan B, Kesici S, Bayrakci B. An inspiring horizon in congenital diaphragmatic hernia with mesenchymal stem cell therapy. Chest. 2022;161(6 Suppl):A548. doi:10.1016/j.chest.2022.04.082.</span></li>
+								<li class="entry"><span class="num">10</span><span class="txt">Bayrakci B. Preservation of organs from brain-dead donors with hyperbaric oxygen. Pediatr Transplant. 2008;12:506&ndash;509. doi:10.1111/j.1399-3046.2007.00858.x.</span></li>
+								<li class="entry"><span class="num">11</span><span class="txt">Bayrakci B. Preservation of organs from brain-dead donors with hyperbaric oxygen. In: Esquinas AM, ed. Applied Technologies in Pulmonary Medicine. Basel: S. Karger AG; 2011:114&ndash;118.</span></li>
+								<li class="entry"><span class="num">12</span><span class="txt">Nakip OS, Kesici S, Terzi K, Bayrakci B. Apnea test on extracorporeal membrane oxygenation: step forward with carbon dioxide. J Extra Corpor Technol. 2022;54(1):83&ndash;87. doi:10.1182/ject-83-87.</span></li>
+								<li class="entry"><span class="num">13</span><span class="txt">Karacano&#x11F;lu D, Bedir E, Nakip OS, Kesici S, Duran H, Bayrakci B. Dialoxygenation: a preclinical trial for transforming the artificial kidney into an oxygenator. ASAIO J. 2025. doi:10.1097/MAT.0000000000002260.</span></li>
+							</ol>
+						</div>
+					</div>
+				</section>
+
+				<button id="toTop" aria-label="Back to top">&uarr;</button>
+
+			</div>
+
 		</div>
     </div>
 </div>
 
-
-
-
-
 <footer>
     <div class="container">
          Life Support Center
-
     </div>
 	<script src="/sablon2021/js/mobile-nav.js"></script>
-	<script src="/sablon2021/js/easing.min.js"></script>
-	<!-- Vendor JS Files -->
-	<script src="/resumes/portfolyo/assets/vendor/purecounter/purecounter.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/aos/aos.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/glightbox/js/glightbox.min.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/swiper/swiper-bundle.min.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/typed.js/typed.min.js"></script>
-	<script src="/resumes/portfolyo/assets/vendor/waypoints/noframework.waypoints.js"></script>
-	<!-- Template Main JS File -->
-	<script src="assets/js/main.js"></script>
-	<script type="text/javascript">
-	$(function() {
-		$( "#Button1" ).button(); 
-	});
-	</script>
 	<script>
-		$(".tiptext").mouseover(function() {
-			$(this).children(".description").show();
-		}).mouseout(function() {
-			$(this).children(".description").hide();
+	(function(){
+		function openAcc(head, open){
+			var panel = document.getElementById(head.getAttribute('aria-controls'));
+			head.setAttribute('aria-expanded', open ? 'true' : 'false');
+			if(panel){ panel.hidden = !open; }
+		}
+		document.querySelectorAll('.lsc-modern .acc-head').forEach(function(head){
+			head.addEventListener('click', function(){
+				var open = head.getAttribute('aria-expanded') === 'true';
+				openAcc(head, !open);
+			});
 		});
+		var toTop = document.getElementById('toTop');
+		if(toTop){
+			window.addEventListener('scroll', function(){
+				toTop.style.display = (window.scrollY > 500) ? 'block' : 'none';
+			});
+			toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+		}
+	})();
 	</script>
 </footer>	
 </body>
