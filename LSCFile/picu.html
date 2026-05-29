@@ -79,10 +79,18 @@
 	.lsc-modern .entry{display:flex;gap:12px;padding:10px 2px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-soft)}
 	.lsc-modern .entry:first-child{border-top:0}
 	.lsc-modern .entry .num{flex:0 0 auto;min-width:28px;text-align:right;color:var(--red);font-weight:700;font-size:13px}
-	.lsc-modern .figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
-	.lsc-modern .figgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-	.lsc-modern .figure img{display:block;width:100%;height:200px;object-fit:cover;border-radius:8px;background:var(--soft);margin-bottom:10px}
-	.lsc-modern .figure figcaption{color:var(--ink-soft);font-size:13.5px}
+	.lsc-modern .figgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;overflow:visible}
+	.lsc-modern .figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:var(--shadow);position:relative;transition:box-shadow .3s ease,z-index 0s}
+	.lsc-modern .figure:hover{z-index:20;box-shadow:0 8px 28px rgba(31,53,81,.18)}
+	.lsc-modern .figure .fig-media{position:relative;overflow:hidden;border-radius:8px;margin-bottom:10px;background:var(--soft);cursor:zoom-in}
+	.lsc-modern .figure:hover .fig-media{overflow:visible}
+	.lsc-modern .figure .fig-media img{display:block;width:100%;height:200px;object-fit:cover;border-radius:8px;transform-origin:center center;transition:transform .35s ease,box-shadow .35s ease}
+	.lsc-modern .figure:hover .fig-media img{transform:scale(1.75);box-shadow:0 12px 40px rgba(31,53,81,.28)}
+	.lsc-modern .figure figcaption{color:var(--ink-soft);font-size:13.5px;position:relative;z-index:1}
+	@media(prefers-reduced-motion:reduce){
+		.lsc-modern .figure .fig-media img{transition:none}
+		.lsc-modern .figure:hover .fig-media img{transform:none}
+	}
 	.lsc-modern .tz-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 	.lsc-modern .btn-testi{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff !important;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;box-shadow:var(--shadow);white-space:nowrap}
 	.lsc-modern .btn-testi:hover{background:var(--red-deep);color:#fff !important;text-decoration:none}
@@ -264,23 +272,23 @@
 					<h2>Historical Figures</h2>
 					<div class="figgrid">
 						<figure class="figure">
-							<img src="images/lsc_hist_figure_1.png" alt="Opening ceremony in 1985 with Prof. Nam&#x131;k &Ccedil;evik" loading="lazy">
+							<div class="fig-media"><img src="images/lsc_hist_figure_1.png" alt="Opening ceremony in 1985 with Prof. Nam&#x131;k &Ccedil;evik" loading="lazy"></div>
 							<figcaption><strong>Fig. 1:</strong> Opening ceremony in 1985, with Professor Nam&#x131;k &Ccedil;evik cutting the ceremonial ribbon.</figcaption>
 						</figure>
 						<figure class="figure">
-							<img src="images/lsc_hist_figure_2.png" alt="Early view of the unit" loading="lazy">
+							<div class="fig-media"><img src="images/lsc_hist_figure_2.png" alt="Early view of the unit" loading="lazy"></div>
 							<figcaption><strong>Fig. 2:</strong> An early view of the unit, highlighting bedside pendants, locally manufactured monitors, Bird-type mechanical ventilators, and a dedicated intensive care team.</figcaption>
 						</figure>
 						<figure class="figure">
-							<img src="images/lsc_hist_figure_3.jpg" alt="First academic manuscript" loading="lazy">
+							<div class="fig-media"><img src="images/lsc_hist_figure_3.jpg" alt="First academic manuscript" loading="lazy"></div>
 							<figcaption><strong>Fig. 3:</strong> The first academic manuscript produced from one of the earliest patients admitted to the PICU &mdash; illustrating that scholarly output began from the very first day of clinical activity.</figcaption>
 						</figure>
 						<figure class="figure">
-							<img src="images/lsc_hist_figure_4.jpg" alt="Floor plan of the 1997 renovation" loading="lazy">
+							<div class="fig-media"><img src="images/lsc_hist_figure_4.jpg" alt="Floor plan of the 1997 renovation" loading="lazy"></div>
 							<figcaption><strong>Fig. 4:</strong> The floor plan of the 1997 renovation, reflecting the layout during the improvement phase.</figcaption>
 						</figure>
 						<figure class="figure">
-							<img src="images/lsc_hist_figure_5.jpg" alt="Poster of the 40th Anniversary Congress, 2025" loading="lazy">
+							<div class="fig-media"><img src="images/lsc_hist_figure_5.jpg" alt="Poster of the 40th Anniversary Congress, 2025" loading="lazy"></div>
 							<figcaption><strong>Fig. 5:</strong> Poster of the 40th Anniversary Congress held in 2025.</figcaption>
 						</figure>
 					</div>

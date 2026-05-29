@@ -1,57 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Support Center</title>
-    
-	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.pg">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+    <title>Laboratories &middot; Life Support Center</title>
 
-	
-  	<link href="fontawesome/css/all.min.css" rel="stylesheet">
-	<script src="fontawesome/js/all.min.js"></script>
-		
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/all.min.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>    
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <script src="fontawesome/js/all.min.js"></script>
 
     <link href="/sablon2021/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/sablon2021/css/style.css" rel="stylesheet" />
     <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
-
-    <link href="/sablon2021/css/animate.css" rel="stylesheet" />
-
     <script src="/sablon2021/js/jquery.min.js"></script>
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
 
+    <style>
+    :root{
+      --ink:#1f3551; --ink-soft:#3f4a5a; --muted:#7c8898;
+      --red:#ec1b23; --red-deep:#c41019; --link:#0b6bd3;
+      --bg:#ffffff; --soft:#f5f6f9; --card:#ffffff; --line:#e4e7ec;
+      --shadow:0 1px 2px rgba(31,53,81,.05),0 14px 34px -20px rgba(31,53,81,.35);
+      --shadow-hover:0 12px 28px -8px rgba(31,53,81,.45);
+      --maxw:1120px;
+    }
+    .pg{font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+    .pg *{box-sizing:border-box}
+    .pg a{color:var(--link);text-decoration:none}
+    .pg a:hover{color:var(--red-deep)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    .pg .hero{background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);
+      padding:30px 16px 26px;text-align:center}
+    .pg .hero .wrap{max-width:var(--maxw);margin:0 auto;animation:fadeUp .7s ease both}
+    .pg .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
+    .pg .hero h1{margin:8px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
+
+    .pg .wrapper{max-width:var(--maxw);margin:0 auto;padding:30px 18px 8px}
+    .pg .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+    .pg .lcard{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);
+      border-radius:14px;overflow:hidden;box-shadow:var(--shadow);animation:fadeUp .6s ease both;transition:transform .18s ease,box-shadow .18s ease}
+    .pg .lcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-hover)}
+    .pg .lcard .thumb{aspect-ratio:4/3;overflow:hidden;background:var(--soft);display:block}
+    .pg .lcard .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+    .pg .lcard:hover .thumb img{transform:scale(1.05)}
+    .pg .lcard .lbody{padding:14px 14px 8px;text-align:center;flex:1;display:flex;flex-direction:column}
+    .pg .lcard h3{font-size:14.5px;font-weight:800;color:var(--ink);margin:0;line-height:1.3}
+    .pg .lcard .crew{margin-top:auto;color:var(--muted);font-size:12px;font-weight:700;border-top:1px solid var(--line);
+      padding:10px 6px;background:var(--soft)}
+
+    .pg .site-footer{margin-top:24px;background:linear-gradient(135deg,#1f3551,#142a44);color:#fff}
+    .pg .site-footer .inner{max-width:var(--maxw);margin:0 auto;padding:32px 18px;text-align:center}
+    .pg .site-footer .social{display:flex;gap:16px;justify-content:center;font-size:20px;margin-top:10px}
+    .pg .site-footer a{color:rgba(255,255,255,.82)}
+    .pg .site-footer a:hover{color:#fff}
+    .pg .site-footer .copy{border-top:1px solid rgba(255,255,255,.14);text-align:center;padding:14px;font-size:13px;color:rgba(255,255,255,.7)}
+    </style>
 </head>
+
 <body>
-<!--ust-->
+
+<!--ust: shared LSC site navbar (kept identical to the rest of the site)-->
 <div class="container-fluid ust">
     <div class="container">
         <div class="menu logo">
@@ -63,7 +81,7 @@
             </a>
             <div class="menu_ust">
                 <div class="d-none d-md-block float-right ml-3">
-					<a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
@@ -73,298 +91,87 @@
                 </div>
                 <div class="float-right d-none d-md-block mr-4 ">
                     <a href="/">Home Page</a>
-                    <a href="/contacts.html">Contacts</a>
-					<a href="/">About</a>
+                    <a href="/contacs.html">Contacts</a>
+                    <a href="/">About</a>
                 </div>
-
-
             </div>
-
-            <div class="menu_genel d-none d-sm-block d-md-none">
-                <!--yatay menu-->
-            </div>
+            <div class="menu_genel d-none d-sm-block d-md-none"></div>
         </div>
     </div>
 </div>
 <!--ust-->
 
-<div class="site_baslangic"></div>
+<div class="pg">
 
-<div class="container mt-5" align="center">
-    <div class="row" align="center">
-        <!--<div class="col-lg-3 col-12 mb-3 d-none d-sm-block">-->
+    <header class="hero">
+        <div class="wrap">
+            <span class="eyebrow">Research</span>
+            <h1>Life Support Center Laboratories</h1>
+        </div>
+    </header>
 
-            <!--menusol-->
-            <!--<div class="menu_sol">
+    <section class="wrapper">
+        <div class="grid">
 
-                <nav class="main-nav d-none d-lg-block">
-                    <div class="mobil_menu_logo mb-3"></div>
-					
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                        </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
+            <a class="lcard" href="xeno_transplantation.html">
+                <span class="thumb"><img src="images/xenotransplantation.jpg" alt="Xenotransplantation Lab"></span>
+                <div class="lbody"><h3>Xenotransplantation Lab</h3></div>
+                <div class="crew">Katlan &amp; Bayrakci</div>
+            </a>
 
-                        <div class=" mr-4 ">
-                            <a href="/">Home Page</a>
-                            <a href="/contacs.html">Contacts</a>
-                        </div>
-                    </div>
-                </nav>
+            <a class="lcard" href="hybrid_membrane.html">
+                <span class="thumb"><img src="images/hybrid membrane.jpg" alt="Hybrid Membranes Lab"></span>
+                <div class="lbody"><h3>Hybrid Membranes Lab; Dialo-oxygenation</h3></div>
+                <div class="crew">Karacanoglu &amp; Durmus &amp; Bayrakci</div>
+            </a>
 
+            <a class="lcard" href="ai_med.html">
+                <span class="thumb"><img src="images/ai.jpg" alt="Digital Health and Artificial Intelligence Lab"></span>
+                <div class="lbody"><h3>Digtal Health and Artificial Intelligence on Critical Medicine</h3></div>
+                <div class="crew">Akbasli &amp; Bayrakci</div>
+            </a>
 
-            </div>-->
+            <a class="lcard" href="hfnc.html">
+                <span class="thumb"><img src="images/hfno.jpg" alt="Nasal High-Flow Oxygenation Lab"></span>
+                <div class="lbody"><h3>Nasal High-Flow Oxygenation</h3></div>
+                <div class="crew">Birbilen</div>
+            </a>
 
-        <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
+            <a class="lcard" href="http://www.harptek.com/en/" target="_blank" rel="noopener">
+                <span class="thumb"><img src="images/harptek.jpeg" alt="HARPTEK"></span>
+                <div class="lbody"><h3>HARPTEK</h3></div>
+                <div class="crew">Kilic</div>
+            </a>
 
+            <a class="lcard" href="https://www.bometrivitron.com.tr/" target="_blank" rel="noopener">
+                <span class="thumb"><img src="images/akbarlab.jpg" alt="BOME Trivitron"></span>
+                <div class="lbody"><h3>&nbsp;</h3></div>
+                <div class="crew">Demirel &amp; Akbar</div>
+            </a>
 
-        <!--</div>-->
-        <div class="col-12 mb-3 col-lg-12"
-             align="center">
+            <a class="lcard" href="ecca.html">
+                <span class="thumb"><img src="images/whale.jpg" alt="Extra Corporeal Circuit Animal Lab"></span>
+                <div class="lbody"><h3>Extra Corporeal Circuit Animal Lab</h3></div>
+                <div class="crew">Odemis</div>
+            </a>
 
- <!-- Page Content -->
-        <script>
-            $(document).ready(function () {
-                $('.tel').mask('0 000 000 00 00');
-            });
-        </script>
-        <div class="container">
-            <div class="icerik_baslik"><center>Life Support Center Laboratories</center></div>
+        </div>
+    </section>
 
-                <div class="row justify-content-center">
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="xeno_transplantation.html">
-                                <img class="card-img-top"
-                                     src="images/xenotransplantation.jpg"
-                                     alt="xenotx">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    Xenotransplantation Lab
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a
-                                       href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Katlan &amp; Bayrakci
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                   
-                        </div>
-                    </div>
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="hybrid_membrane.html">
-                                <img class="card-img-top"
-                                     src="images/hybrid membrane.jpg"
-                                     alt="hybrid membranes">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    Hybrid membranes Lab;<br>Dialo-oxygenation
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Karacanoglu &amp; Durmus &amp; Bayrakci
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div>  
-                    
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="ai_med.html">
-                                <img class="card-img-top"
-                                     src="images/ai.jpg"
-                                     alt="ai_med">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    Digtal Health and Artificial Intelligence on Critical Medicine
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="https://turkalpmd.github.io/"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Akbasli &amp; Bayrakci
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="row justify-content-center">
-                    
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="hfnc.html">
-                                <img class="card-img-top"
-                                     src="images/hfno.jpg"
-                                     alt="hfnc">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    Nasal High-Flow Oxygenation
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Birbilen
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div>     
-                    
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="http://www.harptek.com/en/">
-                                <img class="card-img-top"
-                                     src="images/harptek.jpeg"
-                                     alt="harptek">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                    HARPTEK
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Kilic
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div>  
-                    
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="https://www.bometrivitron.com.tr/">
-                                <img class="card-img-top"
-                                     src="images/akbarlab.jpg"
-                                     alt="akbar">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                   <!-- BOME <br> TRIVITRON-->
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Demirel &amp; Akbar
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div>  
-                    
-                    <div class="mb-3 col-lg-3">
-                        <div class="card h-100 text-center">
-                            <a href="ecca.html">
-                                <img class="card-img-top"
-                                     src="images/whale.jpg"
-                                     alt="akbar">
-                            </a>
-                            <div class="card-body">
-                                <h6 class="card-title">
-                                   Extra Corporeal Circuit Animal Lab
-                                </h6>
-                                <p class="card-subtitle mb-2 text-muted small">
-                                    <a href="#"
-                                       target="_blank" 
-                                       class="card-link">
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="card-footer"
-                                 style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                <center>
-                                    <b>
-                                        <p class="card-subtitle text-muted">
-                                            Odemis
-                                        </p>
-                                    </b>
-                                </center>                                
-                            </div>                                                                
-                        </div>
-                    </div> 
-                    
-                </div>
+    <footer class="site-footer">
+        <div class="inner">
+            <h6>THE CENTER for LIFE SUPPORT PRACTICE &amp; RESEARCH</h6>
+            <div class="social">
+                <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
-    </div>
+        <div class="copy">&copy; 2015&ndash;2026 Life Support Center</div>
+    </footer>
+
 </div>
-   
+
 <script src="/sablon2021/js/mobile-nav.js"></script>
 <script src="/sablon2021/js/easing.min.js"></script>
 </body>

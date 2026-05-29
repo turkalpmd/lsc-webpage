@@ -1,87 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Support Center</title>
-    
-	<link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
-	<link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
-	<link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
-	<link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
-	<link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
-	<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
-	<link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.pg">
-	<link rel="manifest" href="/manifest.json">
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+    <title>Innovations &middot; Life Support Center</title>
 
-	
-  	<link href="fontawesome/css/all.min.css" rel="stylesheet">
-	<script src="fontawesome/js/all.min.js"></script>
-		
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/all.min.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>    
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.pg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <script src="fontawesome/js/all.min.js"></script>
+
+    <!-- shared LSC site theme + assets (keep the shared navbar identical) -->
     <link href="/sablon2021/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/sablon2021/css/style.css" rel="stylesheet" />
     <link href="/sablon2021/css/all.min.css" rel="stylesheet" />
-
-    <link href="/sablon2021/css/animate.css" rel="stylesheet" />
-
     <script src="/sablon2021/js/jquery.min.js"></script>
     <script src="/sablon2021/js/bootstrap.min.js"></script>
     <script src="/sablon2021/js/main.js"></script>
 
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
-	
-	<style>
-	.btn {
-	  background-color: DodgerBlue;
-	  border: none;
-	  color: white;
-	  padding: 8px 20px;
-	  cursor: pointer;
-	  font-size: 14px;
-	  display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-content: center;
-	}
 
-	/* Darker background on mouse-over */
-	.btn:hover {
-	  background-color: RoyalBlue;
-	}
-    .btn-toolbar {
-      text-align: center;
-      justify-content: center;
-      align-content: center;
-      margin: 0;
-    }	
-	</style>	
+    <style>
+    :root{
+      --ink:#1f3551; --ink-soft:#3f4a5a; --muted:#7c8898;
+      --red:#ec1b23; --red-deep:#c41019; --link:#0b6bd3;
+      --bg:#ffffff; --soft:#f5f6f9; --card:#ffffff; --line:#e4e7ec;
+      --shadow:0 1px 2px rgba(31,53,81,.05),0 14px 34px -20px rgba(31,53,81,.35);
+      --shadow-hover:0 12px 28px -8px rgba(31,53,81,.45);
+      --maxw:1120px;
+    }
+    .inv{font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+    .inv *{box-sizing:border-box}
+    .inv a{color:var(--link);text-decoration:none}
+    .inv a:hover{text-decoration:none;color:var(--red-deep)}
 
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes floatBlob{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-14px) scale(1.06)}}
 
+    /* ---- HERO ---- */
+    .inv .hero{position:relative;overflow:hidden;
+      background:linear-gradient(135deg,#142a44 0%,#1f3551 55%,#324b6b 100%);
+      color:#fff;padding:46px 16px 52px;text-align:center}
+    .inv .hero::before,.inv .hero::after{content:"";position:absolute;border-radius:50%;
+      filter:blur(8px);opacity:.5;z-index:0;animation:floatBlob 11s ease-in-out infinite}
+    .inv .hero::before{width:300px;height:300px;top:-110px;right:-50px;
+      background:radial-gradient(circle at 30% 30%,rgba(236,27,35,.55),transparent 70%)}
+    .inv .hero::after{width:280px;height:280px;bottom:-120px;left:-60px;
+      background:radial-gradient(circle at 60% 40%,rgba(11,107,211,.45),transparent 70%);animation-delay:-4s}
+    .inv .hero .wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;animation:fadeUp .8s ease both}
+    .inv .hero .eyebrow{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+      font-weight:700;color:#ffd7d9;padding:6px 14px;border:1px solid rgba(255,255,255,.28);
+      border-radius:999px;margin-bottom:16px}
+    .inv .hero h1{margin:0;font-weight:800;line-height:1.1;font-size:clamp(28px,4.4vw,46px)}
+    .inv .hero h1 .accent{color:#ff5a60}
+    .inv .hero p.lead{max-width:700px;margin:14px auto 0;font-size:clamp(15px,1.6vw,17px);
+      color:rgba(255,255,255,.86);line-height:1.6}
 
+    /* ---- CARDS ---- */
+    .inv .wrapper{max-width:var(--maxw);margin:0 auto;padding:38px 16px 16px}
+    .inv .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:880px){.inv .grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.inv .grid{grid-template-columns:1fr}}
+    .inv .card{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;
+      background:var(--card);box-shadow:var(--shadow);border-top:3px solid var(--red);
+      transition:transform .22s ease,box-shadow .22s ease;
+      opacity:0;animation:fadeUp .6s ease forwards}
+    .inv .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover)}
+    .inv .card .thumb{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--soft)}
+    .inv .card .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    .inv .card:hover .thumb img{transform:scale(1.06)}
+    .inv .card .idx{position:absolute;top:10px;left:10px;z-index:2;
+      min-width:30px;height:30px;padding:0 7px;border-radius:9px;
+      background:rgba(31,53,81,.85);color:#fff;font-weight:800;font-size:13px;letter-spacing:.02em;
+      display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px -4px rgba(0,0,0,.5)}
+    .inv .card .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+    .inv .card .tag{display:inline-flex;align-items:center;gap:7px;
+      font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--red)}
+    .inv .card .tag i{font-size:12px}
+    .inv .card h3{margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.35}
+    .inv .card .more{margin-top:auto;padding-top:10px;font-size:13.5px;font-weight:700;color:var(--link);
+      display:inline-flex;align-items:center;gap:6px}
+    .inv .card:hover .more{color:var(--red-deep)}
+    .inv .card .more i{transition:transform .2s ease}
+    .inv .card:hover .more i{transform:translateX(3px)}
 
+    /* placeholder (no image yet) */
+    .inv .thumb.placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:8px;background:linear-gradient(135deg,#eef1f6,#dfe5ee);color:var(--muted)}
+    .inv .thumb.placeholder i{font-size:34px;color:#aab4c4}
+    .inv .thumb.placeholder span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+    .inv .card.soon .tag{color:var(--muted)}
+    /* emblem/logo images shown uncropped on a soft backdrop */
+    .inv .thumb.logo{background:radial-gradient(circle at 50% 36%,#ffffff 0%,#eef2f8 70%,#e3e9f2 100%);
+      display:flex;align-items:center;justify-content:center}
+    .inv .thumb.logo img{object-fit:contain;padding:14px}
+
+    /* ---- FOOTER ---- */
+    .inv .site-footer{margin-top:46px;background:linear-gradient(135deg,#1f3551,#142a44);color:#fff}
+    .inv .site-footer .inner{max-width:var(--maxw);margin:0 auto;padding:36px 18px;text-align:center}
+    .inv .site-footer .social{display:flex;gap:16px;justify-content:center;font-size:20px;margin-top:10px}
+    .inv .site-footer a{color:rgba(255,255,255,.82)}
+    .inv .site-footer a:hover{color:#fff}
+    .inv .site-footer .copy{border-top:1px solid rgba(255,255,255,.14);text-align:center;
+      padding:14px;font-size:13px;color:rgba(255,255,255,.7)}
+    </style>
 </head>
 
 <body>
-<!--ust-->
+
+<!--ust: shared LSC site navbar (kept identical to the rest of the site)-->
 <div class="container-fluid ust">
     <div class="container">
         <div class="menu logo">
@@ -93,7 +137,7 @@
             </a>
             <div class="menu_ust">
                 <div class="d-none d-md-block float-right ml-3">
-					<a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
                 </div>
@@ -104,197 +148,120 @@
                 <div class="float-right d-none d-md-block mr-4 ">
                     <a href="/">Home Page</a>
                     <a href="/contacs.html">Contacts</a>
-					<a href="/">About</a>
+                    <a href="/">About</a>
                 </div>
-
-
             </div>
-
-            <div class="menu_genel d-none d-sm-block d-md-none">
-                <!--yatay menu-->
-            </div>
-
-
-
+            <div class="menu_genel d-none d-sm-block d-md-none"></div>
         </div>
     </div>
 </div>
 <!--ust-->
 
-<div class="site_baslangic"></div>
- <!--let me die in peace not be pieces-->
+<div class="inv">
 
+    <!-- HERO -->
+    <header class="hero">
+        <div class="wrap">
+            <span class="eyebrow">Bedside to Bench &middot; 8 Techniques</span>
+            <h1>Our <span class="accent">Innovations</span></h1>
+            <p class="lead">Original techniques and treatment protocols developed at the Hacettepe Life Support
+                Center to push the limits of pediatric critical care.</p>
+        </div>
+    </header>
 
+    <!-- CARDS -->
+    <section class="wrapper">
+        <div class="grid">
 
+            <a class="card" href="/zipper.html" style="animation-delay:.02s">
+                <div class="thumb logo"><span class="idx">01</span><img src="images/zipper_new_logo.webp" alt="Zipper Method"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-shield-virus"></i>Immunomodulation</span>
+                    <h3>Zipper Method of Hacettepe &mdash; A Novel Technique of Immunomodulation</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-lg-3 col-12 mb-3 d-none d-sm-block">
+            <a class="card" href="/colchicine.html" style="animation-delay:.06s">
+                <div class="thumb logo"><span class="idx">02</span><img src="images/colchicinenew.webp" alt="Rapid Sequence Apheresis"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-flask"></i>Toxicology</span>
+                    <h3>Rapid Sequence Apheresis for Intoxication</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-            <!--menusol-->
-            <div class="menu_sol">
+            <a class="card" href="/dialooxygenator.html" style="animation-delay:.10s">
+                <div class="thumb logo"><span class="idx">03</span><img src="images/dialooxyg.webp" alt="Dialoxygenation"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-droplet"></i>Blood Purification</span>
+                    <h3>Dialoxygenation &mdash; Dialysis Membranes Used as an Oxygenator</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-                <nav class="main-nav d-none d-lg-block">
-                    <div class="mobil_menu_logo mb-3"></div>
-                    <ul>
-						<li><a href="pisa.html">PISA Treatment Protocol</a></li>
-						<li><a href="zipper.html">Zipper Method</a></li>
-						<li><a href="selba.html">SelBA</a></li>						
-						<li><a href="colchicine.html">Colchicine</a></li>			
-						<li><a href="stemcell.html">Mesenchymal Stem Cell</a></li>
-                  </ul>
-					
-                    <div class="mobil_menu_alt mt-3">
-                        <div class="d-flex justify-content-center mb-4">
-                            <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
-                        </div>
-                        <div class="d-flex justify-content-center mb-4">
-                            <span class="but_lang_secili">TR</span>
-                            <span class="but_lang"><a href="/english/">EN</a></span>
-                        </div>
+            <a class="card" href="/pisa.html" style="animation-delay:.14s">
+                <div class="thumb logo"><span class="idx">04</span><img src="images/pisa_new_logo.webp" alt="PISA Treatment Protocol"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-virus-covid"></i>MIS-C</span>
+                    <h3>PISA Treatment Protocol for Severe COVID-19&ndash;Associated MIS-C</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
-                        <div class=" mr-4 ">
-                            <a href="/">Home Page</a>
-                            <a href="/contacs.html">Contacts</a>
-                        </div>
-                    </div>				
-                </nav>
-            </div>
-            <script src="/sablon2021/js/menu.js"></script>
-            <!--menusol-->
+            <a class="card" href="/selba.html" style="animation-delay:.18s">
+                <div class="thumb logo"><span class="idx">05</span><img src="images/selba_new_logo.webp" alt="SeLBA Technique"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-lungs"></i>Airway</span>
+                    <h3>SeLBA (Selective Left Bronchial Aspiration) for Left Lung Atelectasis</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
+            <a class="card" href="/stemcell.html" style="animation-delay:.22s">
+                <div class="thumb logo"><span class="idx">06</span><img src="images/mesencimalsetemcell.webp" alt="Mesenchymal Stem Cell Therapy"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-dna"></i>Regenerative</span>
+                    <h3>ECMO-Supported Mesenchymal Stem Cell Therapy for Hypoplastic Lung Disease</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a class="card" href="/oxopreserve.html" style="animation-delay:.26s">
+                <div class="thumb logo"><span class="idx">07</span><img src="images/oxopreserve.png" alt="OxoPreserve - Hyperbaric Oxygen Donor Organ Preservation"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-heart-pulse"></i>Transplantation</span>
+                    <h3>Hyperbaric Oxygen Preservation of Donor Organs Before Transplantation (OxoPreserve)</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
+
+            <a class="card" href="/co-apnea-test.html" style="animation-delay:.30s">
+                <div class="thumb logo"><span class="idx">08</span><img src="images/carbonmono.png" alt="Carbon Monoxide-Based Apnea Test in ECMO"></div>
+                <div class="body">
+                    <span class="tag"><i class="fa fa-wind"></i>ECMO</span>
+                    <h3>Hacettepe Carbon Monoxide&ndash;Based Apnea Test Procedure in ECMO Patients</h3>
+                    <span class="more">Learn more <i class="fa fa-arrow-right"></i></span>
+                </div>
+            </a>
 
         </div>
-        <div class="col-lg-9 col-12 mb-3">
-            
-            <div class="container">
-                            <!--<div class="icerik_baslik"><center>Life Support Center Laboratories</center></div>-->
-                            <b><p></p></b>
+    </section>
 
-                                    <div class="row justify-content-center">
-                                    <!-- kutucuklar? bununla ay?r?rs?n -->
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/zipper.html"><img class="card-img-top"
-                                                     src="images/zipperr.jpg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             Zipper Method of Hacettepe: A Novel Technique of Immunomodulation
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>                                   
-                                            </div>
-                                        </div>                                        
-
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/pisa.html"><img class="card-img-top"
-                                                     src="images/pisa.jpeg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             PISA Treatment Protocol for MIS-C
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>                                   
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row justify-content-center">
-                                    <!-- ayrışma-->
-
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/selba.html"><img class="card-img-top"
-                                                     src="images/selba.jpg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             SeLBA Technique (Selective Left Bronchial Aspiration)
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>                                   
-                                            </div>
-                                        </div>
-
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/colchicine.html"><img class="card-img-top"
-                                                     src="images/colchicum.jpg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             Rapid Sequence Apheresis for Colchicine Intoxication
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>                                   
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row justify-content-center">
-                                    <!-- kutucuklar? bununla ay?r?rs?n -->
-
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/stemcell.html"><img class="card-img-top"
-                                                     src="images/stemcelsslung.jpg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             Mesenchymal Stem Cell Therapy for Hypoplastic Lung
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>
-                                            </div>                        
-                                        </div>
-                                        <div class="mb-3 col-lg-5">
-                                            <div class="card h-100 text-center"><a href="/dialooxygenator.html"><img class="card-img-top"
-                                                     src="images/hybrid membrane.jpg"
-                                                     alt="xenotx"></a>
-                                                <div class="card-footer"
-                                                      style="text-align:left;font-size: 0.85em; padding: .75rem .5rem;">
-                                                    <center>
-                                                        <b>
-                                                            <p class="card-subtitle text-muted">
-                                                             Dialo-oxygenatior
-                                                            </p>
-                                                        </b>
-                                                    </center>                                
-                                                </div>
-                                            </div>                        
-                                        </div>                                        
-                                    </div>
-                            </div> 
-                        </div> 
-                    </div>
-                </div>
-    
-        <footer>
-            <div class="container">
-                 Life Support Center
-
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="inner">
+            <h6>THE CENTER for LIFE SUPPORT PRACTICE &amp; RESEARCH</h6>
+            <div class="social">
+                <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
             </div>
-        </footer>	    
+        </div>
+        <div class="copy">&copy; 2015&ndash;2026 Life Support Center</div>
+    </footer>
+
+</div>
 
 <script src="/sablon2021/js/mobile-nav.js"></script>
 <script src="/sablon2021/js/easing.min.js"></script>
