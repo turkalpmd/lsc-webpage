@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lsc.hacettepe.edu.tr/sitemap.xml
