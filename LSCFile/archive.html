@@ -101,25 +101,40 @@
 
     .pg .hero{background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);
       padding:30px 16px 26px;text-align:center}
-    .pg .hero .wrap{max-width:var(--maxw);margin:0 auto;animation:fadeUp .7s ease both}
+    .pg .hero .wrap{max-width:1120px;margin:0 auto;animation:fadeUp .7s ease both}
     .pg .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
     .pg .hero h1{margin:8px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
+    .pg .hero p.lead{max-width:680px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
 
-    .pg .article{max-width:440px;margin:0 auto;padding:36px 18px 20px;animation:fadeUp .8s ease both .05s;text-align:center}
-    .pg .lockicon{width:64px;height:64px;border-radius:50%;background:#fde7e8;color:var(--red);display:flex;align-items:center;
-      justify-content:center;font-size:26px;margin:0 auto 14px}
-    .pg .article p.note{color:var(--ink-soft);font-size:15px;margin:0 0 22px}
-    .pg .loginbox{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:24px 22px;text-align:left}
-    .pg .loginbox label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:12px 0 6px}
-    .pg .loginbox input[type=text],.pg .loginbox input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--line);
-      border-radius:10px;font-size:14px;background:var(--soft)}
-    .pg .loginbox input:focus{outline:none;border-color:var(--red);background:#fff}
-    .pg .loginbox .submit{width:100%;margin-top:18px;background:var(--red);color:#fff;border:none;border-radius:999px;
-      padding:12px;font-weight:700;font-size:14px;cursor:pointer;transition:background .18s ease}
-    .pg .loginbox .submit:hover{background:var(--red-deep)}
-    .pg .loginbox .opts{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:12.5px;color:var(--muted)}
-    .pg .loginbox .cancelbtn{background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:12.5px;
-      color:var(--ink-soft);cursor:pointer}
+    /* ---- FEATURED CAROUSEL ---- */
+    .pg .carousel-frame{max-width:1120px;margin:26px auto 0;padding:0 16px;animation:fadeUp .9s ease both .1s}
+    .pg .carousel-frame .swiper-container{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:#fff;
+      aspect-ratio:1200/500}
+    .pg .carousel-frame .swiper-slide{background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .pg .carousel-frame .swiper-slide img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* ---- COLLAGE / MASONRY GALLERY ---- */
+    .pg .gallery{max-width:1120px;margin:30px auto 0;padding:0 16px 8px}
+    .pg .gallery .sec-head{text-align:center;margin-bottom:18px;animation:fadeUp .7s ease both}
+    .pg .gallery .sec-head .kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--red)}
+    .pg .gallery .sec-head h2{margin:6px 0 0;font-weight:800;color:var(--ink);font-size:clamp(20px,2.6vw,26px)}
+    .pg .masonry{column-count:4;column-gap:14px}
+    @media(max-width:1000px){.pg .masonry{column-count:3}}
+    @media(max-width:680px){.pg .masonry{column-count:2}}
+    @media(max-width:420px){.pg .masonry{column-count:1}}
+    .pg .masonry .tile{break-inside:avoid;margin:0 0 14px;display:block;border-radius:12px;overflow:hidden;
+      border:1px solid var(--line);box-shadow:var(--shadow);background:#fff;cursor:zoom-in;
+      transition:transform .18s ease,box-shadow .18s ease}
+    .pg .masonry .tile:hover{transform:translateY(-3px);box-shadow:0 10px 26px -8px rgba(31,53,81,.4)}
+    .pg .masonry .tile img{width:100%;height:auto;display:block}
+
+    /* ---- LIGHTBOX ---- */
+    .pg .lb{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+    .pg .lb.open{display:flex}
+    .pg .lb .backdrop{position:absolute;inset:0;background:rgba(20,32,52,.88);cursor:zoom-out}
+    .pg .lb img{position:relative;z-index:1;max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:10px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45)}
+    .pg .lb .close{position:absolute;top:16px;right:20px;z-index:2;color:#fff;font-size:30px;background:none;border:0;cursor:pointer;line-height:1}
 
     .pg .site-footer{margin-top:24px;background:linear-gradient(135deg,#1f3551,#142a44);color:#fff}
     .pg .site-footer .inner{max-width:1120px;margin:0 auto;padding:32px 18px;text-align:center}
@@ -168,27 +183,91 @@
 
     <header class="hero">
         <div class="wrap">
-            <span class="eyebrow">Restricted</span>
+            <span class="eyebrow">Highlights &amp; Memories</span>
             <h1>Archive</h1>
+            <p class="lead">A visual archive of milestones, congresses, courses, awards and people from the Hacettepe University Life Support Center.</p>
         </div>
     </header>
 
-    <section class="article">
-        <div class="lockicon"><i class="fa fa-lock"></i></div>
-        <p class="note">The page you&#39;re trying to access has limited access.</p>
-        <form class="loginbox">
-            <label>Username</label>
-            <input type="text" placeholder="Enter Username" name="username" required>
-            <label>Password</label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <button type="submit" class="submit">Login</button>
-            <div class="opts">
-                <label style="display:flex;align-items:center;gap:6px;margin:0;font-weight:400;color:var(--muted)"><input type="checkbox" checked="checked"> Remember me</label>
-                <button type="button" class="cancelbtn">Cancel</button>
+    <!-- FEATURED CAROUSEL -->
+    <div class="carousel-frame">
+        <link href="css/swiper.min.css?v=1769629633" rel="stylesheet" type="text/css" />
+        <script src="js/swiper.min.js?v=1769629634"></script>
+        <div class="swiper-container archive-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/lancetbanner.webp" alt="The Lancet"></div>
+                <div class="swiper-slide"><img src="images/168en.webp" alt="168"></div>
+                <div class="swiper-slide"><img src="images/awards.webp" alt="LSC Awards"></div>
+                <div class="swiper-slide"><img src="images/activityreport.webp" alt="Activity Report"></div>
             </div>
-            <div class="opts" style="justify-content:center;margin-top:10px">Forgot <a href="#">&nbsp;password?</a></div>
-        </form>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <script>
+            new Swiper('.archive-swiper', {
+                autoplay: { delay: 5000 },
+                loop: true,
+                pagination: { el: '.archive-swiper .swiper-pagination', clickable: true },
+                navigation: { nextEl: '.archive-swiper .swiper-button-next', prevEl: '.archive-swiper .swiper-button-prev' }
+            });
+        </script>
+    </div>
+
+    <!-- COLLAGE / MASONRY GALLERY -->
+    <section class="gallery">
+        <div class="sec-head">
+            <div class="kicker">Gallery</div>
+            <h2>Collage</h2>
+        </div>
+        <div class="masonry" id="archive-masonry">
+            <a class="tile" href="images/award_1.webp"><img src="images/award_1.webp" alt="Award" loading="lazy"></a>
+            <a class="tile" href="images/awards.webp"><img src="images/awards.webp" alt="Awards" loading="lazy"></a>
+            <a class="tile" href="images/168tr.webp"><img src="images/168tr.webp" alt="168 (TR)" loading="lazy"></a>
+            <a class="tile" href="images/168en.webp"><img src="images/168en.webp" alt="168 (EN)" loading="lazy"></a>
+            <a class="tile" href="images/activityreport.webp"><img src="images/activityreport.webp" alt="Activity Report" loading="lazy"></a>
+            <a class="tile" href="images/banner.webp"><img src="images/banner.webp" alt="Banner" loading="lazy"></a>
+            <a class="tile" href="images/birbilen.webp"><img src="images/birbilen.webp" alt="Bir Bilen" loading="lazy"></a>
+            <a class="tile" href="images/curias_sm.webp"><img src="images/curias_sm.webp" alt="CURIAS" loading="lazy"></a>
+            <a class="tile" href="images/demetdemirkol.webp"><img src="images/demetdemirkol.webp" alt="Demet Demirkol" loading="lazy"></a>
+            <a class="tile" href="images/ecprprague.webp"><img src="images/ecprprague.webp" alt="ECPR Prague" loading="lazy"></a>
+            <a class="tile" href="images/eegbanner4.webp"><img src="images/eegbanner4.webp" alt="EEG" loading="lazy"></a>
+            <a class="tile" href="images/eegkursu.webp"><img src="images/eegkursu.webp" alt="EEG Course" loading="lazy"></a>
+            <a class="tile" href="images/esrakockuzu.webp"><img src="images/esrakockuzu.webp" alt="Esra Koçkuzu" loading="lazy"></a>
+            <a class="tile" href="images/gulsevkale_banner_hand.webp"><img src="images/gulsevkale_banner_hand.webp" alt="Gülsev Kale" loading="lazy"></a>
+            <a class="tile" href="images/gulsevkaleturkiyeklinikleri.webp"><img src="images/gulsevkaleturkiyeklinikleri.webp" alt="Gülsev Kale — Türkiye Klinikleri" loading="lazy"></a>
+            <a class="tile" href="images/lsc web banner 600x400.webp"><img src="images/lsc web banner 600x400.webp" alt="LSC Banner" loading="lazy"></a>
+            <a class="tile" href="images/oksanderinoz.webp"><img src="images/oksanderinoz.webp" alt="Oksan Derinöz" loading="lazy"></a>
+            <a class="tile" href="images/pADQI_.webp"><img src="images/pADQI_.webp" alt="pADQI" loading="lazy"></a>
+            <a class="tile" href="images/ppets2023_2.webp"><img src="images/ppets2023_2.webp" alt="PPETS 2023" loading="lazy"></a>
+            <a class="tile" href="images/selman_ecmo.webp"><img src="images/selman_ecmo.webp" alt="Selman — ECMO" loading="lazy"></a>
+            <a class="tile" href="images/SubatMVKursuBanner.webp"><img src="images/SubatMVKursuBanner.webp" alt="MV Course" loading="lazy"></a>
+            <a class="tile" href="images/stuartmono.webp"><img src="images/stuartmono.webp" alt="Stuart" loading="lazy"></a>
+            <a class="tile" href="images/taramono.webp"><img src="images/taramono.webp" alt="Tara" loading="lazy"></a>
+            <a class="tile" href="images/tk.webp"><img src="images/tk.webp" alt="TK" loading="lazy"></a>
+            <a class="tile" href="images/trxtrauma.webp"><img src="images/trxtrauma.webp" alt="Trauma" loading="lazy"></a>
+            <a class="tile" href="images/webpadqi_vitrin.webp"><img src="images/webpadqi_vitrin.webp" alt="pADQI Showcase" loading="lazy"></a>
+        </div>
     </section>
+
+    <!-- LIGHTBOX -->
+    <div class="lb" id="lb" aria-hidden="true">
+        <div class="backdrop" data-close></div>
+        <button class="close" data-close aria-label="Close">&times;</button>
+        <img id="lb-img" src="" alt="">
+    </div>
+    <script>
+    (function(){
+        var lb=document.getElementById('lb'), img=document.getElementById('lb-img');
+        document.getElementById('archive-masonry').addEventListener('click',function(e){
+            var a=e.target.closest('a.tile'); if(!a) return;
+            e.preventDefault(); img.src=a.getAttribute('href'); lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+        });
+        function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src=''; }
+        lb.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click',close); });
+        document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+    })();
+    </script>
 
     <footer class="site-footer">
         <div class="inner">
