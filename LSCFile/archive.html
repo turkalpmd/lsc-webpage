@@ -123,10 +123,12 @@
     @media(max-width:680px){.pg .masonry{column-count:2}}
     @media(max-width:420px){.pg .masonry{column-count:1}}
     .pg .masonry .tile{break-inside:avoid;margin:0 0 14px;display:block;border-radius:12px;overflow:hidden;
-      border:1px solid var(--line);box-shadow:var(--shadow);background:#fff;cursor:zoom-in;
-      transition:transform .18s ease,box-shadow .18s ease}
-    .pg .masonry .tile:hover{transform:translateY(-3px);box-shadow:0 10px 26px -8px rgba(31,53,81,.4)}
-    .pg .masonry .tile img{width:100%;height:auto;display:block}
+      border:1px solid var(--line);box-shadow:var(--shadow);background:#fff;cursor:zoom-in;position:relative;z-index:1;
+      transition:transform .28s ease,box-shadow .28s ease,z-index 0s}
+    .pg .masonry .tile:hover{transform:scale(1.6);z-index:30;box-shadow:0 22px 50px -12px rgba(31,53,81,.55);
+      border-color:var(--red)}
+    .pg .masonry .tile img{width:100%;height:auto;display:block;transition:transform .28s ease}
+    @media(hover:none){.pg .masonry .tile:hover{transform:none}}
 
     /* ---- LIGHTBOX ---- */
     .pg .lb{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
@@ -244,7 +246,6 @@
             <a class="tile" href="images/SubatMVKursuBanner.webp"><img src="images/SubatMVKursuBanner.webp" alt="MV Course" loading="lazy"></a>
             <a class="tile" href="images/stuartmono.webp"><img src="images/stuartmono.webp" alt="Stuart" loading="lazy"></a>
             <a class="tile" href="images/taramono.webp"><img src="images/taramono.webp" alt="Tara" loading="lazy"></a>
-            <a class="tile" href="images/tk.webp"><img src="images/tk.webp" alt="TK" loading="lazy"></a>
             <a class="tile" href="images/trxtrauma.webp"><img src="images/trxtrauma.webp" alt="Trauma" loading="lazy"></a>
             <a class="tile" href="images/webpadqi_vitrin.webp"><img src="images/webpadqi_vitrin.webp" alt="pADQI Showcase" loading="lazy"></a>
         </div>
