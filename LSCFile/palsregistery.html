@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Expires" content="0">
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PALS Registration &middot; Life Support Center</title>
+    <!-- seo:start -->
+    <meta name="description" content="Hacettepe Üniversitesi Yaşam Destek Merkezi PALS (Pediatric Advanced Life Support) kurs kayıt formu — katılımcı başvurusu ve KVKK aydınlatma metni." />
+    <link rel="canonical" href="https://lsc.hacettepe.edu.tr/palsregistery.html" />
+    <meta name="robots" content="noindex,follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PALS Kayıt Formu" />
+    <meta property="og:description" content="Hacettepe Üniversitesi Yaşam Destek Merkezi PALS kurs kayıt formu — katılımcı başvurusu." />
+    <meta property="og:image" content="https://lsc.hacettepe.edu.tr/images/pals_registry_og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="PALS Kayıt Formu — Hacettepe Üniversitesi Yaşam Destek Merkezi" />
+    <meta property="og:url" content="https://lsc.hacettepe.edu.tr/palsregistery.html" />
+    <meta property="og:site_name" content="Life Support Center — Hacettepe University" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lsc_hacettepe" />
+    <meta name="twitter:title" content="PALS Kayıt Formu" />
+    <meta name="twitter:description" content="Hacettepe Üniversitesi Yaşam Destek Merkezi PALS kurs kayıt formu — katılımcı başvurusu." />
+    <meta name="twitter:image" content="https://lsc.hacettepe.edu.tr/images/pals_registry_og.png" />
+    <!-- seo:end -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="fontawesome/css/all.min.css?v=1769629633" rel="stylesheet">
+    <script src="fontawesome/js/all.min.js?v=1769629633"></script>
+
+    <link href="/sablon2021/css/bootstrap.min.css?v=1769629634" rel="stylesheet" />
+    <link href="/sablon2021/css/style.css?v=1769629634" rel="stylesheet" />
+    <link href="/sablon2021/css/all.min.css?v=1769629634" rel="stylesheet" />
+    <script src="/sablon2021/js/jquery.min.js?v=1769629634"></script>
+    <script src="/sablon2021/js/bootstrap.min.js?v=1769629634"></script>
+    <script src="/sablon2021/js/main.js?v=1769629634"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;0,800;1,300;1,400;1,700;1,800&display=swap" rel="stylesheet">
+
+    <style>
+    :root{
+      --ink:#1f3551; --ink-soft:#3f4a5a; --muted:#7c8898;
+      --red:#ec1b23; --red-deep:#c41019; --link:#0b6bd3;
+      --bg:#ffffff; --soft:#f5f6f9; --card:#ffffff; --line:#e4e7ec;
+      --shadow:0 1px 2px rgba(31,53,81,.05),0 14px 34px -20px rgba(31,53,81,.35);
+      --shadow-hover:0 12px 28px -8px rgba(31,53,81,.45);
+      --maxw:900px;
+    }
+    .pg{font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+    .pg *{box-sizing:border-box}
+    .pg a{color:var(--link);text-decoration:none}
+    .pg a:hover{color:var(--red-deep)}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ---------- hero + subnav ---------- */
+    .pg .hero{background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);border-bottom:1px solid var(--line);
+      padding:30px 16px 26px;text-align:center}
+    .pg .hero .wrap{max-width:var(--maxw);margin:0 auto;animation:fadeUp .7s ease both}
+    .pg .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--red)}
+    .pg .hero h1{margin:8px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
+    .pg .hero p.lead{max-width:660px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+    .pg .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+    .pg .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:13.5px;
+      color:var(--ink-soft);transition:all .18s ease}
+    .pg .subnav a:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+    .pg .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
+
+    /* ---------- progress ---------- */
+    /* 80px = height of the shared fixed .ust navbar, so the bar stays visible while scrolling */
+    .pg .prog{height:4px;background:var(--line);position:sticky;top:80px;z-index:6}
+    .pg .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--red-deep));transition:width .35s ease}
+
+    /* ---------- form shell ---------- */
+    .pg .formwrap{max-width:var(--maxw);margin:0 auto;padding:26px 18px 8px;animation:fadeUp .8s ease both .05s}
+    .pg .fcard{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--red);border-radius:18px;
+      box-shadow:var(--shadow);padding:clamp(18px,3.4vw,30px)}
+    .pg .fsec + .fsec{margin-top:26px;padding-top:24px;border-top:1px dashed var(--line)}
+    .pg .fsec h2{display:flex;align-items:center;gap:10px;margin:0 0 16px;font-size:15px;font-weight:800;color:var(--ink)}
+    .pg .fsec h2 .idx{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#fde7e8;color:var(--red);
+      display:grid;place-items:center;font-size:12.5px;font-weight:800}
+    .pg .row{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+    .pg .row.three{grid-template-columns:repeat(3,1fr)}
+    .pg .span2{grid-column:1/-1}
+    @media(max-width:640px){
+      .pg .row,.pg .row.three{grid-template-columns:1fr}
+      .pg .row.date{grid-template-columns:repeat(3,1fr)}
+    }
+
+    /* ---------- fields ---------- */
+    .pg .lb{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:6px}
+    .pg .req{color:var(--red)}
+    .pg .fld{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;
+      font:inherit;font-size:14.5px;color:var(--ink);transition:border-color .16s ease,box-shadow .16s ease,background .16s ease}
+    .pg .fld::placeholder{color:#aab3c0}
+    .pg .fld:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(236,27,35,.12)}
+    .pg .fld:disabled{background:var(--soft);color:var(--muted);cursor:not-allowed}
+    .pg .fld.bad{border-color:var(--red);background:#fffafa}
+    .pg textarea.fld{min-height:96px;resize:vertical;line-height:1.6}
+    .pg select.fld{appearance:none;-webkit-appearance:none;padding-right:36px;cursor:pointer;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237c8898' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 13px center;background-size:12px}
+    .pg .hint{color:var(--muted);font-size:12px;margin-top:5px;line-height:1.45}
+    .pg .err{display:none;color:var(--red-deep);font-size:12px;font-weight:700;margin-top:5px}
+    .pg .err.show{display:block}
+
+    /* ---------- segmented pills ---------- */
+    .pg .seg{display:flex;flex-wrap:wrap;gap:8px;position:relative}
+    .pg .seg input{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;pointer-events:none}
+    .pg .seg label{margin:0;padding:9px 17px;border-radius:999px;border:1px solid var(--line);background:#fff;
+      font-weight:700;font-size:13.5px;color:var(--ink-soft);cursor:pointer;transition:all .18s ease;min-height:40px;
+      display:inline-flex;align-items:center;gap:7px}
+    .pg .seg label:hover{border-color:var(--red);color:var(--red)}
+    .pg .seg input:checked + label{background:var(--red);border-color:var(--red);color:#fff;
+      box-shadow:0 8px 18px -10px rgba(196,16,25,.95)}
+    .pg .seg input:focus-visible + label{box-shadow:0 0 0 3px rgba(236,27,35,.25)}
+
+    /* ---------- conditional panel ---------- */
+    .pg .cond{margin-top:14px;background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--red);
+      border-radius:12px;padding:16px;animation:fadeUp .35s ease both}
+    .pg .cond[hidden]{display:none}
+
+    /* ---------- KVKK ---------- */
+    .pg .kvkk{background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--red);border-radius:12px;padding:16px 18px}
+    .pg .kvkk summary{cursor:pointer;font-weight:700;font-size:13.5px;color:var(--ink);list-style:none;
+      display:flex;align-items:center;gap:8px}
+    .pg .kvkk summary::-webkit-details-marker{display:none}
+    .pg .kvkk summary::after{content:"\f078";font-family:"Font Awesome 5 Free";font-weight:900;font-size:11px;
+      color:var(--muted);margin-left:auto;transition:transform .2s ease}
+    .pg .kvkk details[open] summary::after{transform:rotate(180deg)}
+    .pg .kvkk .txt{margin-top:12px;font-size:13px;line-height:1.7;color:var(--ink-soft)}
+    .pg .kvkk .txt h3{font-size:13px;font-weight:800;color:var(--ink);margin:14px 0 5px}
+    .pg .kvkk .txt ul{padding-left:20px;margin:0 0 8px}
+    .pg .chk{display:flex;gap:11px;align-items:flex-start;cursor:pointer;margin:16px 0 0;font-size:13.5px;
+      line-height:1.6;color:var(--ink-soft);font-weight:400}
+    .pg .chk input{flex:0 0 auto;width:20px;height:20px;margin-top:1px;accent-color:var(--red);cursor:pointer}
+    .pg .chk strong{color:var(--ink);font-weight:700}
+
+    /* ---------- actions + banner ---------- */
+    .pg .actions{margin-top:26px;padding-top:22px;border-top:1px dashed var(--line);
+      display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+    .pg .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 30px;border:0;border-radius:999px;
+      background:linear-gradient(135deg,var(--red),var(--red-deep));color:#fff;font:inherit;font-weight:800;font-size:15px;
+      cursor:pointer;box-shadow:0 14px 26px -14px rgba(196,16,25,.95);transition:transform .18s ease,box-shadow .18s ease,opacity .18s ease}
+    .pg .btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+    .pg .btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+    .pg .btn .fa-spinner{animation:spin .9s linear infinite}
+    .pg .btn-ghost{background:#fff;color:var(--ink-soft);border:1px solid var(--line);box-shadow:none;font-size:13.5px;padding:11px 22px}
+    .pg .btn-ghost:hover:not(:disabled){border-color:var(--red);color:var(--red)}
+    .pg .banner{display:none;margin-top:18px;border-radius:12px;padding:13px 16px;font-size:13.5px;font-weight:700;
+      border:1px solid var(--line)}
+    .pg .banner.show{display:block;animation:fadeUp .3s ease both}
+    .pg .banner.err{background:#fff2f2;border-color:#f6c9cb;color:var(--red-deep)}
+    .pg .banner.info{background:#eef4fd;border-color:#cfe0f7;color:#12518f}
+    @media(max-width:560px){
+      .pg .actions{flex-direction:column-reverse;align-items:stretch}
+      .pg .actions .btn{width:100%}
+    }
+
+    /* ---------- success ---------- */
+    .pg .done{display:none;text-align:center;padding:46px 24px}
+    .pg .done.show{display:block;animation:fadeUp .5s ease both}
+    .pg .done .tick{width:76px;height:76px;border-radius:50%;background:#e8f7ef;color:#159a56;
+      display:grid;place-items:center;font-size:34px;margin:0 auto 18px;animation:pop .5s ease both}
+    .pg .done h2{font-size:21px;font-weight:800;color:var(--ink);margin:0 0 8px}
+    .pg .done p{color:var(--ink-soft);font-size:14.5px;line-height:1.65;max-width:520px;margin:0 auto 20px}
+    .pg .done .ref{display:inline-block;background:var(--soft);border:1px dashed var(--line);border-radius:10px;
+      padding:9px 16px;font-size:13px;color:var(--ink);font-weight:700;margin-bottom:20px}
+
+    .pg .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+    /* ---------- footer ---------- */
+    .pg .site-footer{margin-top:34px;background:linear-gradient(135deg,#1f3551,#142a44);color:#fff}
+    .pg .site-footer .inner{max-width:1120px;margin:0 auto;padding:32px 18px;text-align:center}
+    .pg .site-footer .social{display:flex;gap:16px;justify-content:center;font-size:20px;margin-top:10px}
+    .pg .site-footer a{color:rgba(255,255,255,.82)}
+    .pg .site-footer a:hover{color:#fff}
+    .pg .site-footer .copy{border-top:1px solid rgba(255,255,255,.14);text-align:center;padding:14px;font-size:13px;color:rgba(255,255,255,.7)}
+
+    @media (prefers-reduced-motion:reduce){
+      .pg *,.pg *::before,.pg *::after{animation:none !important;transition:none !important}
+    }
+    </style>
+</head>
+
+<body>
+
+<!--ust: shared LSC site navbar (kept identical to the rest of the site)-->
+<div class="container-fluid ust">
+    <div class="container">
+        <div class="menu logo">
+            <a href="/">
+                <div class="logo_yazi">
+                    <div class="banner_uni">Hacettepe University</div>
+                    <div class="banner_uni_bolum">Life Support Center</div>
+                </div>
+            </a>
+            <div class="menu_ust">
+                <div class="d-none d-md-block float-right ml-3">
+                    <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+                <div class="float-right d-none d-md-block ">
+                    <span class="but_lang_secili">TR</span>
+                    <span class="but_lang"><a href="/english">EN</a></span>
+                </div>
+                <div class="float-right d-none d-md-block mr-4 ">
+                    <a href="/">Home Page</a>
+                    <a href="/contacts.html">Contacts</a>
+                    <a href="/">About</a>
+                </div>
+            </div>
+            <div class="menu_genel d-none d-sm-block d-md-none"></div>
+        </div>
+    </div>
+</div>
+<!--ust-->
+
+<div class="pg">
+
+    <header class="hero">
+        <div class="wrap">
+            <span class="eyebrow">Education</span>
+            <h1>PALS Kayıt Formu</h1>
+            <p class="lead">Pediatric Advanced Life Support kursuna katılım başvurusu. Tüm zorunlu alanları
+               eksiksiz doldurup KVKK aydınlatma metnini onayladıktan sonra formu gönderin.</p>
+            <nav class="subnav">
+                <a href="pals.html">PALS</a>
+                <a href="pals_handouts.html">Handouts</a>
+                <a href="pals_documents.html">Documents</a>
+                <a href="pals_certification.html">Certification</a>
+                <a href="pals_anouncement.html">Announcement</a>
+                <a class="active" href="palsregistery.html">Registration</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="prog" aria-hidden="true"><i id="progBar"></i></div>
+
+    <section class="formwrap">
+        <div class="fcard">
+
+        <form id="regForm" novalidate autocomplete="on">
+
+            <!-- 1. Kimlik -->
+            <div class="fsec">
+                <h2><span class="idx">1</span> Kimlik Bilgileri</h2>
+
+                <label class="lb">Kimlik Türü <span class="req">*</span></label>
+                <div class="seg" role="radiogroup" aria-label="Kimlik türü">
+                    <input type="radio" name="idType" id="idTckn" value="tckn" checked>
+                    <label for="idTckn"><i class="fas fa-id-card"></i> T.C. Kimlik No</label>
+                    <input type="radio" name="idType" id="idPass" value="passport">
+                    <label for="idPass"><i class="fas fa-passport"></i> Pasaport No</label>
+                </div>
+                <p class="hint">Sadece biri doldurulur; seçilmeyen alan kayıtta <strong>NA</strong> olarak saklanır.</p>
+
+                <div class="row" style="margin-top:14px">
+                    <div id="wrapTckn">
+                        <label class="lb" for="tckn">T.C. Kimlik No <span class="req">*</span></label>
+                        <input class="fld" id="tckn" name="tckn" type="text" inputmode="numeric" maxlength="11"
+                               placeholder="11 haneli" autocomplete="off">
+                        <div class="err" id="errTckn"></div>
+                    </div>
+                    <div id="wrapPass">
+                        <label class="lb" for="passport">Pasaport No <span class="req">*</span></label>
+                        <input class="fld" id="passport" name="passport" type="text" maxlength="20"
+                               placeholder="Örn. U01234567" autocomplete="off" disabled>
+                        <div class="err" id="errPassport"></div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:16px">
+                    <div>
+                        <label class="lb" for="ad">Ad <span class="req">*</span></label>
+                        <input class="fld" id="ad" name="ad" type="text" maxlength="60" placeholder="Adınız" autocomplete="given-name">
+                        <div class="err" id="errAd"></div>
+                    </div>
+                    <div>
+                        <label class="lb" for="soyad">Soyad <span class="req">*</span></label>
+                        <input class="fld" id="soyad" name="soyad" type="text" maxlength="60" placeholder="Soyadınız" autocomplete="family-name">
+                        <div class="err" id="errSoyad"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:16px">
+                    <label class="lb">Doğum Tarihi <span class="req">*</span></label>
+                    <div class="row three date">
+                        <div>
+                            <select class="fld" id="gun" aria-label="Gün"><option value="">Gün</option></select>
+                        </div>
+                        <div>
+                            <select class="fld" id="ay" aria-label="Ay"><option value="">Ay</option></select>
+                        </div>
+                        <div>
+                            <select class="fld" id="yil" aria-label="Yıl"><option value="">Yıl</option></select>
+                        </div>
+                    </div>
+                    <div class="err" id="errDate"></div>
+                </div>
+            </div>
+
+            <!-- 2. İletişim -->
+            <div class="fsec">
+                <h2><span class="idx">2</span> İletişim Bilgileri</h2>
+                <div class="row">
+                    <div>
+                        <label class="lb" for="email">E-posta <span class="req">*</span></label>
+                        <input class="fld" id="email" name="email" type="email" maxlength="120"
+                               placeholder="ornek@kurum.edu.tr" autocomplete="email">
+                        <div class="hint">Kurs duyuruları ve sertifika bu adrese gönderilir.</div>
+                        <div class="err" id="errEmail"></div>
+                    </div>
+                    <div>
+                        <label class="lb" for="telefon">Telefon <span class="req">*</span></label>
+                        <input class="fld" id="telefon" name="telefon" type="tel" maxlength="20"
+                               placeholder="0(5XX) XXX XX XX" autocomplete="tel">
+                        <div class="hint">Yurt dışı numaralar için ülke kodunu <strong>+</strong> ile girin.</div>
+                        <div class="err" id="errTelefon"></div>
+                    </div>
+                    <div class="span2">
+                        <label class="lb" for="adres">Adres <span class="req">*</span></label>
+                        <textarea class="fld" id="adres" name="adres" maxlength="400"
+                                  placeholder="Mahalle / cadde, ilçe, il" autocomplete="street-address"></textarea>
+                        <div class="err" id="errAdres"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Katılımcı profili -->
+            <div class="fsec">
+                <h2><span class="idx">3</span> Katılımcı Bilgileri</h2>
+
+                <label class="lb" for="kurumici">Kurum İçi Katılımcı <span class="req">*</span></label>
+                <select class="fld" id="kurumici">
+                    <option value="">Seçiniz</option>
+                    <option value="1">Evet &mdash; Hacettepe Üniversitesi mensubu (1)</option>
+                    <option value="0">Hayır &mdash; Kurum dışı katılımcı (0)</option>
+                </select>
+                <div class="err" id="errKurumici"></div>
+
+                <label class="lb" style="margin-top:18px">Görev / Statü <span class="req">*</span></label>
+                <div class="seg" role="radiogroup" aria-label="Görev veya statü">
+                    <input type="radio" name="rol" id="rolStudent" value="student">
+                    <label for="rolStudent"><i class="fas fa-user-graduate"></i> Tıp Fakültesi Öğrencisi</label>
+                    <input type="radio" name="rol" id="rolResident" value="resident">
+                    <label for="rolResident"><i class="fas fa-user-md"></i> Pediatri Asistanı</label>
+                    <input type="radio" name="rol" id="rolNurse" value="nurse">
+                    <label for="rolNurse"><i class="fas fa-user-nurse"></i> Hemşire</label>
+                    <input type="radio" name="rol" id="rolOther" value="other">
+                    <label for="rolOther"><i class="fas fa-ellipsis-h"></i> Diğer</label>
+                </div>
+                <p class="hint">Seçtiğiniz statünün detayını belirtin; diğer üç alan kayıtta <strong>NA</strong> olarak saklanır.</p>
+                <div class="err" id="errRol"></div>
+
+                <div class="cond" id="condStudent" hidden>
+                    <label class="lb" for="ogrenciDonem">Tıp Fakültesi Dönemi <span class="req">*</span></label>
+                    <select class="fld" id="ogrenciDonem">
+                        <option value="">Seçiniz</option>
+                        <option value="Dönem 1">Dönem 1</option>
+                        <option value="Dönem 2">Dönem 2</option>
+                        <option value="Dönem 3">Dönem 3</option>
+                        <option value="Dönem 4">Dönem 4</option>
+                        <option value="Dönem 5">Dönem 5</option>
+                        <option value="Dönem 6 (İntern)">Dönem 6 (İntern)</option>
+                    </select>
+                    <div class="err" id="errStudent"></div>
+                </div>
+
+                <div class="cond" id="condResident" hidden>
+                    <label class="lb" for="asistanYil">Asistanlık Yılı <span class="req">*</span></label>
+                    <select class="fld" id="asistanYil">
+                        <option value="">Seçiniz</option>
+                        <option value="1. yıl">1. yıl</option>
+                        <option value="2. yıl">2. yıl</option>
+                        <option value="3. yıl">3. yıl</option>
+                        <option value="4. yıl">4. yıl</option>
+                        <option value="Yan dal asistanı">Yan dal asistanı</option>
+                    </select>
+                    <div class="err" id="errResident"></div>
+                </div>
+
+                <div class="cond" id="condNurse" hidden>
+                    <label class="lb" for="hemsireBirim">Çalıştığınız Birim <span class="req">*</span></label>
+                    <select class="fld" id="hemsireBirim">
+                        <option value="">Seçiniz</option>
+                        <option value="Çocuk Yoğun Bakım">Çocuk Yoğun Bakım</option>
+                        <option value="Yenidoğan Yoğun Bakım">Yenidoğan Yoğun Bakım</option>
+                        <option value="Erişkin Yoğun Bakım">Erişkin Yoğun Bakım</option>
+                        <option value="Çocuk Acil">Çocuk Acil</option>
+                        <option value="Çocuk Servisi">Çocuk Servisi</option>
+                        <option value="Ameliyathane">Ameliyathane</option>
+                        <option value="Diğer birim">Diğer birim</option>
+                    </select>
+                    <div class="err" id="errNurse"></div>
+                </div>
+
+                <div class="cond" id="condOther" hidden>
+                    <label class="lb" for="digerMeslek">Görev / Meslek <span class="req">*</span></label>
+                    <input class="fld" id="digerMeslek" type="text" maxlength="80"
+                           placeholder="Örn. Paramedik, Aile hekimi, ATT, Anestezi teknisyeni">
+                    <div class="err" id="errOther"></div>
+                </div>
+            </div>
+
+            <!-- 4. KVKK -->
+            <div class="fsec">
+                <h2><span class="idx">4</span> KVKK Onayı</h2>
+                <div class="kvkk">
+                    <details>
+                        <summary><i class="fas fa-shield-alt" style="color:var(--red)"></i> Kişisel Verilerin Korunması Aydınlatma Metni</summary>
+                        <div class="txt">
+                            <p>6698 sayılı Kişisel Verilerin Korunması Kanunu (&ldquo;KVKK&rdquo;) uyarınca, veri sorumlusu sıfatıyla
+                               <strong>Hacettepe Üniversitesi Yaşam Destek Uygulama ve Araştırma Merkezi</strong> tarafından
+                               kişisel verilerinizin nasıl işlendiği aşağıda açıklanmıştır.</p>
+
+                            <h3>İşlenen kişisel veriler</h3>
+                            <ul>
+                                <li>Kimlik verisi: T.C. kimlik numarası veya pasaport numarası, ad, soyad, doğum tarihi</li>
+                                <li>İletişim verisi: adres, e-posta adresi, telefon numarası</li>
+                                <li>Mesleki deneyim verisi: görev/statü bilgisi, kurum içi katılımcı durumu</li>
+                            </ul>
+
+                            <h3>İşleme amaçları</h3>
+                            <ul>
+                                <li>PALS kurs kaydının oluşturulması ve katılımcı listesinin yönetilmesi</li>
+                                <li>Kurs tarih, yer ve içeriğine ilişkin bilgilendirmelerin yapılması</li>
+                                <li>Kurs sonunda katılım belgesi / sertifika düzenlenmesi ve doğrulanması</li>
+                                <li>Eğitim faaliyetlerine ilişkin yasal kayıt ve raporlama yükümlülüklerinin yerine getirilmesi</li>
+                            </ul>
+
+                            <h3>Hukuki sebep ve aktarım</h3>
+                            <p>Verileriniz KVKK m.5/2 kapsamında sözleşmenin kurulması ve ifası ile veri sorumlusunun meşru
+                               menfaati hukuki sebeplerine dayanarak, elektronik form aracılığıyla otomatik yolla işlenir.
+                               Sertifikasyon süreçlerinin gerektirdiği hâller dışında üçüncü kişilerle paylaşılmaz; yurt dışına
+                               aktarım, kayıtların tutulduğu bulut hizmet sağlayıcısının altyapısı ile sınırlıdır.</p>
+
+                            <h3>Saklama süresi</h3>
+                            <p>Katılım ve sertifika kayıtları, sertifika geçerlilik süresi ve ilgili mevzuatta öngörülen
+                               zamanaşımı süreleri boyunca saklanır; sürenin sonunda silinir, yok edilir veya anonim hâle getirilir.</p>
+
+                            <h3>Haklarınız</h3>
+                            <p>KVKK m.11 uyarınca kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme,
+                               düzeltilmesini, silinmesini veya yok edilmesini isteme ve işlemenin sonuçlarına itiraz etme
+                               haklarına sahipsiniz. Taleplerinizi
+                               <a href="mailto:lsc@hacettepe.edu.tr">lsc@hacettepe.edu.tr</a> adresine iletebilirsiniz.</p>
+                        </div>
+                    </details>
+
+                    <label class="chk" for="kvkk">
+                        <input type="checkbox" id="kvkk">
+                        <span>Yukarıdaki <strong>KVKK aydınlatma metnini</strong> okudum, anladım ve kişisel verilerimin
+                              PALS kurs kaydı ile sertifikasyon süreçleri kapsamında işlenmesine
+                              <strong>açık rıza</strong> veriyorum. <span class="req">*</span></span>
+                    </label>
+                    <div class="err" id="errKvkk"></div>
+                </div>
+            </div>
+
+            <!-- honeypot -->
+            <div class="hp" aria-hidden="true">
+                <label for="website">Web sitesi</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn btn-ghost" id="btnReset"><i class="fas fa-undo"></i> Formu Temizle</button>
+                <button type="submit" class="btn" id="btnSubmit"><i class="fas fa-paper-plane"></i> <span>Kaydı Gönder</span></button>
+            </div>
+
+            <div class="banner" id="banner" role="status" aria-live="polite"></div>
+        </form>
+
+        <div class="done" id="done" role="status" aria-live="polite">
+            <div class="tick"><i class="fas fa-check"></i></div>
+            <h2>Kaydınız alındı</h2>
+            <p>PALS kurs başvurunuz Yaşam Destek Merkezi'ne iletildi. Kurs tarihi ve yeri kesinleştiğinde
+               formda belirttiğiniz e-posta adresine bilgilendirme yapılacaktır.</p>
+            <div class="ref" id="doneRef"></div>
+            <div>
+                <a class="btn btn-ghost" href="pals.html"><i class="fas fa-arrow-left"></i> PALS sayfasına dön</a>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="inner">
+            <h6>THE CENTER for LIFE SUPPORT PRACTICE &amp; RESEARCH</h6>
+            <div class="social">
+                <a href="https://www.instagram.com/lifesupportcenter/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/lsc_hacettepe" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/lschacettepe/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="copy">&copy; 2015&ndash;2026 Life Support Center</div>
+    </footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // Google Apps Script web app (PALS registry → Google Sheet)
+  var WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxgNwa-4s268vLTnt-A6dFPOwLWlCqDBPr9-YBKeKRGlwIM-wfwZ6gm9EjTW2YYDLKR/exec';
+
+  var NA = 'NA';
+  var $  = function(id){ return document.getElementById(id); };
+
+  // ==================== date selects ====================
+  var MONTHS = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran',
+                'Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+
+  (function fillDate(){
+    var d = $('gun'), m = $('ay'), y = $('yil'), i;
+    for (i = 1; i <= 31; i++) d.add(new Option(i, i));
+    for (i = 1; i <= 12; i++) m.add(new Option(MONTHS[i-1], i));
+    var maxYear = new Date().getFullYear() - 16;
+    for (i = maxYear; i >= 1940; i--) y.add(new Option(i, i));
+  })();
+
+  function daysInMonth(month, year){
+    if (!month) return 31;
+    return new Date(year || 2000, month, 0).getDate();
+  }
+
+  function syncDays(){
+    var m = parseInt($('ay').value, 10) || 0;
+    var y = parseInt($('yil').value, 10) || 0;
+    var max = daysInMonth(m, y);
+    var d = $('gun');
+    var keep = parseInt(d.value, 10) || 0;
+    while (d.options.length > 1) d.remove(1);
+    for (var i = 1; i <= max; i++) d.add(new Option(i, i));
+    if (keep && keep <= max) d.value = String(keep);
+  }
+
+  // ==================== validators ====================
+  function validTckn(v){
+    if (!/^[1-9][0-9]{10}$/.test(v)) return false;
+    var d = v.split('').map(Number);
+    var odd  = d[0] + d[2] + d[4] + d[6] + d[8];
+    var even = d[1] + d[3] + d[5] + d[7];
+    if (((odd * 7) - even) % 10 !== d[9]) return false;
+    var sum10 = 0;
+    for (var i = 0; i < 10; i++) sum10 += d[i];
+    return sum10 % 10 === d[10];
+  }
+
+  function validEmail(v){
+    return /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(v);
+  }
+
+  // Returns the normalised phone, or '' when invalid.
+  function normPhone(v){
+    var raw = String(v).trim();
+    var intl = raw.charAt(0) === '+';
+    var digits = raw.replace(/\D/g, '');
+    if (intl) return digits.length >= 8 && digits.length <= 15 ? '+' + digits : '';
+    if (digits.length === 11 && digits.charAt(0) === '0') digits = digits.slice(1);
+    if (digits.length === 12 && digits.slice(0, 2) === '90') digits = digits.slice(2);
+    if (/^5[0-9]{9}$/.test(digits)) return '0' + digits;
+    return digits.length >= 10 && digits.length <= 15 ? digits : '';
+  }
+
+  // ==================== field error helpers ====================
+  function setErr(fieldId, errId, msg){
+    var f = $(fieldId), e = $(errId);
+    if (f) f.classList.add('bad');
+    if (e){ e.textContent = msg; e.classList.add('show'); }
+  }
+  function clearErr(fieldId, errId){
+    var f = $(fieldId), e = $(errId);
+    if (f) f.classList.remove('bad');
+    if (e){ e.textContent = ''; e.classList.remove('show'); }
+  }
+  function clearAllErrors(){
+    var i, bad = document.querySelectorAll('#regForm .fld.bad');
+    for (i = 0; i < bad.length; i++) bad[i].classList.remove('bad');
+    var errs = document.querySelectorAll('#regForm .err.show');
+    for (i = 0; i < errs.length; i++){ errs[i].classList.remove('show'); errs[i].textContent = ''; }
+  }
+
+  function showBanner(msg, kind){
+    var b = $('banner');
+    b.className = 'banner show ' + (kind || 'info');
+    b.textContent = msg;
+  }
+  function hideBanner(){
+    $('banner').className = 'banner';
+  }
+
+  // ==================== conditional panels ====================
+  var ROLE_PANELS = {
+    student:  { panel: 'condStudent',  field: 'ogrenciDonem', err: 'errStudent' },
+    resident: { panel: 'condResident', field: 'asistanYil',   err: 'errResident' },
+    nurse:    { panel: 'condNurse',    field: 'hemsireBirim', err: 'errNurse' },
+    other:    { panel: 'condOther',    field: 'digerMeslek',  err: 'errOther' }
+  };
+
+  function selectedRole(){
+    var r = document.querySelector('input[name="rol"]:checked');
+    return r ? r.value : '';
+  }
+
+  function syncRolePanels(){
+    var role = selectedRole();
+    for (var key in ROLE_PANELS){
+      if (!ROLE_PANELS.hasOwnProperty(key)) continue;
+      var cfg = ROLE_PANELS[key];
+      var on  = (key === role);
+      $(cfg.panel).hidden = !on;
+      if (!on){
+        $(cfg.field).value = '';
+        clearErr(cfg.field, cfg.err);
+      }
+    }
+    updateProgress();
+  }
+
+  function syncIdType(){
+    var isTckn = $('idTckn').checked;
+    $('tckn').disabled = !isTckn;
+    $('passport').disabled = isTckn;
+    $('wrapTckn').style.opacity = isTckn ? '1' : '.5';
+    $('wrapPass').style.opacity = isTckn ? '.5' : '1';
+    if (isTckn){ $('passport').value = ''; clearErr('passport', 'errPassport'); }
+    else       { $('tckn').value = '';     clearErr('tckn', 'errTckn'); }
+    updateProgress();
+  }
+
+  // ==================== progress ====================
+  function filledCount(){
+    var role = selectedRole();
+    var checks = [
+      $('idTckn').checked ? $('tckn').value.trim() : $('passport').value.trim(),
+      $('ad').value.trim(),
+      $('soyad').value.trim(),
+      $('gun').value && $('ay').value && $('yil').value ? '1' : '',
+      $('email').value.trim(),
+      $('telefon').value.trim(),
+      $('adres').value.trim(),
+      $('kurumici').value,
+      role ? (role === 'other' ? $('digerMeslek').value.trim() : $(ROLE_PANELS[role].field).value) : '',
+      $('kvkk').checked ? '1' : ''
+    ];
+    var n = 0;
+    for (var i = 0; i < checks.length; i++) if (checks[i]) n++;
+    return { done: n, total: checks.length };
+  }
+
+  function updateProgress(){
+    var c = filledCount();
+    $('progBar').style.width = Math.round((c.done / c.total) * 100) + '%';
+  }
+
+  // ==================== validation ====================
+  function validate(){
+    clearAllErrors();
+    var firstBad = null;
+    function fail(fieldId, errId, msg){
+      setErr(fieldId, errId, msg);
+      if (!firstBad) firstBad = $(fieldId);
+    }
+
+    if ($('idTckn').checked){
+      var t = $('tckn').value.trim();
+      if (!t) fail('tckn', 'errTckn', 'T.C. kimlik numarası zorunludur.');
+      else if (!validTckn(t)) fail('tckn', 'errTckn', 'Geçersiz T.C. kimlik numarası. Lütfen kontrol edin.');
+    } else {
+      var p = $('passport').value.trim();
+      if (!p) fail('passport', 'errPassport', 'Pasaport numarası zorunludur.');
+      else if (!/^[A-Za-z0-9]{6,15}$/.test(p)) fail('passport', 'errPassport', 'Pasaport numarası 6-15 harf/rakam olmalıdır.');
+    }
+
+    if ($('ad').value.trim().length < 2) fail('ad', 'errAd', 'Adınızı girin.');
+    if ($('soyad').value.trim().length < 2) fail('soyad', 'errSoyad', 'Soyadınızı girin.');
+
+    var g = $('gun').value, m = $('ay').value, y = $('yil').value;
+    if (!g || !m || !y){
+      setErr('gun', 'errDate', 'Doğum tarihini eksiksiz seçin.');
+      $('ay').classList.add('bad'); $('yil').classList.add('bad');
+      if (!firstBad) firstBad = $('gun');
+    } else if (parseInt(g, 10) > daysInMonth(parseInt(m, 10), parseInt(y, 10))){
+      setErr('gun', 'errDate', 'Seçilen ay bu günü içermiyor.');
+      if (!firstBad) firstBad = $('gun');
+    }
+
+    if (!validEmail($('email').value.trim())) fail('email', 'errEmail', 'Geçerli bir e-posta adresi girin.');
+    if (!normPhone($('telefon').value)) fail('telefon', 'errTelefon', 'Geçerli bir telefon numarası girin.');
+    if ($('adres').value.trim().length < 10) fail('adres', 'errAdres', 'Adres en az 10 karakter olmalıdır.');
+    if (!$('kurumici').value) fail('kurumici', 'errKurumici', 'Kurum içi katılımcı durumunu seçin.');
+
+    var role = selectedRole();
+    if (!role){
+      $('errRol').textContent = 'Görev / statü seçimi zorunludur.';
+      $('errRol').classList.add('show');
+      if (!firstBad) firstBad = $('rolStudent');
+    } else {
+      var cfg = ROLE_PANELS[role];
+      if (!$(cfg.field).value.trim()) fail(cfg.field, cfg.err, 'Bu alan zorunludur.');
+    }
+
+    if (!$('kvkk').checked){
+      $('errKvkk').textContent = 'Formu gönderebilmek için KVKK onayı vermelisiniz.';
+      $('errKvkk').classList.add('show');
+      if (!firstBad) firstBad = $('kvkk');
+    }
+
+    return firstBad;
+  }
+
+  // ==================== payload ====================
+  function buildPayload(){
+    var role = selectedRole();
+    var val  = function(key){
+      return role === key ? $(ROLE_PANELS[key].field).value.trim() : NA;
+    };
+    return {
+      form: 'PALS_REGISTRY',
+      timestamp_client: new Date().toISOString(),
+      TCKN:                 $('idTckn').checked ? $('tckn').value.trim() : NA,
+      PasaportNo:           $('idTckn').checked ? NA : $('passport').value.trim().toUpperCase(),
+      Ad:                   $('ad').value.trim(),
+      Soyad:                $('soyad').value.trim(),
+      Gun:                  parseInt($('gun').value, 10),
+      Ay:                   parseInt($('ay').value, 10),
+      Yil:                  parseInt($('yil').value, 10),
+      Adres:                $('adres').value.trim(),
+      Email:                $('email').value.trim().toLowerCase(),
+      Telefon:              normPhone($('telefon').value),
+      Kurumici:             $('kurumici').value,
+      TipFakultesiOgrencisi: val('student'),
+      PediatriAsistani:      val('resident'),
+      Hemsire:               val('nurse'),
+      Diger:                 val('other'),
+      KvkkOnay: 'Evet',
+      KvkkOnayZamani: new Date().toISOString()
+    };
+  }
+
+  // Apps Script accepts text/plain without a CORS preflight. When the reply is
+  // readable it must be the {status:'ok'} JSON from PalsRegistry.gs — anything
+  // else (an Apps Script HTML error page, an undeployed script) counts as a
+  // failure, so a registration is never silently dropped. Only when the browser
+  // refuses to expose the reply at all do we retry opaquely and trust it.
+  function send(payload){
+    var opts = {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    };
+    return fetch(WEB_APP_URL, opts)
+      .then(function(res){ return res.text(); })
+      .then(function(txt){
+        var parsed = null;
+        try { parsed = JSON.parse(txt); } catch (e) { /* handled below */ }
+        if (parsed && parsed.status === 'ok') return parsed;
+        if (parsed && parsed.status === 'error') throw new Error(parsed.message || 'Sunucu kaydı reddetti.');
+        if (/doPost|doGet|bulunamadı|not found/i.test(txt)) {
+          throw new Error('Kayıt servisi henüz yayına alınmamış (Apps Script doPost bulunamadı).');
+        }
+        throw new Error('Kayıt servisinden beklenmeyen bir yanıt alındı.');
+      })
+      .catch(function(err){
+        if (!(err instanceof TypeError)) throw err;   // a real server-side error
+        opts.mode = 'no-cors';                        // CORS/network blocked the reply
+        return fetch(WEB_APP_URL, opts).then(function(){ return null; });
+      });
+  }
+
+  // ==================== submit ====================
+  var sending = false;
+
+  $('regForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    if (sending) return;
+    hideBanner();
+
+    if ($('website').value){ return; }   // honeypot
+
+    var bad = validate();
+    if (bad){
+      showBanner('Lütfen işaretli alanları düzeltin.', 'err');
+      bad.focus({ preventScroll: true });
+      bad.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    var payload = buildPayload();
+    var btn = $('btnSubmit');
+    sending = true;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner"></i> <span>Gönderiliyor…</span>';
+    showBanner('Kaydınız gönderiliyor, lütfen bekleyin…', 'info');
+
+    send(payload).then(function(){
+      $('regForm').style.display = 'none';
+      $('doneRef').textContent = payload.Ad + ' ' + payload.Soyad + ' · ' + payload.Email;
+      $('done').classList.add('show');
+      $('progBar').style.width = '100%';
+      $('done').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }).catch(function(err){
+      showBanner('Kayıt gönderilemedi: ' + err.message + ' Lütfen tekrar deneyin veya lsc@hacettepe.edu.tr adresine yazın.', 'err');
+    }).then(function(){
+      sending = false;
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Kaydı Gönder</span>';
+    });
+  });
+
+  // ==================== wiring ====================
+  $('idTckn').addEventListener('change', syncIdType);
+  $('idPass').addEventListener('change', syncIdType);
+
+  var roleRadios = document.querySelectorAll('input[name="rol"]');
+  for (var i = 0; i < roleRadios.length; i++){
+    roleRadios[i].addEventListener('change', function(){
+      $('errRol').classList.remove('show');
+      syncRolePanels();
+    });
+  }
+
+  $('tckn').addEventListener('input', function(){
+    this.value = this.value.replace(/\D/g, '').slice(0, 11);
+  });
+
+  $('ay').addEventListener('change', syncDays);
+  $('yil').addEventListener('change', syncDays);
+
+  $('kvkk').addEventListener('change', function(){
+    if (this.checked) $('errKvkk').classList.remove('show');
+  });
+
+  // live progress + clear the error as soon as the field is touched
+  var watched = ['tckn','passport','ad','soyad','gun','ay','yil','email','telefon','adres',
+                 'kurumici','ogrenciDonem','asistanYil','hemsireBirim','digerMeslek','kvkk'];
+  watched.forEach(function(id){
+    var el = $(id);
+    if (!el) return;
+    var evt = (el.tagName === 'SELECT' || el.type === 'checkbox') ? 'change' : 'input';
+    el.addEventListener(evt, function(){
+      el.classList.remove('bad');
+      updateProgress();
+    });
+  });
+
+  $('btnReset').addEventListener('click', function(){
+    if (!confirm('Girdiğiniz tüm bilgiler silinecek. Devam edilsin mi?')) return;
+    $('regForm').reset();
+    clearAllErrors();
+    hideBanner();
+    syncDays();
+    syncIdType();
+    syncRolePanels();
+    $('ad').focus();
+  });
+
+  window.addEventListener('beforeunload', function(ev){
+    if (sending || $('done').classList.contains('show')) return;
+    if (filledCount().done === 0) return;
+    ev.preventDefault();
+    ev.returnValue = '';
+  });
+
+  syncIdType();
+  syncRolePanels();
+  updateProgress();
+})();
+</script>
+
+<script src="/sablon2021/js/mobile-nav.js?v=1769629634"></script>
+<script src="/sablon2021/js/easing.min.js?v=1769629634"></script>
+</body>
+</html>

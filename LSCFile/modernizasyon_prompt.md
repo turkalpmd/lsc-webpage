@@ -236,5 +236,16 @@ Sosyal linkler: Instagram / Twitter(X) / LinkedIn. Telif: `© 2015–2026 Life S
 - `bbenan.html` (CV)
 - `oxopreserve.html`, `co-apnea-test.html` (yöntem detay)
 - `picu_adminstration.html`, `picu_fellows.html` (kişi grid + PICU subnav)
+- `palsregistery.html` (kayıt formu + KVKK onayı, Google Sheets backend; `apps-script/PalsRegistry.gs`)
 
 Bunlar örnek/şablon olarak kullanılabilir.
+
+Not: `PALS.html` → `pals.html` olarak yeniden adlandırıldı.
+
+Eski URL için iki katmanlı yönlendirme var:
+1. `.htaccess` içinde `RewriteRule ^PALS\.html$ /pals.html [R=301,L]` — **bu sunucuda
+   mod_rewrite kapalı olduğu için şu an devreye girmiyor**, ileride açılırsa çalışır.
+2. Sunucudaki `PALS.html`, canonical + `meta refresh` içeren küçük bir yönlendirme
+   sayfasıyla değiştirildi. macOS dosya sistemi büyük/küçük harfe duyarsız olduğu için
+   bu dosya `LSCFile/` içinde **tutulamaz**; doğrudan FTP'ye kondu. Yani
+   `upload_all_from_lscfile.py` onu yönetmez — sunucuda elle silinmediği sürece kalır.

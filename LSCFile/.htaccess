@@ -1,4 +1,16 @@
 # =====================================================================
+# Redirects
+# ---------------------------------------------------------------------
+# PALS.html was renamed to pals.html. The old file may still sit on the
+# server and is still indexed, so send it on with a permanent redirect.
+# The pattern is case-sensitive, so /pals.html itself never matches.
+# =====================================================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^PALS\.html$ /pals.html [R=301,L]
+</IfModule>
+
+# =====================================================================
 # Cache policy
 # ---------------------------------------------------------------------
 # HTML / CSS / JS change often and must ALWAYS be revalidated so visitors
