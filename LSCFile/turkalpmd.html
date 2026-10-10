@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Akbasli Lab | Digital Health and AI in Critical Care | Life Support Center</title>
+<!-- seo:start -->
+<meta name="description" content="Digital Health and Artificial Intelligence in Critical Care Laboratory at Hacettepe University Life Support Center, directed by Izzet Turkalp Akbasli, MD. Home of NAFIS, the pediatric ICU integrated data and research platform.">
+<link rel="canonical" href="https://lsc.hacettepe.edu.tr/turkalpmd.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Izzet Turkalp Akbasli">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Akbasli Lab: Digital Health and AI in Critical Care">
+<meta property="og:description" content="Pediatric critical care data science at Hacettepe University: NAFIS physiologic data platform, clinical prediction, language models and trustworthy clinical AI.">
+<meta property="og:image" content="https://lsc.hacettepe.edu.tr/images/fellows/izzetturkalp.webp">
+<meta property="og:url" content="https://lsc.hacettepe.edu.tr/turkalpmd.html">
+<meta property="og:site_name" content="Life Support Center, Hacettepe University">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@lsc_hacettepe">
+<meta name="twitter:title" content="Akbasli Lab: Digital Health and AI in Critical Care">
+<meta name="twitter:description" content="Pediatric critical care data science at Hacettepe University: NAFIS physiologic data platform, clinical prediction, language models and trustworthy clinical AI.">
+<meta name="twitter:image" content="https://lsc.hacettepe.edu.tr/images/fellows/izzetturkalp.webp">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://lsc.hacettepe.edu.tr/turkalpmd.html#person",
+      "name": "Izzet Turkalp Akbasli",
+      "alternateName": ["İzzet Türkalp Akbaşlı", "Dr. İzzet Türkalp Akbaşlı", "turkalpmd"],
+      "honorificSuffix": "MD",
+      "jobTitle": "Director, Digital Health and Artificial Intelligence in Critical Care Laboratory; Clinical Fellow, Pediatric Intensive Care Medicine",
+      "image": "https://lsc.hacettepe.edu.tr/images/fellows/izzetturkalp.webp",
+      "url": "https://lsc.hacettepe.edu.tr/turkalpmd.html",
+      "email": "mailto:iakbasli@hacettepe.edu.tr",
+      "affiliation": [
+        {"@type": "CollegeOrUniversity", "name": "Hacettepe University", "url": "https://www.hacettepe.edu.tr/"},
+        {"@type": "MedicalOrganization", "name": "Life Support Center, Hacettepe University", "url": "https://lsc.hacettepe.edu.tr/"}
+      ],
+      "knowsAbout": ["Pediatric Intensive Care", "Clinical Artificial Intelligence", "Physiologic Time Series", "Acute Kidney Injury", "Low Cardiac Output Syndrome", "ECMO", "Continuous Kidney Replacement Therapy", "Clinical Natural Language Processing", "MLOps", "OMOP Common Data Model"],
+      "sameAs": [
+        "https://turkalpmd.com/",
+        "https://orcid.org/0000-0003-3055-7355",
+        "https://scholar.google.com.tr/citations?user=oLZEaB8AAAAJ&hl=en",
+        "https://github.com/turkalpmd",
+        "https://www.linkedin.com/in/turkalpmd",
+        "https://avesis.hacettepe.edu.tr/iakbasli"
+      ]
+    },
+    {
+      "@type": "ResearchProject",
+      "name": "NAFIS: Critical Patient Integrated Data and Research Platform",
+      "url": "https://lsc.hacettepe.edu.tr/turkalpmd.html#nafis",
+      "description": "An in-network data center that records continuous monitor, ventilator and extracorporeal device data from the pediatric intensive care units of Hacettepe University and links it with hospital information system records under parental consent and institutional data governance.",
+      "parentOrganization": {"@type": "MedicalOrganization", "name": "Life Support Center, Hacettepe University", "url": "https://lsc.hacettepe.edu.tr/"},
+      "member": {"@id": "https://lsc.hacettepe.edu.tr/turkalpmd.html#person"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://lsc.hacettepe.edu.tr/"},
+        {"@type": "ListItem", "position": 2, "name": "Laboratories", "item": "https://lsc.hacettepe.edu.tr/labs.html"},
+        {"@type": "ListItem", "position": 3, "name": "Akbasli Lab", "item": "https://lsc.hacettepe.edu.tr/turkalpmd.html"}
+      ]
+    }
+  ]
+}
+</script>
+<!-- seo:end -->
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;500&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+
+/* Tokens. The six signal colours follow bedside-monitor convention and are used
+   only to mean a data modality: ECG, arterial pressure, oxygenation,
+   ventilation, clinical records, extracorporeal circuits. */
+:root{
+  color-scheme:light;
+  --paper:#F4F7F8;
+  --surface:#FFFFFF;
+  --ink:#13202A;
+  --ink-2:#384A57;
+  --muted:#5F717E;
+  --rule:#D5DEE3;
+  --rule-strong:#B7C5CD;
+  --grid:rgba(196,48,62,.075);
+  --grid-major:rgba(196,48,62,.16);
+  --ecg:#1A7C44;
+  --art:#C2303E;
+  --spo2:#1D66AD;
+  --co2:#A06800;
+  --ehr:#6A49A8;
+  --ecc:#0D7975;
+  --link:#1D5C99;
+  --focus:#1D66AD;
+  --sans:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"Atkinson Hyperlegible Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --wrap:1180px;
+  --gutter:clamp(16px,3.2vw,32px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0D151B;
+    --surface:#121D25;
+    --ink:#E3EAEE;
+    --ink-2:#BCC8CF;
+    --muted:#8D9EA9;
+    --rule:#24323C;
+    --rule-strong:#35464F;
+    --grid:rgba(255,128,138,.06);
+    --grid-major:rgba(255,128,138,.12);
+    --ecg:#53D38A;
+    --art:#FF6D78;
+    --spo2:#62B3FF;
+    --co2:#F0B548;
+    --ehr:#B69DFF;
+    --ecc:#48CFC6;
+    --link:#86C3FF;
+    --focus:#86C3FF;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0D151B;--surface:#121D25;--ink:#E3EAEE;--ink-2:#BCC8CF;--muted:#8D9EA9;
+  --rule:#24323C;--rule-strong:#35464F;--grid:rgba(255,128,138,.06);--grid-major:rgba(255,128,138,.12);
+  --ecg:#53D38A;--art:#FF6D78;--spo2:#62B3FF;--co2:#F0B548;--ehr:#B69DFF;--ecc:#48CFC6;--link:#86C3FF;--focus:#86C3FF;
+}
+
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--link);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:2px}
+p{margin:0 0 1em}
+h1,h2,h3,h4{margin:0;font-weight:700;line-height:1.15;letter-spacing:-.012em}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gutter)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--surface);padding:8px 12px;z-index:10}
+.skip:focus{left:8px}
+
+/* Header */
+.top{border-bottom:1px solid var(--rule);background:var(--surface)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;min-width:0}
+.brand img{height:34px;width:auto}
+.brand span{display:grid;line-height:1.25}
+.brand b{font-weight:700;font-size:.95rem}
+.brand small{color:var(--muted);font-size:.82rem}
+.nav{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:.95rem}
+.nav a{color:var(--ink-2);text-decoration:none;padding-block:4px}
+.nav a:hover{color:var(--ink);text-decoration:underline}
+
+/* Hero */
+.hero{padding-block:clamp(32px,4.4vw,56px) clamp(28px,4vw,48px)}
+.hero h1{font-size:clamp(1.95rem,3.9vw,3.15rem);font-weight:800;line-height:1.06;letter-spacing:-.026em;max-width:24ch}
+.lede{margin-top:18px;max-width:62ch;color:var(--ink-2);font-size:clamp(1.05rem,1.4vw,1.2rem)}
+
+/* Monitor */
+.monitor{margin:clamp(24px,3vw,36px) 0 0;border:1px solid var(--rule-strong);border-radius:10px;background:var(--surface);overflow:hidden}
+.monitor-body{display:grid;grid-template-columns:minmax(0,1fr) 210px}
+.screen{position:relative;height:clamp(250px,30vw,340px);border-right:1px solid var(--rule);
+  background-color:var(--surface);
+  background-image:
+    linear-gradient(var(--grid-major) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),
+    linear-gradient(var(--grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:40px 40px,40px 40px,8px 8px,8px 8px;background-position:-1px -1px}
+.screen canvas{position:absolute;inset:0;width:100%;height:100%}
+.lane-label{position:absolute;left:10px;font:500 .78rem var(--mono);pointer-events:none}
+.readouts{display:grid;grid-template-rows:repeat(4,1fr)}
+.ro{padding:10px 16px;border-bottom:1px solid var(--rule);display:grid;align-content:center;color:var(--c)}
+.ro:last-child{border-bottom:0}
+.ro .k{font:500 .8rem var(--mono);opacity:.9}
+.ro .v{font:500 clamp(1.7rem,2.6vw,2.15rem)/1.05 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.ro .s{font:400 .8rem var(--mono);opacity:.85}
+.archive{border-top:1px solid var(--rule);padding:14px 16px 16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;align-items:center}
+.switch{display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--rule-strong);border-radius:8px;padding:3px;gap:3px;background:var(--paper)}
+.switch button{all:unset;cursor:pointer;padding:7px 12px;border-radius:5px;font-size:.9rem;color:var(--ink-2);text-align:center;white-space:nowrap}
+.switch button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-strong);font-weight:700}
+.switch button:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+#ribbon{width:100%;height:46px;display:block;border-radius:4px;background:var(--paper)}
+.archive .status{grid-column:1/-1;margin:0;color:var(--ink-2);font-size:.95rem}
+.archive .status b{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
+.monitor figcaption{padding:10px 16px;border-top:1px solid var(--rule);font-size:.84rem;color:var(--muted)}
+
+/* Sections */
+section.block{padding-block:clamp(52px,7vw,96px);border-top:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 48px;margin-bottom:clamp(28px,4vw,44px);align-items:end}
+.sec-head h2{font-size:clamp(1.7rem,3vw,2.45rem);font-weight:800;letter-spacing:-.022em;max-width:18ch}
+.sec-head p{margin:0;color:var(--ink-2);max-width:62ch}
+h3{font-size:1.25rem}
+.prose{max-width:66ch}
+.prose p{color:var(--ink-2)}
+
+/* Lab */
+.lab-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);align-items:start}
+.setting{margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--rule)}
+.setting div{padding:14px 16px 14px 0;border-bottom:1px solid var(--rule)}
+.setting dt{font:500 1.5rem/1.1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.setting dd{margin:4px 0 0;font-size:.9rem;color:var(--ink-2);line-height:1.4}
+.director{border-left:3px solid var(--ink);padding-left:clamp(18px,2.4vw,28px)}
+.director img{width:132px;height:132px;object-fit:cover;border-radius:50%;margin-bottom:16px}
+.director h3{font-size:1.35rem}
+.director .role{color:var(--ink-2);margin:6px 0 14px;font-size:.98rem;line-height:1.45}
+.director p{font-size:.98rem;color:var(--ink-2)}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0;padding:0;list-style:none;font-size:.95rem}
+
+/* NAFIS */
+.nafis-name{font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--ink-2);margin-top:10px;font-weight:500}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:stage;border:1px solid var(--rule-strong);border-radius:10px;background:var(--surface);overflow:hidden}
+.flow > li{position:relative;padding:20px 22px 22px;border-right:1px solid var(--rule)}
+.flow > li:last-child{border-right:0}
+.flow > li:not(:last-child)::after{content:"";position:absolute;top:26px;right:-7px;width:12px;height:12px;background:var(--surface);border-top:1px solid var(--rule-strong);border-right:1px solid var(--rule-strong);transform:rotate(45deg);z-index:1}
+.flow h3{font-size:1.05rem;display:flex;gap:10px;align-items:baseline;margin-bottom:12px}
+.flow h3 .n{font:500 .85rem var(--mono);color:var(--muted)}
+.flow p,.flow li li{font-size:.93rem;color:var(--ink-2);line-height:1.5}
+.flow p:last-child{margin-bottom:0}
+.src{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.src li{display:grid;grid-template-columns:10px minmax(0,1fr);gap:10px;align-items:start}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c);margin-top:.45em}
+.store{margin:0;display:grid;gap:10px}
+.store dt{font-weight:700;font-size:.93rem}
+.store dd{margin:0;font-size:.93rem;color:var(--ink-2);line-height:1.5}
+.id{font:500 .9em var(--mono);white-space:nowrap}
+
+.nafis-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);margin-top:clamp(36px,5vw,56px)}
+.nafis-cols h3{font-size:1.1rem;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--rule-strong)}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.ticks li{font-size:.95rem;color:var(--ink-2);line-height:1.5;padding-left:16px;position:relative}
+.ticks li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:1.5px;background:var(--ink-2)}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:12px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px;font-size:.95rem;color:var(--ink-2);line-height:1.5}
+.steps li::before{content:counter(s);font:500 .85rem/1.75 var(--mono);color:var(--ink);border:1px solid var(--rule-strong);border-radius:50%;width:22px;height:22px;display:grid;place-items:center}
+.facts{margin:0;display:grid;gap:12px}
+.facts div{display:grid;gap:2px}
+.facts dt{font:500 .98rem var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.facts dd{margin:0;font-size:.93rem;color:var(--ink-2);line-height:1.45}
+
+.federated{margin-top:clamp(36px,5vw,56px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px 48px;padding:clamp(22px,3vw,32px);border-radius:10px;background:var(--surface);border:1px solid var(--rule)}
+.federated h3{font-size:clamp(1.3rem,2.2vw,1.65rem);font-weight:800;letter-spacing:-.018em}
+.federated p{margin:0;color:var(--ink-2)}
+
+.modal{width:100%;border-collapse:collapse;margin-top:clamp(36px,5vw,56px);font-size:.95rem}
+.modal caption{text-align:left;font-weight:700;font-size:1.1rem;padding-bottom:12px;color:var(--ink)}
+.modal th,.modal td{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);line-height:1.5}
+.modal thead th{font-size:.85rem;color:var(--muted);font-weight:500;border-bottom-color:var(--rule-strong)}
+.modal tbody th{font-weight:700;width:24%;border-left:3px solid var(--c);padding-left:12px}
+.modal td{color:var(--ink-2)}
+
+/* Research */
+.lines{display:grid;gap:0;border-top:1px solid var(--rule-strong)}
+.line{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:12px 48px;padding-block:28px;border-bottom:1px solid var(--rule)}
+.line h3{font-size:1.2rem;margin-bottom:8px}
+@media (min-width:761px){.line > div:first-child{position:sticky;top:20px;align-self:start}}
+.line .why{color:var(--ink-2);font-size:.95rem;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;line-height:1;padding:5px 9px 5px 7px;border-radius:999px;border:1px solid var(--rule-strong);color:var(--ink-2);background:var(--surface)}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c,var(--muted))}
+.work{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.work li{display:grid;gap:3px}
+.work .t{font-weight:700;color:var(--ink)}
+.work .d{color:var(--ink-2);font-size:.95rem;line-height:1.5}
+.work .r{font-size:.86rem;color:var(--muted)}
+.work .r a{color:var(--link)}
+.st{font:500 .78rem var(--mono);color:var(--ink-2);border:1px solid var(--rule-strong);border-radius:4px;padding:1px 6px;margin-right:6px;white-space:nowrap}
+.wip{list-style:none;margin:18px 0 0;padding:14px 0 0;border-top:1px dashed var(--rule-strong);display:grid;gap:8px}
+.wip li{font-size:.9rem;color:var(--ink-2);line-height:1.5}
+.wip b{color:var(--ink);font-weight:700}
+.wip .st{margin:0 0 0 4px}
+.tools{margin-top:clamp(36px,5vw,56px)}
+.tools h3{font-size:1.1rem;margin-bottom:6px}
+.tools > p{color:var(--ink-2);font-size:.95rem;margin-bottom:14px;max-width:66ch}
+.tools ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,4vw,48px)}
+.tools li{padding-block:12px;border-top:1px solid var(--rule);font-size:.93rem;color:var(--ink-2);line-height:1.45}
+.tools li a,.tools li b{font-weight:700}
+.more{margin-top:24px;font-size:.95rem;color:var(--ink-2)}
+
+/* Claude */
+.boundary{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr) minmax(0,1fr);border:1px solid var(--rule-strong);border-radius:10px;overflow:hidden;background:var(--surface)}
+.boundary > div{padding:22px}
+.boundary h3{font-size:1.05rem;margin-bottom:6px}
+.boundary .sub{font-size:.88rem;color:var(--muted);margin:0 0 14px}
+.inside{background:var(--paper)}
+.cross{border-inline:2px dashed var(--rule-strong)}
+.boundary ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.boundary li{font-size:.94rem;color:var(--ink-2);line-height:1.45}
+.cross li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:6px}
+.cross li::before{content:"\21C4";font-family:var(--mono);color:var(--ink)}
+.cross li.one::before{content:"\2192"}
+.never{margin-top:18px;padding-top:14px;border-top:1px solid var(--rule);font-size:.9rem;color:var(--ink-2)}
+.never b{color:var(--art)}
+.uses{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(28px,4vw,56px);margin:clamp(32px,4vw,48px) 0 0}
+.uses div{padding-block:18px;border-top:1px solid var(--rule)}
+.uses dt{font-weight:700;margin-bottom:6px}
+.uses dd{margin:0;color:var(--ink-2);font-size:.96rem;line-height:1.55}
+.already{margin-top:clamp(28px,4vw,40px);max-width:70ch;color:var(--ink-2)}
+
+/* Team */
+.team{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(24px,4vw,48px)}
+.team li{padding-block:18px;border-top:1px solid var(--rule)}
+.team b{display:block;font-size:1.05rem}
+.team span{display:block;color:var(--ink-2);font-size:.94rem;line-height:1.45;margin-top:4px}
+
+/* Recognition */
+.rec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px)}
+.rec h3{font-size:1.05rem;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--rule-strong)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:24px 48px}
+.contact address{font-style:normal;color:var(--ink-2);line-height:1.6}
+.contact .mail{font-size:clamp(1.15rem,2vw,1.4rem);font-weight:700}
+footer{border-top:1px solid var(--rule);padding-block:24px 40px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+
+/* Responsive */
+@media (max-width:980px){
+  .flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .flow > li:nth-child(2){border-right:0}
+  .flow > li:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .flow > li:nth-child(2)::after{top:auto;bottom:-7px;right:auto;left:26px;transform:rotate(135deg)}
+  .nafis-cols,.rec,.tools ul{grid-template-columns:1fr 1fr}
+  .team{grid-template-columns:1fr 1fr}
+  .boundary{grid-template-columns:1fr}
+  .cross{border-inline:0;border-block:2px dashed var(--rule-strong)}
+}
+@media (max-width:760px){
+  .sec-head,.lab-grid,.line,.federated,.contact{grid-template-columns:1fr}
+  .monitor-body{grid-template-columns:1fr}
+  .screen{border-right:0;border-bottom:1px solid var(--rule);height:240px}
+  .readouts{grid-template-rows:none;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ro{border-right:1px solid var(--rule)}
+  .ro:nth-child(2n){border-right:0}
+  .ro:nth-child(3){border-bottom:0}
+  .archive{grid-template-columns:1fr}
+  .setting{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr}
+  .flow > li{border-right:0;border-bottom:1px solid var(--rule)}
+  .flow > li:last-child{border-bottom:0}
+  .flow > li:not(:last-child)::after{top:auto;bottom:-7px;right:auto;left:26px;transform:rotate(135deg)}
+  .nafis-cols,.rec,.team,.uses,.tools ul{grid-template-columns:1fr}
+  .modal thead{display:none}
+  .modal tr{display:grid;border-bottom:1px solid var(--rule);padding-block:10px}
+  .modal tbody th,.modal td{border-bottom:0;width:auto;padding:4px 0 4px 12px}
+  .modal td{border-left:3px solid transparent}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{.monitor,.top .nav{display:none}section.block{padding-block:24px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/lsc_logo.webp" alt="Life Support Center" width="59" height="34">
+      <span><b>Digital Health and AI in Critical Care Lab</b><small>Life Support Center, Hacettepe University</small></span>
+    </a>
+    <nav class="nav" aria-label="On this page">
+      <a href="#lab">Lab</a>
+      <a href="#nafis">NAFIS</a>
+      <a href="#research">Research</a>
+      <a href="#claude">Claude</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <h1 id="hero-title">We keep the physiology that bedside monitors discard, and build clinical AI that holds up to scrutiny.</h1>
+    <p class="lede">The Digital Health and Artificial Intelligence in Critical Care Laboratory works inside the pediatric intensive care units of Hacettepe University in Ankara. It is directed by Izzet Turkalp Akbasli, MD, within the Life Support Center founded by Prof. Benan Bayrakci.</p>
+
+    <figure class="monitor" id="monitor">
+      <div class="monitor-body">
+        <div class="screen" id="screen">
+          <canvas id="wave" role="img" aria-label="Simulated bedside monitor: ECG lead II, arterial pressure, plethysmography and capnography waveforms sweeping left to right."></canvas>
+          <span class="lane-label" style="top:6px;color:var(--ecg)">II</span>
+          <span class="lane-label" style="top:calc(25% + 6px);color:var(--art)">ART</span>
+          <span class="lane-label" style="top:calc(50% + 6px);color:var(--spo2)">Pleth</span>
+          <span class="lane-label" style="top:calc(75% + 6px);color:var(--co2)">CO₂</span>
+        </div>
+        <div class="readouts" aria-hidden="true">
+          <div class="ro" style="--c:var(--ecg)"><span class="k">HR</span><span class="v" id="hr">128</span></div>
+          <div class="ro" style="--c:var(--art)"><span class="k">ART</span><span class="v"><span id="sys">88</span>/<span id="dia">52</span></span><span class="s">mean <span id="map">64</span></span></div>
+          <div class="ro" style="--c:var(--spo2)"><span class="k">SpO₂</span><span class="v" id="spo2">97</span></div>
+          <div class="ro" style="--c:var(--co2)"><span class="k">etCO₂</span><span class="v" id="etco2">38</span><span class="s">RR <span id="rr">28</span></span></div>
+        </div>
+      </div>
+      <div class="archive">
+        <div class="switch" role="group" aria-label="What happens to the waveform">
+          <button type="button" data-mode="off" aria-pressed="false">Monitor only</button>
+          <button type="button" data-mode="on" aria-pressed="true">Monitor with NAFIS</button>
+        </div>
+        <canvas id="ribbon" aria-hidden="true"></canvas>
+        <p class="status" id="status" aria-live="polite"></p>
+      </div>
+      <figcaption>Simulated signals. In our units the same streams come from GE CARESCAPE B850 monitors and ventilators through the hospital's Kafka message broker.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="block" id="lab" aria-labelledby="lab-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="lab-title">A data science lab next to the beds it studies</h2>
+      <p>Founded in 2021 within the Hacettepe University Life Support Practice and Research Center, the lab joins second-by-second physiologic data with the engineering needed to keep it, govern it and learn from it.</p>
+    </div>
+    <div class="lab-grid">
+      <div>
+        <div class="prose">
+          <p>Our clinicians are also the people who write the pipelines. We develop machine learning for continuous physiologic telemetry, for acute kidney injury and low cardiac output syndrome after congenital heart surgery, and for extracorporeal therapies such as extracorporeal membrane oxygenation (ECMO) and continuous kidney replacement therapy (CKRT).</p>
+          <p>A second line asks where clinical AI fails: models that lose accuracy when they move between hospitals, language models working in Turkish records, and vision-language models that can be steered by text inside an image. Our multicenter kidney injury study, for example, reports how widely external performance varied between centers, because that variation decides whether a model is safe to deploy.</p>
+          <p>The lab is one of the Life Support Center's laboratories, alongside xenotransplantation, hybrid membranes and extracorporeal circuit research, and works with the same clinical teams and the same weekly research board.</p>
+        </div>
+        <dl class="setting" aria-label="Clinical setting">
+          <div><dt>1985</dt><dd>Türkiye's first pediatric ICU opened here</dd></div>
+          <div><dt>23 beds</dt><dd>15 general and 8 cardiac intensive care beds</dd></div>
+          <div><dt>~800</dt><dd>admissions per year, national quaternary referral center</dd></div>
+          <div><dt>2007</dt><dd>Türkiye's first ECMO program; about 400 children supported</dd></div>
+          <div><dt>600+</dt><dd>ECMO days per year</dd></div>
+          <div><dt>0.28</dt><dd>standardized mortality ratio</dd></div>
+        </dl>
+      </div>
+      <aside class="director" aria-labelledby="dir-name">
+        <img src="images/fellows/izzetturkalp.webp" alt="Izzet Turkalp Akbasli, MD" width="132" height="132" loading="lazy">
+        <h3 id="dir-name">Izzet Turkalp Akbasli, MD</h3>
+        <p class="role">Lab director. Clinical fellow in pediatric intensive care medicine, Hacettepe University. Research affiliate, Children's Center for Artificial Intelligence (C4AI), Cleveland Clinic.</p>
+        <p>He trained in pediatrics at Hacettepe (2018 to 2023) and in pediatric emergency medicine. From 2024 to 2025 he was a research fellow in pediatric cardiac critical care and artificial intelligence at Cleveland Clinic, working with the Sickbay physiologic data platform and building high-fidelity data pipelines and predictive models for congenital heart disease. He designs and operates the NAFIS data architecture.</p>
+        <ul class="links">
+          <li><a href="https://scholar.google.com.tr/citations?user=oLZEaB8AAAAJ&amp;hl=en" rel="noopener">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0003-3055-7355" rel="noopener">ORCID</a></li>
+          <li><a href="https://github.com/turkalpmd" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/turkalpmd" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://avesis.hacettepe.edu.tr/iakbasli" rel="noopener">AVESIS</a></li>
+          <li><a href="https://turkalpmd.com/" rel="noopener">turkalpmd.com</a></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="nafis" aria-labelledby="nafis-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2 id="nafis-title">NAFIS</h2>
+        <p class="nafis-name">Critical Patient Integrated Data and Research Platform</p>
+      </div>
+      <p>Every monitored child in our units produces physiologic data at second-level resolution. The hospital network already carries these streams, waveform packets included. The hospital information system keeps only minute-level values, and waveforms are deleted from monitor memory shortly after they are drawn. The data is produced and transported, but not recorded. NAFIS records it.</p>
+    </div>
+
+    <div class="prose" style="margin-bottom:clamp(28px,4vw,40px)">
+      <p>NAFIS listens to the existing device stream without writing anything back, joins it with laboratory, medication, procedure and note data already held by the hospital, and keeps the result inside the hospital network under parental consent and Hacettepe University's institutional data governance policy. It needs no new monitor integration and no additional integration cost. To our knowledge, no pediatric critical care data bank of this kind exists in Türkiye; the comparable resources are WAVES at Stanford, the Texas Children's real-time platform, CHU Sainte-Justine, PIC, MIMIC-IV, HiRID and AmsterdamUMCdb.</p>
+      <p>NAFIS is a data center, not a laboratory. Our lab designs and runs its architecture and supplies the analytic methods for the studies that use it.</p>
+    </div>
+
+    <ol class="flow" aria-label="NAFIS data flow">
+      <li>
+        <h3><span class="n">1</span>Sources</h3>
+        <ul class="src">
+          <li><i class="dot" style="--c:var(--ecg)"></i><span>Bedside monitors: heart rate, invasive and non-invasive pressures, SpO₂, respiratory rate, etCO₂, temperature, central venous pressure; ECG, plethysmography and pressure waveforms</span></li>
+          <li><i class="dot" style="--c:var(--co2)"></i><span>Mechanical ventilators: mode, settings, measured pressures, volumes and flows, alarms</span></li>
+          <li><i class="dot" style="--c:var(--ehr)"></i><span>Hospital information system: laboratory and microbiology, medications and blood products, procedures, nursing records, severity scores, reports and notes</span></li>
+          <li><i class="dot" style="--c:var(--ecc)"></i><span>ECMO, CKRT and plasma exchange consoles: structured bedside entry by the physician on duty</span></li>
+        </ul>
+      </li>
+      <li>
+        <h3><span class="n">2</span>Ingestion</h3>
+        <p>A read-only Kafka consumer gathers short segments, writes each one to disk, records it in the catalog, and only then advances its offset.</p>
+        <p>The broker keeps 72 hours of messages, so a service outage or hardware failure is replayed without loss. Hospital records arrive through incremental, read-only SQL with a dedicated service account.</p>
+      </li>
+      <li>
+        <h3><span class="n">3</span>Storage</h3>
+        <dl class="store">
+          <dt>Waveform archive</dt>
+          <dd>Compressed Apache Parquet partitioned by device, data type and date. Device ID, timestamp and values only, never a name or record number.</dd>
+          <dt>Catalog and clinical tables</dt>
+          <dd>PostgreSQL, with constraints that block overlapping time intervals for a device.</dd>
+          <dt>Identity vault</dt>
+          <dd>A separate, restricted schema that links consented children to their random IDs.</dd>
+        </dl>
+      </li>
+      <li>
+        <h3><span class="n">4</span>Research access</h3>
+        <p>An approved study receives only the variables and time windows it asked for, keyed by random IDs such as <span class="id">NAFIS-004217</span>.</p>
+        <p>Analyses run on the in-network server. Only aggregate results leave, after the principal investigator approves them.</p>
+      </li>
+    </ol>
+
+    <div class="nafis-cols">
+      <div>
+        <h3>Safeguards</h3>
+        <ul class="ticks">
+          <li>Read-only access to every source. Devices and hospital systems are never written to or reconfigured.</li>
+          <li>Intranet only. The portal accepts connections from hospital IP ranges, and outbound traffic is closed at the firewall.</li>
+          <li>Disks and backups are encrypted. Master keys are split with Shamir's secret sharing into five shares, any three of which rebuild them: no single person can decrypt, and losing two shares loses nothing.</li>
+          <li>Encrypted incremental backups twice a day to two NAS units at separate sites, immutable snapshots, and a restore test every three months.</li>
+          <li>Personal accounts, role-based permissions enforced on the server, and an immutable audit log of every access, query and export.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Consent</h3>
+        <ol class="steps">
+          <li>From admission, device data are stored against bed and time only, linked to no child and visible to no researcher.</li>
+          <li>When the child is stable, a pediatric critical care fellow informs the family and asks for consent, aiming for the first 72 hours. Children aged 7 and older with decision capacity give their own assent on age-appropriate forms.</li>
+          <li>With consent, the child receives a random ID and the stay moves into the research layer under that ID.</li>
+          <li>Without consent, the pre-record is deleted unopened by monthly board decision. Bereaved families are not approached; those deletions are counted to monitor selection bias.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Scale and status</h3>
+        <dl class="facts">
+          <div><dt>≥ 99%</dt><dd>target capture of broker messages</dd></div>
+          <div><dt>~2 GB per day</dt><dd>about 3.7 TB over the first five years</dd></div>
+          <div><dt>~3,200 admissions</dt><dd>expected by 31 December 2031, assuming 80% consent</dd></div>
+          <div><dt>20 years</dt><dd>pseudonymized retention, then anonymization following the MIMIC-IV method: ID replacement, per-patient date shifting, free-text de-identification, key destruction</dd></div>
+          <div><dt>BAP 23145</dt><dd>Hacettepe University infrastructure project funding the main server and storage (4.8 million TL)</dd></div>
+          <div><dt>Ethics</dt><dd>Prospective protocol for the Hacettepe University Health Sciences Research Ethics Board; collection starts only after approval</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="federated">
+      <h3>The model travels to the data. The data stays.</h3>
+      <p>Patient-level data never leave Hacettepe. When an external group wants to work with NAFIS, its model is trained or validated inside the hospital network after research board and ethics approval. Only model weights and aggregate performance metrics leave, and the weights are first tested for memorization and membership inference.</p>
+    </div>
+
+    <table class="modal">
+      <caption>What the data bank is built to support</caption>
+      <thead><tr><th scope="col">Modality</th><th scope="col">Examples of future studies (each needs its own ethics approval)</th></tr></thead>
+      <tbody>
+        <tr style="--c:var(--art)"><th scope="row">Continuous vital signs and waveforms</th><td>Predicting cardiac arrest, emergency intubation and severe deterioration hours ahead; early recognition of shock and low cardiac output syndrome; phenotypes from physiologic trends</td></tr>
+        <tr style="--c:var(--co2)"><th scope="row">Ventilator signals</th><td>Automatic detection of patient-ventilator asynchrony; adherence to lung-protective ventilation; extubation readiness; the course of pediatric ARDS</td></tr>
+        <tr style="--c:var(--ecg)"><th scope="row">High-resolution ECG</th><td>Electrophysiologic patterns before arrhythmia; rhythm disturbances after cardiac surgery and ECMO; heart rate variability and clinical course</td></tr>
+        <tr style="--c:var(--ehr)"><th scope="row">Clinical records and text</th><td>Placing physiologic models in clinical context; drug exposure and physiologic response; structured extraction from de-identified notes and reports</td></tr>
+        <tr style="--c:var(--ecc)"><th scope="row">Extracorporeal circuits</th><td>All of the above in children on ECMO, CKRT and therapeutic plasma exchange</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="research" aria-labelledby="research-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="research-title">Research lines and projects</h2>
+      <p>Each line already has peer-reviewed output or working software. NAFIS gives all of them a prospective, high-resolution source at home. Colored markers show which NAFIS data modalities a line draws on.</p>
+    </div>
+    <div class="lines">
+      <article class="line">
+        <div>
+          <h3>Deterioration, physiology and outcomes in the PICU</h3>
+          <p class="why">Predicting which children will deteriorate after cardiac surgery, from routine and high-frequency data, and describing outcomes in our own unit.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--art)">Hemodynamics</li><li class="chip" style="--c:var(--spo2)">Waveforms</li><li class="chip" style="--c:var(--ehr)">Clinical records</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">Forecasting low cardiac output in neonates</span><span class="d">LightGBM models forecast low cardiac output syndrome 2 to 12 hours ahead from hourly multivariate data in the first 48 postoperative hours (AUROC 0.91 to 0.98), with SHAP explanations.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1097/CCE.0000000000001327" rel="noopener">Critical Care Explorations, 2025</a></span></li>
+            <li><span class="t">Low cardiac output risk at ICU arrival</span><span class="d">A parsimonious model from preoperative and intraoperative variables (AUROC 0.88) for early risk stratification after congenital heart surgery.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1017/S1047951126113833" rel="noopener">Cardiology in the Young, 2026</a></span></li>
+            <li><span class="t">Methylene blue in vasoplegia</span><span class="d">High-fidelity Sickbay data, causal inference and cluster analysis identified three hemodynamic response phenotypes in pediatric cardiac intensive care.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1007/s00246-026-04228-w" rel="noopener">Pediatric Cardiology, 2026</a></span></li>
+            <li><span class="t">Red blood cell transfusion in the PICU</span><span class="d">Patterns and predictors in 2,011 children: age, nutritional status and baseline anemia shaped transfusion decisions beyond the hemoglobin value.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.4103/njcp.njcp_786_25" rel="noopener">Nigerian Journal of Clinical Practice, 2026</a></span></li>
+            <li><span class="t">Artificial intelligence in pediatric cardiac intensive care</span><span class="d">Review of clinical applications, implementation barriers and future directions.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1007/s40746-026-00374-8" rel="noopener">Current Treatment Options in Pediatrics, 2026</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>Order of low cardiac output signs in neonates:</b> preregistered time-series causal discovery (PCMCI+) on hourly postoperative data. <span class="st">In revision</span></li>
+            <li><b>Machine learning prediction models in pediatric cardiac intensive care:</b> systematic review with PROBAST risk-of-bias appraisal. <span class="st">Under review</span></li>
+            <li><b>Critical pediatric trauma:</b> outcome prediction after severe injury. <span class="st">In revision</span></li>
+            <li><b>Timing of PICU deaths:</b> deaths in working hours and off-hours, 2014 to 2026. <span class="st">Abstract</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Acute kidney injury after cardiac surgery</h3>
+          <p class="why">Kidney injury after congenital heart surgery is frequent and under-recognized in neonates. We test whether models survive the move between centers and look for persistent-injury phenotypes.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--ehr)">Clinical records</li><li class="chip" style="--c:var(--art)">Hemodynamics</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">Multicenter CS-AKI models</span><span class="d">Forty gradient-boosting models across four US cardiac centers and 1,100 children. External performance varied widely between centers, a direct lesson on generalizability.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1097/PCC.0000000000003857" rel="noopener">Pediatric Critical Care Medicine, 2026</a></span></li>
+            <li><span class="t">PC4 NEPHRON</span><span class="d">Early prediction and phenotypic stratification of persistent cardiac surgery-associated AKI in neonates, within the Pediatric Cardiac Critical Care Consortium.</span><span class="r"><span class="st">Under review</span>Critical Care</span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>AKI in the PC4 registry:</b> machine learning risk prediction and phenotyping in the multicenter PC4 cohort. <span class="st">Ongoing</span></li>
+            <li><b>Persistent CS-AKI at Hacettepe:</b> a single-center cohort testing persistence as a high-risk phenotype. <span class="st">Submitted</span></li>
+            <li><b>After the ICU:</b> one-year kidney function and growth after CS-AKI. <span class="st">Protocol</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Extracorporeal therapies and blood purification</h3>
+          <p class="why">Hacettepe started Türkiye's first pediatric ECMO and continuous hemodiafiltration programs. We measure what the circuit does to the child.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--ecc)">Extracorporeal</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">Dilution factor in pediatric CKRT</span><span class="d">Circuit-related hemodilution expressed as V<sub>blood</sub> / (V<sub>blood</sub> + V<sub>ECBV</sub>), with an <a href="dilutionfactor.html">open bedside calculator</a> on this site.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1007/s00467-026-07318-2" rel="noopener">Pediatric Nephrology, 2026</a></span></li>
+            <li><span class="t">Stem cells and AN69 membranes</span><span class="d">CD34-positive cells were found entrapped on a clogged CKRT membrane during allogeneic stem cell transplantation, yet engraftment was not compromised.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1111/aor.15004" rel="noopener">Artificial Organs, 2025</a></span></li>
+            <li><span class="t">Methotrexate toxicity and conventional hemodialysis</span><span class="d">The first pediatric case series of high-dose methotrexate toxicity treated with conventional hemodialysis.</span><span class="r"><span class="st">Abstract</span><a href="https://doi.org/10.1097/01.pcc.0000900284.09750.3d" rel="noopener">Pediatric Critical Care Medicine, 2022</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>Therapeutic plasma exchange in hyperinflammatory syndromes:</b> systematic review and meta-analysis in children. <span class="st">In revision</span></li>
+            <li><b>Hacettepe ECMO cohort, 2013 to 2025:</b> single-center outcomes reported with ELSO definitions. <span class="st">Ongoing</span></li>
+            <li><b>Methotrexate hemodialysis series:</b> full manuscript. <span class="st">In revision</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Language models for clinical text</h3>
+          <p class="why">Most clinical knowledge sits in free text, much of it in Turkish. We extract it with models that can run inside the hospital.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--ehr)">Clinical records</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">Specialist-level labeling of Turkish notes</span><span class="d">A fine-tuned GPT model reproduced specialist labels for respiratory tract infection in 18,879 pediatric emergency records with 99.88% accuracy, against 78.54% before fine-tuning.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1186/s12911-025-02871-6" rel="noopener">BMC Medical Informatics and Decision Making, 2025</a></span></li>
+            <li><span class="t">HeaRTNER</span><span class="d">A hybrid regular-expression and on-premises Llama 3.1 pipeline for cardiology reports: above 97% F1 on cardiac MR and exercise test extraction with about 75% less compute. <a href="https://github.com/turkalpmd/HeaRTNER" rel="noopener">Code</a>.</span><span class="r"><span class="st">Preprint</span><a href="https://doi.org/10.64898/2026.01.21.26344531" rel="noopener">medRxiv, 2026; AHA Scientific Sessions 2025</a></span></li>
+            <li><span class="t">Complete cardiac MR reports in tetralogy of Fallot</span><span class="d">Quality improvement of cardiac MR reporting completeness in repaired tetralogy of Fallot.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1016/j.jocmr.2025.102623" rel="noopener">Journal of Cardiovascular Magnetic Resonance, 2025</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>ICD-10 coding of Turkish PICU diagnoses:</b> a language model translates and codes about 10,000 diagnosis strings. <span class="st">Ongoing</span></li>
+            <li><b>Electrophysiology reports:</b> structured extraction from pediatric ablation and electrophysiology study PDFs. <span class="st">Ongoing</span></li>
+            <li><b><a href="https://github.com/turkalpmd/TurkishHealthBench" rel="noopener">TurkishHealthBench</a>:</b> a Turkish adaptation of HealthBench for evaluating language models on health conversations. <span class="st">Ongoing</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Trustworthy, private and reproducible clinical AI</h3>
+          <p class="why">Before a model reaches the bedside, we try to break it: adversarial inputs, leaked identity, and results that do not replicate.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip">Imaging</li><li class="chip" style="--c:var(--ecg)">ECG</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">OCR-mediated modality dominance</span><span class="d">Text embedded in radiology images can steer vision-language model outputs, with implications for radiology AI trustworthiness; with MIT Critical Data.</span><span class="r"><span class="st">Preprint</span><a href="https://doi.org/10.64898/2026.02.22.26346828" rel="noopener">medRxiv, 2026</a></span></li>
+            <li><span class="t">Language models in critical decision-making</span><span class="d">Commentary on balancing caution and innovation when large language models enter critical care.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1186/s13054-023-04447-0" rel="noopener">Critical Care, 2023</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>ECG identity leakage:</b> whether patient identity survives in shared ECG representations, and whether removal strategies work. Preregistered. <span class="st">In preparation</span></li>
+            <li><b>Connectome-wired networks for chest radiographs:</b> tests a fruit-fly connectome topology against rewired control graphs. <span class="st">In preparation</span></li>
+            <li><b>Hidden pixel injection in DICOM:</b> a prototype for testing imaging AI pipelines against inputs invisible to readers. <span class="st">Prototype</span></li>
+            <li><b>Governance of ECG decision support:</b> signal-aligned evaluation. <span class="st">Letter in preparation</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>ECG, echocardiography and sound</h3>
+          <p class="why">Low-cost signals that could screen children where pediatric cardiologists are scarce.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--ecg)">ECG</li><li class="chip">Imaging</li><li class="chip">Sound</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">PulmoVec</span><span class="d">Two-stage stacking meta-learning on Google's HeAR foundation model for multi-task classification of pediatric respiratory sounds. <a href="https://github.com/turkalpmd/PulmoVec" rel="noopener">Code</a>.</span><span class="r"><span class="st">Preprint</span><a href="https://arxiv.org/abs/2603.15688" rel="noopener">arXiv, 2026</a></span></li>
+            <li><span class="t">EchoPLAX-Seg</span><span class="d">U-Net segmentation of parasternal long-axis echocardiography views.</span><span class="r"><span class="st">Code</span><a href="https://github.com/turkalpmd/ECHO-Segmentation" rel="noopener">GitHub</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>PEEK newborn screening:</b> digital stethoscope heart sounds and ECG to detect critical congenital heart disease in newborns, with Cleveland Clinic and Ankara Bilkent City Hospital. <span class="st">Ongoing</span></li>
+            <li><b>ECG-omics:</b> 12-lead ECGs encoded as codon-like sequences to detect structural heart disease (EchoNext, MIMIC-IV). <span class="st">In preparation</span></li>
+            <li><b>PRIMED-AI:</b> echocardiography and ECG foundation-model embeddings for ejection fraction when only ECG is available at deployment; with MIT Critical Data. <span class="st">Ongoing</span></li>
+            <li><b>Repaired tetralogy of Fallot:</b> ECG age gap and unsupervised ECG phenotypes. <span class="st">In preparation</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Emergency care, registries and population health</h3>
+          <p class="why">Forecasting demand and outcomes outside the ICU, from the emergency department to national registries.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip">Population data</li><li class="chip" style="--c:var(--ehr)">Clinical records</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">SAFED-C</span><span class="d">Twenty forecasting models on 352,843 pediatric emergency admissions, MLOps retraining, and integer linear programming for physician shifts: about 4.3 fewer patients per physician at peak shifts without extra staff.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1093/jamiaopen/ooae138" rel="noopener">JAMIA Open, 2025</a></span></li>
+            <li><span class="t">Forecast-driven staffing in practice</span><span class="d">Prospective quasi-experimental pilot of the SAFED-C schedule in a pediatric emergency department.</span><span class="r"><span class="st">Preprint</span><a href="https://doi.org/10.21203/rs.3.rs-9334490/v1" rel="noopener">Research Square, 2026</a></span></li>
+            <li><span class="t">Escalation of care in childhood pneumonia</span><span class="d">Machine learning prediction of escalation in hospitalized children, with a <a href="https://github.com/turkalpmd/pnomoni" rel="noopener">web app</a>.</span><span class="r"><span class="st">In press</span><a href="https://doi.org/10.2196/57719" rel="noopener">JMIRx Med</a></span></li>
+            <li><span class="t">depremdoktor.com</span><span class="d">An e-health platform for drug dosing and clinic coordination during the 2023 southern Türkiye earthquakes.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1017/dmp.2024.63" rel="noopener">Disaster Medicine and Public Health Preparedness, 2024</a></span></li>
+            <li><span class="t">MATRA-A</span><span class="d">Multicenter study of massive transfusion.</span><span class="r"><span class="st">Published</span><a href="https://doi.org/10.1111/vox.13082" rel="noopener">Vox Sanguinis, 2021</a></span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>Cystic fibrosis registry of Türkiye:</b> one-year exacerbation and lung function prediction in modulator-naive children across 11 centers. <span class="st">Abstract, ECFS 2026</span></li>
+            <li><b>Hızır Graph:</b> 113,051 pediatric ambulance transports in Ankara, 2020 to 2023, mapped with GIS. <span class="st">Manuscript complete</span></li>
+            <li><b>MicroPICU:</b> antibiogram differences between care units and antimicrobial resistance forecasting. <span class="st">Ongoing</span></li>
+            <li><b>Economic crises and micronutrients:</b> micronutrient status in children, 2005 to 2023. <span class="st">In preparation</span></li>
+            <li><b>Motorcycle crash mortality:</b> national casualty records. <span class="st">In preparation</span></li>
+            <li><b>Medication preparation by PICU nurses:</b> time-motion study. <span class="st">Abstract</span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="line">
+        <div>
+          <h3>Data infrastructure and standards</h3>
+          <p class="why">The groundwork that makes the other lines possible, in Ankara and in multicenter networks.</p>
+          <ul class="chips" aria-label="Data used"><li class="chip" style="--c:var(--ecg)">ECG</li><li class="chip" style="--c:var(--art)">Hemodynamics</li><li class="chip" style="--c:var(--spo2)">Waveforms</li><li class="chip" style="--c:var(--co2)">Ventilation</li><li class="chip" style="--c:var(--ehr)">Clinical records</li><li class="chip" style="--c:var(--ecc)">Extracorporeal</li></ul>
+        </div>
+        <div>
+          <ul class="work">
+            <li><span class="t">NAFIS</span><span class="d">The pediatric ICU integrated data and research platform described <a href="#nafis">above</a>.</span><span class="r"><span class="st">Infrastructure</span>BAP 23145</span></li>
+            <li><span class="t">Hacettepe PICU Registry</span><span class="d">A web registry with an ECMO module aligned to ELSO definitions, CS-AKI and severity calculators; CKRT, plasma exchange and brain death modules in development.</span><span class="r"><span class="st">Live</span><a href="https://hpicu.app" rel="noopener">hpicu.app</a></span></li>
+            <li><span class="t">Sickbay and PC4 pipelines</span><span class="d">High-fidelity physiologic data retrieval and registry linkage at Cleveland Clinic, used in the methylene blue and low cardiac output studies.</span><span class="r"><span class="st">Completed</span>Cleveland Clinic, 2024 to 2025</span></li>
+          </ul>
+          <ul class="wip" aria-label="In progress">
+            <li><b>OMOP extension for pediatric CKRT:</b> a common data model extension with an R package. <span class="st">In preparation</span></li>
+            <li><b>KafkaICU:</b> mapping the hospital device telemetry stream (265 Kafka topics) ahead of NAFIS ingestion. <span class="st">Ongoing</span></li>
+            <li><b>Monitor capture on ESP32:</b> reading GE CARESCAPE serial output with microcontrollers. <span class="st">Prototype</span></li>
+            <li><b>LSCData:</b> a REDCap-style case report form platform for multicenter Turkish studies. <span class="st">In development</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="tools">
+      <h3>Bedside tools and apps</h3>
+      <p>Small, open tools that answer a question at the bedside or in the classroom.</p>
+      <ul>
+        <li><a href="dilutionfactor.html">CKRT dilution factor</a>: circuit-related hemodilution at CKRT start</li>
+        <li><a href="prism-iii.html">PRISM III</a> and <a href="prism-iv.html">PRISM IV</a>: pediatric ICU mortality risk calculators</li>
+        <li><a href="tapvd.html">TAPVD 3D</a>: interactive heart and great vessels model from cardiac CT angiography</li>
+        <li><a href="https://github.com/turkalpmd/phoenix_sepsis_scoring_app" rel="noopener">Phoenix sepsis score</a>: the 2024 pediatric sepsis criteria as an app</li>
+        <li><a href="https://github.com/turkalpmd/QThesaplama" rel="noopener">QTc calculator</a> and <a href="https://github.com/turkalpmd/Zscore_hacettepe" rel="noopener">growth z-scores</a></li>
+        <li><a href="https://github.com/turkalpmd/NICU-Newborn-Tracker" rel="noopener">NICU newborn tracker</a>: follow-up reminders for preterm infants through AWS notifications</li>
+        <li><b>PICUDRUG</b>: drug reference and Y-site compatibility checker for PICU nurses, in development</li>
+        <li><b>Ventilator simulator</b>: a teaching simulator of the SV800 ventilator, in development</li>
+        <li><a href="https://hpicu.app" rel="noopener">Hacettepe PICU Registry</a>: ECMO, kidney injury and severity modules</li>
+      </ul>
+    </div>
+    <p class="more">The complete list of articles, preprints, abstracts and book chapters, with abstracts, is on <a href="https://turkalpmd.com/" rel="noopener">turkalpmd.com</a> and <a href="https://scholar.google.com.tr/citations?user=oLZEaB8AAAAJ&amp;hl=en" rel="noopener">Google Scholar</a>.</p>
+  </div>
+</section>
+
+<section class="block" id="claude" aria-labelledby="claude-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="claude-title">How Claude will work in this lab</h2>
+      <p>We are a small group of clinician-scientists building infrastructure that would normally need a software team. Claude extends that team. The boundary is fixed by our own protocol: researchers do not upload NAFIS data to external AI services, cloud language models included.</p>
+    </div>
+
+    <div class="boundary" role="group" aria-label="Data boundary between the hospital network and Claude">
+      <div class="inside">
+        <h3>Hacettepe hospital network</h3>
+        <p class="sub">Stays here</p>
+        <ul>
+          <li>Patient-level physiologic and clinical data</li>
+          <li>Identity vault and encryption key shares</li>
+          <li>Model training and validation on real records</li>
+          <li>Queries, approvals and the audit log</li>
+        </ul>
+      </div>
+      <div class="cross">
+        <h3>What crosses</h3>
+        <p class="sub">Reviewed before it moves</p>
+        <ul>
+          <li>Source code, tests and infrastructure definitions</li>
+          <li>Schemas, data dictionaries and mapping tables</li>
+          <li>Synthetic and simulated signals</li>
+          <li class="one">Aggregate tables and figures approved by the principal investigator</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Claude</h3>
+        <p class="sub">Works on these</p>
+        <ul>
+          <li>Claude Code writes, reviews and tests our software</li>
+          <li>Claude drafts protocols, analysis plans and manuscripts</li>
+          <li>Shared projects keep standards, style and decisions consistent across the team</li>
+        </ul>
+        <p class="never"><b>Never:</b> identifiable records, waveforms or notes from real patients.</p>
+      </div>
+    </div>
+
+    <dl class="uses">
+      <div>
+        <dt>NAFIS engineering</dt>
+        <dd>The read-only Kafka consumer, idempotent ingestion, nightly Parquet compaction, catalog constraints, backup and restore verification, and the tests around each; container builds and version-controlled documentation, so the system outlives any one person's tenure.</dd>
+      </div>
+      <div>
+        <dt>Standards and interoperability</dt>
+        <dd>HL7 v2 (ADT, ORU, ORM) and FHIR R4 resources mapped to the OMOP common data model; LOINC, SNOMED CT, ICD-10 and ATC mappings; national Turkish health data dictionaries; our OMOP extension for CKRT.</dd>
+      </div>
+      <div>
+        <dt>Analysis code that can be audited</dt>
+        <dd>Modeling pipelines for kidney injury, low cardiac output and deterioration, written and reviewed against TRIPOD+AI and PROBAST+AI, then executed inside the hospital network.</dd>
+      </div>
+      <div>
+        <dt>Governance documents</dt>
+        <dd>Ethics protocols, data request and data use forms, consent and assent forms in age-appropriate Turkish, and variable dictionaries for each approved study.</dd>
+      </div>
+      <div>
+        <dt>Writing and review</dt>
+        <dd>Manuscripts, grant applications to TÜBİTAK and Horizon Europe, systematic review appraisal, and structured internal peer review before submission.</dd>
+      </div>
+      <div>
+        <dt>Teaching</dt>
+        <dd>Pediatric critical care fellows learn data science on simulated NAFIS data before they touch a real record.</dd>
+      </div>
+    </dl>
+
+    <p class="already">We already build on Claude. The lab publishes open-source Claude skills for <a href="https://github.com/turkalpmd/claude-scientific-writer-skills" rel="noopener">scientific writing</a> and for <a href="https://github.com/turkalpmd/claude-agentic-data-scientist-skill" rel="noopener">agentic data analysis</a>, and uses Claude Code to maintain the Life Support Center website and its bedside calculators, this page included.</p>
+  </div>
+</section>
+
+<section class="block" id="team" aria-labelledby="team-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="team-title">Team and collaborators</h2>
+      <p>Clinicians, engineers and methodologists in Ankara, Cleveland, Baltimore and Boston.</p>
+    </div>
+    <ul class="team">
+      <li><b>Izzet Turkalp Akbasli, MD</b><span>Lab director; NAFIS data architecture and integration lead</span></li>
+      <li><b><a href="bbenan.html">Prof. Benan Bayrakci, MD</a></b><span>Director, Life Support Center; head of the Division of Pediatric Critical Care; NAFIS principal investigator</span></li>
+      <li><b>Oğuzhan Serin, MD</b><span>Researcher, Hacettepe University: digital health, clinical NLP, health technology assessment and AI governance</span></li>
+      <li><b>Orkun Baloglu, MD</b><span>Collaborator, Cleveland Clinic: pediatric cardiac critical care and machine learning</span></li>
+      <li><b>Volkan Doğan, MSc</b><span>Engineering: computer vision engineer at Rapsodo</span></li>
+      <li><b>Prof. Jim Fackler, MD</b><span>Advisory board, Johns Hopkins University: clinical information systems and data-driven decision support in pediatric critical care</span></li>
+    </ul>
+    <p class="more">Frequent co-investigators include Selman Kesici and Özlem Tekşam at Hacettepe; Animesh Tandon, Bradley S. Marino and Samir Q. Latifi at Cleveland Clinic; Rohit S. Loomba; and Leo Anthony Celi at MIT Critical Data.</p>
+  </div>
+</section>
+
+<section class="block" id="recognition" aria-labelledby="rec-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="rec-title">Funding, recognition and service</h2>
+    </div>
+    <div class="rec">
+      <div>
+        <h3>Funding and awards</h3>
+        <ul class="ticks">
+          <li>Hacettepe University BAP infrastructure project 23145 for NAFIS hardware</li>
+          <li>Research support from Google Health during the Cleveland Clinic fellowship</li>
+          <li>Cleveland Clinic Catalyst award for a project on telemetric pediatric ICU data</li>
+          <li>Special Jury Award, Google Artificial Intelligence Competition (2022)</li>
+          <li>Amazon Web Services cloud and infrastructure award for depremdoktor.com (2023)</li>
+          <li>Contributor to NIH R01 and K award applications at Cleveland Clinic</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Editorial and community</h3>
+        <ul class="ticks">
+          <li>Associate editor, Journal of Pediatric Intensive Care</li>
+          <li>Reviewer for Critical Care Medicine, Pediatric Nephrology, BMC Medical Informatics and Decision Making, and Frontiers in Pediatrics</li>
+          <li>Monthly work with MIT Critical Data on trustworthiness and data governance in clinical AI</li>
+          <li>Invited speaker, American College of Cardiology Cross-Sectional AI Work Group (2025)</li>
+          <li>Mentor and panelist, Harvard Health Systems Innovation Lab Hackathon, Istanbul hub (2026)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Training</h3>
+        <ul class="ticks">
+          <li>American Board of Artificial Intelligence in Medicine certification (2025)</li>
+          <li>Fundamentals of Implementation Science, University of Washington Department of Global Health (2025)</li>
+          <li>Good Clinical Practice (TÜSEB, 2026; Cleveland Clinic) and CITI human research ethics</li>
+          <li>MLOps and DevOps (Amazon Web Services); machine learning and generative AI (Databricks); data warehousing (Snowflake)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact">
+    <div>
+      <h2 id="contact-title" style="font-size:clamp(1.7rem,3vw,2.45rem);font-weight:800;letter-spacing:-.022em;margin-bottom:18px">Contact</h2>
+      <p class="mail"><a href="mailto:iakbasli@hacettepe.edu.tr">iakbasli@hacettepe.edu.tr</a></p>
+      <p style="color:var(--ink-2)">For data requests to NAFIS, the research board of the Life Support Center reviews proposals weekly; ethics approval is required before any access.</p>
+    </div>
+    <address>
+      Digital Health and Artificial Intelligence in Critical Care Laboratory<br>
+      Life Support Practice and Research Center<br>
+      Hacettepe University İhsan Doğramacı Children's Hospital<br>
+      Pediatric Intensive Care Unit<br>
+      06230 Sıhhiye, Altındağ, Ankara, Türkiye<br>
+      +90 312 305 13 50
+    </address>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Life Support Center, Hacettepe University. <a href="labs.html">All laboratories</a></span>
+    <span>Last updated October 2026</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var screen = document.getElementById("screen");
+  var wave = document.getElementById("wave");
+  var ribbon = document.getElementById("ribbon");
+  var statusEl = document.getElementById("status");
+  var monitor = document.getElementById("monitor");
+  if (!wave || !wave.getContext) return;
+  var ctx = wave.getContext("2d");
+  var rctx = ribbon.getContext("2d");
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var SWEEP_SECONDS = 6, GAP = 14, RIBBON_PX_PER_S = 6;
+  var colors = {};
+  var W = 0, H = 0, RW = 0, RH = 0, dpr = 1;
+  var sx = 0, simT = 0, cardPhase = 0, respPhase = 0, prevY = null;
+  var hr = 128, rr = 28, recording = true, keptSeconds = 0, lastSecond = 0;
+  var columns = [], running = false, visible = true, raf = 0, lastFrame = 0;
+
+  function readColors(){
+    var cs = getComputedStyle(document.documentElement);
+    ["ecg","art","spo2","co2","rule"].forEach(function(k){ colors[k] = cs.getPropertyValue("--" + k).trim(); });
+  }
+
+  function g(p, c, w, a){ var z = (p - c) / w; return a * Math.exp(-z * z); }
+  function smooth(e0, e1, x){ var t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); }
+
+  // Signal shapes on a 0..1 phase; returned values sit roughly in 0..1.
+  function ecg(p){
+    var v = g(p,.12,.03,.10) + g(p,.235,.008,-.12) + g(p,.255,.011,1) + g(p,.28,.010,-.28) + g(p,.52,.05,.27);
+    return (v + .32) / 1.4;
+  }
+  function art(p){
+    var q = (p - .30 + 1) % 1, d0 = Math.exp(-.88 * 3.2), s;
+    s = q < .12 ? d0 + (1 - d0) * Math.sin(q / .12 * Math.PI / 2) : Math.exp(-(q - .12) * 3.2);
+    s += -g(q,.36,.018,.10) + g(q,.40,.035,.11);
+    return .08 + .84 * s;
+  }
+  function pleth(p){
+    var q = (p - .42 + 1) % 1, d0 = Math.exp(-.8 * 2.6), s;
+    s = q < .2 ? d0 + (1 - d0) * (1 - Math.cos(q / .2 * Math.PI)) / 2 : Math.exp(-(q - .2) * 2.6) + g(q,.5,.05,.07);
+    return .1 + .8 * s;
+  }
+  function co2(r){
+    var v;
+    if (r < .40) v = 0;
+    else if (r < .47) v = .86 * smooth(.40,.47,r);
+    else if (r < .93) v = .86 + .1 * (r - .47) / .46;
+    else v = .96 * (1 - smooth(.93,1,r));
+    return .06 + .82 * v;
+  }
+  var lanes = [
+    {fn:function(){ return ecg(cardPhase % 1); }, c:"ecg"},
+    {fn:function(){ return art(cardPhase % 1); }, c:"art"},
+    {fn:function(){ return pleth(cardPhase % 1); }, c:"spo2"},
+    {fn:function(){ return co2(respPhase % 1); }, c:"co2"}
+  ];
+
+  function laneY(i, v){
+    var lh = H / 4, top = lh * i, pad = lh * .2;
+    return top + pad + (1 - v) * (lh - pad * 1.35);
+  }
+
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = screen.getBoundingClientRect();
+    W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+    wave.width = W * dpr; wave.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var rr2 = ribbon.getBoundingClientRect();
+    RW = Math.max(1, Math.round(rr2.width)); RH = Math.max(1, Math.round(rr2.height));
+    ribbon.width = RW * dpr; ribbon.height = RH * dpr;
+    rctx.setTransform(dpr,0,0,dpr,0,0);
+    sx = 0; prevY = null;
+    ctx.clearRect(0,0,W,H);
+  }
+
+  function advance(dtPx){
+    var pps = W / SWEEP_SECONDS;
+    ctx.lineWidth = 1.7; ctx.lineJoin = "round"; ctx.lineCap = "round";
+    while (dtPx > 0){
+      var d = Math.min(dtPx, 1.5); dtPx -= d;
+      var dt = d / pps;
+      simT += dt; cardPhase += dt * hr / 60; respPhase += dt * rr / 60;
+      var x0 = sx, x1 = sx + d;
+      if (x1 >= W){ sx = 0; prevY = null; ctx.clearRect(0,0,GAP,H); continue; }
+      ctx.clearRect(x1 + 1, 0, GAP, H);
+      var ys = [];
+      for (var i = 0; i < lanes.length; i++){
+        var y = laneY(i, lanes[i].fn() + (Math.random() - .5) * .012);
+        ys.push(y);
+        if (prevY){
+          ctx.strokeStyle = colors[lanes[i].c];
+          ctx.beginPath(); ctx.moveTo(x0, prevY[i]); ctx.lineTo(x1, y); ctx.stroke();
+        }
+      }
+      prevY = ys; sx = x1;
+      if (Math.floor(simT) !== lastSecond){ lastSecond = Math.floor(simT); onSecond(); }
+    }
+  }
+
+  function jitter(v, lo, hi, step){ v += Math.round((Math.random() - .5) * 2) * step; return Math.min(hi, Math.max(lo, v)); }
+  var vit = {sys:88, dia:52, spo2:97, etco2:38};
+  function onSecond(){
+    hr = jitter(hr,122,134,1); rr = jitter(rr,26,30,1);
+    vit.sys = jitter(vit.sys,85,93,1); vit.dia = jitter(vit.dia,49,55,1);
+    vit.spo2 = jitter(vit.spo2,96,98,1); vit.etco2 = jitter(vit.etco2,36,40,1);
+    setText("hr", hr); setText("rr", rr); setText("sys", vit.sys); setText("dia", vit.dia);
+    setText("map", Math.round(vit.dia + (vit.sys - vit.dia) / 3)); setText("spo2", vit.spo2); setText("etco2", vit.etco2);
+    columns.push({t: simT, kept: recording, v: [Math.random(), Math.random(), Math.random(), Math.random()]});
+    if (recording) keptSeconds++;
+    updateStatus();
+  }
+  function setText(id, v){ var el = document.getElementById(id); if (el) el.textContent = v; }
+
+  function fmt(s){ var m = Math.floor(s / 60), r = s % 60; return (m ? m + " min " : "") + r + " s"; }
+  function updateStatus(){
+    if (recording){
+      statusEl.innerHTML = "Archived from this simulated bed: <b>" + fmt(keptSeconds) + "</b> of four-channel waveform, written to Parquet by device and time.";
+    } else {
+      statusEl.innerHTML = "Archived from now on: <b>nothing</b>. Waveforms leave monitor memory within minutes, and the record keeps only intermittent charted values.";
+    }
+  }
+
+  function drawRibbon(){
+    rctx.clearRect(0,0,RW,RH);
+    var rowH = (RH - 10) / 4, keys = ["ecg","art","spo2","co2"], cw = RIBBON_PX_PER_S - 1;
+    for (var i = columns.length - 1; i >= 0; i--){
+      var c = columns[i], age = simT - c.t, x = RW - 6 - age * RIBBON_PX_PER_S;
+      var a = c.kept ? 1 : Math.max(0, 1 - age / 3);
+      if (x < -cw || a <= 0){ columns.splice(i, 1); continue; }
+      for (var k = 0; k < 4; k++){
+        rctx.globalAlpha = a * (.42 + .5 * c.v[k]);
+        rctx.fillStyle = colors[keys[k]];
+        rctx.fillRect(x, 5 + k * rowH + 1, cw, rowH - 2);
+      }
+    }
+    rctx.globalAlpha = 1;
+  }
+
+  function frame(now){
+    if (!running) return;
+    var dt = Math.min(.05, (now - (lastFrame || now)) / 1000); lastFrame = now;
+    advance(dt * W / SWEEP_SECONDS);
+    drawRibbon();
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){ if (running || reduced) return; running = true; lastFrame = 0; raf = requestAnimationFrame(frame); }
+  function stop(){ running = false; cancelAnimationFrame(raf); }
+
+  function staticRender(){
+    // Reduced motion: draw one full sweep and a filled archive, then hold still.
+    advance(W - GAP - 2);
+    for (var s = 0; s < 75; s++) columns.push({t: simT - 75 + s, kept: true, v: [Math.random(), Math.random(), Math.random(), Math.random()]});
+    keptSeconds = 75;
+    drawRibbon(); updateStatus();
+  }
+
+  var buttons = document.querySelectorAll(".switch button");
+  Array.prototype.forEach.call(buttons, function(b){
+    b.addEventListener("click", function(){
+      recording = b.getAttribute("data-mode") === "on";
+      Array.prototype.forEach.call(buttons, function(o){ o.setAttribute("aria-pressed", String(o === b)); });
+      updateStatus();
+    });
+  });
+
+  // Start with one sweep already on screen, as a running monitor would show.
+  function prefill(){
+    advance(W - GAP - 4);
+    if (!columns.length){
+      for (var s = 0; s < 75; s++) columns.push({t: simT - 75 + s, kept: true, v: [Math.random(), Math.random(), Math.random(), Math.random()]});
+      keptSeconds += 75;
+    }
+    drawRibbon(); updateStatus();
+  }
+
+  readColors(); size();
+  if (window.matchMedia){
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onScheme = function(){ readColors(); size(); if (reduced) staticRender(); else prefill(); };
+    if (mq.addEventListener) mq.addEventListener("change", onScheme); else if (mq.addListener) mq.addListener(onScheme);
+  }
+  if ("ResizeObserver" in window){
+    var lastW = 0;
+    new ResizeObserver(function(){
+      var w = Math.round(screen.getBoundingClientRect().width);
+      if (w !== lastW){ lastW = w; size(); if (reduced){ columns = []; staticRender(); } else { prefill(); } }
+    }).observe(screen);
+  }
+  if (reduced){ staticRender(); return; }
+  prefill(); updateStatus();
+  if ("IntersectionObserver" in window){
+    new IntersectionObserver(function(es){ visible = es[0].isIntersecting; if (visible && !document.hidden) start(); else stop(); }).observe(monitor);
+  } else { start(); }
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) stop(); else if (visible) start(); });
+})();
+</script>
+</body>
+</html>
