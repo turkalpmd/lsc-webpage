@@ -20,6 +20,7 @@ const SHEET_ID   = 'BURAYA_SHEET_ID_YAPISTIR';   // <-- DEĞİŞTİR
 const SHEET_NAME = 'PRISM';
 
 const COLUMNS = [
+  'submission_id',
   'server_timestamp', 'client_timestamp', 'dosyano', 'score_type',
   // PRISM-III inputs (21)
   'iii_age_category', 'iii_sbp_low', 'iii_hr_high', 'iii_temp_low', 'iii_temp_high',
@@ -38,15 +39,7 @@ const COLUMNS = [
 function doPost(e) {
   try {
     const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
-    const ss = SpreadsheetApp.openById(SHEET_ID);
-    let sheet = ss.getSheetByName(SHEET_NAME);
-    if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
-
-    if (sheet.getLastRow() === 0) {
-      sheet.appendRow(COLUMNS);
-      sheet.getRange(1, 1, 1, COLUMNS.length).setFontWeight('bold');
-      sheet.setFrozenRows(1);
-    }
+    const sheet = getSheet_();
 
     const iii = data.inputs_iii || {};
     const iv  = data.inputs_iv  || {};
@@ -54,6 +47,7 @@ function doPost(e) {
     const s4  = data.score_iv   || {};
 
     const row = [
+      data.submission_id || '',
       new Date(),
       data.timestamp_client || '',
       data.dosyano || '',
@@ -84,15 +78,19 @@ function doPost(e) {
         : ''
     ];
 
-    sheet.appendRow(row);
+    // Idempotent yazma: istemci her hesaplama oturumu için bir submission_id üretir.
+    // Aynı id ikinci kez gelirse (çift tıklama, ağ retry'ı, sekme yenilenmesi) yeni
+    // satır AÇILMAZ — mevcut satır güncellenir. Aynı hasta iki kez kaydedilemez.
+    const existingRow = findRowBySubmissionId_(sheet, data.submission_id);
+    if (existingRow > 0) {
+      sheet.getRange(existingRow, 1, 1, COLUMNS.length).setValues([row]);
+      return json_({ status: 'ok', action: 'updated', row: existingRow });
+    }
 
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'ok', row: sheet.getLastRow() }))
-      .setMimeType(ContentService.MimeType.JSON);
+    sheet.appendRow(row);
+    return json_({ status: 'ok', action: 'created', row: sheet.getLastRow() });
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ status: 'error', message: String(err) }))
-      .setMimeType(ContentService.MimeType.JSON);
+    return json_({ status: 'error', message: String(err) });
   }
 }
 
@@ -100,6 +98,67 @@ function doGet() {
   return ContentService
     .createTextOutput('PRISM endpoint OK')
     .setMimeType(ContentService.MimeType.TEXT);
+}
+
+/**
+ * Hedef sayfayı döndürür; başlık satırının COLUMNS ile hizalı olmasını garanti eder.
+ *
+ * submission_id sütunu sonradan (Aug 2026) eklendi ve dizinin BAŞINDA yer alıyor.
+ * Eski bir sheet'e olduğu gibi yazarsak tüm sütunlar bir kayar ve mevcut veriler
+ * bozulur. Bu yüzden veri varken başlık körlemesine yeniden yazılmaz: yalnızca
+ * A sütunu 'submission_id' değilse önüne bir sütun eklenir. Eski satırların
+ * submission_id'si boş kalır — dedupe araması onları hiç eşleştirmez, ki doğrusu
+ * da budur (geçmiş kayıtların idempotency anahtarı yok).
+ *
+ * Migrasyon tek seferliktir ve tekrar çalıştırılması zararsızdır.
+ */
+function getSheet_() {
+  const ss = SpreadsheetApp.openById(SHEET_ID);
+  let sheet = ss.getSheetByName(SHEET_NAME);
+  if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
+
+  // Boş sayfa → başlığı doğrudan yaz.
+  if (sheet.getLastRow() === 0) {
+    if (sheet.getMaxColumns() < COLUMNS.length) {
+      sheet.insertColumnsAfter(sheet.getMaxColumns(), COLUMNS.length - sheet.getMaxColumns());
+    }
+    sheet.getRange(1, 1, 1, COLUMNS.length).setValues([COLUMNS]).setFontWeight('bold');
+    sheet.setFrozenRows(1);
+    return sheet;
+  }
+
+  // Dolu sayfa → yalnızca eksik submission_id sütununu önüne ekle.
+  const firstHeader = String(sheet.getRange(1, 1).getValue()).trim();
+  if (firstHeader !== 'submission_id') {
+    sheet.insertColumnBefore(1);
+    sheet.getRange(1, 1).setValue('submission_id').setFontWeight('bold');
+    sheet.setFrozenRows(1);
+  }
+  if (sheet.getMaxColumns() < COLUMNS.length) {
+    sheet.insertColumnsAfter(sheet.getMaxColumns(), COLUMNS.length - sheet.getMaxColumns());
+  }
+  return sheet;
+}
+
+/**
+ * submission_id sütununda (A) verilen id'yi arar.
+ * @return {number} 1 tabanlı satır numarası, bulunamazsa 0.
+ */
+function findRowBySubmissionId_(sheet, submissionId) {
+  if (!submissionId) return 0;               // id yoksa dedupe edilemez → append
+  const last = sheet.getLastRow();
+  if (last < 2) return 0;
+  const ids = sheet.getRange(2, 1, last - 1, 1).getValues();
+  for (let i = 0; i < ids.length; i++) {
+    if (String(ids[i][0]) === String(submissionId)) return i + 2;
+  }
+  return 0;
+}
+
+function json_(obj) {
+  return ContentService
+    .createTextOutput(JSON.stringify(obj))
+    .setMimeType(ContentService.MimeType.JSON);
 }
 
 function numOrEmpty(v) {

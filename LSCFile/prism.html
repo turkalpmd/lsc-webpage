@@ -170,6 +170,9 @@
   .step.done { background: rgba(34,134,58,0.08); color: var(--c-success); }
   .step.done .num { background: var(--c-success); }
   .step .sep { color: var(--c-muted-2); }
+  .card:focus { outline: none; }
+  .step.skipped { opacity: 0.4; text-decoration: line-through; }
+  .step.skipped .num { background: var(--c-muted-2); }
 
   /* Info strip */
   .info-strip {
@@ -352,6 +355,7 @@
 
   /* ---------- Result ---------- */
   .result-card { border-color: #f0d9c8; background: linear-gradient(180deg, #ffffff 0%, #fff9f4 100%); }
+  .result-card.is-stale { opacity: 0.55; }
   .result-hero {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -408,39 +412,12 @@
   details.breakdown td.pts { color: var(--c-primary); }
   details.breakdown td.zero { color: var(--c-muted-2); }
 
-  /* Send section inside result */
-  .send-section {
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid var(--c-border);
-  }
-  .send-section h3 {
-    margin: 0 0 12px;
-    font-size: 14px;
-    color: var(--c-text);
-    font-weight: 700;
-  }
   .send-grid {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 12px;
     align-items: end;
   }
-
-  /* CTA card for PRISM-IV */
-  .cta-card {
-    border: 1.5px dashed var(--c-accent);
-    background: linear-gradient(135deg, #fff 0%, #fff4e8 100%);
-  }
-  .cta-body {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .cta-text { flex: 1; min-width: 220px; }
-  .cta-text h3 { margin: 0 0 4px; font-size: 16px; color: var(--c-primary); }
-  .cta-text p { margin: 0; color: var(--c-muted); font-size: 13.5px; }
 
   /* Banner */
   .banner {
@@ -457,6 +434,104 @@
   .banner.err { background: #ffebee; color: var(--c-danger);  border: 1px solid #ffcdd2; }
   .banner.info{ background: #e3f2fd; color: #1565c0;          border: 1px solid #bbdefb; }
 
+  /* ---------- Stale (kirli veri) uyarısı ---------- */
+  .stale-notice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    background: #fff8ec;
+    border: 1.5px solid #f0c98a;
+    border-left: 4px solid var(--c-accent);
+    border-radius: var(--radius-sm);
+    font-size: 13.5px;
+    color: #664213;
+    flex-wrap: wrap;
+  }
+  .stale-notice .ico { font-size: 18px; color: var(--c-accent-dk); }
+  .stale-notice > div { flex: 1; min-width: 200px; }
+  .stale-notice .btn { padding: 8px 16px; font-size: 13.5px; }
+
+  /* ---------- Kapsam seçimi ---------- */
+  .scope-card { border-color: #f0d9c8; background: linear-gradient(180deg, #fff 0%, #fff7ef 100%); }
+  .scope-card .card-head h2 { font-size: 16px; color: var(--c-primary); }
+  .scope-lead { margin: 0 0 14px; font-size: 13.5px; color: var(--c-muted); }
+  .scope-options { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .scope-opt {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 14px 16px;
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .scope-opt:hover { border-color: var(--c-accent); background: #fffaf4; box-shadow: var(--shadow-md); }
+  .scope-opt:focus-visible { outline: 3px solid rgba(237,125,49,0.35); outline-offset: 2px; }
+  .scope-opt-ico {
+    width: 38px; height: 38px; flex: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 10px;
+    background: rgba(172,22,44,0.08);
+    font-size: 18px;
+  }
+  .scope-opt-txt { display: flex; flex-direction: column; gap: 2px; }
+  .scope-opt-txt strong { font-size: 14px; color: var(--c-text); font-weight: 700; }
+  .scope-opt-txt em { font-style: normal; font-size: 12.5px; color: var(--c-muted); }
+  #btnScopeIV .scope-opt-ico { background: rgba(237,125,49,0.14); }
+
+  .iv-locked-note {
+    margin: 14px 0 0;
+    padding: 9px 13px;
+    border-left: 3px solid var(--c-teal);
+    background: rgba(11,122,117,0.06);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 12.5px;
+    color: var(--c-muted);
+  }
+
+  /* ---------- Kayıt adımı ---------- */
+  .submit-card { border-color: #d6ccb4; background: linear-gradient(180deg, #fff 0%, #fbf7ee 100%); }
+  .submit-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--c-border);
+  }
+  .submit-summary .chip {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    font-size: 12.5px;
+    color: var(--c-muted);
+  }
+  .submit-summary .chip b { font-size: 13.5px; color: var(--c-text); font-weight: 700; }
+  .submit-summary .chip.accent { border-color: var(--c-primary); background: rgba(172,22,44,0.05); }
+  .submit-summary .chip.accent b { color: var(--c-primary); }
+  .submit-back { margin-top: 10px; }
+  .submit-card.is-sending { opacity: 0.75; pointer-events: none; }
+
+  /* ---------- Kaydedildi ---------- */
+  .sent-card { border-color: #c8e6c9; background: linear-gradient(180deg, #fff 0%, #f2faf3 100%); }
+  .sent-card .card-head .ico { background: rgba(47,122,57,0.12); color: var(--c-success); }
+  .sent-card .card-head h2 { color: var(--c-success); }
+  .sent-lead { margin: 0 0 6px; font-size: 14px; color: var(--c-text); }
+  .sent-lead b { color: var(--c-primary); }
+
+  /* Kilitli form (kayıt sonrası) */
+  .locked { opacity: 0.55; pointer-events: none; filter: grayscale(0.25); }
+
   /* Mobile */
   @media (max-width: 600px) {
     .app { padding: 16px 12px 64px; }
@@ -468,6 +543,9 @@
     .card { padding: 15px 14px; }
     .field.with-unit { grid-template-columns: 1fr 95px; }
     .send-grid { grid-template-columns: 1fr; }
+    .scope-options { grid-template-columns: 1fr; }
+    .stale-notice { flex-direction: column; align-items: stretch; }
+    .stale-notice .btn { width: 100%; }
     .scorebox .val { font-size: 26px; }
     .scorebox.major .val { font-size: 32px; }
     .actions { flex-direction: column; }
@@ -499,6 +577,7 @@
         <div class="step active" data-step="form"><span class="num">1</span><span>Klinik veri</span></div>
         <div class="step" data-step="iii"><span class="num">2</span><span>PRISM-III</span></div>
         <div class="step" data-step="iv"><span class="num">3</span><span>PRISM-IV <em>(ops.)</em></span></div>
+        <div class="step" data-step="send"><span class="num">4</span><span>Kayıt</span></div>
       </nav>
     </div>
   </header>
@@ -690,11 +769,12 @@
 
   </main>
 
-  <!-- Result area -->
+  <!-- ============ Adım 2: PRISM-III sonucu ============ -->
   <section class="card result-card" id="resultCard" hidden>
     <header class="card-head">
       <span class="ico" id="resultIcon">📊</span>
       <h2 id="resultTitle">PRISM-III Sonucu</h2>
+      <span class="count" id="resultScopeTag">PRISM-III</span>
     </header>
 
     <div class="result-hero" id="resultHero"></div>
@@ -703,38 +783,56 @@
       <summary>Detaylı skor dağılımı</summary>
       <table id="breakdownTable"><tbody></tbody></table>
     </details>
+  </section>
 
-    <!-- Send to Sheets -->
-    <div class="send-section">
-      <h3>Google Sheets'e Kaydet</h3>
-      <div class="send-grid">
-        <div class="field">
-          <label for="dosyano">Dosya No <span class="u">zorunlu</span></label>
-          <input type="text" id="dosyano" placeholder="örn. 2025-01234" autocomplete="off">
-        </div>
-        <button type="button" id="btnSend" class="btn btn-accent">
-          Gönder
-        </button>
-      </div>
-      <div id="sendBanner" class="banner"></div>
-      <p class="hint" style="margin-top: 10px;">
-        Not: Tarayıcı CORS kısıtlaması nedeniyle sunucudan kesin doğrulama alınamaz.
-        Kaydı Google Sheet'ten kontrol et.
-      </p>
+  <!-- Klinik veri değişti uyarısı -->
+  <div class="stale-notice" id="staleNotice" role="alert" hidden>
+    <span class="ico">⟳</span>
+    <div>
+      <strong>Klinik veriler değişti.</strong>
+      Gösterilen skor artık güncel değil — kaydetmeden önce yeniden hesapla.
+    </div>
+    <button type="button" id="btnRecalc" class="btn btn-primary">Yeniden hesapla</button>
+  </div>
+
+  <!-- ============ Adım 3: Kapsam seçimi (tek karar noktası) ============ -->
+  <section class="card scope-card" id="scopeCard" hidden>
+    <header class="card-head">
+      <span class="ico">🔀</span>
+      <h2>PRISM-IV mortalite olasılığı da hesaplansın mı?</h2>
+    </header>
+    <p class="scope-lead">
+      PRISM-IV, PRISM-III alt skorlarını kullanır — bu yüzden ancak PRISM-III hesaplandıktan
+      sonra sorulabilir. <strong>Kayıt bu seçimden sonra, tek seferde</strong> oluşturulur;
+      hangisini seçersen seç bu hasta Sheet'e yalnızca <strong>bir kez</strong> yazılır.
+    </p>
+    <div class="scope-options">
+      <button type="button" class="scope-opt" id="btnScopeIV">
+        <span class="scope-opt-ico">🎯</span>
+        <span class="scope-opt-txt">
+          <strong>Evet, PRISM-IV'ü de hesapla</strong>
+          <em>4 ek soru → mortalite olasılığı da kayda girer</em>
+        </span>
+      </button>
+      <button type="button" class="scope-opt" id="btnScopeIII">
+        <span class="scope-opt-ico">📊</span>
+        <span class="scope-opt-txt">
+          <strong>Hayır, sadece PRISM-III kaydet</strong>
+          <em>Doğrudan kayıt adımına geç</em>
+        </span>
+      </button>
     </div>
   </section>
 
-  <!-- PRISM-IV intake -->
+  <!-- ============ Adım 3a: PRISM-IV ek sorular ============ -->
   <section class="card" id="ivIntakeCard" hidden>
     <header class="card-head">
       <span class="ico">📋</span>
-      <h2>PRISM-IV — opsiyonel ek sorular</h2>
+      <h2>PRISM-IV — ek sorular</h2>
       <span class="count">4 soru</span>
     </header>
     <div class="hint">
-      Mortalite olasılığını da hesaplamak istiyorsan bu 4 soruyu doldur ve aşağıdaki
-      <strong>PRISM-IV Hesapla</strong>'ya bas. İlgilenmiyorsan <strong>Gönder</strong>'e basıp
-      sadece PRISM-III kaydını oluşturabilirsin.
+      Dördünü de yanıtla ve <strong>PRISM-IV Hesapla</strong>'ya bas. Kayıt adımı bundan sonra açılır.
     </div>
     <div class="grid">
       <div class="field" style="grid-column: 1 / -1;">
@@ -768,10 +866,62 @@
         </div>
       </div>
     </div>
-    <div class="actions">
+    <p class="iv-locked-note" id="ivLockedNote" hidden>
+      Bu yanıtlar hesaplanan mortalite olasılığına dahil edildi. Değiştirirsen PRISM-IV yeniden hesaplanır.
+    </p>
+    <div class="actions" id="ivActions">
+      <button type="button" id="btnScopeCancelIV" class="btn btn-ghost">Vazgeç — sadece PRISM-III</button>
       <button type="button" id="btnCalcIV" class="btn btn-primary btn-xl">
         PRISM-IV Hesapla
       </button>
+    </div>
+  </section>
+
+  <!-- ============ Adım 4: Tek ve son kayıt adımı ============ -->
+  <section class="card submit-card" id="submitCard" hidden>
+    <header class="card-head">
+      <span class="ico">💾</span>
+      <h2>Kaydı oluştur</h2>
+      <span class="count" id="submitScopeTag">PRISM-III</span>
+    </header>
+
+    <div class="submit-summary" id="submitSummary"></div>
+
+    <div class="send-grid">
+      <div class="field">
+        <label for="dosyano">Dosya No <span class="u">zorunlu</span></label>
+        <input type="text" id="dosyano" placeholder="örn. 2025-01234" autocomplete="off">
+      </div>
+      <button type="button" id="btnSend" class="btn btn-accent btn-xl">
+        Kaydet
+      </button>
+    </div>
+
+    <div class="submit-back">
+      <button type="button" id="btnBackToScope" class="btn btn-link">← Kapsam seçimine dön</button>
+    </div>
+
+    <div id="sendBanner" class="banner" role="status" aria-live="polite"></div>
+  </section>
+
+  <!-- ============ Terminal: kaydedildi ============ -->
+  <section class="card sent-card" id="sentCard" role="status" aria-live="polite" hidden>
+    <header class="card-head">
+      <span class="ico">✓</span>
+      <h2>Kayıt oluşturuldu</h2>
+    </header>
+    <p class="sent-lead" id="sentLead"></p>
+    <p class="hint">
+      Bu hasta için kayıt tamamlandı ve form kilitlendi — böylece aynı hasta iki kez gönderilmez.
+      Yeni bir hastaya geçmek için aşağıdaki butonu kullan.
+    </p>
+    <p class="hint">
+      Not: Tarayıcı CORS kısıtlaması nedeniyle sunucudan kesin doğrulama alınamaz. Satırı
+      Google Sheet'te yukarıdaki <strong>kayıt no</strong> ile doğrulayabilirsin; aynı kayıt no
+      ikinci kez ulaşırsa yeni satır açılmaz, mevcut satır güncellenir.
+    </p>
+    <div class="actions">
+      <button type="button" id="btnNewPatient" class="btn btn-primary btn-xl">Yeni hasta</button>
     </div>
   </section>
 
@@ -1019,6 +1169,7 @@
   function renderResultPRISM3(r) {
     $('resultIcon').textContent = '📊';
     $('resultTitle').textContent = 'PRISM-III Sonucu';
+    $('resultScopeTag').textContent = 'PRISM-III';
     $('resultHero').innerHTML = `
       <div class="scorebox major">
         <div class="lbl">Toplam Skor</div>
@@ -1039,6 +1190,7 @@
   function renderResultPRISM4(r3, r4) {
     $('resultIcon').textContent = '🎯';
     $('resultTitle').textContent = 'PRISM-IV Sonucu';
+    $('resultScopeTag').textContent = 'PRISM-III + PRISM-IV';
     const pct = (r4.mortality_probability * 100).toFixed(2);
     $('resultHero').innerHTML = `
       <div class="scorebox major">
@@ -1088,20 +1240,152 @@
     });
   }
 
-  // ==================== State ====================
-  let lastResult = null;  // { type: 'III'|'IV', inputs, scoreIII, scoreIV? }
+  // ====================================================================
+  //  STATE MACHINE
+  //
+  //  Akış tek yönlüdür ve kayıt adımı HER ZAMAN sondadır:
+  //
+  //    entry ──hesapla──► scope ──"sadece III"──► review(III) ──┐
+  //                         │                        ▲          │
+  //                         │                        │ vazgeç   │ kaydet
+  //                         └─"IV de olsun"─► ivForm ─┴─►review(IV)
+  //                                                              │
+  //                                        sending ──────────────┘
+  //                                           │
+  //                                           ▼
+  //                                         sent  (kilitli, tek çıkış: yeni hasta)
+  //
+  //  Kritik kural: 'review' dışında Kaydet butonu DOM'da bile yoktur; kapsam
+  //  kararı kayıttan ÖNCE verilir. Böylece "önce III'ü gönder, sonra IV'ü de
+  //  gönder" yolu ortadan kalkar — aynı hasta iki satır oluşturamaz.
+  // ====================================================================
+  const PHASES = ['entry', 'scope', 'ivForm', 'review', 'sending', 'sent'];
+
+  const state = {
+    phase: 'entry',
+    scope: null,        // null | 'III' | 'IV'
+    stale: false,       // hesaplamadan sonra klinik veri değişti mi?
+    submissionId: null, // idempotency key — hesaplama oturumu başına bir tane
+    inputs: null,
+    scoreIII: null,
+    scoreIV: null,
+    sentAt: null,
+    sentDosyano: null,
+    formSig: null      // son hesaplamadaki form imzası
+  };
+
+  /**
+   * Klinik formun tüm değerlerinin imzası.
+   *
+   * "Veri değişti" kararını olayların ateşlenmesine bakarak veremeyiz: bir number
+   * input'ta Enter'a basmak önce keydown (hesapla), ardından change (değer commit)
+   * üretir — yani her klavye hesaplaması kendini anında bayatlatırdı. Bunun yerine
+   * gerçek değerleri karşılaştırıyoruz. Yan fayda: kullanıcı bir alanı değiştirip
+   * geri alırsa sonuç bayat sayılmaz.
+   */
+  function formSignature() {
+    const parts = [];
+    $('formPanel').querySelectorAll('input, select').forEach(el => {
+      if (el.type === 'radio') { if (el.checked) parts.push(el.name + '=' + el.value); }
+      else parts.push(el.id + '=' + el.value);
+    });
+    return parts.join('|');
+  }
+
+  function uuid() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+    return 'sub-' + Date.now().toString(36) + '-' +
+           Math.random().toString(36).slice(2, 10);
+  }
+
+  function setPhase(phase, patch) {
+    if (PHASES.indexOf(phase) < 0) throw new Error('bilinmeyen faz: ' + phase);
+    state.phase = phase;
+    if (patch) Object.assign(state, patch);
+    render();
+  }
 
   // ==================== Stepper ====================
-  function setStep(active) {
-    // active: 'form' | 'iii' | 'iv'
-    const order = ['form', 'iii', 'iv'];
-    const idx = order.indexOf(active);
+  // Faz → stepper adımı eşlemesi (UI tamamen state'ten türetilir).
+  const STEP_OF_PHASE = {
+    entry: 'form', scope: 'iii', ivForm: 'iv',
+    review: 'send', sending: 'send', sent: 'send'
+  };
+
+  function renderStepper() {
+    const order = ['form', 'iii', 'iv', 'send'];
+    const active = STEP_OF_PHASE[state.phase];
+    let idx = order.indexOf(active);
+    // Sadece-III yolunda "PRISM-IV" adımı atlanır, tamamlanmış gösterilmez.
+    const skipIV = state.scope === 'III';
     document.querySelectorAll('.step').forEach(el => {
-      el.classList.remove('active', 'done');
+      el.classList.remove('active', 'done', 'skipped');
       const i = order.indexOf(el.dataset.step);
-      if (i < idx) el.classList.add('done');
+      if (el.dataset.step === 'iv' && skipIV) { el.classList.add('skipped'); return; }
+      if (state.phase === 'sent') el.classList.add('done');
+      else if (i < idx) el.classList.add('done');
       else if (i === idx) el.classList.add('active');
+      el.setAttribute('aria-current', el.classList.contains('active') ? 'step' : 'false');
     });
+  }
+
+  // ==================== Derived render ====================
+  // Tek render fonksiyonu: hangi kartın görüneceğine yalnızca state karar verir.
+  function render() {
+    const p = state.phase;
+    const hasResult = state.scoreIII != null;
+
+    $('resultCard').hidden   = !hasResult || p === 'entry';
+    $('staleNotice').hidden  = !(state.stale && hasResult);
+    $('scopeCard').hidden    = p !== 'scope';
+    // PRISM-IV yanıtları kapsam IV ise kayıt adımında da görünür kalır: kullanıcı
+    // ne gönderdiğini görür ve düzeltebilir. Değiştirirse sonuç geçersizleşir.
+    const showIV = (p === 'ivForm') ||
+                   (state.scope === 'IV' && (p === 'review' || p === 'sending' || p === 'sent'));
+    $('ivIntakeCard').hidden = !showIV;
+    $('ivActions').hidden = (p !== 'ivForm');
+    $('ivLockedNote').hidden = (p === 'ivForm');
+    $('submitCard').hidden   = !(p === 'review' || p === 'sending');
+    $('sentCard').hidden     = p !== 'sent';
+
+    // Kayıt sırasında/sonrasında klinik form kilitlenir.
+    const locked = (p === 'sending' || p === 'sent');
+    $('formPanel').classList.toggle('locked', locked);
+    $('ivIntakeCard').classList.toggle('locked', locked);
+    $('submitCard').classList.toggle('is-sending', p === 'sending');
+    $('btnSend').disabled = (p !== 'review');
+
+    // Stale iken hiçbir ileri adım gösterilmez — önce yeniden hesapla.
+    if (state.stale && hasResult) {
+      $('scopeCard').hidden = true;
+      $('ivIntakeCard').hidden = true;
+      $('submitCard').hidden = true;
+    }
+
+    $('resultCard').classList.toggle('is-stale', state.stale && hasResult);
+
+    if (hasResult) {
+      if (state.scope === 'IV' && state.scoreIV) renderResultPRISM4(state.scoreIII, state.scoreIV);
+      else renderResultPRISM3(state.scoreIII);
+    }
+    if (p === 'review') renderSubmitSummary();
+
+    renderStepper();
+  }
+
+  function renderSubmitSummary() {
+    const tag = state.scope === 'IV' ? 'PRISM-III + PRISM-IV' : 'Yalnızca PRISM-III';
+    $('submitScopeTag').textContent = tag;
+    const chips = [
+      `<span class="chip accent">PRISM-III <b>${state.scoreIII.total}</b></span>`,
+      `<span class="chip">Nörolojik <b>${state.scoreIII.neuro}</b></span>`,
+      `<span class="chip">Non-nörolojik <b>${state.scoreIII.nonNeuro}</b></span>`
+    ];
+    if (state.scope === 'IV' && state.scoreIV) {
+      chips.push(`<span class="chip accent">Mortalite <b>${(state.scoreIV.mortality_probability * 100).toFixed(2)}%</b></span>`);
+    }
+    chips.push(`<span class="chip">Kayıt tipi <b>${state.scope === 'IV' ? 'PRISM-IV' : 'PRISM-III'}</b></span>`);
+    $('submitSummary').innerHTML = chips.join('');
   }
 
   // ==================== Actions ====================
@@ -1129,29 +1413,110 @@
   }
   function hideBanner() { $('sendBanner').className = 'banner'; }
 
-  function doCalculateIII() {
-    const inp = readInputs();
-    const r3  = calculatePRISM3(inp);
-    renderResultPRISM3(r3);
-    lastResult = { type: 'III', inputs: inp, scoreIII: r3, scoreIV: null };
-
-    $('resultCard').hidden = false;
-    $('ivIntakeCard').hidden = false;     // intake direkt açık — istersen dolduru, istersen pas geç
-    setStep('iii');
-    hideBanner();
-    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Faz değişince tıklanan buton gizlenir ve odak <body>'ye düşer — klavye
+  // kullanıcısı akışın neresinde olduğunu kaybeder. Bu yüzden her geçişte odağı
+  // yeni fazın kartına taşıyoruz; ekran okuyucu da başlığı yeniden okur.
+  function scrollToCard(id, focusSel) {
+    const el = $(id);
+    if (!el || el.hidden) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const target = focusSel ? el.querySelector(focusSel) : el;
+    if (target) {
+      if (!focusSel && !target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    }
   }
 
-  function doCalculateIV() {
-    const inp = readInputs();
-    const r3  = calculatePRISM3(inp);     // III subscores (intake değişince değişmez ama güncel değerler al)
-    const r4  = calculatePRISM4(r3.neuro, r3.nonNeuro, inp);
-    renderResultPRISM4(r3, r4);
-    lastResult = { type: 'IV', inputs: inp, scoreIII: r3, scoreIV: r4 };
-
-    setStep('iv');
+  /** Klinik veri değişti → hesaplanmış her şey geçersiz. */
+  function markStale() {
+    if (state.phase === 'entry' || state.phase === 'sending' || state.phase === 'sent') return;
+    const sig = formSignature();
+    if (sig === state.formSig) {          // değer aslında değişmedi → bayat değil
+      if (state.stale) { state.stale = false; render(); }
+      return;
+    }
+    if (state.stale) return;
+    state.stale = true;
     hideBanner();
-    $('resultCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    render();
+    scrollToCard('staleNotice', '#btnRecalc');
+  }
+
+  /** PRISM-IV yanıtı değişti → sadece IV sonucu geçersiz, III skoru durur. */
+  function markIVAnswersChanged() {
+    if (state.scope !== 'IV') return;
+    if (state.phase !== 'review') return;   // sending/sent fazlarında kart zaten kilitli
+    state.scoreIV = null;
+    setPhase('ivForm');
+    scrollToCard('ivIntakeCard');
+  }
+
+  // --- entry → scope -------------------------------------------------
+  function doCalculateIII() {
+    if (state.phase === 'sending' || state.phase === 'sent') return;
+    const inp = readInputs();
+    const r3  = calculatePRISM3(inp);
+    hideBanner();
+    setPhase('scope', {
+      inputs: inp,
+      scoreIII: r3,
+      scoreIV: null,
+      scope: null,
+      stale: false,
+      formSig: formSignature(),
+      submissionId: state.submissionId || uuid()
+    });
+    scrollToCard('resultCard');
+    // Sonucu ekrana getir, ama odağı bir sonraki eyleme (kapsam seçimi) taşı.
+    $('btnScopeIV').focus({ preventScroll: true });
+  }
+
+  // --- scope → review(III) -------------------------------------------
+  function chooseScopeIII() {
+    setPhase('review', { scope: 'III', scoreIV: null });
+    scrollToCard('submitCard', '#dosyano');
+  }
+
+  // --- scope → ivForm ------------------------------------------------
+  function chooseScopeIV() {
+    setPhase('ivForm', { scope: 'IV' });
+    scrollToCard('ivIntakeCard');
+  }
+
+  // --- ivForm → review(III)  (vazgeç) --------------------------------
+  function cancelScopeIV() {
+    setPhase('review', { scope: 'III', scoreIV: null });
+    scrollToCard('submitCard', '#dosyano');
+  }
+
+  // --- ivForm → review(IV) -------------------------------------------
+  function doCalculateIV() {
+    if (state.phase !== 'ivForm') return;
+    const inp = readInputs();
+    const r3  = calculatePRISM3(inp);
+    const r4  = calculatePRISM4(r3.neuro, r3.nonNeuro, inp);
+    hideBanner();
+    setPhase('review', { inputs: inp, scoreIII: r3, scoreIV: r4, scope: 'IV', stale: false, formSig: formSignature() });
+    scrollToCard('resultCard');
+  }
+
+  // --- review → scope (geri) -----------------------------------------
+  function backToScope() {
+    hideBanner();
+    setPhase('scope', { scope: null, scoreIV: null });
+    scrollToCard('scopeCard', '#btnScopeIV');
+  }
+
+  function doRecalc() {
+    // Stale'den çıkış: kapsam korunur, skorlar güncel veriyle yeniden üretilir.
+    const keepScope = state.scope;
+    state.stale = false;
+    if (keepScope === 'IV') {
+      state.phase = 'ivForm';
+      doCalculateIV();
+    } else {
+      doCalculateIII();
+    }
   }
 
   function doReset() {
@@ -1167,17 +1532,38 @@
       document.querySelectorAll(`input[name="${n}"]`).forEach(r => r.checked = r.value === '2');
     });
     updateAgeDisplay();
-    $('resultCard').hidden = true;
-    $('ivIntakeCard').hidden = true;
-    lastResult = null;
-    setStep('form');
     hideBanner();
+    Object.assign(state, {
+      scope: null, stale: false, submissionId: null,
+      inputs: null, scoreIII: null, scoreIV: null,
+      sentAt: null, sentDosyano: null, formSig: null
+    });
+    setPhase('entry');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    $('age').focus({ preventScroll: true });
+  }
+
+  // ==================== Gönderilenler (oturum içi) ====================
+  // Aynı Dosya No bu oturumda zaten gönderildiyse kullanıcıyı uyarır.
+  const SENT_KEY = 'prism_sent_dosyano_v1';
+  function sentDosyanoList() {
+    try { return JSON.parse(sessionStorage.getItem(SENT_KEY) || '[]'); }
+    catch (_) { return []; }
+  }
+  function rememberSent(dosyano) {
+    try {
+      const list = sentDosyanoList();
+      if (list.indexOf(dosyano) < 0) list.push(dosyano);
+      sessionStorage.setItem(SENT_KEY, JSON.stringify(list));
+    } catch (_) { /* private mode — sessizce geç */ }
   }
 
   function buildPayload() {
-    if (!lastResult) return null;
-    const { type, inputs: i, scoreIII, scoreIV } = lastResult;
+    if (!state.scoreIII) return null;
+    const i = state.inputs;
+    const scoreIII = state.scoreIII;
+    const scoreIV = state.scoreIV;
+    const type = state.scope;
 
     const inputs_iii = {
       age_category: i.age_cat_iii ? cat3Labels[i.age_cat_iii] : '',
@@ -1196,6 +1582,8 @@
     };
 
     const payload = {
+      // Idempotency key — sunucu tarafı bu id ile upsert yapar, mükerrer satır oluşmaz.
+      submission_id: state.submissionId,
       dosyano: $('dosyano').value.trim(),
       timestamp_client: new Date().toISOString(),
       score_type: (type === 'IV') ? 'PRISM-IV' : 'PRISM-III',
@@ -1218,8 +1606,14 @@
   }
 
   async function doSend() {
-    if (!lastResult) {
-      showBanner('Önce Hesapla butonuna bas.', 'err');
+    // Tek gönderim garantisi: 'review' dışında hiçbir fazdan gönderim yapılamaz.
+    if (state.phase !== 'review') {
+      if (state.phase === 'sending') showBanner('Gönderim sürüyor…', 'info');
+      else if (state.phase === 'sent') showBanner('Bu hasta zaten kaydedildi.', 'err');
+      return;
+    }
+    if (state.stale) {
+      showBanner('Klinik veriler değişti — önce yeniden hesapla.', 'err');
       return;
     }
     const dosyano = $('dosyano').value.trim();
@@ -1228,9 +1622,17 @@
       $('dosyano').focus();
       return;
     }
+    if (sentDosyanoList().indexOf(dosyano) >= 0) {
+      const ok = window.confirm(
+        `"${dosyano}" için bu oturumda zaten bir kayıt gönderildi.\n\n` +
+        'Yine de yeni bir kayıt oluşturulsun mu?'
+      );
+      if (!ok) { showBanner('Gönderim iptal edildi.', 'info'); return; }
+    }
+
     const payload = buildPayload();
+    setPhase('sending');
     showBanner('Gönderiliyor…', 'info');
-    $('btnSend').disabled = true;
     try {
       await fetch(WEB_APP_URL, {
         method: 'POST',
@@ -1238,11 +1640,18 @@
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(payload)
       });
-      showBanner('Gönderildi ✓  — Google Sheet\'ten doğrulamayı unutma.', 'ok');
+      rememberSent(dosyano);
+      $('sentLead').innerHTML =
+        `<b>${dosyano}</b> · ${payload.score_type} · PRISM-III toplam <b>${state.scoreIII.total}</b>` +
+        (state.scoreIV ? ` · mortalite <b>${(state.scoreIV.mortality_probability * 100).toFixed(2)}%</b>` : '') +
+        `<br><span class="hint" style="margin:0">Kayıt no: ${payload.submission_id}</span>`;
+      setPhase('sent', { sentAt: payload.timestamp_client, sentDosyano: dosyano });
+      hideBanner();
+      scrollToCard('sentCard', '#btnNewPatient');
     } catch (err) {
-      showBanner('Ağ hatası: ' + err.message, 'err');
-    } finally {
-      $('btnSend').disabled = false;
+      // Gönderim başarısız → tekrar denenebilmesi için review'a dön.
+      setPhase('review');
+      showBanner('Ağ hatası: ' + err.message + ' — tekrar deneyebilirsin.', 'err');
     }
   }
 
@@ -1250,23 +1659,47 @@
   $('age').addEventListener('input', updateAgeDisplay);
   $('ageUnit').addEventListener('change', updateAgeDisplay);
   $('btnCalc').addEventListener('click', doCalculateIII);
+  $('btnRecalc').addEventListener('click', doRecalc);
+  $('btnScopeIII').addEventListener('click', chooseScopeIII);
+  $('btnScopeIV').addEventListener('click', chooseScopeIV);
+  $('btnScopeCancelIV').addEventListener('click', cancelScopeIV);
   $('btnCalcIV').addEventListener('click', doCalculateIV);
+  $('btnBackToScope').addEventListener('click', backToScope);
   $('btnReset').addEventListener('click', doReset);
   $('btnSend').addEventListener('click', doSend);
+  $('btnNewPatient').addEventListener('click', doReset);
 
-  // Enter on any input → PRISM-III hesapla (eğer ana formdaysa)
+  // Klinik veri değişimi → stale invalidation (bayat sonuç göndermeyi engeller).
+  $('formPanel').addEventListener('input', markStale);
+  $('formPanel').addEventListener('change', markStale);
+  // PRISM-IV yanıt değişimi → sadece IV sonucunu geçersiz kılar.
+  $('ivIntakeCard').addEventListener('change', markIVAnswersChanged);
+
+  // Enter: bulunduğun fazın birincil eylemini tetikler.
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'button') {
-      const inIntake = $('ivIntakeCard').contains(e.target);
-      const inDosya  = e.target.id === 'dosyano';
-      if (inDosya)      { e.preventDefault(); doSend(); }
-      else if (inIntake){ e.preventDefault(); doCalculateIV(); }
-      else              { e.preventDefault(); doCalculateIII(); }
+    if (e.key !== 'Enter') return;
+    if (e.target.tagName !== 'INPUT' || e.target.type === 'button') return;
+    if (e.target.id === 'dosyano') {
+      // Kaydet gibi geri alınamaz bir eylem yanlışlıkla tetiklenmesin:
+      // Enter yalnızca butona odaklanır, göndermez.
+      e.preventDefault();
+      $('btnSend').focus();
+      return;
+    }
+    if ($('ivIntakeCard').contains(e.target)) { e.preventDefault(); doCalculateIV(); return; }
+    if ($('formPanel').contains(e.target))    { e.preventDefault(); doCalculateIII(); }
+  });
+
+  // Kayıt sonrası sekme kapatma/yenileme uyarısı — kaydedilmemiş hesap kaybolmasın.
+  window.addEventListener('beforeunload', (e) => {
+    if (state.phase === 'review' || state.phase === 'sending') {
+      e.preventDefault();
+      e.returnValue = '';
     }
   });
 
   updateAgeDisplay();
-  setStep('form');
+  render();
 })();
 </script>
 

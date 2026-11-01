@@ -1,0 +1,145 @@
+/* PICU akademik sayfaları (Eğitim, Kaynaklar, Duyurular, Aile) — ortak stil.
+   Renk ve değişkenler picu_adminstration.html ile aynıdır. */
+:root{
+  --ink:#1f3551; --ink-soft:#3f4a5a; --muted:#6b7686;
+  --red:#ec1b23; --red-deep:#c41019; --red-tint:#fde7e8; --link:#0b6bd3;
+  --bg:#ffffff; --soft:#f5f6f9; --card:#ffffff; --line:#e4e7ec;
+  --shadow:0 1px 2px rgba(31,53,81,.05),0 14px 34px -20px rgba(31,53,81,.35);
+  --shadow-hover:0 12px 28px -8px rgba(31,53,81,.45);
+  --maxw:1120px;
+  --draft:#fff3c4; --draft-line:#e0b400; --draft-ink:#5c4700;
+}
+.ppl{font-family:"Open Sans",system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink)}
+.ppl *{box-sizing:border-box}
+.ppl a{color:var(--link);text-decoration:none}
+.ppl a:hover{color:var(--red-deep)}
+.ppl a:focus-visible,.ppl summary:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:4px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){.ppl *{animation:none!important;transition:none!important}}
+
+/* hero + alt menü */
+.ppl .hero{background:linear-gradient(180deg,#ffffff 0%,var(--soft) 100%);
+  border-bottom:1px solid var(--line);padding:30px 16px 22px;text-align:center}
+.ppl .hero .wrap{max-width:var(--maxw);margin:0 auto;animation:fadeUp .7s ease both}
+.ppl .hero .eyebrow{display:inline-block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--red)}
+.ppl .hero h1{margin:6px 0 0;font-weight:800;color:var(--ink);font-size:clamp(24px,3.4vw,34px)}
+.ppl .hero p.lead{max-width:680px;margin:10px auto 0;color:var(--ink-soft);font-size:15px;line-height:1.55}
+.ppl .subnav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.ppl .subnav a{padding:8px 16px;border-radius:999px;background:#fff;border:1px solid var(--line);
+  font-weight:700;font-size:13.5px;color:var(--ink-soft);transition:all .18s ease}
+.ppl .subnav a:hover{border-color:var(--red);color:var(--red);transform:translateY(-1px)}
+.ppl .subnav a.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* yerleşim: masaüstünde yapışkan içindekiler + içerik */
+.ppl .doc{max-width:var(--maxw);margin:0 auto;padding:28px 16px 8px;
+  display:grid;grid-template-columns:230px minmax(0,1fr);gap:36px;align-items:start}
+.ppl .toc{position:sticky;top:16px;font-size:13.5px}
+.ppl .toc .toc-title{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.ppl .toc ol{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.ppl .toc li a{display:block;padding:6px 0 6px 14px;margin-left:-2px;border-left:2px solid transparent;
+  color:var(--ink-soft);line-height:1.35}
+.ppl .toc li a:hover{color:var(--red);border-left-color:var(--red)}
+.ppl .content{min-width:0}
+@media(max-width:960px){
+  .ppl .doc{grid-template-columns:1fr;gap:18px}
+  .ppl .toc{position:static}
+  .ppl .toc ol{display:flex;flex-wrap:wrap;gap:6px;border-left:0}
+  .ppl .toc li a{border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin:0;font-size:12.5px;background:#fff}
+}
+
+/* bölüm */
+.ppl .blk{padding:6px 0 30px;margin-bottom:26px;border-bottom:1px solid var(--line);scroll-margin-top:16px;
+  animation:fadeUp .6s ease both}
+.ppl .blk:last-child{border-bottom:0}
+.ppl .blk h2{font-size:clamp(20px,2.4vw,24px);font-weight:800;color:var(--ink);margin:0 0 6px;
+  padding-left:14px;border-left:4px solid var(--red);line-height:1.25}
+.ppl .blk h3{font-size:16px;font-weight:700;color:var(--ink);margin:18px 0 6px}
+.ppl .blk p{font-size:15px;line-height:1.7;color:var(--ink-soft);margin:0 0 12px}
+.ppl .blk p.sub{font-size:15.5px;color:var(--muted);margin:0 0 16px;padding-left:18px}
+
+/* olgu kutuları */
+.ppl .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:16px 0 18px}
+.ppl .fact{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);border-radius:14px;
+  padding:16px 14px;box-shadow:var(--shadow);text-align:center}
+.ppl .fact b{display:block;font-size:24px;font-weight:800;color:var(--ink);line-height:1.15}
+.ppl .fact span{display:block;margin-top:6px;font-size:12.5px;color:var(--ink-soft);line-height:1.4}
+.ppl .fact b .taslak{font-size:13px;font-weight:700}
+
+/* kartlar */
+.ppl .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:14px 0 6px}
+.ppl .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 18px 8px;
+  box-shadow:var(--shadow);transition:transform .18s ease,box-shadow .18s ease}
+.ppl .card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.ppl .card h3{margin:0 0 8px;font-size:15.5px;color:var(--ink)}
+.ppl .card p,.ppl .card li{font-size:14px;line-height:1.6}
+
+/* tablolar */
+.ppl .tbl-wrap{overflow-x:auto;margin:12px 0 16px;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.ppl .tbl{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+.ppl .tbl th{background:var(--ink);color:#fff;text-align:left;font-weight:700;padding:10px 12px;font-size:13px;white-space:nowrap}
+.ppl .tbl td{padding:10px 12px;border-top:1px solid var(--line);color:var(--ink-soft);vertical-align:top;line-height:1.5}
+.ppl .tbl tbody tr:nth-child(even) td{background:var(--soft)}
+
+/* listeler ve adımlar */
+.ppl .list{margin:6px 0 14px;padding-left:20px}
+.ppl .list li{font-size:15px;line-height:1.65;color:var(--ink-soft);margin:3px 0}
+.ppl .list li::marker{color:var(--red)}
+.ppl .steps{list-style:none;counter-reset:st;margin:12px 0 16px;padding:0}
+.ppl .steps li{counter-increment:st;position:relative;padding:4px 0 14px 48px}
+.ppl .steps li::before{content:counter(st);position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;
+  background:var(--red);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+.ppl .steps li:not(:last-child)::after{content:"";position:absolute;left:15px;top:38px;bottom:2px;width:2px;background:var(--line)}
+.ppl .steps b{display:block;font-size:15px;color:var(--ink)}
+.ppl .steps span{display:block;font-size:14px;color:var(--ink-soft);line-height:1.6;margin-top:2px}
+
+/* not kutusu */
+.ppl .note{background:#eef4fb;border-left:4px solid var(--link);border-radius:8px;padding:12px 16px;margin:12px 0 16px;
+  font-size:14.5px;line-height:1.6;color:var(--ink-soft)}
+
+/* duyurular */
+.ppl .news{list-style:none;margin:12px 0;padding:0}
+.ppl .news li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.ppl .news li:last-child{border-bottom:0}
+.ppl .news time{font-size:13px;font-weight:700;color:var(--red);padding-top:2px}
+.ppl .news h3{margin:0 0 4px;font-size:15.5px}
+.ppl .news p{margin:0;font-size:14.5px}
+@media(max-width:560px){.ppl .news li{grid-template-columns:1fr;gap:4px}}
+
+/* SSS */
+.ppl .faq{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;box-shadow:var(--shadow)}
+.ppl .faq summary{cursor:pointer;list-style:none;padding:14px 44px 14px 16px;font-weight:700;font-size:15px;color:var(--ink);position:relative}
+.ppl .faq summary::-webkit-details-marker{display:none}
+.ppl .faq summary::after{content:"+";position:absolute;right:16px;top:10px;font-size:22px;color:var(--red);font-weight:400}
+.ppl .faq[open] summary::after{content:"−"}
+.ppl .faq p{padding:0 16px 14px;margin:0}
+
+/* düğme */
+.ppl .btn{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;font-weight:700;font-size:14px;
+  padding:10px 18px;border-radius:999px;margin:6px 8px 6px 0;transition:background .18s ease,transform .18s ease}
+.ppl .btn:hover{background:var(--red-deep);color:#fff;transform:translateY(-1px)}
+
+/* TASLAK yer tutucuları — yayın öncesi sayfada hiç kalmamalı */
+.ppl .taslak{background:var(--draft);border:1px dashed var(--draft-line);color:var(--draft-ink);border-radius:6px;
+  padding:1px 6px;font-size:.92em;font-weight:600;white-space:normal}
+.ppl .taslak::after{content:" · " attr(data-soru);font-weight:700;opacity:.75}
+.ppl .taslak-blok{background:var(--draft);border:1.5px dashed var(--draft-line);color:var(--draft-ink);border-radius:10px;
+  padding:12px 16px;margin:10px 0 16px;font-size:14px;line-height:1.55}
+.ppl .taslak-blok::after{content:"Soru: " attr(data-soru);display:block;margin-top:4px;font-size:12px;font-weight:700;opacity:.75}
+.ppl .taslak-banner{background:var(--draft);border-bottom:1px solid var(--draft-line);color:var(--draft-ink);
+  text-align:center;font-size:13.5px;font-weight:600;padding:9px 16px}
+
+/* footer */
+.ppl .site-footer{margin-top:40px;background:linear-gradient(135deg,#1f3551,#142a44);color:#fff}
+.ppl .site-footer .inner{max-width:var(--maxw);margin:0 auto;padding:32px 18px;text-align:center}
+.ppl .site-footer .social{display:flex;gap:16px;justify-content:center;font-size:20px;margin-top:10px}
+.ppl .site-footer a{color:rgba(255,255,255,.82)}
+.ppl .site-footer a:hover{color:#fff}
+.ppl .site-footer .copy{border-top:1px solid rgba(255,255,255,.14);text-align:center;
+  padding:14px;font-size:13px;color:rgba(255,255,255,.7)}
+
+@media print{
+  .ppl .toc,.ppl .subnav,.ppl .site-footer,.container-fluid.ust{display:none}
+  .ppl .doc{display:block}
+  .ppl .blk{break-inside:avoid-page}
+}
