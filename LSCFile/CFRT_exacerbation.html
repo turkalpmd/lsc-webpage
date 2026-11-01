@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CFRT exacerbation score calculator</title>
+<meta name="description" content="One-year risk of an IV-treated exacerbation in people with cystic fibrosis not receiving CFTR modulators. Works offline; nothing is stored or sent.">
+<style>
+:root{
+  --paper:#E4ECF6; --sheet:#FFFFFF; --ink:#12263F; --soft:#4F6178; --rule:#C9D5E5; --band-row:#EDF3FB; --fill:#C9DAF4;
+  --blue:#1D4E9B; --crimson:#C8102E; --amber:#FBE9B7; --amber-ink:#8A5A00;
+  --serif:"Charter","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Avenir Next","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+:root[data-theme="dark"]{--paper:#0E1726;--sheet:#15223A;--ink:#E7EEF8;--soft:#9FB0C7;--rule:#2A3B59;--band-row:#192A47;--blue:#6FA2F5;--crimson:#FF5C73;--amber:#3F3414;--amber-ink:#F2C66B;--fill:#27426E}
+*{box-sizing:border-box}
+html{font-size:16px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5;-webkit-font-smoothing:antialiased}
+.page{max-width:1080px;margin:0 auto;padding:clamp(1rem,3vw,2.25rem)}
+header{background:linear-gradient(100deg,#1D4E9B,#2C6BC4);color:#fff;border-radius:10px;padding:1.2rem 1.4rem;display:flex;flex-wrap:wrap;gap:.75rem 2rem;align-items:flex-end;justify-content:space-between;margin-bottom:1.25rem}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.1;margin:0;letter-spacing:-.01em}
+header p{margin:.4rem 0 0;color:#DCE8FA;max-width:44rem;font-size:.98rem}
+.meta{font-size:.82rem;color:#DCE8FA;text-align:left}
+.meta b{color:#fff;font-weight:600}
+.sheet{background:var(--sheet);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 1.1rem;border-bottom:1px solid var(--rule);font-size:.9rem;color:var(--soft)}
+.toolbar .btns{display:flex;gap:.5rem}
+button{font:inherit;font-size:.88rem;border:1px solid var(--rule);background:transparent;color:var(--ink);padding:.35rem .8rem;border-radius:6px;cursor:pointer}
+button:hover{border-color:var(--blue);color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+/* chart rows */
+.row{display:grid;grid-template-columns:minmax(14.5rem,19rem) 1fr;gap:0 1.5rem;align-items:start;padding:1rem 1.1rem 1.15rem}
+.row:nth-child(even){background:var(--band-row)}
+.lab strong{display:block;font-size:.98rem;font-weight:600}
+.lab small{display:block;color:var(--soft);font-size:.8rem;margin:.1rem 0 .5rem}
+.ctl{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+input[type=text]{font:inherit;font-variant-numeric:tabular-nums;width:6.4rem;padding:.4rem .55rem;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);color:var(--ink)}
+input[type=text]:disabled{opacity:.45}
+.unit{font-size:.82rem;color:var(--soft)}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:var(--sheet)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{padding:.38rem .85rem;font-size:.88rem;cursor:pointer;border-left:1px solid var(--rule);color:var(--soft);user-select:none}
+.seg label:first-of-type{border-left:0}
+.seg input:checked+label{background:var(--blue);color:#fff}
+.seg input:focus-visible+label{outline:3px solid var(--blue);outline-offset:-3px}
+.chk{font-size:.82rem;color:var(--soft);display:flex;gap:.35rem;align-items:center;cursor:pointer}
+.warn{flex-basis:100%;font-size:.78rem;color:var(--amber-ink);margin:0}
+/* tracks */
+.track{position:relative;height:4.2rem;margin:0 .9rem}
+.track .line{position:absolute;left:0;top:1.85rem;height:5px;background:var(--blue);border-radius:3px}
+.track .fill{position:absolute;left:0;top:1.85rem;height:5px;background:var(--crimson);border-radius:3px;opacity:.9;transition:width .28s cubic-bezier(.2,.8,.2,1)}
+.tick{position:absolute;top:1.9rem;width:0}
+.tick i{position:absolute;left:-1.5px;top:-5px;width:3px;height:14px;background:var(--blue);border-radius:1px}
+.tick span{position:absolute;bottom:.7rem;color:var(--ink);font-weight:500;transform:translateX(-50%);font-size:.74rem;font-variant-numeric:tabular-nums;color:var(--soft);white-space:nowrap}
+.mark{position:absolute;top:1.85rem;width:0;transition:left .28s cubic-bezier(.2,.8,.2,1)}
+.mark .dot{position:absolute;left:-9px;top:-6px;width:18px;height:18px;border-radius:50%;background:var(--crimson);box-shadow:0 0 0 4px var(--sheet),0 1px 6px rgba(200,16,46,.45)}
+.mark .pts{position:absolute;top:1.35rem;left:0;transform:translateX(-50%);font-size:.8rem;font-weight:700;color:var(--crimson);white-space:nowrap;font-variant-numeric:tabular-nums}
+.row.off .mark{opacity:0}
+.axis .track{height:3rem}
+.axis .line{background:var(--ink);top:1.5rem;height:3px}
+.axis .tick{top:1.5rem}.axis .tick i{background:var(--ink)}
+.axis .mark,.risk .mark{top:1.5rem}
+.axis .fill{top:1.5rem;height:3px}
+.axis .mark .pts{top:1.25rem}
+/* risk row */
+.risk{background:var(--sheet);border-top:1px solid var(--rule)}
+.gradient{position:absolute;top:1.3rem;height:1.35rem;border-radius:4px;background:linear-gradient(90deg,#2E9E5B 0%,#9CC84B 22%,#E6C229 42%,#EE8A1F 62%,#C0392B 82%,#8E1B24 100%)}
+.band{position:absolute;top:.4rem;height:3.05rem;background:var(--amber);border-radius:3px;border:1px dashed color-mix(in srgb,var(--amber-ink) 45%,transparent)}
+.bandlab{position:absolute;top:3.55rem;transform:translateX(-50%);font-size:.74rem;font-style:italic;color:var(--amber-ink);white-space:nowrap}
+.risk .tick{top:1.3rem}.risk .tick i{top:-5px;height:7px;background:var(--ink)}
+.risk .tick span{bottom:1.2rem}
+.risk .track{height:4.7rem}
+.risk .diamond{position:absolute;left:-11px;top:-8px;width:22px;height:22px;transform:rotate(45deg);background:var(--sheet);border:3px solid var(--crimson);border-radius:2px}
+.risk .mark .pts{top:1.9rem}
+/* result */
+.result{display:grid;grid-template-columns:minmax(14.5rem,19rem) 1fr;gap:0 1.5rem;padding:1.3rem 1.1rem 1.4rem;border-top:1px solid var(--rule)}
+.big{font-family:var(--serif);font-size:clamp(3.2rem,9vw,4.8rem);line-height:1;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.big.dim{color:var(--soft);font-size:2rem;line-height:1.2}
+.big small{display:block;font-family:var(--sans);font-size:.85rem;font-weight:400;color:var(--soft);margin-top:.35rem}
+.read h2{font-family:var(--serif);font-size:1.25rem;margin:.1rem 0 .4rem;font-weight:600}
+.read p{margin:.35rem 0;max-width:46rem}
+.read .fine{font-size:.86rem;color:var(--soft)}
+.range{font-variant-numeric:tabular-nums}
+/* notes */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem 2.5rem;margin:1.6rem .25rem 0;font-size:.9rem;color:var(--soft)}
+.notes h3{font-size:.95rem;color:var(--ink);margin:0 0 .3rem}
+.notes p{margin:.3rem 0}
+.stop{border-left:4px solid var(--crimson);padding-left:.9rem}
+footer{margin:1.6rem .25rem 0;font-size:.8rem;color:var(--soft)}
+@media (max-width:760px){
+  .row,.result{grid-template-columns:1fr}
+  .row .track{margin-top:.2rem}
+  .risk.row{padding-top:.6rem}
+  .meta{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.mark{transition:none}}
+@media print{body{background:#fff}.toolbar .btns{display:none}.sheet{border-color:#999}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div>
+    <h1>CFRT exacerbation score</h1>
+    <p>One-year risk of an IV-antibiotic-treated exacerbation in people with cystic fibrosis who are not receiving CFTR modulators, from five items available at the annual review.</p>
+  </div>
+  <div class="meta"><b>Version 1.0</b><br>Cystic Fibrosis Registry of Türkiye, 2019–2024<br>Working name, pending author approval</div>
+</header>
+
+<main class="sheet" aria-label="Score calculator">
+  <div class="toolbar">
+    <span id="state">Example patient shown. Change any value, or start a new patient.</span>
+    <span class="btns"><button type="button" id="reset">Start new patient</button><button type="button" id="example">Show example</button><button type="button" id="theme" aria-pressed="false">Dark</button></span>
+  </div>
+
+  <section class="row axis" aria-hidden="true">
+    <div class="lab"><strong>Points</strong><small>Each item, 0 to 100</small></div>
+    <div class="track" id="trk-points"></div>
+  </section>
+
+  <section class="row" id="row-fev1">
+    <div class="lab"><strong>FEV1 z-score, anchor year</strong><small>Best FEV1 of year t (GLI-2012). Required.</small>
+      <div class="ctl"><input id="in-fev1" type="text" autocomplete="off" inputmode="decimal" aria-label="FEV1 z-score" placeholder="e.g. −1.5"><span class="unit">z</span></div>
+      <p class="warn" id="w-fev1" hidden></p></div>
+    <div class="track" id="trk-fev1"></div>
+  </section>
+
+  <section class="row" id="row-bmi">
+    <div class="lab"><strong>BMI z-score, anchor year</strong><small>As recorded by the registry.</small>
+      <div class="ctl"><input id="in-bmi" type="text" autocomplete="off" inputmode="decimal" aria-label="BMI z-score" placeholder="e.g. −0.5"><span class="unit">z</span>
+        <label class="chk"><input type="checkbox" id="bmi-unk"> Not available</label></div>
+      <p class="warn" id="w-bmi" hidden></p></div>
+    <div class="track" id="trk-bmi"></div>
+  </section>
+
+  <section class="row" id="row-pa">
+    <div class="lab"><strong><i>P. aeruginosa</i>, year t−1 or t</strong><small>Chronic infection or at least one positive culture.</small>
+      <div class="seg" role="radiogroup" aria-label="P. aeruginosa"><input type="radio" name="pa" id="pa-0" value="0"><label for="pa-0">No</label><input type="radio" name="pa" id="pa-1" value="1"><label for="pa-1">Yes</label><input type="radio" name="pa" id="pa-u" value="u"><label for="pa-u">Unknown</label></div></div>
+    <div class="track" id="trk-pa"></div>
+  </section>
+
+  <section class="row" id="row-mrsa">
+    <div class="lab"><strong>MRSA, year t−1 or t</strong><small>Chronic infection or at least one positive culture.</small>
+      <div class="seg" role="radiogroup" aria-label="MRSA"><input type="radio" name="mrsa" id="mrsa-0" value="0"><label for="mrsa-0">No</label><input type="radio" name="mrsa" id="mrsa-1" value="1"><label for="mrsa-1">Yes</label><input type="radio" name="mrsa" id="mrsa-u" value="u"><label for="mrsa-u">Unknown</label></div></div>
+    <div class="track" id="trk-mrsa"></div>
+  </section>
+
+  <section class="row" id="row-iv">
+    <div class="lab"><strong>IV-antibiotic days, years t−1 and t</strong><small>Total days over both years. Enter 0 if none. Required.</small>
+      <div class="ctl"><input id="in-iv" type="text" autocomplete="off" inputmode="decimal" aria-label="IV-antibiotic days" placeholder="e.g. 14"><span class="unit">days</span></div>
+      <p class="warn" id="w-iv" hidden></p></div>
+    <div class="track" id="trk-iv"></div>
+  </section>
+
+  <section class="row axis" aria-hidden="true">
+    <div class="lab"><strong>Total points</strong></div>
+    <div class="track" id="trk-total"></div>
+  </section>
+
+  <section class="row risk" aria-hidden="true">
+    <div class="lab"><strong>One-year risk</strong><small>IV-treated exacerbation in year t+1</small></div>
+    <div class="track" id="trk-risk"></div>
+  </section>
+
+  <section class="result" aria-live="polite">
+    <div class="big" id="big">–</div>
+    <div class="read" id="read"></div>
+  </section>
+</main>
+
+<div class="notes">
+  <div class="stop"><h3>Not for de-escalation or modulator allocation</h3>
+    <p>The score is meant to prompt low-burden measures in modulator-untreated patients: earlier review, adherence and airway-clearance assessment, culture surveillance. A low score is not a reason to reduce follow-up below guideline standards, and the score does not decide who receives a modulator.</p></div>
+  <div><h3>Missing inputs</h3>
+    <p>FEV1 z-score and IV-antibiotic days are required; without them no risk is shown. Unknown BMI z-score is replaced by the development median (−0.41) and the risk is shown as a range for BMI z-scores of +1 to −2. Unknown culture results are scored as negative, so the risk is a lower bound.</p></div>
+  <div><h3>How it was built</h3>
+    <p>Logistic regression of 1,122 prediction-years from 539 patients in 18 centres (251 IV-treated exacerbations). IV-antibiotic days enter as ln(1 + days), so the first course adds the most points. Item points are rounded for display and may not add up exactly to the total.</p></div>
+  <div><h3>Use it with care</h3>
+    <p>Validated in patients not used to build it, in 2024 and across centres of one registry; external validation is still needed. The overall risk level differed between centres, so check the score against your own event rate.</p></div>
+</div>
+<footer>Everything is calculated in this page. No data are stored or sent. The equation, the trained machine-learning model and the analysis code are in the study repository.</footer>
+</div>
+
+<script>
+const MODEL = {"b0": -2.932917563929728, "scale": 39.57429617943336, "beta": {"fev1": -0.26645704500114326, "bmi": -0.22488285426552101, "pa": 0.68598065204701, "mrsa": 0.5946022337760292, "iv": 0.5268980521262899}, "bmiMedian": -0.41, "example": 0.45643201626022906};
+(function(){
+"use strict";
+const S = MODEL.scale, B = MODEL.beta;
+const pl = x => 1/(1+Math.exp(-x)), lg = p => Math.log(p/(1-p));
+const tf = {fev1:v=>v, bmi:v=>v, pa:v=>v, mrsa:v=>v, iv:d=>Math.log(1+d)};
+const ZERO = {fev1:2, bmi:2, pa:0, mrsa:0, iv:0};            // zero-point end of each axis (as in Figure 3A)
+const END  = {fev1:-6, bmi:-3, pa:1, mrsa:1, iv:120};          // far end of each axis
+const pts = (k,v) => S*B[k]*(tf[k](v)-tf[k](ZERO[k]));
+const lp0 = MODEL.b0 + Object.keys(B).reduce((a,k)=>a+B[k]*tf[k](ZERO[k]),0);
+const MAXP = Object.fromEntries(Object.keys(B).map(k=>[k,pts(k,END[k])]));
+const MAXTOT = Math.ceil(Object.values(MAXP).reduce((a,b)=>a+b,0)/20)*20;
+const TICKS = {
+  fev1:[2,1,0,-1,-2,-3,-4,-5,-6], bmi:[2,1,0,-1,-2,-3], pa:[0,1], mrsa:[0,1], iv:[0,7,14,28,42,56,84,120]};
+const LAB = {pa:{0:"No",1:"Yes"}, mrsa:{0:"No",1:"Yes"}};
+const fmt = v => String(v).replace("-","−");
+const $ = id => document.getElementById(id);
+
+function el(tag, cls, css, txt){const e=document.createElement(tag); if(cls)e.className=cls; if(css)Object.assign(e.style,css); if(txt!==undefined)e.textContent=txt; return e}
+const tickSpan = (parent,left,label)=>{const t=el("div","tick",{left:left+"%"}); t.appendChild(el("i")); t.appendChild(el("span",null,null,label)); parent.appendChild(t)};
+
+// build tracks
+const marks = {}, fills = {};
+function buildItem(k){
+  const trk = $("trk-"+k); trk.append(el("div","line",{width:MAXP[k]+"%"})); const fl=el("div","fill",{width:"0%"}); trk.append(fl); fills[k]=fl;
+  TICKS[k].forEach(v=>tickSpan(trk, pts(k,v), (LAB[k]&&LAB[k][v])||fmt(v)));
+  const m = el("div","mark",{left:"0%"}); m.append(el("div","dot"), el("div","pts",null,"0 pts")); trk.append(m); marks[k]=m;
+}
+["fev1","bmi","pa","mrsa","iv"].forEach(buildItem);
+(function(){const t=$("trk-points"); t.append(el("div","line",{width:"100%"})); for(let p=0;p<=100;p+=10) tickSpan(t,p,p)})();
+const totTrk = $("trk-total"); totTrk.append(el("div","line",{width:"100%"})); const totFill=el("div","fill",{width:"0%"}); totTrk.append(totFill);
+for(let p=0;p<=MAXTOT;p+=20) tickSpan(totTrk,p/MAXTOT*100,p);
+const totMark = el("div","mark",{left:"0%"}); totMark.append(el("div","dot"), el("div","pts",null,"")); totTrk.append(totMark);
+const xr = r => (lg(r)-lp0)*S/MAXTOT*100;
+const riskTrk = $("trk-risk");
+const RT = [0.05,0.1,0.2,0.3,0.5,0.7,0.9];
+riskTrk.append(el("div","band",{left:xr(.15)+"%",width:(xr(.30)-xr(.15))+"%"}));
+riskTrk.append(el("div","bandlab",{left:(xr(.15)+xr(.30))/2+"%"},"0.15–0.30"));
+riskTrk.append(el("div","gradient",{left:xr(.05)+"%",width:(xr(.9)-xr(.05))+"%"}));
+RT.forEach(r=>tickSpan(riskTrk,xr(r),r.toFixed(2)));
+const riskMark = el("div","mark",{left:"0%"}); riskMark.append(el("div","diamond"), el("div","pts",null,"")); riskTrk.append(riskMark);
+
+// state
+const state = {fev1:null, bmi:null, bmiUnk:false, pa:null, mrsa:null, iv:null};
+const bad = {};
+const num = id => {const v=$(id).value.trim().replace(/[\u2212\u2013\u2014]/g,"-").replace(",","."); bad[id]=false; if(v===""||v==="-")return null; const n=Number(v); if(!Number.isFinite(n)){bad[id]=true;return null} return n};
+function readForm(){
+  state.fev1=num("in-fev1"); state.bmi=num("in-bmi"); state.bmiUnk=$("bmi-unk").checked; state.iv=num("in-iv");
+  for(const k of ["pa","mrsa"]){const c=document.querySelector(`input[name=${k}]:checked`); state[k]=c?(c.value==="u"?"u":Number(c.value)):null}
+}
+function setForm(s){
+  $("in-fev1").value=s.fev1??""; $("in-bmi").value=s.bmi??""; $("bmi-unk").checked=!!s.bmiUnk; $("in-iv").value=s.iv??"";
+  for(const k of ["pa","mrsa"]){document.querySelectorAll(`input[name=${k}]`).forEach(r=>r.checked=false); if(s[k]!==null&&s[k]!==undefined)$(k+"-"+(s[k]==="u"?"u":s[k])).checked=true}
+}
+const EXAMPLE = {fev1:-2, bmi:-0.5, bmiUnk:false, pa:1, mrsa:0, iv:14};
+const EMPTY = {fev1:null, bmi:null, bmiUnk:false, pa:null, mrsa:null, iv:null};
+
+function place(k, v, valid){
+  const row=$("row-"+k), m=marks[k];
+  row.classList.toggle("off", !valid);
+  fills[k].style.opacity = valid ? .9 : 0;
+  if(!valid) return 0;
+  const p = pts(k,v), shown = Math.min(Math.max(p,0),MAXP[k]);
+  m.style.left = shown+"%"; fills[k].style.width = shown+"%"; m.querySelector(".pts").textContent = Math.round(p)+" pts";
+  return p;
+}
+function warn(id, msg){const w=$(id); w.hidden=!msg; w.textContent=msg||""}
+const STOPS=[[0,[46,158,91]],[.22,[156,200,75]],[.42,[230,194,41]],[.62,[238,138,31]],[.82,[192,57,43]],[1,[142,27,36]]];
+function riskColour(r){const f=Math.min(Math.max((xr(r)-xr(.05))/(xr(.9)-xr(.05)),0),1);for(let i=1;i<STOPS.length;i++){if(f<=STOPS[i][0]){const a=STOPS[i-1],b=STOPS[i],t=(f-a[0])/(b[0]-a[0]);return "rgb("+a[1].map((v,j)=>Math.round(v+(b[1][j]-v)*t)).join(",")+")"}}return "rgb(142,27,36)"}
+function riskFor(p){return pl(lp0+p/S)}
+
+function render(){
+  readForm();
+  $("in-bmi").disabled = state.bmiUnk;
+  const need = [];
+  const fevOk = state.fev1!==null, ivOk = state.iv!==null && state.iv>=0;
+  const bmiAssumed = state.bmiUnk || state.bmi===null, bmiVal = bmiAssumed ? MODEL.bmiMedian : state.bmi, bmiOk = true;   // an empty BMI counts as not available
+  const cult = k => state[k]===1 ? 1 : 0;                         // unknown and unset count as negative
+  const cultAnswered = k => state[k]===0 || state[k]===1;
+  warn("w-fev1", bad["in-fev1"] ? "Enter a number, for example \u22121.5 or -1,5." : fevOk && (state.fev1<-6||state.fev1>2) ? "Outside the chart axis (−6 to 2); risk is calculated from the equation." : "");
+  warn("w-bmi", bad["in-bmi"] ? "Enter a number, for example \u22120.5 or -0,5." : bmiAssumed ? "Not entered: the development median (−0.41) is used; see the range below." : ((state.bmi<-3||state.bmi>2) ? "Outside the chart axis (−3 to 2); risk is calculated from the equation." : ""));
+  warn("w-iv", bad["in-iv"] ? "Enter the number of days, for example 14." : state.iv!==null && state.iv<0 ? "Enter 0 or more days." : (ivOk && state.iv>120 ? "Beyond 120 days the point is shown at the axis end; risk is calculated from the equation." : ""));
+  const p = {
+    fev1: place("fev1", state.fev1, fevOk), bmi: place("bmi", bmiVal, bmiOk),
+    pa: place("pa", cult("pa"), cultAnswered("pa")||state.pa==="u"), mrsa: place("mrsa", cult("mrsa"), cultAnswered("mrsa")||state.mrsa==="u"),
+    iv: place("iv", state.iv, ivOk)};
+  const big=$("big"), read=$("read");
+  const filled = [fevOk, ivOk, !bmiAssumed, state.pa!==null, state.mrsa!==null].filter(Boolean).length;
+  if(!fevOk || !ivOk){
+    totMark.style.opacity=riskMark.style.opacity=0;
+    big.style.color=""; big.className="big dim"; big.textContent="No risk yet"; big.innerHTML='No risk yet<small>FEV1 z-score and IV-antibiotic days are required.</small>';
+    read.innerHTML = filled===0 ? "<h2>Start with the two required items</h2><p>Enter this year’s FEV1 z-score and the total IV-antibiotic days of the last two years. The other three items refine the risk and can be marked unknown.</p>"
+      : "<h2>Waiting for a required item</h2><p>"+[!fevOk?"FEV1 z-score":"",!ivOk?"IV-antibiotic days":""].filter(Boolean).join(" and ")+" still needed.</p>";
+    $("state").textContent = "New patient. Enter the required items to see the risk."; return;
+  }
+  const total = ["fev1","bmi","pa","mrsa","iv"].reduce((a,k)=>a+p[k],0);
+  const risk = riskFor(total);
+  totMark.style.opacity=riskMark.style.opacity=1;
+  const tx = Math.min(Math.max(total/MAXTOT*100,0),100), rx = Math.min(Math.max(xr(risk),0),100);
+  totMark.style.left=tx+"%"; totFill.style.width=tx+"%"; totMark.querySelector(".pts").textContent="Total "+Math.round(total)+" points";
+  riskMark.style.left=rx+"%"; riskMark.querySelector(".pts").textContent="Predicted risk "+risk.toFixed(2);
+  big.className="big"; big.style.color = riskColour(risk); big.innerHTML = risk.toFixed(2)+"<small>about "+Math.round(risk*100)+" in 100 will need IV antibiotics in the next year</small>";
+  const lines=[];
+  const band = risk<0.15 ? ["Below the 0.15–0.30 range","Lower than the thresholds a centre would typically choose, but not a reason to reduce follow-up."]
+    : risk<0.20 ? ["Inside the 0.15–0.30 range, below 0.20","Flagged only if your centre uses a threshold of 0.15 or 0.175."]
+    : risk<=0.30 ? ["Inside the 0.15–0.30 range, at or above 0.20","At the operating point used in the study, this patient is flagged."]
+    : ["Above 0.30","Above every threshold examined in the study; this patient is flagged."];
+  lines.push("<h2>"+band[0]+"</h2><p>"+band[1]+"</p>");
+  lines.push('<p class="fine">In the study, 22% of prediction-years had an IV-treated exacerbation. A threshold of 0.20 flagged 35% of prediction-years and identified 76% of the exacerbations; about half of those flagged (0.49) had an event and 92% of those not flagged did not.</p>');
+  const notes=[];
+  if(bmiAssumed){
+    const lo = riskFor(total - p.bmi + pts("bmi",1)), hi = riskFor(total - p.bmi + pts("bmi",-2));
+    notes.push('BMI z-score not available: risk range <span class="range">'+lo.toFixed(2)+" to "+hi.toFixed(2)+"</span> for BMI z-scores of +1 to −2.");
+  }
+  const unk = ["pa","mrsa"].filter(k=>state[k]==="u"||state[k]===null);
+  if(unk.length) notes.push((unk.length===2?"Both culture results are":(unk[0]==="pa"?"P. aeruginosa is":"MRSA is"))+" unknown or not answered and scored as negative; this risk is a lower bound.");
+  if(notes.length) lines.push('<p class="fine">'+notes.join(" ")+"</p>");
+  read.innerHTML = lines.join("");
+  $("state").textContent = "Risk updates as you change a value.";
+}
+
+document.querySelectorAll("input").forEach(i=>{["input","change","keyup","paste"].forEach(ev=>i.addEventListener(ev,()=>setTimeout(render,0)))});
+$("reset").addEventListener("click",()=>{setForm(EMPTY);render();$("in-fev1").focus()});
+$("example").addEventListener("click",()=>{setForm(EXAMPLE);render();$("state").textContent="Example patient: FEV1 z −2, BMI z −0.5, P. aeruginosa yes, MRSA no, 14 IV days."});
+const root=document.documentElement, tb=$("theme");
+tb.addEventListener("click",()=>{const dark=root.dataset.theme!=="dark"; root.dataset.theme=dark?"dark":"light"; tb.textContent=dark?"Light":"Dark"; tb.setAttribute("aria-pressed",String(dark))});
+setForm(EXAMPLE); render();
+window.__score = {risk:(f,b,pa,m,iv)=>pl(MODEL.b0+B.fev1*f+B.bmi*b+B.pa*pa+B.mrsa*m+B.iv*Math.log(1+iv)), render, state};
+})();
+</script>
+</body>
+</html>
